@@ -3,7 +3,7 @@ layout:     post
 title:      Semantic Word Embeddings
 date:       2015-12-12 9:00:00
 author:     Sanjeev Arora
-visible:    true
+visible:    false
 ---
 
 This post can be seen as an introduction to how nonconvex problems arise
