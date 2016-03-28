@@ -26,8 +26,19 @@
     <meta property="og:url" content="{{ site.url }}{{ page.url }}">
     <meta property="og:site_name" content="{{ site.title | xml_escape }}">
 
+
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
+            "HTML-CSS": {
+                styles: {
+                        ".MathJax_Display": {
+                        width: null,
+                        position: null,
+                        font-size: 0.3em,
+                        display: "table"
+                            }
+                        }
+                        }
         extensions: ["tex2jax.js"],
         jax: ["input/TeX", "output/HTML-CSS"],
         tex2jax: {
