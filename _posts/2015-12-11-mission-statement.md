@@ -2,7 +2,7 @@
 layout:     post
 title:      Why go off the convex path?
 date:       2015-12-11 11:34:00
-visible:    true
+visible:    false
 ---
 
 The notion of convexity underlies a lot of beautiful mathematics. When combined with computation, it gives rise to the area of convex optimization that has had a huge impact on understanding and improving the world we live in. However, convexity does not provide all the answers. Many procedures in statistics, machine learning and nature at large---Bayesian inference, deep learning, protein folding---successfully solve non-convex problems that are NP-hard, i.e., intractable on worst-case instances. Moreover, often nature or humans choose methods that are inefficient in the worst case to solve problems in [P](https://en.wikipedia.org/wiki/P_(complexity)). 
