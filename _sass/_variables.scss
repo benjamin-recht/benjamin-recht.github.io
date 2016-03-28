@@ -1,7 +1,7 @@
 // Typography
-$base-font-size: 10px;
+$base-font-size: 12px !default;
 $bold-font-weight: bold !default;
-$font-family: 'Courier','Verdana', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family: 'Verdana', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $line-height: 1.5 !default;
 $heading-font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif !default;
 $heading-font-weight: 900 !default;
@@ -27,9 +27,9 @@ $abbr-border-bottom: 1px black dotted;
 $measure-width: 42rem !default;
 
 // Viewport widths
-$viewport-small: 32em;
-$viewport-medium: 48em;
-$viewport-large: 64em;
+$viewport-small: 16em;
+$viewport-medium: 24em;
+$viewport-large: 32em;
 
 // Colors
 $blue: #0076df !default;
