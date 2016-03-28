@@ -3,7 +3,7 @@ layout:     post
 title:      NIPS 2015 workshop on non-convex optimization
 date:       2016-01-25 10:00:00
 author:     Anima Anandkumar
-visible:    true
+visible:    false
 ---
 
 While convex analysis has received much attention by the machine learning community, theoretical analysis of non-convex optimization  is still nascent. This blog as well as the recent [NIPS 2015 workshop on non-convex optimization](https://sites.google.com/site/nips2015nonconvexoptimization/home) aim to  accelerate research in this area. Along with [Kamalika Chaudhuri](http://cseweb.ucsd.edu/~kamalika/),  [Percy Liang](http://cs.stanford.edu/~pliang/),  [Niranjan U Naresh](http://www.ics.uci.edu/~numanare/), and [Sewoong Oh](http://web.engr.illinois.edu/~swoh/), [I](http://newport.eecs.uci.edu/anandkumar/) was one of the organizers of this  NIPS workshop. 
