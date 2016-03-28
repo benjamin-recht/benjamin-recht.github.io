@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Off the Convex Path
+title: arg min blog
 permalink: /about/
 ---
 
