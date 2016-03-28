@@ -37,7 +37,16 @@
           processEscapes: true
         },
         messageStyle: "none",
-        "HTML-CSS": { availableFonts: ["TeX"] }
+        "HTML-CSS": { availableFonts: ["TeX"],
+        styles: {
+                        ".MathJax_Display": {
+                        width: null,
+                        position: null,
+                        font-size: 0.3em,
+                        display: "table"
+                            }
+                        }
+        }
       });
     </script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js">
