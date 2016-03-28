@@ -1,10 +1,10 @@
 # Site settings
-title:       Off the convex path
-email:       offconvex@mrtz.org 
-author:      Moritz Hardt
-description: "Algorithms off the convex path."
+title:       arg min blog
+email:       brecht@berkeley.edu 
+author:      Benjamin Recht
+description: "Musings on systems, information, learning, and optimization."
 baseurl:     ""
-url:         "http://offconvex.github.io"
+url:         "http://benjamin-recht.github.io"
 date_format: "%b %-d, %Y"
 
 # Google services
@@ -20,7 +20,7 @@ ajaxify_contact_form: false
 
 # Disqus post comments
 # (leave blank to disable Disqus)
-disqus_shortname: offconvex
+disqus_shortname: argmin
 
 # Facebook Comments plugin
 # (leave blank to disable Facebook Comments, otherwise set it to true)
