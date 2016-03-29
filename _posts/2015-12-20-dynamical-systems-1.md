@@ -4,7 +4,7 @@ title:      Nature, Dynamical Systems and Optimization
 date:       2015-12-21 10:09:00
 summary:    Introduce dynamical systems from the point of view of optimization using examples from nature. 
 author:     Nisheeth Vishnoi
-visible:    true
+visible:    false
 ---
 
 The language of dynamical systems is the preferred choice of scientists to model a wide variety of phenomena in nature. The reason is  that, often, it is easy to  *locally* observe or understand what happens to a system in one time-step. Could we then piece this local information together to make deductions about the  *global* behavior of these dynamical systems? The hope is to understand some of nature's algorithms and, in this quest, unveil new algorithmic techniques. In this first of a series of posts, we give a gentle introduction to dynamical systems and explain what it means to view them from the point of view of optimization.
