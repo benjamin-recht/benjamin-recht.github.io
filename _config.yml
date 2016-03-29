@@ -20,7 +20,7 @@ ajaxify_contact_form: false
 
 # Disqus post comments
 # (leave blank to disable Disqus)
-disqus_shortname: argmin
+disqus_shortname: argminblog
 
 # Facebook Comments plugin
 # (leave blank to disable Facebook Comments, otherwise set it to true)
