@@ -1,9 +1,9 @@
 ---
 layout: page
-title: arg min blog
+title: 
 permalink: /about/
 ---
 
-## Contributors
+# Contributors
 
 * [Benjamin Recht](http://www.eecs.berkeley.edu/~brecht)
