@@ -4,6 +4,15 @@
       <a href="{{ site.url }}" class="site-title">
         <img class="js-chickendinner" style="width:28rem;" src="{{ site.utl }}/assets/logo.jpg" alt="" />
       </a>
+      
+        <script>
+    $('.js-chickendinner').chickenDinner({
+        path: '{{ site.utl }}/assets/',
+        fadeInTime:1000,
+        TheImages: ['logo-1.jpg', 'logo-3.jpg', 'logo-5.jpg', 'logo-10.jpg']
+    });
+    </script>
+      
       </div>
       </div>
       <div class="mt2 wrap">
@@ -19,12 +28,6 @@
     </div>
   </div>
   
-  <script>
-    $('.js-chickendinner').chickenDinner({
-        path: '{{ site.utl }}/assets/',
-        fadeInTime:1000,
-        TheImages: ['logo-1.jpg', 'logo-3.jpg', 'logo-5.jpg', 'logo-10.jpg']
-    });
-    </script>
+
   
 </header>
