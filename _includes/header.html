@@ -4,7 +4,7 @@
 <!--New images on load -->
 <script>
 //Add your images, we'll set the path in the next step
-    var images = ['logo-1.jpg', 'logo-2.jpg', 'logo-3.jpg', 'logo-4.jpg];
+    var images = ['logo-1.jpg', 'logo-2.jpg', 'logo-3.jpg', 'logo-4.jpg'];
     
 //Build the img, then do a bit of maths to randomize load and append to a div. Add a touch off css to fade them badboys in all sexy like.
     $('<img style="width:28rem;" class="fade-in" src=""{{ site.utl }}/assets/' + images[Math.floor(Math.random() * images.length)] + '">').appendTo('#banner-load');
