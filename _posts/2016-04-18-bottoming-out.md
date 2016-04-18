@@ -7,7 +7,7 @@ author:     Ben Recht
 visible:    true
 ---
 
-In order to get a grasp on what makes optimization difficult in machine learning, it is important to specialize our focus.  Nonsmooth optimization is so general, and what makes deep learning hard may be completely different from what makes tensor decomposition difficult.  So in this post, I want to focus on deep learning and take a bit of a controversial stand.  It has been my experience, that optimization is not at all what makes deep learning challenging.
+In order to get a grasp on what makes optimization difficult in machine learning, it is important to specialize our focus.  Nonconvex optimization is so general, and what makes deep learning hard may be completely different from what makes tensor decomposition difficult.  So in this post, I want to focus on deep learning and take a bit of a controversial stand.  It has been my experience, that optimization is not at all what makes deep learning challenging.
 
 Look at these plots.
 
