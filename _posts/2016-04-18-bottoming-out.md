@@ -11,7 +11,7 @@ In order to get a grasp on what makes optimization difficult in machine learning
 
 Look at these plots.
 
-<img src="/assets/deepfit/mnist_train.png" alt="Train error on MNIST" style="width: 200px;"/>
+<img src="/assets/deepfit/mnist_train.png" alt="Train error on MNIST" width=200/>
 <img src="/assets/deepfit/cifar10_train.png" alt="Train error on CIFAR10" style="width: 200px;"/>
 
 On the left I show the training error on everyone’s favorite machine learning benchmark [MNIST](http://yann.lecun.com/exdb/mnist/).  Here I trained a version of LeNet-5 with 2 convolutional layers and one fully connected layer.  I used SGD with a constant stepsize.  On the right, I show the training error on [CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html).  For this task, I used a bigger conv-net based on [Alex Krizhevsky’s cuda-convnet model](https://code.google.com/p/cuda-convnet/source/browse/trunk/example-layers/layers-18pct.cfg).  In both cases, I am training using the soft-max loss, and after a sufficiently long run both of these models converge to zero loss.  But the soft-max loss is bounded below by zero, so this means I am finding *global* minima of the cost function.
