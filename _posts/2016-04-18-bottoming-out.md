@@ -25,7 +25,7 @@ Of course, at this point, my machine learning friends are yelling at their scree
 
 The test error starts climbing upwards well before the models hit zero train loss.  And there is nothing surprising about this.  If one picks a model with enough parameters, you can (and will) overfit like crazy.  The challenge in machine learning is attaining small training error *quickly and efficiently* while still generalizing to unseen data.
 
-These plots suggest that our worries about optimization are misplaced when it comes to deep learning.  Finding global optimizers is trivial.  But finding models that generalize well is much more subtle.  To get good performance on the test set, most of our efforts have to be devoted to forcing deep models away from optimal solutions.  If I just take the exact same CIFAR-10 architecture, but I turn the learning rate down by a factor of 10, add a bit of $\ell_2$ regularization, and reduce the learning rate by 10x at epoch 120, I get this plot:
+These plots suggest that our worries about optimization are misplaced when it comes to deep learning.  Finding global optimizers is trivial.  But finding models that generalize well is much more subtle.  To get good performance on the test set, most of our efforts have to be devoted to forcing deep models away from optimal solutions.  If I just take the exact same CIFAR-10 architecture, but I turn the learning rate down by a factor of 10, add a bit of $\ell_2$ regularization, and reduce the learning rate by 10x at epoch 120, I get this plot.
 
 ![with regularization](/assets/deepfit/cifar10_alexnet_train_and_test.png)
 
