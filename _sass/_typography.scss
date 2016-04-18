@@ -11,13 +11,11 @@ p {
   color: #333;
   line-height: 1.5;
   font-size: $base-font-size;
-}
+} 
 
-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto
-}   
+figure {
+  text-align: center;
+}
 
 small,
 .small {
