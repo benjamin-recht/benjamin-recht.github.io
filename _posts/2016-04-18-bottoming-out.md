@@ -11,6 +11,7 @@ In order to get a grasp on what makes optimization difficult in machine learning
 
 Look at these plots.
 
+{: .center}
 ![Train error on MNIST](/assets/deepfit/mnist_train.png)
 ![Train error on CIFAR10](/assets/deepfit/cifar10_train.png)
 
@@ -20,6 +21,7 @@ Now, I’ve been hammering the point in my previous posts that saddle points are
 
 Of course, at this point, my machine learning friends are yelling at their screens, “dude, what does the test error look like?!?!”  For the uninitiated, both the MNIST and CIFAR10 benchmarks ship with two sets of data points. There is a training set of examples from which you squeeze out every bit of information.  And there is a test set which indicates how well your model will extrapolate to unseen data.  Here are the same plots as above, but now I’ll also plot the loss on the test set.
 
+{: .center}
 ![Train vs test error on MNIST](/assets/deepfit/mnist_train_and_test.png)
 ![Train vs test error on CIFAR10](/assets/deepfit/cifar10_train_and_test.png)
 
