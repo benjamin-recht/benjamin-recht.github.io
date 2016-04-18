@@ -11,8 +11,10 @@ In order to get a grasp on what makes optimization difficult in machine learning
 
 Look at these plots.
 
+<figure>
 ![Train error on MNIST](/assets/deepfit/mnist_train.png)
 ![Train error on CIFAR10](/assets/deepfit/cifar10_train.png)
+</figure>
 
 On the left I show the training error on everyone’s favorite machine learning benchmark [MNIST](http://yann.lecun.com/exdb/mnist/).  Here I trained a version of LeNet-5 with 2 convolutional layers and one fully connected layer.  I used SGD with a constant stepsize.  On the right, I show the training error on [CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html).  For this task, I used a bigger conv-net based on [Alex Krizhevsky’s cuda-convnet model](https://code.google.com/p/cuda-convnet/source/browse/trunk/example-layers/layers-18pct.cfg).  In both cases, I am training using the soft-max loss, and after a sufficiently long run both of these models converge to zero loss.  But the soft-max loss is bounded below by zero, so this means I am finding *global* minima of the cost function.
 
@@ -20,14 +22,18 @@ Now, I’ve been hammering the point in my previous posts that saddle points are
 
 Of course, at this point, my machine learning friends are yelling at their screens, “dude, what does the test error look like?!?!”  For the uninitiated, both the MNIST and CIFAR10 benchmarks ship with two sets of data points. There is a training set of examples from which you squeeze out every bit of information.  And there is a test set which indicates how well your model will extrapolate to unseen data.  Here are the same plots as above, but now I’ll also plot the loss on the test set.
 
+<figure>
 ![Train vs test error on MNIST](/assets/deepfit/mnist_train_and_test.png)
 ![Train vs test error on CIFAR10](/assets/deepfit/cifar10_train_and_test.png)
+</figure>
 
 The test error starts climbing upwards well before the models hit zero train loss.  And there is nothing surprising about this.  If one picks a model with enough parameters, you can (and will) overfit like crazy.  The challenge in machine learning is attaining small training error *quickly and efficiently* while still generalizing to unseen data.
 
 These plots suggest that our worries about optimization are misplaced when it comes to deep learning.  Finding global optimizers is trivial.  But finding models that generalize well is much more subtle.  To get good performance on the test set, most of our efforts have to be devoted to forcing deep models away from optimal solutions.  If I just take the exact same CIFAR-10 architecture, but I turn the learning rate down by a factor of 10, add a bit of $\ell_2$ regularization, and reduce the learning rate by 10x at epoch 120, I get this plot.
 
+<figure>
 ![with regularization](/assets/deepfit/cifar10_alexnet_train_and_test.png)
+</figure>
 
 Not bad!  The loss on the training set and test set track each other rather nicely.  
 
