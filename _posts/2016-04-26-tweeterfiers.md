@@ -27,5 +27,20 @@ Ah, yes, the Twitter classifier challenge.  Or Tweetifier challenge, if you will
 
 Go read Ross’ piece to find out what algorithm wins (I’m sure the seasoned folks out there can guess without looking, but it’s still fun).  Spoiler alert: it’s not a deep neural net.  Deep nets are unsurprisingly difficult to encode in 2800 bits.  But unphased by this challenge, fellow TA Henry Milner gave it his best and came up with this two-layer neural net:
 
+```
+lambda r:sum(np.tanh(sum(r[c%8192]*(2*(c>>19)-1)*1.4**-(c>>13&63)for c in map(ord,w)))for w in
+["񐀀񘀄񎀅񔀻񪁩򴂲","񐀀񘀄񎀅񔀻𦁐񪁩򦂭򼅍򸒥","񐀀񘀄񎀅񔀻񪁩򰃙򺄟򸋙򴎣","񐀀񘀄񎀅񔀻񪁩𴃍"])>0
+```
 
+In his words:
+
+> I used a 2-layer network with tanh activations (since “np.tanh()” is very short) and the second layer fixed at the all-ones vector (since I didn’t have space to encode and decode 2 separate parameter vectors, and “sum()” is also very short). The training objective was the hinge loss plus L2 and L1 regularization.
+
+> I trained with batch stochastic gradient descent using Theano.  (After the training objective stopped changing, I chose the best model I’d seen in terms of held-out accuracy, which is another kind of regularization.)  I used iterative soft shrinkage for the L1 term to ensure the weights were actually sparse, though it’s not clear that works well for neural nets.
+
+> I encoded the weights as key/value pairs: Each 20-bit Unicode character uses 13 bits to encode the index of the feature for which it’s a weight and 7 bits for the weight.  The magnitudes of the weights turned out to be roughly uniform in log scale, so I encoded them with 1 sign bit and 6 magnitude bits.  This is a lossy encoding of the weights, but it didn’t turn out to increase the held-out error, so that seemed okay.  I fiddled with the L1 penalty until the resulting model was small enough to fit in my tweet.
+
+This is clearly the future of machine learning.  
+
+You can find more [“source code”](www.twitter.com/tweetifiers) for tweeterfiers on twitter.  And Ross has released the [training](http://www.rossboczar.com/tweetifiers_train.csv) and [holdout](http://www.rossboczar.com/tweetifiers_holdout.csv) sets so you can get grinding on your minimalist tweeterfiers.
 
