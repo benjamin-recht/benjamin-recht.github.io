@@ -28,7 +28,7 @@ Ah, yes, the Twitter classifier challenge.  Or Tweetifier challenge, if you will
 Go read Ross’ piece to find out what algorithm wins (I’m sure the seasoned folks out there can guess without looking, but it’s still fun).  Spoiler alert: it’s not a deep neural net.  Deep nets are unsurprisingly difficult to encode in 2800 bits.  But unphased by this challenge, fellow TA Henry Milner gave it his best and came up with [this two-layer neural net:](https://twitter.com/tweetifiers/status/673246018574528512)
 
 {: .center}
-![deepest tweet](/assets/neural_tweet.jpg)
+![deepest tweet](/assets/neural_tweet.png)
 
 **Editorial rant:** *I tried to directly paste the Unicode in a code block, but Jekyll seems to hate this.  Jekyll is really a pain in the ass.  But if you follow the link, you can actually run this in Python3.*
 
