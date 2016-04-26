@@ -4,7 +4,7 @@ title:      Large Margin Micro Blogging
 date:       2016-04-26 7:00:00
 summary:    How much VC dimension can you cram in a tweet?
 author:     Ben Recht
-visible:    false
+visible:    true
 ---
 
 While intricate deep models are all the rage in machine learning, [my last post](http://www.argmin.net/2016/04/18/bottoming-out/) tried to make the case that we still need to care about model regularization. As it has been since the dawn of time, choosing simple models is still our best weapon against overfitting.   But what does “simple” mean exactly?  Of the many ways to measure simplicity, I’ve always been partial to the “minimum description length” principle: the fewer lines of code needed to train, store, and evaluate your model, the more robust that model likely is.
@@ -25,7 +25,12 @@ In order to create an appropriate handicap, the staff held themselves to the fol
 
 Ah, yes, the Twitter classifier challenge.  Or Tweetifier challenge, if you will.  This turned out to be as silly as you might imagine.  Ross details a variety of amazing entries, and some are remarkably concise.  The requirement that the algorithm and the model have to fit in the tweet seems particularly challenging as you are not allowed to call into scikit-learn (importing scikit-learn would waste too many characters!).  Of course, the main secret sauce is that Python3 and Twitter both support Unicode, so you can actually cram 2800 bits of information into a tweet.  Who knew?
 
-Go read Ross’ piece to find out what algorithm wins (I’m sure the seasoned folks out there can guess without looking, but it’s still fun).  Spoiler alert: it’s not a deep neural net.  Deep nets are unsurprisingly difficult to encode in 2800 bits.  But unphased by this challenge, fellow TA Henry Milner gave it his best and came up with this two-layer neural net:
+Go read Ross’ piece to find out what algorithm wins (I’m sure the seasoned folks out there can guess without looking, but it’s still fun).  Spoiler alert: it’s not a deep neural net.  Deep nets are unsurprisingly difficult to encode in 2800 bits.  But unphased by this challenge, fellow TA Henry Milner gave it his best and came up with [this two-layer neural net:](https://twitter.com/tweetifiers/status/673246018574528512)
+
+{: .center}
+![deepest tweet](/assets/neural_tweet.jpg)
+
+**Editorial rant:** *I tried to directly paste the Unicode in a code block, but Jekyll seems to hate this.  Jekyll is really a pain in the ass.  But if you follow the link, you can actually run this in Python3.*
 
 In his words:
 
@@ -38,4 +43,3 @@ In his words:
 This is clearly the future of machine learning.  
 
 You can find more [“source code”](www.twitter.com/tweetifiers) for tweeterfiers on twitter.  And Ross has released the [training](http://www.rossboczar.com/tweetifiers_train.csv) and [holdout](http://www.rossboczar.com/tweetifiers_holdout.csv) sets so you can get grinding on your minimalist tweeterfiers.
-
