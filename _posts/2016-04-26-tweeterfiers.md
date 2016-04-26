@@ -27,11 +27,6 @@ Ah, yes, the Twitter classifier challenge.  Or Tweetifier challenge, if you will
 
 Go read Ross’ piece to find out what algorithm wins (I’m sure the seasoned folks out there can guess without looking, but it’s still fun).  Spoiler alert: it’s not a deep neural net.  Deep nets are unsurprisingly difficult to encode in 2800 bits.  But unphased by this challenge, fellow TA Henry Milner gave it his best and came up with this two-layer neural net:
 
-```
-lambda r:sum(np.tanh(sum(r[c%8192]*(2*(c>>19)-1)*1.4**-(c>>13&63)for c in map(ord,w)))for w in
-["񐀀񘀄񎀅񔀻񪁩򴂲","񐀀񘀄񎀅񔀻𦁐񪁩򦂭򼅍򸒥","񐀀񘀄񎀅񔀻񪁩򰃙򺄟򸋙򴎣","񐀀񘀄񎀅񔀻񪁩𴃍"])>0
-```
-
 In his words:
 
 > I used a 2-layer network with tanh activations (since “np.tanh()” is very short) and the second layer fixed at the all-ones vector (since I didn’t have space to encode and decode 2 separate parameter vectors, and “sum()” is also very short). The training objective was the hinge loss plus L2 and L1 regularization.
