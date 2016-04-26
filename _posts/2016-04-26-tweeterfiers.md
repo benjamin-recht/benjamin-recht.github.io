@@ -42,4 +42,4 @@ In his words:
 
 This is clearly the future of machine learning.  
 
-You can find more [“source code”](www.twitter.com/tweetifiers) for tweetifiers on twitter.  And Ross has released the [training](http://www.rossboczar.com/tweetifiers_train.csv) and [holdout](http://www.rossboczar.com/tweetifiers_holdout.csv) sets so you can get grinding on your minimalist tweeterfiers.
+You can find more [“source code”](www.twitter.com/tweetifiers) for tweetifiers on twitter.  And Ross has released the [training](http://www.rossboczar.com/tweetifiers_train.csv) and [holdout](http://www.rossboczar.com/tweetifiers_holdout.csv) sets so you can get grinding on your minimalist tweetifiers.
