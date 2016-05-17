@@ -120,7 +120,7 @@ The Lagrangian for this system has a similar form to that for the neural network
 $$
 \begin{aligned}
 \mathcal{L} (x,u,p) &:= \sum_{i=0}^N \left[ \tfrac{1}{2} x_t^TQ x_t +  \tfrac{1}{2}u_t^T R u_t \right.\\
-&\qquad\qquad \left. - p_t^T (x_{t+1}-A x_t - B u_t)) \right]\\
+&\qquad\qquad \left. - p_t^T (x_{t+1}-A x_t - B u_t) \right]\\
 &\qquad\qquad +\tfrac{1}{2} x_{N+1}^T S x_{N+1}.
 \end{aligned}
 $$
