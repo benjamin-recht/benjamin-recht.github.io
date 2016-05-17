@@ -63,8 +63,7 @@ $$
 \nabla_{z^{(i)}} \mathcal{L} &= - p_{i} + \nabla_{z^{(i)}} f_{i+1}(z^{(i)},\vartheta_{i+1})^T p_{i+1} , \\
 \label{eq:4b}
 \nabla_{z^{(\ell)}} \mathcal{L} &= -p_\ell + \nabla_{z^{(\ell)}} \mathrm{loss}(z^{(\ell)},y) , \\
-\label{eq:4c}
-\nabla_{\vartheta_i} \mathcal{L} &= \nabla_{\vartheta_i} f_i(z^{(i-1)},\vartheta_i)^Tp_i ,
+\nabla_{\vartheta_i} \mathcal{L} &= \nabla_{\vartheta_i} f_i(z^{(i-1)},\vartheta_i)^Tp_i ,\\
 \nabla_{p_i} \mathcal{L} &= z^{(i)} - f_i(z^{(i-1)},\vartheta_i).
 \end{aligned}
 $$
