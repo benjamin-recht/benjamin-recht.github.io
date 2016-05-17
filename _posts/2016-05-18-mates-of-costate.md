@@ -77,10 +77,12 @@ $$
 and then we can just read off the gradient with respect to $\nabla_\vartheta \mathrm{loss}(\varphi(x;\vartheta),y)= \nabla_{\vartheta_i} f_i(z^{(i-1)},\vartheta_i)^Tp_i$.
 (I'll explain why later... trust me for a second).
 
-Now, the structure here is particularly nice.  If we solve for $\nabla_{p_i} \mathcal{L}=0$, this just amounts to satisfying the constraints  $z^{(i)} = f_i(z^{(i-1)}$.  This is called the *forward pass*.  Now, we can compute $p_i$ from the equations $\nabla_{z_i} \mathcal{L} =0$.  That is,
+Now, the structure here is particularly nice.  If we solve for $\nabla_{p_i} \mathcal{L}=0$, this just amounts to satisfying the constraints  $z^{(i)} = f_i(z^{(i-1)})$.  This is called the *forward pass*.  Now, we can compute $p_i$ from the equations $\nabla_{z_i} \mathcal{L} =0$.  That is,
+
 $$
 p_\ell = \nabla_{z^{(\ell)}} \mathrm{loss}(z^{(\ell)},y) \,.
 $$
+
 This is the *backward pass*.  The gradients with respect to the parameters can then be computed by adding up linear functions of the adjoint variables.
 
 There are tons of ways to generalize this.  We could have a more complicated computation graph.  We could share variables among layers (this would mean adding up variables).  We could penalize hidden variables or states explicitly in the cost function.  Regardless, we could read off the solution via the same forward-backward procedure.   The computation graph always provides a  ``forward model'' describing the evolution of an input to the output. The adjoint equation involves the adjoint (``transpose'') of the Jacobians of this equation, which measures the sensitivity of one node to the previous node.  
