@@ -104,8 +104,9 @@ Suppose we would like to find a sequence of inputs $u_t$ that minimizes some qua
 $$
 \begin{array}{ll}
 \mbox{minimize}_{u_t,x_t} \, & \tfrac{1}{2}\sum_{t=0}^T \left\{x_t^TQ x_t + u_t^T R u_t\right\}  + \tfrac{1}{2} x_{N+1}^T S x_{N+1}, \\
-\mbox{subject to} \quad & x_{t+1} = A x_t+ B u_t, \quad t=0,1,\dotsc,N, \quad
-\mbox{($x_0$ given).}
+\mbox{subject to} & x_{t+1} = A x_t+ B u_t, \\
+& \qquad (t=0,1,\dotsc,N,)\\
+& \mbox{($x_0$ given).}
 \end{array}
 $$
 
