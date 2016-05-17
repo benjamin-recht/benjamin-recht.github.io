@@ -143,7 +143,7 @@ In the special case where the cost involves tracking an observation $y_t$, we ar
 $$
 \begin{array}{ll}
 \mbox{minimize}_{u_t,x_t} \, & \tfrac{1}{2}\sum_{t=0}^T \left\{\|x_t-y_t\|^2+ u_t^T R_t u_t \right\}\\
-&\qquad+ \tfrac{1}{2}x_0^T S x_0\\
+&\qquad\qquad+ \tfrac{1}{2}x_0^T S x_0\\
 \mbox{subject to} & x_{t+1} = A x_t+ B u_t, \\
 & \qquad \mbox{for}~t=0,1,\dotsc,N\,.
 \end{array}
