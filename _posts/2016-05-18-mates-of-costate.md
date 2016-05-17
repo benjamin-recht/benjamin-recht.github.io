@@ -105,18 +105,20 @@ $$
 \begin{array}{ll}
 \mbox{minimize}_{u_t,x_t} \, & \tfrac{1}{2}\sum_{t=0}^T \left\{x_t^TQ x_t + u_t^T R u_t\right\}  + \tfrac{1}{2} x_{N+1}^T S x_{N+1}, \\
 \mbox{subject to} & x_{t+1} = A x_t+ B u_t, \\
-& \qquad \mbox{for} t=0,1,\dotsc,N,\\
+& \qquad \mbox{for}~t=0,1,\dotsc,N,\\
 & \mbox{($x_0$ given).}
 \end{array}
 $$
 
 The Lagrangian for this system has a similar form to that for the neural network
-%
+
 $$
 \mathcal{L} (x,u,p) := \sum_{i=0}^N [ \tfrac{1}{2} x_t^TQ x_t + \tfrac{1}{2}u_t^T R u_t - p_t^T (x_{t+1}-A x_t - B u_t)) ] +
 \tfrac{1}{2} x_{N+1}^T S x_{N+1}.
 $$
+
 The gradients of the Lagrangian are given by the expressions
+
 $$
 \begin{aligned}
 \nabla_{x_t} \mathcal{L} &= Qx_t - p_{t-1} + A^T p_i , \quad t=1,2,\dotsc,N; \\
@@ -128,19 +130,24 @@ $$
 \nabla_{p_t} \mathcal{L} &= -x_{t+1} + Ax_t + B u_t, \quad i=0,1,\dotsc,N.
 \end{aligned}
 $$
+
 Again, to satisfy $\nabla_{p_i} \mathcal{L}=0$, we simply run the dynamical system model forward in time to compute the trajectory $x_t$.  Then, we can solve for the costates $p_i$ by running the *adjoint dynamics*
+
 $$
 	p_{t-1} = A^T p_t +  Q x_t
 $$
+
 with the initial condition $p_N = Sx_{N+1}$.  For the optimal control problem, the Lagrange multipliers are a trajectory of a related linear system called the *adjoint* or *dual* system.  The dynamics are linear in the costate $p_t$, with time running in reverse and the state transition matrix being the transpose (also known as the adjoint) of $A$.  The costate is driven by the forward trajectory $x_t$.   This gives us a clear way to think about the dynamics about how later states are sensitive to early states.  In the special case when $Q$ and $R$ are zero, we are computing the sensitivity of the end state $x_{N+1}$ to the inputs $u_t$.  If $A$ is *stable*, meaning all of its eigenvalues have magnitude strictly less than $1$, than early inputs have little effect on the terminal state.  But if $A$ is *unstable*, the costate dynamics may diverge, and hence the gradient with respect to $u_t$ for small $t$ can grow exponentially large.
 
 In the special case where the cost involves tracking an observation $y_t$, we arrive at the cost function of Kalman's Filter:
+
 $$
 \begin{array}{ll}
 \mbox{minimize}_{u_t,x_t} \, & \tfrac{1}{2}\sum_{t=0}^T \left\{\|x_t-y_t\|^2+ u_t^T R_t u_t \right\}+ \tfrac{1}{2}x_0^T S x_0\\
 \mbox{subject to} \quad & x_{t+1} = A x_t+ B u_t, \quad t=0,1,\dotsc,N\,.
 \end{array}
 $$
+
 One could solve the Kalman Filtering problem by performing gradient descent on the cost and computing the gradient via the method of adjoints.  This would be a totally reasonable solution, akin to solving a tri-diagonal system via conjugate gradient.  However, the special structure of this system enables us to solve the normal equations in linear time, so most people don't compute their filters this way.  On the other hand, the method of adjoints is far more general than the Kalman filter as it immediately applies to nonlinear dynamical systems or the  nonquadratic costs.  Moreover, the iterations require only $O(N)$ operations even in the general case.  This method is quite useful when the constraints are defined by partial differential equations, as there is an associated adjoint PDE that enables optimization in this setting as well.  Lions has a [whole book](xxx) on this topic.
 
 And, if you wanted to be crazy and make the control policy $u_t$ to be the output of a neural network applied to $x_t$, one could still compute gradients using the method of adjoints.
