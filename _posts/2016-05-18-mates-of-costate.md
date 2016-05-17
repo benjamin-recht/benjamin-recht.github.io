@@ -52,29 +52,29 @@ To simplify matters, let's restrict our attention to the case where $n=1$ and th
 
 To derive the KKT conditions we first form a Lagrangian function with Lagrange multipliers $p_i$:
 $$
-\cL (x,u,p) :=   \mathrm{loss}(z^{(\ell)},y) - \sum_{i=1}^{\ell} p_i^T(z^{(i)} - f_i(z^{(i-1)},\vartheta_i))\,
+\mathcal{L} (x,u,p) :=   \mathrm{loss}(z^{(\ell)},y) - \sum_{i=1}^{\ell} p_i^T(z^{(i)} - f_i(z^{(i-1)},\vartheta_i))\,
 $$
 The derivatives of this Lagrangian are given by the expressions:
 $$
 \begin{aligned}
-\nabla_{z^{(i)}} \cL &= - p_{i} + \nabla_{z^{(i)}} f_{i+1}(z^{(i)},\vartheta_{i+1})^T p_{i+1} , \quad i=1,2,\dotsc,\ell-1; \\
+\nabla_{z^{(i)}} \mathcal{L} &= - p_{i} + \nabla_{z^{(i)}} f_{i+1}(z^{(i)},\vartheta_{i+1})^T p_{i+1} , \quad i=1,2,\dotsc,\ell-1; \\
 \label{eq:4b}
-\nabla_{z^{(\ell)}} \cL &= -p_\ell + \nabla_{z^{(\ell)}} \mathrm{loss}(z^{(\ell)},y) , \\
+\nabla_{z^{(\ell)}} \mathcal{L} &= -p_\ell + \nabla_{z^{(\ell)}} \mathrm{loss}(z^{(\ell)},y) , \\
 \label{eq:4c}
-\nabla_{\vartheta_i} \cL &= \nabla_{\vartheta_i} f_i(z^{(i-1)},\vartheta_i)^Tp_i , \quad i=1,\dotsc,\ell, \\
+\nabla_{\vartheta_i} \mathcal{L} &= \nabla_{\vartheta_i} f_i(z^{(i-1)},\vartheta_i)^Tp_i , \quad i=1,\dotsc,\ell, \\
 \label{eq:4d}
-\nabla_{p_i} \cL &= z^{(i)} - f_i(z^{(i-1)},\vartheta_i) , \quad i=1,\dotsc,\ell.
+\nabla_{p_i} \mathcal{L} &= z^{(i)} - f_i(z^{(i-1)},\vartheta_i) , \quad i=1,\dotsc,\ell.
 \end{aligned}
 $$
 The Lagrange multipliers $p_i$ are also known as the *adjoint variables* or *costates*
 and \eqref{eq:4a} is the adjoint equation. To compute the gradient, we just have to solve this set of nonlinear equations
 $$
-\nabla_{p_i} \cL = 0~\mbox{and}~ \nabla_{z_i} \cL =0
+\nabla_{p_i} \mathcal{L} = 0~\mbox{and}~ \nabla_{z_i} \mathcal{L} =0
 $$
 and then we can just read off the gradient with respect to $\nabla_\vartheta \mathrm{loss}(\varphi(x;\vartheta),y)= \nabla_{\vartheta_i} f_i(z^{(i-1)},\vartheta_i)^Tp_i$.
 (I'll explain why later... trust me for a second).
 
-Now, the structure here is particularly nice.  If we solve for $\nabla_{p_i} \cL=0$, this just amounts to satisfying the constraints  $z^{(i)} = f_i(z^{(i-1)}$.  This is called the *forward pass*.  Now, we can compute $p_i$ from the equations $\nabla_{z_i} \cL =0$.  That is,
+Now, the structure here is particularly nice.  If we solve for $\nabla_{p_i} \mathcal{L}=0$, this just amounts to satisfying the constraints  $z^{(i)} = f_i(z^{(i-1)}$.  This is called the *forward pass*.  Now, we can compute $p_i$ from the equations $\nabla_{z_i} \mathcal{L} =0$.  That is,
 $$
 p_\ell = \nabla_{z^{(\ell)}} \mathrm{loss}(z^{(\ell)},y) \,.
 $$
@@ -104,22 +104,22 @@ $$
 The Lagrangian for this system has a similar form to that for the neural network
 %
 $$
-\cL (x,u,p) := \sum_{i=0}^N [ \tfrac{1}{2} x_t^TQ x_t + \tfrac{1}{2}u_t^T R u_t - p_t^T (x_{t+1}-A x_t - B u_t)) ] +
+\mathcal{L} (x,u,p) := \sum_{i=0}^N [ \tfrac{1}{2} x_t^TQ x_t + \tfrac{1}{2}u_t^T R u_t - p_t^T (x_{t+1}-A x_t - B u_t)) ] +
 \tfrac{1}{2} x_{N+1}^T S x_{N+1}.
 $$
 The gradients of the Lagrangian are given by the expressions
 $$
 \begin{aligned}
-\nabla_{x_t} \cL &= Qx_t - p_{t-1} + A^T p_i , \quad t=1,2,\dotsc,N; \\
+\nabla_{x_t} \mathcal{L} &= Qx_t - p_{t-1} + A^T p_i , \quad t=1,2,\dotsc,N; \\
 \label{eq:4b}
-\nabla_{x_{N+1}} \cL &= -p_N +  S x_{N+1} , \\
+\nabla_{x_{N+1}} \mathcal{L} &= -p_N +  S x_{N+1} , \\
 \label{eq:4c}
-\nabla_{u_t} \cL &= R u_t + B^T p_t , \quad t=0,1,\dotsc,N, \\
+\nabla_{u_t} \mathcal{L} &= R u_t + B^T p_t , \quad t=0,1,\dotsc,N, \\
 \label{eq:4d}
-\nabla_{p_t} \cL &= -x_{t+1} + Ax_t + B u_t, \quad i=0,1,\dotsc,N.
+\nabla_{p_t} \mathcal{L} &= -x_{t+1} + Ax_t + B u_t, \quad i=0,1,\dotsc,N.
 \end{aligned}
 $$
-Again, to satisfy $\nabla_{p_i} \cL=0$, we simply run the dynamical system model forward in time to compute the trajectory $x_t$.  Then, we can solve for the costates $p_i$ by running the *adjoint dynamics*
+Again, to satisfy $\nabla_{p_i} \mathcal{L}=0$, we simply run the dynamical system model forward in time to compute the trajectory $x_t$.  Then, we can solve for the costates $p_i$ by running the *adjoint dynamics*
 $$
 	p_{t-1} = A^T p_t +  Q x_t
 $$
