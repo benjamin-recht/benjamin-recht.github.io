@@ -55,7 +55,7 @@ To derive the KKT conditions we first form a Lagrangian function with Lagrange m
 $$
 \begin{aligned}
 \mathcal{L} (x,u,p) &:=   \mathrm{loss}(z^{(\ell)},y) \\
-&\qquad  - \sum_{i=1}^{\ell} p_i^T(z^{(i)} - f_i(z^{(i-1)},\vartheta_i)),
+&\qquad\quad  - \sum_{i=1}^{\ell} p_i^T(z^{(i)} - f_i(z^{(i-1)},\vartheta_i)),
 \end{aligned}
 $$
 
