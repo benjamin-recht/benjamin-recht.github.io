@@ -51,10 +51,13 @@ The structure of the backpropagation algorithm is revealed and exploited by writ
 To simplify matters, let's restrict our attention to the case where $n=1$ and there is a single $(x,y)$ pair as you'd have if you were running stochastic gradient descent.
 
 To derive the KKT conditions we first form a Lagrangian function with Lagrange multipliers $p_i$:
+
 $$
 \mathcal{L} (x,u,p) :=   \mathrm{loss}(z^{(\ell)},y) - \sum_{i=1}^{\ell} p_i^T(z^{(i)} - f_i(z^{(i-1)},\vartheta_i))\,
 $$
+
 The derivatives of this Lagrangian are given by the expressions:
+
 $$
 \begin{aligned}
 \nabla_{z^{(i)}} \mathcal{L} &= - p_{i} + \nabla_{z^{(i)}} f_{i+1}(z^{(i)},\vartheta_{i+1})^T p_{i+1} , \quad i=1,2,\dotsc,\ell-1; \\
@@ -66,11 +69,13 @@ $$
 \nabla_{p_i} \mathcal{L} &= z^{(i)} - f_i(z^{(i-1)},\vartheta_i) , \quad i=1,\dotsc,\ell.
 \end{aligned}
 $$
-The Lagrange multipliers $p_i$ are also known as the *adjoint variables* or *costates*
-and \eqref{eq:4a} is the adjoint equation. To compute the gradient, we just have to solve this set of nonlinear equations
+
+The Lagrange multipliers $p_i$ are also known as the *adjoint variables* or *costates*. To compute the gradient, we just have to solve this set of nonlinear equations
+
 $$
 \nabla_{p_i} \mathcal{L} = 0~\mbox{and}~ \nabla_{z_i} \mathcal{L} =0
 $$
+
 and then we can just read off the gradient with respect to $\nabla_\vartheta \mathrm{loss}(\varphi(x;\vartheta),y)= \nabla_{\vartheta_i} f_i(z^{(i-1)},\vartheta_i)^Tp_i$.
 (I'll explain why later... trust me for a second).
 
