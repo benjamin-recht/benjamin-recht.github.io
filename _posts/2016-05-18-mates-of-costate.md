@@ -61,7 +61,6 @@ The derivatives of this Lagrangian are given by the expressions:
 $$
 \begin{aligned}
 \nabla_{z^{(i)}} \mathcal{L} &= - p_{i} + \nabla_{z^{(i)}} f_{i+1}(z^{(i)},\vartheta_{i+1})^T p_{i+1} , \\
-\label{eq:4b}
 \nabla_{z^{(\ell)}} \mathcal{L} &= -p_\ell + \nabla_{z^{(\ell)}} \mathrm{loss}(z^{(\ell)},y) , \\
 \nabla_{\vartheta_i} \mathcal{L} &= \nabla_{\vartheta_i} f_i(z^{(i-1)},\vartheta_i)^Tp_i ,\\
 \nabla_{p_i} \mathcal{L} &= z^{(i)} - f_i(z^{(i-1)},\vartheta_i).
@@ -99,7 +98,7 @@ $$
 
 where $(A,B)$ are some known state-evolution equations.
 
-Suppose we would like to find a sequence of inputs $u_t$ that minimizes some quadratic  cost over the trajectory:
+Suppose we would like to find a sequence of inputs $u_t$ that minimizes some quadratic cost over the trajectory:
 
 $$
 \begin{array}{ll}
@@ -122,11 +121,8 @@ The gradients of the Lagrangian are given by the expressions
 $$
 \begin{aligned}
 \nabla_{x_t} \mathcal{L} &= Qx_t - p_{t-1} + A^T p_i , \quad t=1,2,\dotsc,N; \\
-\label{eq:4b}
 \nabla_{x_{N+1}} \mathcal{L} &= -p_N +  S x_{N+1} , \\
-\label{eq:4c}
 \nabla_{u_t} \mathcal{L} &= R u_t + B^T p_t , \quad t=0,1,\dotsc,N, \\
-\label{eq:4d}
 \nabla_{p_t} \mathcal{L} &= -x_{t+1} + Ax_t + B u_t, \quad i=0,1,\dotsc,N.
 \end{aligned}
 $$
