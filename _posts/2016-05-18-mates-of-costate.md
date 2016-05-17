@@ -92,12 +92,15 @@ There are tons of ways to generalize this.  We could have a more complicated com
 As I mentioned already, the method of adjoints originates in the study of controls.  According to [Dreyfus](xxx), this was first proposed by [Bryson](xxx), and it plays a prominent role in his book on [Applied Optimal Control](xxx).   Note that Bryson's paper appeared only a couple of months after as Kalman's absurdly influential [A New Approach to Linear Filtering and Prediction Problems](xxx). This use of duality was very much at the birth of modern control theory.
 
 Let's take the simplest and most studied optimal control problem and see what backpropgation computes.  In optimal control, we have a dynamical system with state variable $x_t$ and input $u_t$.  We assume the state evolves according to the linear dynamics
+
 $$
 	x_{t+1} = A x_t + B u_t~\mbox{for}~t=0,1,\ldots\,.
 $$
+
 where $(A,B)$ are some known state-evolution equations.
 
 Suppose we would like to find a sequence of inputs $u_t$ that minimizes some quadratic  cost over the trajectory:
+
 $$
 \begin{array}{ll}
 \mbox{minimize}_{u_t,x_t} \, & \tfrac{1}{2}\sum_{t=0}^T \left\{x_t^TQ x_t + u_t^T R u_t\right\}  + \tfrac{1}{2} x_{N+1}^T S x_{N+1}, \\
