@@ -21,7 +21,7 @@ The standard deep learning goal is to solve optimization problems of the form
 
 $$
 	\begin{array}{ll}
-		\mbox{minimize}\_{\varphi} &\frac{1}{n} \sum_{k=1}^n \mathrm{loss}(\varphi(x_k),y_k) ,
+		\mbox{minimize}_{\varphi} &\frac{1}{n} \sum_{k=1}^n \mathrm{loss}(\varphi(x_k),y_k) ,
 	\end{array}
 $$
 
@@ -35,10 +35,10 @@ and each $f_i$ has a vector of parameters $\vartheta_{i-1}$ which may be optimiz
 
 $$
 	\begin{array}{ll}
-		\mbox{minimize}\_{\vartheta} &\frac{1}{n} \sum_{k=1}^n \mathrm{loss}(z_k^{(\ell)},y_k) \\\
-		\mbox{subject to} & z_k^{(\ell)} = f_\ell(z_{k}^{(\ell-1)}, \vartheta_{\ell})\\\
-		&  z_k^{(\ell-1)} = f_{\ell-1}(z_{k}^{(\ell-2)}, \vartheta_{\ell-1})\\\
-		& \vdots\\\
+		\mbox{minimize}_{\vartheta} &\frac{1}{n} \sum_{k=1}^n \mathrm{loss}(z_k^{(\ell)},y_k) \\
+		\mbox{subject to} & z_k^{(\ell)} = f_\ell(z_{k}^{(\ell-1)}, \vartheta_{\ell})\\
+		&  z_k^{(\ell-1)} = f_{\ell-1}(z_{k}^{(\ell-2)}, \vartheta_{\ell-1})\\
+		& \vdots\\
 		&  z_k^{(1)} = f_1(x_k, \vartheta_{1}).
 	\end{array}
 $$
@@ -70,7 +70,7 @@ $$
 \end{aligned}
 $$
 
-The Lagrange multipliers $p_i$ are also known as the *adjoint variables* or *costates*. To compute the gradient, we just have to solve this set of nonlinear equations
+The Lagrange multipliers $p_i$ are also known as the *adjoint variables* or *costates*. To compute the gradient, we just have to solve the set of nonlinear equations
 
 $$
 \nabla_{p_i} \mathcal{L} = 0~\mbox{and}~ \nabla_{z_i} \mathcal{L} =0
@@ -79,7 +79,7 @@ $$
 and then we can just read off the gradient with respect to $\nabla_\vartheta \mathrm{loss}(\varphi(x;\vartheta),y)= \nabla_{\vartheta_i} f_i(z^{(i-1)},\vartheta_i)^Tp_i$.
 (I'll explain why later... trust me for a second).
 
-Now, the structure here is particularly nice.  If we solve for $\nabla_{p_i} \mathcal{L}=0$, this just amounts to satisfying the constraints  $z^{(i)} = f_i(z^{(i-1)})$.  This is called the *forward pass*.  Now, we can compute $p_i$ from the equations $\nabla_{z_i} \mathcal{L} =0$.  That is,
+The structure here is particularly nice.  If we solve for $\nabla_{p_i} \mathcal{L}=0$, this just amounts to satisfying the constraints $z^{(i)} = f_i(z^{(i-1)})$.  This is called the *forward pass*.  We can then compute $p_i$ from the equations $\nabla_{z_i} \mathcal{L} =0$.  That is,
 
 $$
 p_\ell = \nabla_{z^{(\ell)}} \mathrm{loss}(z^{(\ell)},y) \,.
@@ -87,13 +87,13 @@ $$
 
 This is the *backward pass*.  The gradients with respect to the parameters can then be computed by adding up linear functions of the adjoint variables.
 
-There are tons of ways to generalize this.  We could have a more complicated computation graph.  We could share variables among layers (this would mean adding up variables).  We could penalize hidden variables or states explicitly in the cost function.  Regardless, we could read off the solution via the same forward-backward procedure.   The computation graph always provides a  "forward model" describing the evolution of an input to the output. The adjoint equation involves the adjoint ("transpose") of the Jacobians of this equation, which measures the sensitivity of one node to the previous node.  
+There are tons of ways to generalize this.  We could have a more complicated computation graph.  We could share variables among layers (this would mean adding up variables).  We could penalize hidden variables or states explicitly in the cost function.  Regardless, we can always read off the solution from the same forward-backward procedure.   The computation graph always provides a  "forward model" describing the evolution of an input to the output. The adjoint equation involves the adjoint ("transpose") of the Jacobians of this equation, which measures the sensitivity of one node to the previous node.  
 
 ## Adjoints in Optimal Control
 
 As I mentioned already, the method of adjoints originates in the study of controls.  According to [Dreyfus](http://arc.aiaa.org/doi/abs/10.2514/3.25422), this was first proposed by Bryson in a paper called "A Gradient Method for Optimizing Multi-Stage
 Allocation Processes" that appeared in the *Proceedings of the Harvard University Symposium
-on Digital Computers and Their Applications* in 1961.  I was unable to find that paper in our Engineering Library, but it plays a prominent role in Bryson's book on [Applied Optimal Control](http://www.amazon.com/Applied-Optimal-Control-Optimization-Estimation/dp/0891162283).   Note that Bryson's paper appeared only a couple of months after as Kalman's absurdly influential [A New Approach to Linear Filtering and Prediction Problems](http://fluidsengineering.asmedigitalcollection.asme.org/article.aspx?articleid=1430402). This use of duality was very much at the birth of modern control theory.
+on Digital Computers and Their Applications* in 1961.  I was unable to find this proceedings in our Engineering Library, but the Lagrangian derivation plays a prominent role in Bryson's book [Applied Optimal Control](http://www.amazon.com/Applied-Optimal-Control-Optimization-Estimation/dp/0891162283).   Note that Bryson's paper appeared only a year after as Kalman's absurdly influential [A New Approach to Linear Filtering and Prediction Problems](http://fluidsengineering.asmedigitalcollection.asme.org/article.aspx?articleid=1430402). This use of duality was very much at the birth of modern control theory.
 
 Let's take the simplest and most studied optimal control problem and see what backpropagation computes.  In optimal control, we have a dynamical system with state variable $x_t$ and input $u_t$.  We assume the state evolves according to the linear dynamics
 
