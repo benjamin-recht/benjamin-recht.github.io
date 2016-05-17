@@ -88,9 +88,11 @@ There are tons of ways to generalize this.  We could have a more complicated com
 
 ## Adjoints in Optimal Control
 
-As I mentioned already, the method of adjoints originates in the study of controls.  According to [Dreyfus](xxx), this was first proposed by [Bryson](xxx), and it plays a prominent role in his book on [Applied Optimal Control](xxx).   Note that Bryson's paper appeared only a couple of months after as Kalman's absurdly influential [A New Approach to Linear Filtering and Prediction Problems](xxx). This use of duality was very much at the birth of modern control theory.
+As I mentioned already, the method of adjoints originates in the study of controls.  According to [Dreyfus](http://arc.aiaa.org/doi/abs/10.2514/3.25422), this was first proposed by Bryson in a paper called "A Gradient Method for Optimizing Multi-Stage
+Allocation Processes" that appeared in the *Proceedings of the Harvard University Symposium
+on Digital Computers and Their Applications* in 1961.  I was unable to find that paper in our Engineering Library, but it plays a prominent role in Bryson's book on [Applied Optimal Control](http://www.amazon.com/Applied-Optimal-Control-Optimization-Estimation/dp/0891162283).   Note that Bryson's paper appeared only a couple of months after as Kalman's absurdly influential [A New Approach to Linear Filtering and Prediction Problems](http://fluidsengineering.asmedigitalcollection.asme.org/article.aspx?articleid=1430402). This use of duality was very much at the birth of modern control theory.
 
-Let's take the simplest and most studied optimal control problem and see what backpropgation computes.  In optimal control, we have a dynamical system with state variable $x_t$ and input $u_t$.  We assume the state evolves according to the linear dynamics
+Let's take the simplest and most studied optimal control problem and see what backpropagation computes.  In optimal control, we have a dynamical system with state variable $x_t$ and input $u_t$.  We assume the state evolves according to the linear dynamics
 
 $$
 	x_{t+1} = A x_t + B u_t~\mbox{for}~t=0,1,\ldots\,.
@@ -102,7 +104,8 @@ Suppose we would like to find a sequence of inputs $u_t$ that minimizes some qua
 
 $$
 \begin{array}{ll}
-\mbox{minimize}_{u_t,x_t} \, & \tfrac{1}{2}\sum_{t=0}^T \left\{x_t^TQ x_t + u_t^T R u_t\right\}  + \tfrac{1}{2} x_{N+1}^T S x_{N+1}, \\
+\mbox{minimize}_{u_t,x_t} \, & \tfrac{1}{2}\sum_{t=0}^T \left\{x_t^TQ x_t + u_t^T R u_t\right\}  \\
+& \qquad + \tfrac{1}{2} x_{N+1}^T S x_{N+1}, \\
 \mbox{subject to} & x_{t+1} = A x_t+ B u_t, \\
 & \qquad \mbox{for}~t=0,1,\dotsc,N,\\
 & \mbox{($x_0$ given).}
@@ -145,7 +148,7 @@ $$
 \end{array}
 $$
 
-One could solve the Kalman Filtering problem by performing gradient descent on the cost and computing the gradient via the method of adjoints.  This would be a totally reasonable solution, akin to solving a tri-diagonal system via conjugate gradient.  However, the special structure of this system enables us to solve the normal equations in linear time, so most people don't compute their filters this way.  On the other hand, the method of adjoints is far more general than the Kalman filter as it immediately applies to nonlinear dynamical systems or the  nonquadratic costs.  Moreover, the iterations require only $O(N)$ operations even in the general case.  This method is quite useful when the constraints are defined by partial differential equations, as there is an associated adjoint PDE that enables optimization in this setting as well.  Lions has a [whole book](xxx) on this topic.
+One could solve the Kalman Filtering problem by performing gradient descent on the cost and computing the gradient via the method of adjoints.  This would be a totally reasonable solution, akin to solving a tridiagonal system via conjugate gradient.  However, the special structure of this system enables us to solve the normal equations in linear time, so most people don't compute their filters this way.  On the other hand, the method of adjoints is far more general than the Kalman filter as it immediately applies to nonlinear dynamical systems or the  nonquadratic costs.  Moreover, the iterations require only $O(N)$ operations even in the general case.  This method is quite useful when the constraints are defined by partial differential equations, as there is an associated adjoint PDE that enables optimization in this setting as well.  Lions has a [whole book](xxx) on this topic.
 
 And, if you wanted to be crazy and make the control policy $u_t$ to be the output of a neural network applied to $x_t$, one could still compute gradients using the method of adjoints.
 
