@@ -51,7 +51,6 @@ The structure of the backpropagation algorithm is revealed and exploited by writ
 To simplify matters, let's restrict our attention to the case where $n=1$ and there is a single $(x,y)$ pair as you'd have if you were running stochastic gradient descent.
 
 To derive the KKT conditions we first form a Lagrangian function with Lagrange multipliers $p_i$:
-
 $$
 \mathcal{L} (x,u,p) :=   \mathrm{loss}(z^{(\ell)},y) - \sum_{i=1}^{\ell} p_i^T(z^{(i)} - f_i(z^{(i-1)},\vartheta_i))\,
 $$
