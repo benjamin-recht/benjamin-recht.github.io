@@ -120,10 +120,10 @@ The gradients of the Lagrangian are given by the expressions
 
 $$
 \begin{aligned}
-\nabla_{x_t} \mathcal{L} &= Qx_t - p_{t-1} + A^T p_i , \quad t=1,2,\dotsc,N; \\
+\nabla_{x_t} \mathcal{L} &= Qx_t - p_{t-1} + A^T p_i , \\
 \nabla_{x_{N+1}} \mathcal{L} &= -p_N +  S x_{N+1} , \\
-\nabla_{u_t} \mathcal{L} &= R u_t + B^T p_t , \quad t=0,1,\dotsc,N, \\
-\nabla_{p_t} \mathcal{L} &= -x_{t+1} + Ax_t + B u_t, \quad i=0,1,\dotsc,N.
+\nabla_{u_t} \mathcal{L} &= R u_t + B^T p_t , \\
+\nabla_{p_t} \mathcal{L} &= -x_{t+1} + Ax_t + B u_t.
 \end{aligned}
 $$
 
