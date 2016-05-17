@@ -52,9 +52,9 @@ To simplify matters, let's restrict our attention to the case where $n=1$ and th
 
 To derive the KKT conditions we first form a Lagrangian function with Lagrange multipliers $p_i$:
 
-$
+$$
 \mathcal{L} (x,u,p) :=   \mathrm{loss}(z^{(\ell)},y) - \sum_{i=1}^{\ell} p_i^T(z^{(i)} - f_i(z^{(i-1)},\vartheta_i)),
-$
+$$
 
 The derivatives of this Lagrangian are given by the expressions:
 
