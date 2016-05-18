@@ -43,12 +43,12 @@ $$
 	\end{array}
 $$
 
-Why does this help?  First, the hope is that each block here is a relatively simple computation, like a matrix-vector multiply followed by a component-wise nonlinearity.  Thus, we have broken the computation into relatively simple pieces.  Moreover, it turns out that explicitly writing out the composition in stages is akin to laying out a computation graph for the function.  And once we have a computation graph, we can use it to compute derivatives.
+Why does this help?  Explicitly writing out the composition in stages is akin to laying out a computation graph for the function.  And once we have a computation graph, we can use it to compute derivatives.
 
 ## The method of adjoints
 
-The structure of the backpropagation algorithm is revealed and exploited by writing down the KKT conditions for the constrained formulation of the optimization problem.
-To simplify matters, let's restrict our attention to the case where $n=1$ and there is a single $(x,y)$ pair as you'd have if you were running stochastic gradient descent.
+The structure of the backpropagation algorithm is revealed by constructing a Lagrangian and computing the KKT conditions for the constrained formulation of the optimization problem.
+To simplify matters, let's restrict our attention to the case where $n=1$. This corresponds to when there is a single $(x,y)$ data pair as you'd have if you were running stochastic gradient descent.
 
 To derive the KKT conditions we first form a Lagrangian function with Lagrange multipliers $p_i$:
 
