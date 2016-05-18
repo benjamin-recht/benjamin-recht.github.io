@@ -11,7 +11,7 @@ There have been four thousand new frameworks for deep learning thrown on the mar
 
 Automatic differentiation does seem like a bit of a black box.  Some people will just scoff and say "it's just the chain rule." But evaluating the chain rule efficiently requires being careful about reusing information, and not having to handle special cases.  The backpropagation algorithm handles these recursions well.  It is a dynamic programming method to compute derivatives, and uses clever recursions to aggregate the gradients of the components.   However, I always find the derivations of backprop to be confusing and too closely tied to neuroscientific intuition that I sorely lack.  Moreover, for some reason, dynamic programming always hurts my brain and I have to think about it for an hour before I remember how to derive it.  
 
-A few years ago, [Steve Wright](http://pages.cs.wisc.edu/~swright/) introduced me to an older method, called the method of adjoints, which is equivalent to backpropagation, and also easier (for me at least) to derive.  This is because the core of the method is *Lagrangian duality*, a topic at the foundation of everything we optimizers do.
+A few years ago, [Steve Wright](http://pages.cs.wisc.edu/~swright/) introduced me to an older method from optimal control, called the method of adjoints, which is equivalent to backpropagation.  It's also easier (at least for me) to derive.  This is because the core of the method is *Lagrangian duality*, a topic at the foundation of everything we optimizers do.
 
 ## Deep neural networks
 
