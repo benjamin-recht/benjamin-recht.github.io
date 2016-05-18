@@ -1,10 +1,10 @@
 ---
 layout:     post
 title:      Mates of Costate
-date:       2016-05-17 7:00:00
+date:       2016-05-18 7:00:00
 summary:    The dynamical systems view of backpropagation
 author:     Ben Recht
-visible:    false
+visible:    true
 ---
 
 There have been four thousand new frameworks for deep learning thrown on the market the past year, and I bet you were wondering what you needed to jump into this hot marketplace.  Essentially, there are two components required for most mortals who aim to train neural nets: a unit that efficiently computes derivatives of functions that are compositions of many sub-functions and a unit that runs stochastic gradient descent.  I can write the stochastic gradient descent part in ten lines of python.  I'll sell it to the highest bidder in the comments.  But what about the automatic differentiator?
