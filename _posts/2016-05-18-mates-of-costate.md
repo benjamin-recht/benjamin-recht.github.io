@@ -9,9 +9,9 @@ visible:    false
 
 There have been four thousand new frameworks for deep learning thrown on the market the past year, and I bet you were wondering what you needed to jump into this hot marketplace.  Essentially, there are two components required for most mortals who aim to train neural nets: a unit that efficiently computes derivatives of functions that are compositions of many sub-functions and a unit that runs stochastic gradient descent.  I can write the stochastic gradient descent part in ten lines of python.  I'll sell it to the highest bidder in the comments.  But what about the automatic differentiator?
 
-Automatic differentiation does seem like a bit of a black box.  Some people will just scoff and say "it's just the chain rule." But evaluating the chain rule efficiently requires being careful about reusing information, and not having to handle special cases.  The backpropagation algorithm handles these recursions well.  It is a dynamic programming method to compute derivatives, and uses clever recursions to aggregate the gradients of the components.   However, I always find the derivations of backprop to be confusing and too closely tied to neuroscientific intuition that I sorely lack.  Moreover, for some reason, dynamic programming always hurts my brain and I have to think about it for an hour before I remember how to derive it.  
+Automatic differentiation does seem like a bit of a black box.  Some people will just scoff and say "it's just the chain rule." But evaluating the chain rule efficiently requires being careful about reusing information, and not having to handle special cases.  The backpropagation algorithm handles these recursions well.  It is a dynamic programming method to compute derivatives, and uses clever recursions to aggregate the gradients of the components.   However, I always find the derivations of backprop to be confusing and too closely tied to neuroscientific intuition that I sorely lack.  Moreover, for some reason, dynamic programming always hurts my brain and I have to think about it for an hour before I remember how to rederive it.  
 
-A few years ago, [Steve Wright](http://pages.cs.wisc.edu/~swright/) introduced me to an older method from optimal control, called the method of adjoints, which is equivalent to backpropagation.  It's also easier (at least for me) to derive.  This is because the core of the method is *Lagrangian duality*, a topic at the foundation of everything we optimizers do.
+A few years ago, [Steve Wright](http://pages.cs.wisc.edu/~swright/) introduced me to an older method from optimal control, called the method of adjoints, which is equivalent to backpropagation.  It's also easier (at least for me) to derive. This is because the core of the method is *Lagrangian duality*, a topic at the foundation of everything we optimizers do.
 
 ## Deep neural networks
 
@@ -47,8 +47,7 @@ Why does this help?  Explicitly writing out the composition in stages is akin to
 
 ## The method of adjoints
 
-The structure of the backpropagation algorithm is revealed by constructing a Lagrangian and computing the KKT conditions for the constrained formulation of the optimization problem.
-To simplify matters, let's restrict our attention to the case where $n=1$. This corresponds to when there is a single $(x,y)$ data pair as you'd have if you were running stochastic gradient descent.
+The method of adjoints reveals the structure of the backpropagation algorithm by constructing a Lagrangian and computing the KKT conditions for the constrained optimization formulation.  To simplify matters, let's restrict our attention to the case where $n=1$. This corresponds to when there is a single $(x,y)$ data pair as you'd have if you were running stochastic gradient descent.
 
 To derive the KKT conditions we first form a Lagrangian function with Lagrange multipliers $p_i$:
 
@@ -87,13 +86,15 @@ $$
 
 This is the *backward pass*.  The gradients with respect to the parameters can then be computed by adding up linear functions of the adjoint variables.
 
+What is particularly nice about the method of adjoints is that it suggests a convenient set of working variables that enable fast gradient computation.  It explicitly builds in a caching strategy for subunits of the computation.  Two different constrained formulations will lead to different computation graphs and sets of costates, but they will return the same gradient.
+
 There are tons of ways to generalize this.  We could have a more complicated computation graph.  We could share variables among layers (this would mean adding up variables).  We could penalize hidden variables or states explicitly in the cost function.  Regardless, we can always read off the solution from the same forward-backward procedure.   The computation graph always provides a  "forward model" describing the evolution of an input to the output. The adjoint equation involves the adjoint ("transpose") of the Jacobians of this equation, which measures the sensitivity of one node to the previous node.  
 
 ## Adjoints in Optimal Control
 
 As I mentioned already, the method of adjoints originates in the study of controls.  According to [Dreyfus](http://arc.aiaa.org/doi/abs/10.2514/3.25422), this was first proposed by Bryson in a paper called "A Gradient Method for Optimizing Multi-Stage
 Allocation Processes" that appeared in the *Proceedings of the Harvard University Symposium
-on Digital Computers and Their Applications* in 1961.  I was unable to find this proceedings in our Engineering Library, but the Lagrangian derivation plays a prominent role in Bryson's book [Applied Optimal Control](http://www.amazon.com/Applied-Optimal-Control-Optimization-Estimation/dp/0891162283).   Note that Bryson's paper appeared only a year after as Kalman's absurdly influential [A New Approach to Linear Filtering and Prediction Problems](http://fluidsengineering.asmedigitalcollection.asme.org/article.aspx?articleid=1430402). This use of duality was very much at the birth of modern control theory.
+on Digital Computers and Their Applications* in 1961.  I was unable to find this proceedings in our Engineering Library, but the Lagrangian derivation plays a prominent role in Bryson and Ho's 1968 book [Applied Optimal Control](http://www.amazon.com/Applied-Optimal-Control-Optimization-Estimation/dp/0891162283).   Note that Bryson's paper appeared only a year after as Kalman's absurdly influential [A New Approach to Linear Filtering and Prediction Problems](http://fluidsengineering.asmedigitalcollection.asme.org/article.aspx?articleid=1430402). This use of duality was very much at the birth of modern control theory.
 
 Let's take the simplest and most studied optimal control problem and see what backpropagation computes.  In optimal control, we have a dynamical system with state variable $x_t$ and input $u_t$.  We assume the state evolves according to the linear dynamics
 
