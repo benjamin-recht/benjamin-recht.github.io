@@ -108,7 +108,7 @@ Suppose we would like to find a sequence of inputs $u_t$ that minimizes some qua
 
 $$
 \begin{array}{ll}
-\mbox{minimize}_{u_t,x_t} \, & \tfrac{1}{2}\sum_{t=0}^T \left\{x_t^TQ x_t + u_t^T R u_t\right\}  \\
+\mbox{minimize}_{u_t,x_t} \, & \tfrac{1}{2}\sum_{t=0}^N \left\{x_t^TQ x_t + u_t^T R u_t\right\}  \\
 & \qquad + \tfrac{1}{2} x_{N+1}^T S x_{N+1}, \\
 \mbox{subject to} & x_{t+1} = A x_t+ B u_t, \\
 & \qquad \mbox{for}~t=0,1,\dotsc,N,\\
@@ -120,7 +120,7 @@ The Lagrangian for this system has a similar form to that for the neural network
 
 $$
 \begin{aligned}
-\mathcal{L} (x,u,p) &:= \sum_{i=0}^N \left[ \tfrac{1}{2} x_t^TQ x_t +  \tfrac{1}{2}u_t^T R u_t \right.\\
+\mathcal{L} (x,u,p) &:= \sum_{t=0}^N \left[ \tfrac{1}{2} x_t^TQ x_t +  \tfrac{1}{2}u_t^T R u_t \right.\\
 &\qquad\qquad \left. - p_t^T (x_{t+1}-A x_t - B u_t) \right]\\
 &\qquad\qquad +\tfrac{1}{2} x_{N+1}^T S x_{N+1}.
 \end{aligned}
@@ -149,7 +149,7 @@ In the special case where the cost involves tracking an observation $y_t$, we ar
 
 $$
 \begin{array}{ll}
-\mbox{minimize}_{u_t,x_t} \, & \tfrac{1}{2}\sum_{t=0}^T \left\{\|x_t-y_t\|^2+ u_t^T R_t u_t \right\}\\
+\mbox{minimize}_{u_t,x_t} \, & \tfrac{1}{2}\sum_{t=0}^N \left\{\|x_t-y_t\|^2+ u_t^T R_t u_t \right\}\\
 &\qquad\qquad+ \tfrac{1}{2}x_0^T S x_0\\
 \mbox{subject to} & x_{t+1} = A x_t+ B u_t, \\
 & \qquad \mbox{for}~t=0,1,\dotsc,N\,.
