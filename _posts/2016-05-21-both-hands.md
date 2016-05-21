@@ -1,13 +1,13 @@
 ---
 layout:     post
 title:      Song of the week - Both Hands
-date:       2016-05-19 00:12:00
+date:       2016-05-21 00:07:00
 summary:    Song of the week
 author:     Ben Recht
-visible:    false
+visible:    true
 ---
 
-This week’s song is by David Bazan of Pedro the Lion fame.  He just released a great new record *Blanco*, and “Both Hands” is the leadoff track.  
+David Bazan of Pedro the Lion fame just released a fantastic new record *Blanco*, and “Both Hands” is the leadoff track.  
 
 <iframe src="https://embed.spotify.com/?uri=spotify:track:7qXAvcB4enZGEBBxu8GnTw" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
 
@@ -17,8 +17,6 @@ I haven’t followed Bazan’s work since Pedro the Lion, but in the interim he�
 >I'm probably over it.
 
 I know how you feel, David.
-
-“Both Hands” is a perfect soundtrack for a gloomy morning on the west coast in June.  And yes, I realize that it’s May, but we're having some unseasonably cold weather this week.
 
 For those of you without Spotify, you can check out Track 2, *Oblivion* on Bazan’s Soundcloud:
 
