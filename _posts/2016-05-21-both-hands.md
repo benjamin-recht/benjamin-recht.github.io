@@ -11,15 +11,17 @@ This week’s song is by David Bazan of Pedro the Lion fame.  He just released a
 
 <iframe src="https://embed.spotify.com/?uri=spotify:track:7qXAvcB4enZGEBBxu8GnTw" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
 
-I haven’t followed Bazan’s work since Pedro the Lion, but in the interim he’s shifted away from emo indie rock to washed out synth pop.  There is a heavy low-pass filter over all of the instrumentation, and this makes for an appropriate pairing with Bazan’s disaffected baritone.  “Both Hands” is a perfect soundtrack for a gloomy morning on the west coast in June.  And yes, I realize that it’s May, but we're having some unseasonably cold weather this week.
+I haven’t followed Bazan’s work since Pedro the Lion, but in the interim he’s shifted away from emo indie rock to washed out synth pop.  There is a heavy low-pass filter over all of the instrumentation, and this makes for an appropriate pairing with Bazan’s disaffected baritone.  
 
 > If I'm not losing sleep/
 >I'm probably over it.
 
 I know how you feel, David.
 
+“Both Hands” is a perfect soundtrack for a gloomy morning on the west coast in June.  And yes, I realize that it’s May, but we're having some unseasonably cold weather this week.
+
 For those of you without Spotify, you can check out Track 2, *Oblivion* on Bazan’s Soundcloud:
 
-<iframe allowtransparency="true" scrolling="no" frameborder="no" src="https://w.soundcloud.com/icon/?url=http%3A%2F%2Fsoundcloud.com%2Fbazan%2Fblanco-oblivion&color=orange_white&size=32" style="width: 32px; height: 32px;"></iframe>
+<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/263460958&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
 
 This song is also very high quality.
