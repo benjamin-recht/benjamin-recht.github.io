@@ -57,7 +57,7 @@ $$
 	\mbox{min}_{x,z}~\mbox{max}_{p}~\mathcal{L}(x,z,p):=F(x,z) +p^TH(x,z)
 $$  
 
-Now, in the inside maximization optimization problem, the supremum is infinite if $H(x,z)$ is nonzero.  Thus, you only get a finite value when $H(x,z)=0$.  In this case, the minimum value with respect to $x$ and $z$ is just the minimum value of $F(x,z)$ \emph{subject to} $H(x,z)=0$.  That is, it is completely equivalent to the constrained optimization problem we have been analyzing.  So the Lagrangian penalty function enforces the equality constraint via a min-max game.
+In the inner maximization problem, the supremum is infinite if $H(x,z)$ is nonzero.  Thus, you only get a finite value when $H(x,z)=0$.  In this case, the minimum value with respect to $x$ and $z$ is just the minimum value of $F(x,z)$ \emph{subject to} $H(x,z)=0$.  That is, it is completely equivalent to the constrained optimization problem we have been analyzing.  So the Lagrangian penalty function enforces the equality constraint via a min-max game.
 
 But why this penalty function?  I like to think of the Lagrangian as a limit of more obvious penalty functions.  If we set up the unconstrained minimization problem
 
@@ -73,9 +73,9 @@ $$
 	\mbox{min}_{x,z}~\mbox{max}_{p}~F(x,z) +p^TH(x,z) - \frac{\alpha}{2}\|p\|^2
 $$  
 
-This is an "augmented Lagrangian."  When $\alpha=0$, this is just the Lagrangian above, but now the inner maximization problem always has finite values.  In fact, it's pretty easy to see that the maximizing $p$ is always $H(x,z)/\alpha$.  If we plug in this value, we can eliminate the Lagrange multiplier entirely and just get the quadratically penalized optimization problem.  So in this sense, the Lagrangian formulation of the optimization problem is the limit of penalized formulations.
+This is an "augmented Lagrangian."  When $\alpha=0$, this is just the Lagrangian above, but when $\alpha>0$, the inner maximization problem always has finite values.  In fact, it's pretty easy to see that the maximizing $p$ is always $H(x,z)/\alpha$.  If we plug in this value, we can eliminate the Lagrange multiplier entirely and just get the quadratically penalized optimization problem.  So in this sense, the Lagrangian formulation of the optimization problem is the limit of penalized formulations.
 
-Now, for the penalized formulation, the gradient of the cost function is zero at all of the  stationary points.  In particular, for the $z$ variable,
+For the penalized formulation, the gradient of the cost function is zero at all of the  stationary points.  In particular, for the $z$ variable,
 
 $$
 	\nabla_z F(x,z) + \frac{1}{\alpha} [\nabla_z H(x,z) ] H(x,z) = 0
@@ -88,7 +88,6 @@ $$
 $$
 
 This is exactly the same formula for $p$ as we derived using the implicit function theorem!  
-
 This shouldn't be too surprising as the optimal value of $p$ has a simple interpretation.  Note that for very small $\Delta z$,
 
 $$
@@ -103,4 +102,4 @@ so each coordinate of $p$ controls how much the cost function changes as we pert
 
 Taking the limit as $\alpha$ goes to zero, we see that all local solutions must satisfy the KKT conditions $\nabla \mathcal{L}=0$, and the Lagrange multipliers have the form predicted by the implicit function theorem.
 
-Now, note, that this derivation for $p$ only holds at the stationary points of the Lagrangian.  For actually computing derivatives, the implicit function theorem approach gives the correct form for the gradient at any point $x$.  But it is interesting, again, that these two very differently motivated derivations arrive at the same formulae.
+This derivation for $p$ only holds at the stationary points of the Lagrangian.  For actually computing derivatives, the implicit function theorem approach gives the correct form for the gradient at any point $x$.  But it is interesting, again, that these two very differently motivated derivations arrive at the same formulae.
