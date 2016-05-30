@@ -102,4 +102,4 @@ so each coordinate of $p$ controls how much the cost function changes as we pert
 
 Taking the limit as $\alpha$ goes to zero, we see that all local solutions must satisfy the KKT conditions $\nabla \mathcal{L}=0$, and the Lagrange multipliers have the form predicted by the implicit function theorem.
 
-This derivation for $p$ only holds at the stationary points of the Lagrangian.  For actually computing derivatives, the implicit function theorem approach gives the correct form for the gradient at any point $x$.  But it is interesting, again, that these two very differently motivated derivations arrive at the same formulae.
+It's important to note that this derivation for $p$ only holds at the stationary points of the Lagrangian.  For actually computing derivatives, the implicit function theorem approach gives the correct form for the gradient at any point $x$.  But it is interesting, again, that these two very differently motivated derivations arrive at the same formulae.
