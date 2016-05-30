@@ -54,7 +54,7 @@ Even though I can explain this derivation and its consequences, I still find thi
 My personal favorite motivation of the Lagrangian is in terms of saddle point problems.  Consider the joint optimization problem
 
 $$
-	\mbox{min}_{x,z}~\mbox{max}_{\lambda}~\mathcal{L}(x,z,p):=F(x,z) +p^TH(x,z)
+	\mbox{min}_{x,z}~\mbox{max}_{p}~\mathcal{L}(x,z,p):=F(x,z) +p^TH(x,z)
 $$  
 
 Now, in the inside maximization optimization problem, the supremum is infinite if $H(x,z)$ is nonzero.  Thus, you only get a finite value when $H(x,z)=0$.  In this case, the minimum value with respect to $x$ and $z$ is just the minimum value of $F(x,z)$ \emph{subject to} $H(x,z)=0$.  That is, it is completely equivalent to the constrained optimization problem we have been analyzing.  So the Lagrangian penalty function enforces the equality constraint via a min-max game.
@@ -70,12 +70,12 @@ with $\alpha>0$, it's clear that as $\alpha$ tends to zero, the cost enforce the
 Now, consider the penalized min-max problem
 
 $$
-	\mbox{minimize}_{x,z}~\mbox{maximize}_{\lambda}~\mathcal{L}_\alpha(x,z,p):=F(x,z) +p^TH(x,z) - \frac{\alpha}{2}\|p\|^2
+	\mbox{min}_{x,z}~\mbox{max}_{p}~F(x,z) +p^TH(x,z) - \frac{\alpha}{2}\|p\|^2
 $$  
 
 This is an "augmented Lagrangian."  When $\alpha=0$, this is just the Lagrangian above, but now the inner maximization problem always has finite values.  In fact, it's pretty easy to see that the maximizing $p$ is always $H(x,z)/\alpha$.  If we plug in this value, we can eliminate the Lagrange multiplier entirely and just get the quadratically penalized optimization problem.  So in this sense, the Lagrangian formulation of the optimization problem is the limit of penalized formulations.
 
-Now, for the penalized formulation, the stationary points of this problem satisfy $\nabla \mathcal{L}_\alpha=0$.  In particular, for the $z$ variable,
+Now, for the penalized formulation, the gradient of the cost function is zero at all of the  stationary points.  In particular, for the $z$ variable,
 
 $$
 	\nabla_z F(x,z) + \frac{1}{\alpha} [\nabla_z H(x,z) ] H(x,z) = 0
