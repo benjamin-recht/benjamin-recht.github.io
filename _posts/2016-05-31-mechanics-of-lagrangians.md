@@ -1,10 +1,10 @@
 ---
 layout:     post
 title:      Mechanics of Lagrangians
-date:       2016-05-30 7:00:00
+date:       2016-05-31 7:00:00
 summary:    Two paths to understanding Lagrangians in nonlinear optimization
 author:     Ben Recht
-visible:    false
+visible:    true
 ---
 
 In my last post, I used a Lagrangian to compute derivatives of constrained optimization problems in neural nets and control.  I took it for granted that the procedure was correct.  But why is it correct?  I suppose the simplest answer is because we arrived at the same procedure as back propagation.  But that's not a particularly satisfying answer, and it doesn't give you any room to generalize.
