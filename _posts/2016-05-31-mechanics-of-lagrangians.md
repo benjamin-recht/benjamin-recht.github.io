@@ -7,11 +7,11 @@ author:     Ben Recht
 visible:    false
 ---
 
-In my last post, I used a Lagrangian to compute derivatives of constrained optimization problems in neural nets and control.  I took it for granted that the procedure was correct.  But why is it correct?  I suppose the simplest answer is because we arrived at the same procedure as back propagation.  But that's not particularly satisfying and doesn't give you any room to generalize.
+In my last post, I used a Lagrangian to compute derivatives of constrained optimization problems in neural nets and control.  I took it for granted that the procedure was correct.  But why is it correct?  I suppose the simplest answer is because we arrived at the same procedure as back propagation.  But that's not a particularly satisfying answer, and it doesn't give you any room to generalize.
 
-In fact, if I'm really honest about it, none of the manipulations we do with Lagrangians in optimization are decidedly intuitive.  Mechanistically, they give powerful methods to derive algorithms, understand sensitivities to assumptions, and generate lower bounds. But the Lagrangian functionals themselves always just seem to pop out of thin air.  Why are Lagrangian methods so effective in optimization, even when the associated problems are nonconvex?
+In fact, if I'm really honest about it, none of the manipulations we do with Lagrangians in optimization are decidedly intuitive.  Mechanistically, Lagrangians give powerful methods to derive algorithms, understand sensitivities to assumptions, and generate lower bounds. But the functionals themselves always just seem to pop out of thin air.  Why are Lagrangian methods so effective in optimization, even when the associated problems are nonconvex?
 
-In this post, I'm going to "derive" Lagrangians in two very different ways: one by pattern matching against the implicit function theorem and one via penalty functions.  This basically follows the approach in Bertsekas' [Nonlinear Programming Book](http://www.athenasc.com/nonlinbook.html) where he introduces Lagrange multipliers and the KKT conditions.  Most people know the KKT conditions as a necessary condition for optimality in nonlinear programming.  How does it also arise in computing derivatives?  It turns out that these two are actually quite connected, and if you have ever worked out a proof of the KKT conditions, you probably already derived a correctness proof for the method of adjoints.
+In this post, I'm going to "derive" Lagrangians in two very different ways: one by pattern matching against the implicit function theorem and one via penalty functions.  This basically follows the approach in Bertsekas' [Nonlinear Programming Book](http://www.athenasc.com/nonlinbook.html) where he introduces Lagrange multipliers and the KKT conditions.  Most people know the KKT conditions as a necessary condition for optimality in nonlinear programming.  How does it also arise in computing derivatives?  It turns out that these two are actually quite connected, and if you have ever worked out a proof of the KKT conditions, you probably have also derived a correctness proof for the method of adjoints.
 
 ## Implicit functions
 
@@ -21,16 +21,16 @@ $$
 	\nabla_x F(x,\varphi(x)) = \nabla_x F(x,z) + \nabla_x \varphi(x) \nabla_z F(x,z)\,.
 $$
 
-What about the gradient of this function $\varphi$?  We can compute its gradient by applying [the implicit function theorem](xxx).  Indeed, if $\nabla_z H(x,z)$ is invertible, the implicit function theorem gives an explicit formula for the gradient:
+What about the gradient of this function $\varphi$?  We can compute its gradient by applying [the implicit function theorem](https://en.wikipedia.org/wiki/Implicit_function_theorem).  Indeed, if $\nabla_z H(x,z)$ is invertible, the implicit function theorem gives an explicit formula for the gradient:
 
 $$
 	\nabla_x \varphi(x) = - \nabla_x H(x,z)[\nabla_z H(x,z)]^{-1} \,.
 $$
 
-With this formula in hand, we can apply some magical pattern matching. Define $p:= - [\nabla_z H(x,z)]^{-1} \nabla_z F(x,\varphi(x))$ and plug it into the formula above.  Then, if $z=\varphi(x)$, we have
+With this expression in hand, we can apply some magical pattern matching. Define $p:= - [\nabla_z H(x,z)]^{-1} \nabla_z F(x,\varphi(x))$ and plug it into the formula above.  Then, if $z=\varphi(x)$, we have
 
 $$
-	\nabla_x F(x,z) = \nabla_x F(x,z) + \nabla_x H(x,z) p\,!
+	\nabla_x F(x,z) = \nabla_x F(x,z) + \nabla_x H(x,z) p\,.
 $$
 
 In other words, if we define the Lagrangian $\mathcal{L}(x,z,p) = F(x,z) + p^T H(x,z)$, we have that
@@ -62,10 +62,10 @@ In the inner maximization problem, the supremum is infinite if $H(x,z)$ is nonze
 But why this penalty function?  I like to think of the Lagrangian as a limit of more obvious penalty functions.  If we set up the unconstrained minimization problem
 
 $$
-\mbox{minimize}_{x,z}~F(x,z) + \frac{1}{2\alpha} \| H(x,z) \|^2\,,
+\mbox{minimize}_{x,z}~F(x,z) + \frac{1}{2\alpha} \| H(x,z) \|^2 \,,
 $$
 
-with $\alpha>0$, it's clear that as $\alpha$ tends to zero, the cost enforce the constraint $H(x,z)$ to be small.  In the limit, we would expect that $H(x,z)$ would be zero and the corresponding minimizer should minimize $F$ subject to the constraint that $H$ vanishes.
+with $\alpha>0$, it's clear that as $\alpha$ tends to zero, the cost enforces the constraint $H(x,z)$ to be small.  In the limit, we would expect that $H(x,z)$ would be zero and the corresponding minimizer should minimize $F$ subject to the constraint that $H$ vanishes.  Let's call this unconstrained minimization problem the "penalty formulation"
 
 Now, consider the penalized min-max problem
 
@@ -73,9 +73,9 @@ $$
 	\mbox{min}_{x,z}~\mbox{max}_{p}~F(x,z) +p^TH(x,z) - \frac{\alpha}{2}\|p\|^2
 $$  
 
-This is an "augmented Lagrangian."  When $\alpha=0$, this is just the Lagrangian above, but when $\alpha>0$, the inner maximization problem always has finite values.  In fact, it's pretty easy to see that the maximizing $p$ is always $H(x,z)/\alpha$.  If we plug in this value, we can eliminate the Lagrange multiplier entirely and just get the quadratically penalized optimization problem.  So in this sense, the Lagrangian formulation of the optimization problem is the limit of penalized formulations.
+This is an "augmented Lagrangian."  When $\alpha=0$, this is just the Lagrangian above, but when $\alpha>0$, the inner maximization problem always has finite values.  In fact, the maximizing $p$ is always $H(x,z)/\alpha$.  If we plug in this value, we can eliminate the Lagrange multiplier.  But after this substitution, we are left with the penalty formulation!  The Lagrangian formulation of the optimization problem is the limit of penalized formulations as $\alpha$ goes to zero.
 
-For the penalized formulation, the gradient of the cost function is zero at all of the  stationary points.  In particular, for the $z$ variable,
+For the penalty formulation, the gradient of the cost function is zero at all of the  stationary points.  In particular, for the $z$ variable,
 
 $$
 	\nabla_z F(x,z) + \frac{1}{\alpha} [\nabla_z H(x,z) ] H(x,z) = 0
@@ -87,8 +87,7 @@ $$
 	p = \frac{1}{\alpha} H(x,z) = - [\nabla_z H(x,z)]^{-1} \nabla_z F(x,z)
 $$
 
-This is exactly the same formula for $p$ as we derived using the implicit function theorem!  
-This shouldn't be too surprising as the optimal value of $p$ has a simple interpretation.  Note that for very small $\Delta z$,
+This is exactly the same formula for $p$ as we derived using the implicit function theorem. This shouldn't be too surprising as the optimal value of $p$ has a simple interpretation.  Note that for very small $\Delta z$,
 
 $$
 \begin{aligned}
@@ -102,4 +101,4 @@ so each coordinate of $p$ controls how much the cost function changes as we pert
 
 Taking the limit as $\alpha$ goes to zero, we see that all local solutions must satisfy the KKT conditions $\nabla \mathcal{L}=0$, and the Lagrange multipliers have the form predicted by the implicit function theorem.
 
-It's important to note that this derivation for $p$ only holds at the stationary points of the Lagrangian.  For actually computing derivatives, the implicit function theorem approach gives the correct form for the gradient at any point $x$.  But it is interesting, again, that these two very differently motivated derivations arrive at the same formulae.
+It's important to note that this derivation for $p$ only holds at the stationary points of the Lagrangian.  For actually computing derivatives, the implicit function theorem approach gives the correct form for the gradient at any point $x$.  But I find it amazing that these two very differently motivated derivations arrive at exactly the same formulae.
