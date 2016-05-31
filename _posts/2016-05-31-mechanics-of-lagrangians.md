@@ -15,7 +15,7 @@ In this post, I'm going to "derive" Lagrangians in two very different ways: one 
 
 ## Implicit functions
 
-Let's begin by attempting to formalize what it means to take a derivative of a function subject to constraints.  Suppose we have a function $F:\mathbb{R}^{n+d} \rightarrow \mathbb{R}$ which we write as $F(x,z)$ where $x$ is $n$-dimensional and $z$ is $d$ dimensional.  Additionally, assume we have a constraint function $H:\mathbb{R}^{d+n} \rightarrow \mathbb{R}^d$ which we want to be identically zero.  If we want to take a derivative of $F(x,z)$ with respect to $x$ subject to the constraint $H(x,z)=0$, this means that we want to first eliminate the variable $z$ using the nonlinear equations $H(x,z)=0$.  Let $\varphi(x)$ denote the solution of $H(x,z)=0$ with respect to $z$ (and let's assume such a $z$ exists and is unique).  Once we have solved for $z$, we then want to take a derivative of the \emph{unconstrained} function $F(x,\varphi(x))$ with respect to $x$.  Now, by the chain rule
+Let's begin by attempting to formalize what it means to take a derivative of a function subject to constraints.  Suppose we have a function $F:\mathbb{R}^{n+d} \rightarrow \mathbb{R}$ which we write as $F(x,z)$ where $x$ is $n$-dimensional and $z$ is $d$ dimensional.  Additionally, assume we have a constraint function $H:\mathbb{R}^{d+n} \rightarrow \mathbb{R}^d$ which we want to be identically zero.  If we want to take a derivative of $F(x,z)$ with respect to $x$ subject to the constraint $H(x,z)=0$, this means that we want to first eliminate the variable $z$ using the nonlinear equations $H(x,z)=0$.  Let $\varphi(x)$ denote the solution of $H(x,z)=0$ with respect to $z$ (and let's assume such a $z$ exists and is unique).  Once we have solved for $z$, we then want to take a derivative of the *unconstrained* function $F(x,\varphi(x))$ with respect to $x$.  Now, by the chain rule
 
 $$
 	\nabla_x F(x,\varphi(x)) = \nabla_x F(x,z) + \nabla_x \varphi(x) \nabla_z F(x,z)\,.
@@ -45,7 +45,7 @@ $$
 	\nabla_z \mathcal{L}(x,z,p)=0~\mbox{and}~\nabla_p \mathcal{L}(x,z,p)=0\,.
 $$
 
-The equations $\nabla \mathcal{L}=0$ are called the \emph{KKT conditions} for the optimization problem.   Any solution must satisfy these equations.  But, following this derivation, it is obvious why the KKT conditions must hold: they are merely asserting that the derivative with respect to $x$ is zero once you have eliminated the constraints.
+The equations $\nabla \mathcal{L}=0$ are called the *KKT conditions* for the optimization problem.   Any solution must satisfy these equations.  But, following this derivation, it is obvious why the KKT conditions must hold: they are merely asserting that the derivative with respect to $x$ is zero once you have eliminated the constraints.
 
 Even though I can explain this derivation and its consequences, I still find this pattern matching to be bizarrely coincidental.  How exactly did the Lagrangian pop up here?  Let me now derive the same optimality conditions in a completely different way, starting with a Lagrangian and yet recovering the exact same formula and see if this provides any additional insights.
 
@@ -57,7 +57,7 @@ $$
 	\mbox{min}_{x,z}~\mbox{max}_{p}~\mathcal{L}(x,z,p):=F(x,z) +p^TH(x,z)
 $$  
 
-In the inner maximization problem, the supremum is infinite if $H(x,z)$ is nonzero.  Thus, you only get a finite value when $H(x,z)=0$.  In this case, the minimum value with respect to $x$ and $z$ is just the minimum value of $F(x,z)$ \emph{subject to} $H(x,z)=0$.  That is, it is completely equivalent to the constrained optimization problem we have been analyzing.  So the Lagrangian penalty function enforces the equality constraint via a min-max game.
+In the inner maximization problem, the supremum is infinite if $H(x,z)$ is nonzero.  Thus, you only get a finite value when $H(x,z)=0$.  In this case, the minimum value with respect to $x$ and $z$ is just the minimum value of $F(x,z)$ *subject to* $H(x,z)=0$.  That is, it is completely equivalent to the constrained optimization problem we have been analyzing.  So the Lagrangian penalty function enforces the equality constraint via a min-max game.
 
 But why this penalty function?  I like to think of the Lagrangian as a limit of more obvious penalty functions.  If we set up the unconstrained minimization problem
 
@@ -73,7 +73,7 @@ $$
 	\mbox{min}_{x,z}~\mbox{max}_{p}~F(x,z) +p^TH(x,z) - \frac{\alpha}{2}\|p\|^2
 $$  
 
-This is an "augmented Lagrangian."  When $\alpha=0$, this is just the Lagrangian above, but when $\alpha>0$, the inner maximization problem always has finite values.  In fact, the maximizing $p$ is always $H(x,z)/\alpha$.  If we plug in this value, we can eliminate the Lagrange multiplier.  But after this substitution, we are left with the penalty formulation!  The Lagrangian formulation of the optimization problem is the limit of penalized formulations as $\alpha$ goes to zero.
+This is an "augmented Lagrangian."  When $\alpha=0$, this is just the Lagrangian above, but when $\alpha>0$, the inner maximization problem always has finite values.  In fact, the maximizing $p$ is always $H(x,z)/\alpha$.  If we plug in this value, we can eliminate the Lagrange multiplier.  But after this substitution, we are left with the penalty formulation!  *The Lagrangian formulation of the optimization problem is the limit of penalized formulations as $\alpha$ goes to zero.*
 
 For the penalty formulation, the gradient of the cost function is zero at all of the  stationary points.  In particular, for the $z$ variable,
 
