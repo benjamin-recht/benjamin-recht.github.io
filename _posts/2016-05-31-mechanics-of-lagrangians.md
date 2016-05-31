@@ -11,7 +11,7 @@ In my last post, I used a Lagrangian to compute derivatives of constrained optim
 
 In fact, if I'm really honest about it, none of the manipulations we do with Lagrangians in optimization are decidedly intuitive.  Mechanistically, Lagrangians give powerful methods to derive algorithms, understand sensitivities to assumptions, and generate lower bounds. But the functionals themselves always just seem to pop out of thin air.  Why are Lagrangian methods so effective in optimization, even when the associated problems are nonconvex?
 
-In this post, I'm going to "derive" Lagrangians in two very different ways: one by pattern matching against the implicit function theorem and one via penalty functions.  This basically follows the approach in Bertsekas' [Nonlinear Programming Book](http://www.athenasc.com/nonlinbook.html) where he introduces Lagrange multipliers and the KKT conditions.  Most people know the KKT conditions as a necessary condition for optimality in nonlinear programming.  How does it also arise in computing derivatives?  It turns out that these two are actually quite connected, and if you have ever worked out a proof of the KKT conditions, you probably have also derived a correctness proof for the method of adjoints.
+In this post, I'm going to "derive" Lagrangians in two very different ways: one by pattern matching against the implicit function theorem and one via penalty functions.  This basically follows the approach in Chapter 3 of Bertsekas' [Nonlinear Programming Book](http://www.athenasc.com/nonlinbook.html) where he introduces Lagrange multipliers and the KKT conditions.  Most people know the KKT conditions as a necessary condition for optimality in nonlinear programming.  How does it also arise in computing derivatives?  It turns out that these two are actually quite connected, and if you have ever worked out a proof of the KKT conditions, you probably have also derived a correctness proof for the method of adjoints.
 
 ## Implicit functions
 
@@ -54,7 +54,7 @@ Even though I can explain this derivation and its consequences, I still find thi
 My personal favorite motivation of the Lagrangian is in terms of saddle point problems.  Consider the joint optimization problem
 
 $$
-	\mbox{min}_{x,z}~\mbox{max}_{p}~\mathcal{L}(x,z,p):=F(x,z) +p^TH(x,z)
+	\mbox{minimize}_{x,z}~\mbox{max}_{p}~F(x,z) +p^TH(x,z)
 $$  
 
 In the inner maximization problem, the supremum is infinite if $H(x,z)$ is nonzero.  Thus, you only get a finite value when $H(x,z)=0$.  In this case, the minimum value with respect to $x$ and $z$ is just the minimum value of $F(x,z)$ *subject to* $H(x,z)=0$.  That is, it is completely equivalent to the constrained optimization problem we have been analyzing.  So the Lagrangian penalty function enforces the equality constraint via a min-max game.
