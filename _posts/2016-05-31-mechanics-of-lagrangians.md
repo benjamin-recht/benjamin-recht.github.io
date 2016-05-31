@@ -7,7 +7,7 @@ author:     Ben Recht
 visible:    true
 ---
 
-In my last post, I used a Lagrangian to compute derivatives of constrained optimization problems in neural nets and control.  I took it for granted that the procedure was correct.  But why is it correct?  I suppose the simplest answer is because we arrived at the same procedure as back propagation.  But that's not a particularly satisfying answer, and it doesn't give you any room to generalize.
+[In my last post](http://www.argmin.net/2016/05/18/mates-of-costate/), I used a Lagrangian to compute derivatives of constrained optimization problems in neural nets and control.  I took it for granted that the procedure was correct.  But why is it correct?  I suppose the simplest answer is because we arrived at the same procedure as back propagation.  But that's not a particularly satisfying answer, and it doesn't give you any room to generalize.
 
 In fact, if I'm really honest about it, none of the manipulations we do with Lagrangians in optimization are decidedly intuitive.  Mechanistically, Lagrangians give powerful methods to derive algorithms, understand sensitivities to assumptions, and generate lower bounds. But the functionals themselves always just seem to pop out of thin air.  Why are Lagrangian methods so effective in optimization, even when the associated problems are nonconvex?
 
