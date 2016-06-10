@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      The Role of Theory in Optimization
+title:      The Role of Convergence Analysis
 date:       2016-06-09 7:00:00
 summary:    Bertsekas on the role of analysis in optimization
 author:     Ben Recht
