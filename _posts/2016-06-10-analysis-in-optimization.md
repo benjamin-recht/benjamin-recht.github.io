@@ -1,10 +1,10 @@
 ---
 layout:     post
 title:      The Role of Convergence Analysis
-date:       2016-06-09 7:00:00
+date:       2016-06-10 7:00:00
 summary:    Bertsekas on the role of analysis in optimization
 author:     Ben Recht
-visible:    false
+visible:    true
 ---
 
 This year marks the retirement of Dimitri Bertsekas from MIT.  Dimitri is an idol of mine, having literally written the book on every facet of optimization. His seminal works on distributed optimization, dynamic programming, and Lagrangian methods remain the best references available.  I had the privilege of taking Dimitri’s convex analysis course in grad school, and he would frequently burst into class beaming because he had stayed up until 2AM the night before simplifying an argument of Rockafellar’s down to elementary calculus.
