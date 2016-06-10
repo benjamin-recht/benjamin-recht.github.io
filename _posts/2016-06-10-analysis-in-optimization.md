@@ -7,9 +7,9 @@ author:     Ben Recht
 visible:    false
 ---
 
-This year marks the retirement of Dimitri Bertsekas from MIT.  Dimitri is an idol of mine, having literally written the book on every facet of optimization. His seminal works on distributed optimization, dynamic programming, and Lagrangian methods remain the best references available.  I had the privilege of taking Dimitris’ convex analysis course in grad school, and he would frequently burst into class beaming because he had stayed up until 2AM the night before simplifying an argument of Rockafellar’s down to elementary calculus.
+This year marks the retirement of Dimitri Bertsekas from MIT.  Dimitri is an idol of mine, having literally written the book on every facet of optimization. His seminal works on distributed optimization, dynamic programming, and Lagrangian methods remain the best references available.  I had the privilege of taking Dimitri’s convex analysis course in grad school, and he would frequently burst into class beaming because he had stayed up until 2AM the night before simplifying an argument of Rockafellar’s down to elementary calculus.
 
-My last post on Lagrangians was based on Chapter 3 of Dimitri’s Nonlinear Programming Book.  This book also features one of my favorite passages about the delicate balance between theory and practice in optimization.  One of the trickiest parts about optimization (and a point I intend to repeatedly hammer on this blog) is realizing how many of the theorems are “qualitative” rather than “quantitative.”  I wanted to just quote Dimitri’s text in full here, as I don’t think I could write it better.  Best wishes to you in retirement!
+My last post on Lagrangians was based on Chapter 3 of Dimitri’s Nonlinear Programming Book.  Chapter 2 also happens to feature one of my favorite passages about the delicate balance between theory and practice in optimization.  One of the trickiest parts about optimization (and a point I intend to repeatedly hammer on this blog) is realizing how many of the theorems are “qualitative” rather than “quantitative.”  I wanted to just quote Dimitri’s text in full here, as I don’t think I could write it better.  Best wishes to you in retirement!
 
 ##  The Role of Convergence Analysis by Dimitris Bertsekas
 
