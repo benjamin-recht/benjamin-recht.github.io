@@ -16,6 +16,6 @@ Automating such hyperparameter tuning is one of the most holy grails of machine 
 Rank plots aggregate statistics across datasets for different methods as a function of time: first place gets one point, second place two points, and so forth. The plot, taken taken from that work, is the average score across 117 datasets collected by [Feurer et. al. NIPS 2015](http://papers.nips.cc/paper/5872-efficient-and-robust-automated-machine-learning) (lower is better). While random search appears to be soundly beat by the state-of-the-art Bayesian optimization methods of SMAC and TPE, which is presumably expected, it is perhaps surprising that these methods are outperformed by random run at twice the speed, i.e., running random search for twice as long yields superior results.
 
 {: .center}
-<img src="/assets/hyperband/rank_chart.png" width="100" height="100" />
+<img src="/assets/hyperband/rank_chart.png" width="100" />
 
 ![Rank chart of various hyperparameter methods](/assets/hyperband/rank_chart.png)
