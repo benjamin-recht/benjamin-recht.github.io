@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Tuning is no fun
-date:       2016-06-10 7:00:00
+date:       2016-06-16 7:00:00
 summary:    Why do I have so many parameters?
 author:     Ben Recht
 visible:    false
