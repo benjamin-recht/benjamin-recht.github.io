@@ -17,4 +17,4 @@ Rank plots aggregate statistics across datasets for different methods as a funct
 
 {: .center}
 ![Rank chart of various hyperparameter methods](/assets/hyperband/rank_chart.png)
-![Rank chart of various hyperparameter methods](/assets/hyperband/rank_chart.png)
+![Bar plot comparing final test errors](/assets/hyperband/rank_chart.png)
