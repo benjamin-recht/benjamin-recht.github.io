@@ -27,7 +27,7 @@ The standard way these methods are evaluated in papers is by using rank plots.  
 
 {: .center}
 ![Rank chart of various hyperparameter methods](/assets/hyperband/rank_chart.png)
-![Bar plot comparing final test errors](/assets/hyperband/rank_chart.png)
+![Bar plot comparing final test errors](/assets/hyperband/bar_plot_sample.png)
 
 On the left, we show the rank chart for all algorithms and on the right, we show the actual rankings of the various algorithms.  The first plot represent the average score across 117 datasets collected by [Feurer et. al. NIPS 2015](http://papers.nips.cc/paper/5872-efficient-and-robust-automated-machine-learning) (lower is better).  For clarity, the second plot is for a subset of these data sets, but all of the data sets have nearly identical results.  We compare state-of-the-art Bayesian optimization methods SMAC and TPE to the method I suggested above: *random search* where we just try random parameter configurations and don't use any of the prior experiments to help pick the next setting.
 
