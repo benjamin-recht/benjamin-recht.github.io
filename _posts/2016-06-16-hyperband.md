@@ -49,8 +49,8 @@ Extensions: dataset subsampling, cool results on bandits
 
 ## Neural net experiments
 
-We considered three image classification datasets: CIFAR-10 [16], Street View House
-Numbers (SVHN) [19], and rotated MNIST with background images (MRBI) [18]. CIFAR-10 and
+We considered three image classification datasets: CIFAR-10, Street View House
+Numbers (SVHN), and rotated MNIST with background images (MRBI). CIFAR-10 and
 SVHN contain 32 × 32 RGB images while MRBI contains 28 × 28 grayscale images. Each dataset is
 split into a training, validation, and test set: (1) CIFAR-10 has 40,000, 10,000, and 10,000 instances;
 (2) SVHN has close to 600,000, 6,000, and 26,000 instances; and (3) MRBI has 10,000 , 2,000, and
