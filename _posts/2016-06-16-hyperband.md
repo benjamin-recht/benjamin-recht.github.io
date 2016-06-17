@@ -58,7 +58,6 @@ performed on the raw images was demeaning.
 
 learning rate, learning rate decay, l2 regularization parameters on different layers, parameters of the response normalizations
 
-<img src="./images/deep_table.png" class="img-responsive" align='right'></p>
 
 For CIFAR-10, the basic unit of time was one-tenth of an epoch, and the maximum running time was 75 epochs.  For SVHN, the basic unit of time was one one-hundredth of an epoch and the maximum running time was 10 epochs.  The full details are described in the paper.
 
