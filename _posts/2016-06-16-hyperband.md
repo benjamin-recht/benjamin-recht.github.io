@@ -41,3 +41,27 @@ Now, the problem here is that just because an algorithm looks bad at the beginni
 A simple way to deal with this tradeoff between breadth and depth is to start the halving process later.  We could run $N/2$ parameter settings for time $2$, then the top $N/4$ for time $4$ and so on.  This adapted halving scheme allows slow learners to have more of a chance of surviving before being cut, but the total amount of time per halving round is still $N$ and the number of rounds is at most $\log(T)$.  Running multiple instances of successive halving with different halving times increases depth while narrowing depth.
 
 xxx Cite Kevin's post here. xxx
+
+[The paper](http://arxiv.org/abs/1603.06560) describes a number of extensions, theoretical guarantees, and implications for stochastic infinite-armed bandit problems (if you're into that sort of thing). But let's wrap up this blogpost with some empirical evidence that this algorithm actually works.
+
+Extensions: dataset subsampling, cool results on bandits
+
+
+## Neural net experiments
+
+We considered three image classification datasets: CIFAR-10 [16], Street View House
+Numbers (SVHN) [19], and rotated MNIST with background images (MRBI) [18]. CIFAR-10 and
+SVHN contain 32 × 32 RGB images while MRBI contains 28 × 28 grayscale images. Each dataset is
+split into a training, validation, and test set: (1) CIFAR-10 has 40,000, 10,000, and 10,000 instances;
+(2) SVHN has close to 600,000, 6,000, and 26,000 instances; and (3) MRBI has 10,000 , 2,000, and
+50,000 instances for training, validation, and test respectively. For all datasets, the only preprocessing
+performed on the raw images was demeaning.
+<img src="./images/deep_table.png" class="img-responsive" align='right'></p>
+
+For CIFAR-10, the basic unit of time was one-tenth of an epoch, and the maximum running time was 75 epochs.  For SVHN, the basic unit of time was one one-hundredth of an epoch and the maximum running time was 10 epochs.  The full details are described in the paper.
+
+{: .center}
+![Comparison of methods on CIFAR-10](/assets/hyperband/deep_1.png)
+![Comparison of methods on SVHN](/assets/hyperband/deep_2.png)
+
+xxx talk about it.
