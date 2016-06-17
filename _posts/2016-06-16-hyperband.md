@@ -51,11 +51,13 @@ Extensions: dataset subsampling, cool results on bandits
 
 We considered three image classification datasets: CIFAR-10, Street View House
 Numbers (SVHN), and rotated MNIST with background images (MRBI). CIFAR-10 and
-SVHN contain 32 × 32 RGB images while MRBI contains 28 × 28 grayscale images. Each dataset is
+SVHN contain 32 × 32 RGB images. Each dataset is
 split into a training, validation, and test set: (1) CIFAR-10 has 40,000, 10,000, and 10,000 instances;
-(2) SVHN has close to 600,000, 6,000, and 26,000 instances; and (3) MRBI has 10,000 , 2,000, and
-50,000 instances for training, validation, and test respectively. For all datasets, the only preprocessing
+(2) SVHN has close to 600,000, 6,000, and 26,000 instances; For all datasets, the only preprocessing
 performed on the raw images was demeaning.
+
+learning rate, learning rate decay, l2 regularization parameters on different layers, parameters of the response normalizations
+
 <img src="./images/deep_table.png" class="img-responsive" align='right'></p>
 
 For CIFAR-10, the basic unit of time was one-tenth of an epoch, and the maximum running time was 75 epochs.  For SVHN, the basic unit of time was one one-hundredth of an epoch and the maximum running time was 10 epochs.  The full details are described in the paper.
