@@ -10,21 +10,34 @@ visible:    false
 
 ### Joint post with Kevin Jamieson
 
-It's all the rage in machine learning these days to build complex, deep pipelines with thousands of tunable parameters.  Now, I don't mean parameters that we learn by stochastic gradient descent.  But I mean architectural concerns, like the value of the regularization parameter, the size of a convolutional window, or the breadth of a spatio-temporal tower of attention.  Such parameters are typically referred to as *hyperparameters* to contrast against the parameters learned during training. These structural parameters are not learned, but rather descended upon by a lot of trial-and-error and fine tuning.
+It's all the rage in machine learning these days to build complex, deep pipelines with thousands of tunable parameters.  Now, I don't mean parameters that we learn by stochastic gradient descent.  But I mean architectural concerns, like the value of the regularization parameter, the size of a convolutional window, or the breadth of a spatio-temporal tower of attention.  Such parameters are typically referred to as *hyperparameters* to contrast against the parameters learned during training. These structural parameters are not learned, but rather descended upon by a lot of trial-and-error and fine tuning.  
 
-Automating such hyperparameter tuning is one of the most holy grails of machine learning.  And people have tried for decades to devise algorithms that can quickly prune bad configurations and maximally overfitting on the test set.  In recent years, parameter search in machine learning has been dominated by Bayesian Optimization methods.  However, [recent evidence](http://arxiv.org/abs/1603.06560) on a benchmark of over a hundred hyperparameter optimization datasets suggests that such enthusiasm may call for increased scrutiny.  
+Automating such hyperparameter tuning is one of the most holy grails of machine learning.  And people have tried for decades to devise algorithms that can quickly prune bad configurations and maximally overfit to the test set.  This problem is ridiculously hard, because the problems in question become mixed-integer, nonlinear, and nonconvex.  The default approach to the hyperparameter tuning problem is to resort to *black-box optimization* where we try to find optimal settings by only receiving function values and not using much other auxilliary information about the optimization problem.
 
-Rank plots aggregate statistics across datasets for different methods as a function of time: first place gets one point, second place two points, and so forth.  Consider the following plots:
+Black-box optimization is hard.  It's hard in the most awful senses of optimization.  Even when we restrict our attention to gently continuous problems, black-box optimization is completely intractable in high dimensions. To guarantee that you are within a constant factor of optimality requires a number of function evaluations that is exponential in the dimension of the problem.  Essentially, random guessing will achieve these very pessimistic lower bounds.
+
+## Bayesian inference to the rescue?
+
+In recent years, I have heard that there has been a bit of a breakthrough for hyperparameter tuning based on Bayesian optimization.  In Bayesian optimization, we model the uncertaintly of the performance of hyperparameters using
+priors about the smoothness of the hyperparameter landscape.  When you test a new set of parameters, the uncertainty near that point shrinks, and then Bayesian optimization tries to explore places where the uncertainty remains high.  This seems like a sensible thing to try.
+
+Indeed, there has been quite a lot of excitement about these methods, and there has been a lot of press about how well these methods work for tuning deep learning and other hard machine learning pipelines. However, [recent evidence](http://arxiv.org/abs/1603.06560) on a benchmark of over a hundred hyperparameter optimization datasets suggests that such enthusiasm really calls for much more scrutiny.  
+
+The standard way these methods are evaluated in papers is by using rank plots.  Rank plots aggregate statistics across datasets for different methods as a function of time: at a particular time, the solver with the best setting gets one point, the algorithm in second place two points, and so forth.  Consider the following plots:
 
 {: .center}
 ![Rank chart of various hyperparameter methods](/assets/hyperband/rank_chart.png)
 ![Bar plot comparing final test errors](/assets/hyperband/rank_chart.png)
 
-On the left, we show the rank chart for all algorithms and on the right, we show the actual rankings of the various algorithms.  These plots represent the average score across 117 datasets collected by [Feurer et. al. NIPS 2015](http://papers.nips.cc/paper/5872-efficient-and-robust-automated-machine-learning) (lower is better).
+On the left, we show the rank chart for all algorithms and on the right, we show the actual rankings of the various algorithms.  The first plot represent the average score across 117 datasets collected by [Feurer et. al. NIPS 2015](http://papers.nips.cc/paper/5872-efficient-and-robust-automated-machine-learning) (lower is better).  For clarity, the second plot is for a subset of these data sets, but all of the data sets have nearly identical results.  We compare state-of-the-art Bayesian optimization methods SMAC and TPE to the method I suggested above: *random search* where we just try random parameter configurations and don't use any of the prior experiments to help pick the next setting.
 
- While the rank plot suggests that state-of-the-art Bayesian optimization methods SMAC and TPE resoundingly beat random search, note that they are achieving nearly identical test errors!  Moreover, and more troubling, Bayesean optimization is completely outperformed by random *run at twice the speed*.  That is, if you just set up two computers running random search, you beat all of the Bayesean methods.  Moreover, Bayesean methods are difficult to parallelize as new configuration settings are chosen by fitting a model to the previously run experiments.
+What are the takeaways here?  While the rank plot seems to suggest that state-of-the-art Bayesian optimization methods SMAC and TPE resoundingly beat random search, the bar plot shows that they are achieving nearly identical test errors!  That is, SMAC and TPE are only a teensy bit better than random search.   Moreover, and more troubling, Bayesian optimization is completely outperformed by random search *run at twice the speed*.  That is, if you just set up two computers running random search, you beat all of the Bayesian methods.  Moreover, Bayesian methods are difficult to parallelize as new configuration settings are chosen by fitting a model to the previously run experiments.
 
- There are two very important takeaways here.  First, if you are planning on writing a paper on hyperparameter search, you should compare against random search!  Second, if you are reviewing a paper on hyperparameter optimization that does not compare to random search, you should immediately reject it.  And, finally, as a community, we should be devoting a lot of time to accelerating up pure random search.  If we can speed up random search to try out more hyperparameter settings, perhaps we can do even better than just running parallel instances of random search.
+Why is random search so competitive?  This is just a property of high dimensional functions. Imagine that your space of hyperparameters is the unit hypercube in some high dimensional space.  Just to get the Bayesian uncertainty to a reasonable state, one has to essentially test all of the corners, and this requires an exponential number of tests.  What's remarkable to me is that the [early theory papers](http://arxiv) on Bayesian optimization are very up front about this exponential scaling, but this seems to be ignored by the current excitement in the Bayesian optimization community.
+
+There are two very important takeaways here.  First, if you are planning on writing a paper on hyperparameter search, you should compare against random search!  If you want to be even more fair, you should compare against random search with twice the sampling budget of your algorithm.  Second, if you are reviewing a paper on hyperparameter optimization that does not compare to random search, you should immediately reject it.  And, finally, as a community, we should be devoting a lot of time to accelerating up pure random search.  If we can speed up random search to try out more hyperparameter settings, perhaps we can do even better than just running parallel instances of random search.
+
+Fortunately, there has been some very nice recent work suggesting a random search acceleration scheme that is ideal for machine learning workloads.  In some very nice recent work, Lisha Li (UCLA), Giulia DeSalvo (NYU), Afshin Rostamizadeh (Google), Ameet Talwalkar (UCLA), and Kevin Jamieson, (AMP Lab, UC Berkeley) pursued a very nice direction in accelerating random search.  In the next post, I will dive into the details of their method and show how it is very promising for quickly tuning hyperparameters.
 
 ## Hyperband
 
@@ -66,3 +79,7 @@ For CIFAR-10, the basic unit of time was one-tenth of an epoch, and the maximum 
 ![Comparison of methods on SVHN](/assets/hyperband/svhn-compare.png)
 
 xxx talk about it.
+
+%%%%
+
+Typically, in a rather shady fashion, these parameters are tuned to minimize the test error on a hold-out set that is queried in parallel billions of times by eager grad students.  But, for the purpose of this post, I'm going to sweep that gross insult against statistics under the rug.
