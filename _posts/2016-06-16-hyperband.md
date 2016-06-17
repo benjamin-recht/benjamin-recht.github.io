@@ -61,7 +61,7 @@ performed on the raw images was demeaning.
 For CIFAR-10, the basic unit of time was one-tenth of an epoch, and the maximum running time was 75 epochs.  For SVHN, the basic unit of time was one one-hundredth of an epoch and the maximum running time was 10 epochs.  The full details are described in the paper.
 
 {: .center}
-![Comparison of methods on CIFAR-10](/assets/hyperband/deep_1.png)
-![Comparison of methods on SVHN](/assets/hyperband/deep_2.png)
+![Comparison of methods on CIFAR-10](/assets/hyperband/cifar10-compare.png)
+![Comparison of methods on SVHN](/assets/hyperband/svhn-compare.png)
 
 xxx talk about it.
