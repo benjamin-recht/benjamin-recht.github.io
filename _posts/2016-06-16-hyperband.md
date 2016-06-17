@@ -30,50 +30,14 @@ On the left, we show the rank chart for all algorithms and on the right, we show
 
 In some very nice recent work, Lisha Li (UCLA), Giulia DeSalvo (NYU), Afshin Rostamizadeh (Google), Ameet Talwalkar (UCLA), and Kevin Jamieson, (AMP Lab, UC Berkeley) pursued a very nice direction in accelerating random search.  Their key insight is that most of the algorithms we run are iterative in machine learning, so if we are running a set of parameters, and the progress looks terrible, it might be a good idea to quit and just try a new set of hyperparameters.
 
-One way to beat this is a scheme called *successive halving*.   xxx Sparks and Talwakar xxx.  Who else does successive halving?  Stochastic bandit literature.  The idea of successive halving is remarkably simple.  We'd try out $N$ hyperparameter settings for some fixed amount of time $T$.  Then, we keep the $N/2$ best performing algorithms and run for time $2T$.  Repeating this procedure $\log(N)$ times, we end up with one configuration run for $NT$ time.
+One way to beat this is a scheme called *successive halving*.   xxx Sparks and Talwakar xxx.  Who else does successive halving?  Stochastic bandit literature.  The idea of successive halving is remarkably simple.  We'd try out $N$ hyperparameter settings for some fixed amount of time $1$.  Then, we keep the $N/2$ best performing algorithms and run for time $2$.  Repeating this procedure $\log_2(T)$ times, we end up with $N/T$ configurations run for $T$ time.
+
+The total amount of computation in each halving round is equal to $N$. There are $\log_2(T)$ total rounds.  If we restricted ourself to the serial setting with the same computation budget,  we would be be able to run $N \log_2(T)/T$ hyperparameter settings for $T$ epochs each.  Thus, in the same amount of time, successive halving sees $T/log_2(T)$ more parameter configurations than pure random search!
+
+Note that I could have used a different halving parameter $\eta$, and then the gap would be $T/\log_\eta(T)$.
 
 Now, the problem here is that just because an algorithm looks bad at the beginning, doesn't meant that it might be optimal at the end of the run.  A particular example of this is setting the learning rate is stochastic gradient descent.  Small learning rates look worse than large ones in the early iterations, but it is often the case that a small learning rate leads to the best model in the end.
 
-A simple way to deal with this tradeoff between breadth and depth is to try different values of $T$.  Instead of checking the algorithm progress at times $2^kT$, we can check at $2^{k}(2T)$ or $2^{k}(4T)$ instead.  This allows slow learners to have more of a chance of surviving before being cut.  The hyperband algorithm is just a simple way to generate rounds of successive halving that nearly optimally balance breadth versus depth.
+A simple way to deal with this tradeoff between breadth and depth is to start the halving process later.  We could run $N/2$ parameter settings for time $2$, then the top $N/4$ for time $4$ and so on.  This adapted halving scheme allows slow learners to have more of a chance of surviving before being cut, but the total amount of time per halving round is still $N$ and the number of rounds is at most $\log(T)$.  Running multiple instances of successive halving with different halving times increases depth while narrowing depth.
 
-```python
-max_iter = 81  # maximum iterations/epochs per configuration
-min_iter = 1  # minimum iterations/epochs per configuration
-eta = 3 # defines downsampling rate (default=3)
-logeta = lambda x: log(x)/log(eta)
-s_max = logeta(max_iter/min_iter)  # number of unique executions of Successive Halving (minus one)
-B = (s_max+1)*max_iter  # total number of iterations (without reuse) per execution of Succesive Halving
-
-#### Begin Finite Horizon Hyperband outlerloop. Repeat indefinetely (a natural for-loop to parallelize)
-for s = 0, ..., s_max:
-    n = $\lceil B/max_iter/(s+1)  \rceil  # specify the number of arms for round s
-
-    #### Begin Finite Horizon Successive Halving with (n,s)
-    T = get a set of n hyperparameters
-    for i in 0,...,s:
-        # Run each of the n_i configurations for r_i iterations and keep best 1/eta proportion
-        $n_i = n eta^i$
-        $r_i = max_iter eta^(i-s)$
-        val_losses = [ problem.run_and_return_val_loss(num_iters=r_i,hyperparameter_config=t) for t in T ]
-        T = T[ argsort(val_losses)[0:int( n_i/eta )] ]
-    #### End Finite Horizon Successive Halving with (n,s)
-```
-
-
-For example, consider the following table of experiments:
-
-<pre>
-max_iter = 81        s=4             s=3             s=2             s=1             s=0
-min_iter = 1         n_i   r_i       n_i   r_i       n_i   r_i       n_i   r_i       n_i   r_i
-eta = 3              ---------       ---------       ---------       ---------       ---------
-B = 5*max_iter        81    1         27    3         9     9         6     27        5     81
-                      27    3         9     9         3     27        2     81
-                      9     9         3     27        1     81
-                      3     27        1     81
-                      1     81
-</pre>
-
-
-
-
-To deal with this sort of tradeoff, the authors build on some recent advances in *pure-exploration algorithms* for multi-armed bandits.  This sort of thing was de
+xxx Cite Kevin's post here. xxx
