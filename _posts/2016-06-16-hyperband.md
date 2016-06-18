@@ -46,9 +46,9 @@ In the last post, I argued that random search is a competitive method for black-
 
 In some very nice recent work, Lisha Li (UCLA), Giulia DeSalvo (NYU), Afshin Rostamizadeh (Google), Ameet Talwalkar (UCLA), and Kevin Jamieson, (AMP Lab, UC Berkeley) pursued a very nice direction in accelerating random search.  Their key insight is that most of the algorithms we run are iterative in machine learning, so if we are running a set of parameters, and the progress looks terrible, it might be a good idea to quit and just try a new set of hyperparameters.
 
-One way to implement such a scheme called *successive halving*.   xxx Sparks and Talwakar xxx.  Who else does successive halving?  Stochastic bandit literature.  The idea of successive halving is remarkably simple.  We'd try out $N$ hyperparameter settings for some fixed amount of time $T$.  Then, we keep the $N/2$ best performing algorithms and run for time $2T$.  Repeating this procedure $\log_2(T)$ times, we end up with $N/K$ configurations run for $KT$ time.
+One way to implement such a scheme called *successive halving*.   xxx Sparks and Talwakar xxx.  Who else does successive halving?  Stochastic bandit literature.  The idea of successive halving is remarkably simple.  We first try out $N$ hyperparameter settings for some fixed amount of time $T$.  Then, we keep the $N/2$ best performing algorithms and run for time $2T$.  Repeating this procedure $\log_2(T)$ times, we end up with $N/K$ configurations run for $KT$ time.
 
-The total amount of computation in each halving round is equal to $N$. There are $\log_2(K)$ total rounds.  If we restricted ourself to the serial setting with the same computation budget,  we would be be able to run $N \log_2(K)/K$ hyperparameter settings for $T$ epochs each.  Thus, in the same amount of time, successive halving sees $K/log_2(K)$ more parameter configurations than pure random search!
+The total amount of computation in each halving round is equal to $NT$, and there are $\log_2(K)$ total rounds.  If we restricted ourself to pure random search with the same computation budget where we required all of the settings to be run for $KT$ steps,  we would only be able to run $N \log_2(K)/K$ hyperparameter settings.  Thus, in the same amount of time, successive halving sees $K/log_2(K)$ more parameter configurations than pure random search!
 
 Note that I could have used a different halving parameter $\eta$, and then the gap would be $K/\log_\eta(K)$.
 
@@ -56,7 +56,7 @@ Now, the problem here is that just because an algorithm looks bad at the beginni
 
 A simple way to deal with this tradeoff between breadth and depth is to start the halving process later.  We could run $N/2$ parameter settings for time $2T$, then the top $N/4$ for time $4T$ and so on.  This adapted halving scheme allows slow learners to have more of a chance of surviving before being cut, but the total amount of time per halving round is still $N$ and the number of rounds is at most $\log(K)$.  Running multiple instances of successive halving with different halving times increases depth while narrowing depth.
 
-The parameters you have to choose are simply $T$ and $K$. That is, you should tell Kevin's python code what the minimum amount of time you'd like to run your model before checking against other models, and the maximum amount of time you'd ever be interested in running for.  In some sense, these parameters are more like constraints: there is some overhead with checking the process, and $T$ should be larger than this.  $K$ is here just because we all have deadlines.
+To run successive halving, the only parameters you have to choose are $T$ and $K$. That is, you should tell Kevin's python code what the minimum amount of time you'd like to run your model before checking against other models, and the maximum amount of time you'd ever be interested in running for.  In some sense, these parameters are more like constraints: there is some overhead with checking the process, and $T$ should be larger than this.  $K$ is here just because we all have deadlines.
 
 xxx Cite Kevin's post here. xxx
 
