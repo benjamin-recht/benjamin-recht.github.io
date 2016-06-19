@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Bayesian Optimization and other bad ideas for hyperparameter optimization
-date:       2016-06-20 7:00:00
+date:       2016-06-19 7:00:00
 summary:    Why do I have so many parameters?
 author:     Ben Recht
 visible:    false
