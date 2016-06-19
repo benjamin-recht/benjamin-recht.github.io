@@ -72,4 +72,4 @@ For the experts out there, the methods were all attempting to tune the basic [cu
 ![Comparison of methods on CIFAR-10](/assets/hyperband/cifar10-compare.png)
 ![Comparison of methods on SVHN](/assets/hyperband/svhn-compare.png)
 
-These results are pretty shocking.  Successive halving finds a decent solution in a fraction of the time of the other methods.  It also finds the best solution over all.  And, again, the protocol is just 7 lines of python code.  This work suggests that a powerful way forward on hyperparameter tuning is to pursue more enhancements and optimizations of pure random search.
+These results are pretty shocking.  Successive halving finds a decent solution in a fraction of the time of the other methods.  It also finds the best solution over all. On SVHN, it finds the best solution in a third of the time of the other methods. And, again, the protocol is just 7 lines of python code.  This work suggests that a powerful way forward on hyperparameter tuning is to pursue more enhancements and optimizations of pure random search.
