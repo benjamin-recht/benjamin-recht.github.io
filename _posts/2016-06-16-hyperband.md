@@ -36,9 +36,9 @@ Similar results are seen on larger scale benchmarks.  For example, consider the 
 Numbers (SVHN) data sets.  Each of these sets consist of 32 × 32 RGB images. Each dataset is split into a training, validation, and test set: (1) CIFAR-10 has 40,000, 10,000, and 10,000 instances; (2) SVHN has close to 600,000, 6,000, and 26,000 instances.  For the experts out there, the methods were all attempting to tune the basic [cuda-convnet model](), searching for the optimal learning rate, learning rate decay, l2 regularization parameters on different layers, and parameters of the response normalizations.
 
 {: .center}
-![Comparison of methods on CIFAR-10](/assets/hyperband/cifar10-random2x.png)
-![Comparison of methods on SVHN](/assets/hyperband/svhn-random2x.png)
-![Comparison of methods on MRBI](/assets/hyperband/mrbi-random2x.png)
+![Comparison of methods on CIFAR-10](/assets/hyperband/cifar10_random2x.png)
+![Comparison of methods on SVHN](/assets/hyperband/svhn_random2x.png)
+![Comparison of methods on MRBI](/assets/hyperband/mrbi_random2x.png)
 
 Note that once again, the double-speed random search is the best method!
 
