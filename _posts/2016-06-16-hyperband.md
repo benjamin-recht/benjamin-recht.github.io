@@ -7,13 +7,13 @@ author:     Ben Recht
 visible:    false
 ---
 
-*Ed. Note: this post is in my voice, but it was co-written with [Kevin Jamieson](http://people.eecs.berkeley.edu/~kjamieson/about.html).  Kevin made all of the awesome plots too.*
+*Ed. Note: this post is in my voice, but it was co-written with [Kevin Jamieson](http://people.eecs.berkeley.edu/~kjamieson/about.html).  Kevin provided all of the awesome plots too.*
 
 It's all the rage in machine learning these days to build complex, deep pipelines with thousands of tunable parameters.  Now, I don't mean parameters that we learn by stochastic gradient descent.  But I mean architectural concerns, like the value of the regularization parameter, the size of a convolutional window, or the breadth of a spatio-temporal tower of attention.  Such parameters are typically referred to as *hyperparameters* to contrast against the parameters learned during training. These structural parameters are not learned, but rather descended upon by a lot of trial-and-error and fine tuning.  
 
 Automating such hyperparameter tuning is one of the most holy grails of machine learning.  And people have tried for decades to devise algorithms that can quickly prune bad configurations and maximally overfit to the test set.  This problem is ridiculously hard, because the problems in question become mixed-integer, nonlinear, and nonconvex.  The default approach to the hyperparameter tuning problem is to resort to *black-box optimization* where one tries to find optimal settings by only receiving function values and not using much other auxiliary information about the optimization problem.
 
-Black-box optimization is hard.  It's hard in the most awful senses of optimization.  Even when we restrict our attention to  continuous problems, black-box optimization is completely intractable in high dimensions. To guarantee that you are within a factor of two of optimality requires an exponential number of function evaluations.  Roughly the number of queries scales as $O(2^d)$ where $d$ is the dimension.  What's particularly terrible it is easy to construct "needle-in-the-haystack" problems where this exponential complexity is real.  That is, where no algorithm will ever find a good solution.  Moreover, it is hard to construct an algorithm that outperforms random guessing on these problems.
+Black-box optimization is hard.  It's hard in the most awful senses of optimization.  Even when we restrict our attention to  continuous problems, black-box optimization is completely intractable in high dimensions. To guarantee that you are within a factor of two of optimality requires an exponential number of function evaluations.  Roughly the number of queries scales as $O(2^d)$ where $d$ is the dimension.  What's particularly terrible is that it easy to construct "needle-in-the-haystack" problems where this exponential complexity is real.  That is, where no algorithm will ever find a good solution.  Moreover, it is hard to construct an algorithm that outperforms random guessing on these problems.
 
 ## Bayesian inference to the rescue?
 
@@ -32,11 +32,21 @@ On the left, we show the rank chart for all algorithms and on the right, we show
 
 What are the takeaways here?  While the rank plot seems to suggest that state-of-the-art Bayesian optimization methods SMAC and TPE resoundingly beat random search, the bar plot shows that they are achieving nearly identical test errors!  That is, SMAC and TPE are only a teensy bit better than random search.   Moreover, and more troubling, Bayesian optimization is completely outperformed by random search *run at twice the speed*.  That is, if you just set up two computers running random search, you beat all of the Bayesian methods.  
 
+Similar results are seen on larger scale benchmarks.  For example, consider the problem of tuning the parameters of a deep learning model.  In the plots below, we show the results of testing on CIFAR-10 and the Street View House
+Numbers (SVHN) data sets.  Each of these sets consist of 32 × 32 RGB images. Each dataset is split into a training, validation, and test set: (1) CIFAR-10 has 40,000, 10,000, and 10,000 instances; (2) SVHN has close to 600,000, 6,000, and 26,000 instances.  For the experts out there, the methods were all attempting to tune the basic [cuda-convnet model](), searching for the optimal learning rate, learning rate decay, l2 regularization parameters on different layers, and parameters of the response normalizations.
+
+{: .center}
+![Comparison of methods on CIFAR-10](/assets/hyperband/cifar10-random2x.png)
+![Comparison of methods on SVHN](/assets/hyperband/svhn-random2x.png)
+![Comparison of methods on MRBI](/assets/hyperband/mrbi-random2x.png)
+
+Note that once again, the double-speed random search is the best method!
+
 Why is random search so competitive?  This is just a consequence of the curse of dimensionality.  Imagine that your space of hyperparameters is the unit hypercube in some high dimensional space.  Just to get the Bayesian uncertainty to a reasonable state, one has to essentially test all of the corners, and this requires an exponential number of tests.  What's remarkable to me is that the early [theory](http://arxiv.org/abs/0912.3995) [papers](https://hal.inria.fr/hal-00654517/) on Bayesian optimization are very up front about this exponential scaling, but this [seems to be ignored](http://blog.sigopt.com/post/144221180573/evaluating-hyperparameter-optimization-strategies) by the current excitement in the Bayesian optimization community.
 
 There are three very important takeaways here.  First, if you are planning on writing a paper on hyperparameter search, you should compare against random search!  If you want to be even more fair, you should compare against random search with twice the sampling budget of your algorithm.  Second, if you are reviewing a paper on hyperparameter optimization that does not compare to random search, you should immediately reject it.  And, third, as a community, we should be devoting a lot of time to accelerating  pure random search.  If we can speed up random search to try out more hyperparameter settings, perhaps we can do even better than just running parallel instances of random search.
 
-In my next post, I'll describe some very nice recent work by Lisha Li (UCLA), Giulia DeSalvo (NYU), Afshin Rostamizadeh (Google), Ameet Talwalkar (UCLA), and Kevin Jamieson, (AMP Lab, UC Berkeley) on accelerating random search for iterative algorithms common in machine learning workloads.  I will dive into the details of their method and show how it is very promising for quickly tuning hyperparameters.
+In my next post, I’ll describe some [very nice recent work](http://arxiv.org/abs/1603.06560) by Lisha Li, Kevin Jamieson, Giulia DeSalvo, Afshin Rostamizadeh, and Ameet Talwalkar on accelerating random search for iterative algorithms common in machine learning workloads.  I will dive into the details of their method and show how it is very promising for quickly tuning hyperparameters.
 
 ## Hyperband
 
@@ -71,7 +81,7 @@ Numbers (SVHN), and rotated MNIST with background images (MRBI). CIFAR-10 and
 SVHN contain 32 × 32 RGB images. Each dataset is
 split into a training, validation, and test set: (1) CIFAR-10 has 40,000, 10,000, and 10,000 instances;
 (2) SVHN has close to 600,000, 6,000, and 26,000 instances; For all datasets, the only preprocessing
-performed on the raw images was demeaning.
+performed on the raw images was subtracting the global mean on the training set from all of the examples.
 
 learning rate, learning rate decay, l2 regularization parameters on different layers, parameters of the response normalizations
 
