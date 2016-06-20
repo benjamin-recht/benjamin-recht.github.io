@@ -1,10 +1,10 @@
 ---
 layout:     post
-title:      Bayesian Optimization and other bad ideas for hyperparameter optimization
-date:       2016-06-19 7:00:00
+title:      The News on Auto-tuning
+date:       2016-06-20 7:00:00
 summary:    Why do I have so many parameters?
 author:     Ben Recht
-visible:    false
+visible:    true
 ---
 
 *Ed. Note: this post is in my voice, but it was co-written with [Kevin Jamieson](http://people.eecs.berkeley.edu/~kjamieson/about.html).  Kevin provided all of the awesome plots too.*
