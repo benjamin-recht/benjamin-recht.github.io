@@ -28,15 +28,18 @@ Successive halving was inspired by an earlier heuristic by Evan Sparks and coaut
 
 ## Neural net experiments
 
-Let's look at two image classification benchmarks: CIFAR-10 and the Street View House
-Numbers (SVHN).  Both data sets contain 32 × 32 RGB images. Each dataset is
-split into a training, validation, and test set: (1) CIFAR-10 has 40,000, 10,000, and 10,000 instances;
-(2) SVHN has close to 600,000, 6,000, and 26,000 instances.
+Let's look at three small image classification benchmarks: CIFAR-10, the Street View House
+Numbers (SVHN), and rotated MNIST with background images (MRBI). The CIFAR-10 and SVHN data sets contain 32 × 32 RGB images. MRBI contains 28 x 28 grayscale images.  Each dataset is split into a training, validation, and test set: (1) CIFAR-10 has 40,000, 10,000, and 10,000 instances; (2) SVHN has close to 600,000, 6,000, and 26,000 instances. (3) MRBI has 10,000 , 2,000, and 50,000 instances for training, validation, and test respectively.
 
-For the experts out there, the goal is to tune the basic [cuda-convnet model](https://code.google.com/p/cuda-convnet/), searching for the optimal learning rate, learning rate decay, $\ell_2$ regularization parameters on different layers, and parameters of the response normalizations.  For both datasets, the basic unit of time, $T$, was 10,000 examples. For CIFAR-10 this was one-fourth of an epoch, and $M$ was 300, equivalent to 75 epochs over the 40,000 example training set. For SVHN, $T$ corresponded to one-sixtieth of an epoch and $M$ was set to 600, equivalent to 10 epochs over the 600,000 example training set. The full details of these experiments are described in the paper. The plots below compare the performance of the Hyperband algorithm to a variety of other hyperparameter tuning algorithms
+For the experts out there, the goal is to tune the basic [cuda-convnet model](https://code.google.com/p/cuda-convnet/), searching for the optimal learning rate, learning rate decay, $\ell_2$ regularization parameters on different layers, and parameters of the response normalizations.  For both datasets, the basic unit of time, $T$, was 10,000 examples. For CIFAR-10 this was one-fourth of an epoch, and $M$ was 300, equivalent to 75 epochs over the 40,000 example training set. For SVHN, $T$ corresponded to one-sixtieth of an epoch and $M$ was set to 600, equivalent to 10 epochs over the 600,000 example training set.  For MRBI, $T$ was one epoch and $M$ was 300. The full details of these experiments are described in the paper. The plots below compare the performance of the Hyperband algorithm to a variety of other hyperparameter tuning algorithms.  In particular, as raised in the comments in the previous post, we are comparing to [Spearmint](), a very popular Bayesian optimization scheme and [SMAC-early]() which is a variant of SMAC that is designed to incorporate early stopping.  The following plots are curves of the mean of 10 trials (*not the min of 10 trials*).
 
 {: .center}
 ![Comparison of methods on CIFAR-10](/assets/hyperband/cifar10-compare.png)
 ![Comparison of methods on SVHN](/assets/hyperband/svhn-compare.png)
 
-These results are pretty shocking.  Hyperband finds a decent solution in a fraction of the time of the other methods.  It also finds the best solution over all. On SVHN, it finds the best solution in a third of the time of the other methods. And, again, the protocol is just 7 lines of python code.  Hyperband is just a first step, and other might not be the ideal solution for your particular workload. But I think these plots nicely illustrate how simple-but enhancements of random search can go a very long way.  
+{: .center}
+![Comparison of methods on MRBI](/assets/hyperband/mrbi-compare.png)
+
+First, note that Random-2x is again a very competitive algorithm.  None of the pure Bayesian optimization methods outperform Random-2x on all three data sets. Only SMAC-early, with its ability to stop underperforming jobs, is able to consistently outperform Random-2x.  
+
+The comparison to Hyperband, on the other hand, is striking.  On average, Hyperband finds a decent solution in a fraction of the time of all of the other methods.  It also finds the best solution over all in all three cases. On SVHN, it finds the best solution in a third of the time of the other methods. And, again, the protocol is just 7 lines of python code.  Hyperband is just a first step, and other might not be the ideal solution for your particular workload. But I think these plots nicely illustrate how simple-but enhancements of random search can go a very long way.  
