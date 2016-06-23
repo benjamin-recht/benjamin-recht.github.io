@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Embracing the random
+title:      Embracing the Random
 date:       2016-06-23 7:00:00
 summary:    Early stopping and successive halving for speeding up random search
 author:     Ben Recht
