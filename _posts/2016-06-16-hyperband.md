@@ -1,13 +1,13 @@
 ---
 layout:     post
-title:      Hyperband
-date:       2016-06-19 7:00:00
+title:      Embracing the random
+date:       2016-06-23 7:00:00
 summary:    Early stopping and successive halving for speeding up random search
 author:     Ben Recht
-visible:    false
+visible:    true
 ---
 
-*Ed. Note: this post is in my voice, but it was co-written with [Kevin Jamieson](http://people.eecs.berkeley.edu/~kjamieson/about.html).  Kevin provided all of the awesome plots, and has a [great tutorial ](http://people.eecs.berkeley.edu/~kjamieson/hyperband/hyperband.html) for implementing the algorithm I'll describe in this post*
+*Ed. Note: this post is again in my voice, but co-written with [Kevin Jamieson](http://people.eecs.berkeley.edu/~kjamieson/about.html).  Kevin provided all of the awesome plots, and has a [great tutorial ](http://people.eecs.berkeley.edu/~kjamieson/hyperband/hyperband.html) for implementing the algorithm I'll describe in this post*
 
 In the last post, I argued that random search is a competitive method for black-box parameter tuning in machine learning. This is actually great news!  Random search is a incredibly simple algorithm, and if it is as powerful as anything else we've come up with so far, we can devote our time to optimizing random search for the particularities of our workloads, rather than worrying about baking off hundreds of new algorithmic ideas.
 
