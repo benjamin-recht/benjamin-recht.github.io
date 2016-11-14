@@ -4,7 +4,7 @@ title:      The Fall of BIG DATA
 date:       2016-11-14 7:00:00
 summary:    How we have failed data analytics and how we must be better
 author:     Ben Recht
-visible:    false
+visible:    true
 ---
 
 I'm still in total shock from the decision my country made last Tuesday.  We elected a hateful, bigoted, misogynistic, incompetent demagogue to lead us into a dark and foreboding future.  While the internet has been flooded with hot takes about why this happened, I'd like to reflect a bit about why I am so crushed by this outcome.
