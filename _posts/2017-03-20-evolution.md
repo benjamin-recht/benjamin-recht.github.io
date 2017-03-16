@@ -26,7 +26,7 @@ $$
 
 
 Suppose
-$$f(x)=\tfrac{1}{2}x^TQx +p^Tx + r$$
+$$f(x)=\frac{1}{2}x^TQx +p^Tx + r$$
 Using method one, we have
 $$
   g_\sigma^{(1)}(x)=  f(x) \epsilon+ \epsilon\epsilon^T\nabla f(x)  +   \epsilon \epsilon^T Q\epsilon
