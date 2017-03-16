@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Sex as an Algorithm, Revisited
+title:      Nesterov's Accelerated Evolution
 date:       2017-03-20 7:00:00
 summary:    connecting genetic algorithms with nonlinear programming
 author:     Ben Recht
