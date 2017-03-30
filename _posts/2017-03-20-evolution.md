@@ -53,7 +53,7 @@ $$
 
 So, for small enough $\sigma$, the update $g^{(2)}_\sigma$ acts like a stochastic approximation to the gradient.
 
-In the experiments by Salimans et al, they always use $g^{(2)}_\sigma$ rather than $g_\sigma^{(1)}$  They refer to $g_\sigma^{(2)}$ as *antithetic sampling*, a rather clever term from the MCMC literature.  Such antithetic sampling dramatically improves performance in their experiments.
+In the experiments by Salimans et al, they always use $g^{(2)}_\sigma$ rather than $g^{(1)}_\sigma$.  They refer to $g_\sigma^{(2)}$ as *antithetic sampling*, a rather clever term from the MCMC literature.  Such antithetic sampling dramatically improves performance in their experiments.
 
 Now this particular algorithm (ES with antithetic sampling) is precisely equivalent to the derivative-free optimization method analyzed by Yurii Nesterov in 2010.  Noting this equivalence allows us to explain some of the observed advantages of ES, and to suggest some possible enhancements.
 
@@ -84,9 +84,11 @@ Thus, in a serial setting, minibatching might hurt you.  In theory, you can't ge
 ## Accelerated Evolution
 
 One of our favorite features of an optimization-centric viewpoint is that we can apply other widgets from the optimization toolkit to improve the performance of algorithms.  A natural addition to this gradient-free algorithm is to add *momentum* to accelerate convergence.  Acceleration is likely what Nesterov is best know for.  Adding acceleration simply requires changing the procedure to
+
 $$
 	x_{t+1} = (1+\beta) x_{t} + \beta x_{t-1}+   \frac{\alpha}{\sigma n} \sum_{i=1}^n R(x_t + \sigma \epsilon_i) \epsilon_i
 $$
+
 This one-line change is simple to implement in the parallel algorithm proposed by Salimans et al. and could provide further speedups over standard policy gradient methods. I suppose if we wanted to merge universes, we could call this "Nesterov's accelerated evolution."
 
 ## Use your gradients
