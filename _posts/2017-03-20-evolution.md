@@ -54,7 +54,7 @@ $$
 So, for small enough $\sigma$, the update $g^{(2)}_\sigma$ acts like a stochastic approximation to the gradient.
 
 In the experiments by Salimans et al, they always use $g_\sigma^{(2)}$
-rather than $g_\sigma^{(1)}$. foo. 
+rather than $g_\sigma^{(1)}$. 
 They refer to $g_\sigma^{(2)}$ as *antithetic sampling*, a rather clever term from the MCMC literature.  Such antithetic sampling dramatically improves performance in their experiments.
 
 Now this particular algorithm (ES with antithetic sampling) is precisely equivalent to the derivative-free optimization method analyzed by Yurii Nesterov in 2010.  Noting this equivalence allows us to explain some of the observed advantages of ES, and to suggest some possible enhancements.
