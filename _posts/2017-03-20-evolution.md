@@ -57,7 +57,7 @@ In the experiments by Salimans et al, they always use $g_\sigma^{(2)}$
 rather than $g_\sigma^{(1)}$.
 They refer to $g_\sigma^{(2)}$ as *antithetic sampling*, a rather clever term from the MCMC literature.  Such antithetic sampling dramatically improves performance in their experiments.
 
-Now this particular algorithm (ES with antithetic sampling) is precisely equivalent to the derivative-free optimization method analyzed by Yurii Nesterov in 2010.  Noting this equivalence allows us to explain some of the observed advantages of ES, and to suggest some possible enhancements.
+Now this particular algorithm (ES with antithetic sampling) is precisely equivalent to the [derivative-free optimization method](https://link.springer.com/article/10.1007/s10208-015-9296-2) analyzed by Yurii Nesterov and Vladimir Spokoiny in 2010.  Noting this equivalence allows us to explain some of the observed advantages of ES, and to suggest some possible enhancements.
 
 ## Reduce your variants
 
