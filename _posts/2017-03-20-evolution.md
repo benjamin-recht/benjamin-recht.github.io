@@ -57,7 +57,7 @@ In the experiments by Salimans et al, they always use $g_\sigma^{(2)}$
 rather than $g_\sigma^{(1)}$.
 They refer to $g_\sigma^{(2)}$ as *antithetic sampling*, a rather clever term from the MCMC literature.  Such antithetic sampling dramatically improves performance in their experiments.
 
-Now this particular algorithm (ES with antithetic sampling) is precisely equivalent to the [derivative-free optimization method](https://link.springer.com/article/10.1007/s10208-015-9296-2) analyzed by Yurii Nesterov and Vladimir Spokoiny in 2010.  Noting this equivalence allows us to explain some of the observed advantages of ES, and to suggest some possible enhancements.
+Now this particular algorithm (ES with antithetic sampling) is precisely equivalent to the [derivative-free optimization method](https://link.springer.com/article/10.1007/s10208-015-9296-2) analyzed by Nesterov and Spokoiny in 2010.  Noting this equivalence allows us to explain some of the observed advantages of ES, and to suggest some possible enhancements.
 
 ## Reduce your variants
 
@@ -99,6 +99,6 @@ This one-line change is simple to implement in the parallel algorithm proposed b
 
 ## Use your gradients
 
-Would this random search technique work in training neural nets for supervised learning?  The answer is almost certainly a rather resounding "no."  As Nesterov says "if you have gradients, you should use them!"  Indeed, in neural nets, computing the function value is far more costly than computing a stochastic gradient on an example.
+Would this random search technique work in training neural nets for supervised learning?  The answer depends on how much time you have: if your neural net model has a few million parameters, this finite difference approach would likely need a million times as many iterations as gradient descent. As Nesterov says "if you have gradients, you should use them!"
 
 A deeper question is: why do finite difference methods work well for reinforcement learning in the first place? We'll propose reasons in our next post.  Essentially, model-free reinforcement learning *is* derivative free optimization.  If the only access you have to the behavior of a system is through querying the reward given a policy, you never get derivatives of the reward.  The conceit of classic methods like policy gradient is that they convince you that you are doing gradient descent, but the gradient you descend upon is not the gradient of the function you are trying to optimize!  We will flesh this out in more detail in our next post.
