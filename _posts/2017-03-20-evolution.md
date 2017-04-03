@@ -13,13 +13,13 @@ Following the remarkable success of AlphaGo, there has been a groundswell of int
 
 ## Evolution Strategies is Gradient Ascent
 
-Of course, as optimizers, we think everything is the gradient method.  (But we're totally right!)  Let's look at the Evolutionary Strategies (ES) algorithm proposed in the paper.   The goal is to maximize some reward function $R(x)$ where $x$ is $d$-dimensional.  Their algorithm computes the reward function at small perturbations away from its current state, and then aggregates the returned function values into a new state.  To be precise, they sample a collection of $n$ random directions $\epsilon_i$ to be normally distributed with mean zero and covariance equal to the identity. Then the algorithm updates it state according to the rule.
+ Let's look at the Evolutionary Strategies (ES) algorithm proposed in the paper.   The goal is to maximize some reward function $R(x)$ where $x$ is $d$-dimensional.  Their algorithm computes the reward function at small perturbations away from its current state, and then aggregates the returned function values into a new state.  To be precise, they sample a collection of $n$ random directions $\epsilon_i$ to be normally distributed with mean zero and covariance equal to the identity. Then the algorithm updates it state according to the rule.
 
 $$
 	x_{t+1} = x_{t} + \frac{\alpha}{\sigma n} \sum_{i=1}^n R(x_t + \sigma \epsilon_i) \epsilon_i \,.
 $$
 
-Now, why is this a reasonable update? Let's simplify this and consider the case where $n=1$ first.  In this case, the update reduces to this simple iteration
+Why is this a reasonable update? Let's simplify this and consider the case where $n=1$ first.  In this case, the update reduces to this simple iteration
 
 $$
 	x_{t+1} = x_{t} + \alpha g_\sigma^{(1)}(x_t)
@@ -57,7 +57,7 @@ In the experiments by Salimans et al, they always use $g_\sigma^{(2)}$
 rather than $g_\sigma^{(1)}$.
 They refer to $g_\sigma^{(2)}$ as *antithetic sampling*, a rather clever term from the MCMC literature.  Such antithetic sampling dramatically improves performance in their experiments.
 
-Now this particular algorithm (ES with antithetic sampling) is precisely equivalent to the [derivative-free optimization method](https://link.springer.com/article/10.1007/s10208-015-9296-2) analyzed by Nesterov and Spokoiny in 2010.  Noting this equivalence allows us to explain some of the observed advantages of ES, and to suggest some possible enhancements.
+This particular algorithm (ES with antithetic sampling) is precisely equivalent to the [derivative-free optimization method](https://link.springer.com/article/10.1007/s10208-015-9296-2) analyzed by Nesterov and Spokoiny in 2010.  Noting this equivalence allows us to explain some of the observed advantages of ES, and to suggest some possible enhancements.
 
 ## Reduce your variants
 
@@ -79,9 +79,9 @@ $$
 
 Note that $g_\sigma^{(2)}$ has two fewer terms.  And these terms can be quite detrimental to convergence.  First the $R(x)$-term depends on this nuisance offset $r$. Large values of $r$ essentially tell the algorithm using $g^{(1)}$ that all directions are equivalent.  No optimization algorithm worth its salt should be sensitive to this offset.  Second, the term $\epsilon \epsilon^T Q\epsilon$ has variance proportional to $d^3$ and that is quite undesirable.
 
-Now what happens when we batch, as they do in their paper?  Nesterov does not study this in detail in his 2010 paper. In this case, we have a sum of directions.  In the case that the $\epsilon_i$ were all orthogonal, this would be akin to moving along the gradient in a random subspace.  But if $n$ is much smaller than $d$, this is pretty much exactly what happens: we move along a finite difference approximation to the gradient of $R$ in a random subspace.  So this algorithm is very similar to random coordinate ascent.  And we wouldn't be too surprised if choosing random coordinates rather than random subspace directions performed comparably well on these problems.
+What happens when we batch, as Salimans et al do in their paper?  Nesterov does not study this in detail in his 2010 paper. In this case, we have a sum of directions.  In the case that the $\epsilon_i$ were all orthogonal, this would be akin to moving along the gradient in a random subspace.  But if $n$ is much smaller than $d$, this is pretty much exactly what happens: we move along a finite difference approximation to the gradient of $R$ in a random subspace.  So this algorithm is very similar to random coordinate ascent.  And we wouldn't be too surprised if choosing random coordinates rather than random subspace directions performed comparably well on these problems.
 
-Now this is where things start to get interesting.  In this [excellent tutorial](http://videolectures.net/deeplearning2016_abbeel_deep_reinforcement/?q=abbeel), Pieter Abbeel describes using finite difference methods for solving reinforcement learning.  This is a well-studied idea that, for some reason, fell out of favor as opposed to cross-entropy or policy gradient methods.  We haven't quite figured out *why* it fell out of favor.  But in light of the recent work from OpenAI, perhaps the reason is that the overhead of computing the finite difference approximation on *all* of the coordinates was too costly.  As their experiments show cleanly, using a small subset of the coordinate directions is computationally inexpensive and finds excellent directions to improve reward.
+Now this is where things start to get interesting.  In this [excellent tutorial](http://videolectures.net/deeplearning2016_abbeel_deep_reinforcement/?q=abbeel), Pieter Abbeel describes using finite difference methods for solving reinforcement learning.  This is a well-studied idea that, for some reason, fell out of favor as opposed to cross-entropy or policy gradient methods.  We haven't quite figured out *why* it fell out of favor.  But in light of this recent work from OpenAI, perhaps the reason is that the overhead of computing the finite difference approximation on *all* of the coordinates was too costly.  As the experiments show cleanly, using a small subset of the coordinate directions is computationally inexpensive and finds excellent directions to improve reward on many benchmarks in the OpenAI Gym.
 
 Nesterov's theoretical analysis helps to elucidate how many coordinates one should descend upon.  Nesterov shows that his random search algorithm requires no more than $d$ times the iterations required by the gradient method.  If you minibatch with batch size $m$, the number of iterations goes down by roughly a factor of $m$.  But there are diminishing returns with respect to batch size, and eventually you are better off computing full gradients.  Moreover, even when there is variance reduction, the number of function calls stays the same: each minibatch requires $m$ function evaluations, so the total number of function evaluations is still $d$ times the number of steps required by the gradient method.
 
