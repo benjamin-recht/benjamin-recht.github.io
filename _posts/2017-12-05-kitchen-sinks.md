@@ -27,7 +27,7 @@ To fit a kernel SVM, you normally fit a weighted sum of Radial Basis Functions t
 
 We showed how to approximate a variety of RBF functions and gave bounds for how many random functions you need to approximate them each of them well:
 
-	Slide: claims
+  Slide: claims
 
 And the trick worked amazingly well in practice. But when it came time to compare it against deep nets, we couldn’t find a dataset or code base that we could train or compare against. Machine Learning was just beginning to become reproducible. So even though we’d started all this work to curb the deep net hype in its tracks, we couldn’t find anything to quash. Instead, we compared against boosting and various accelerated SVM techniques, because that’s what was reproducible at the time. To show off how simple this algorithm was, during NIPS, we handed out these leaflets, that explained how to train kernel SVMs with three lines of MATLAB code. A bit of guerilla algorithm marketing:
 
@@ -63,7 +63,7 @@ By this third paper, we’d entirely stopped thinking in terms of kernels, and j
 
 Our original goal had been to compare deep nets against kernel SVMs. We couldn’t do it back then. But code and benchmarks are abundant now, and direct comparisons are easy. Here are some benchmark results from Ben and others who’ve refined the technique.
 
-Slide [collins’ results], [ben’s cifar results], [others]
+  Slide [collins’ results], [ben’s cifar results], [others]
 
 Ben’s CIFAR result was close to the state of the art when it came out, but has since been exceeded by deep nets. The other results continue to be state of the art. Just three lines of MATLAB code.
 
@@ -77,9 +77,9 @@ We produce stunningly impressive results: Self-driving cars seem to be around th
 
 There’s a self-congratulatory feeling in the air.  Andrew Ng goes as far as saying that "artificial intelligence is the new electricity." But we'd like to offer an alternative metaphor: machine learning has become alchemy.
 
-Slide: Alchemy photo
+  Slide: Alchemy photo
 
-Don't get us wron.  Alchemy’s ok. Alchemy’s not bad. There’s a place for alchemy. Alchemy worked.
+Don't get us wrong.  Alchemy’s ok. Alchemy’s not bad. There’s a place for alchemy. Alchemy worked.
 
 ## Alchemy worked
 
@@ -105,7 +105,7 @@ Gradient descent makes great progress early on, then spends the rest of the time
 
 Here’s what a better descent direction would do. This is Levenberg-Marquardt:
 
-Slide: compare against Levenberg-Marquardt
+  Slide: compare against Levenberg-Marquardt
 
 If you haven’t tried optimizing this problem with gradient descent, please spend 10 minutes coding this up.  This is the algorithm we use as our workhorse, and it fails on a completely benign non-contrived problem. You might say “this is a toy problem, gradient descent fits large models well.” First, many of you have experienced otherwise. Second, this is how we build knowledge, we apply our tools to simple problems we can analyze, and work our way up in complexity. We seem to have just jumped our way up.
 
@@ -116,7 +116,7 @@ Slide:
 
 Our training broke. Our error rate went from <25% error to ~99.97% error (on a standard 0-1 binary loss)."
 
-Slide: GPU roundoff errors bug in tensorflow
+  Slide: GPU roundoff errors bug in tensorflow
 
 This happens because we run the wrong optimizers on loss surfaces we don’t understand. Our solution is to add more mystery to an already mysterious scaffolding. Like Batch Norm.
 
@@ -130,7 +130,7 @@ Our community has a new place in society. If any of what I’ve been saying reso
 
 Think about how many experiments you’ve run in the past year to crack a dataset for sport, or to see if a technique would give you a boost. Now think about the experiments you ran to help you find an explanation for a puzzling phenomenon you observed. We do a lot of the former. We could use a lot more of the latter. Simple experiments and simple theorems are the building blocks that help understand complicated larger phenomena.
 
-Slide: "it's easier to train a bi-directional LSTM with attention than it is to compute the SVD of a large matrix".
+  Slide: "it's easier to train a bi-directional LSTM with attention than it is to compute the SVD of a large matrix".
 
 For now, most of our mature large scale computational workhorses are variants of gradient descent. Imagine the kinds of models and optimization algorithms we could explore if we had commodity large scale linear system solvers or matrix factorization engines. We don’t know how to solve this problem yet, but one worth solving. We are the group who can solve it.
 
