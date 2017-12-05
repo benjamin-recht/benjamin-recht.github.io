@@ -25,11 +25,7 @@ To fit a kernel SVM, you normally fit a weighted sum of Radial Basis Functions t
 
 	Slide: kernel approximation.
 
-We showed how to approximate a variety of RBF functions and gave bounds for how many random functions you need to approximate them each of them well:
-
-  Slide: claims
-
-And the trick worked amazingly well in practice. But when it came time to compare it against deep nets, we couldn’t find a dataset or code base that we could train or compare against. Machine Learning was just beginning to become reproducible. So even though we’d started all this work to curb the deep net hype in its tracks, we couldn’t find anything to quash. Instead, we compared against boosting and various accelerated SVM techniques, because that’s what was reproducible at the time. To show off how simple this algorithm was, during NIPS, we handed out these leaflets, that explained how to train kernel SVMs with three lines of MATLAB code. A bit of guerilla algorithm marketing:
+We showed how to approximate a variety of RBF functions and gave bounds for how many random functions you need to approximate them each of them well.  And the trick worked amazingly well in practice! But when it came time to compare it against deep nets, we couldn’t find a dataset or code base that we could train or compare against. Machine Learning was just beginning to become reproducible. So even though we’d started all this work to curb the deep net hype in its tracks, we couldn’t find anything to quash. Instead, we compared against boosting and various accelerated SVM techniques, because that’s what was reproducible at the time. To show off how simple this algorithm was, during NIPS, we handed out these leaflets, that explained how to train kernel SVMs with three lines of MATLAB code. A bit of guerilla algorithm marketing:
 
 	Slide: leaflet
 
@@ -45,27 +41,13 @@ There seems to be something dodgy with the Random Features story we’ve been te
 
 In those days, NIPS had finished transitioning away from what Sam Roweis used to call an “ideas conference”. Around that time, we lived in fear of the tough questions from the NIPS rigor police who’d patrol the poster sessions: I’m talking about Nati Srebro, Ofer Dekel, or Michael Jordan’s students, or god forbid, if you’re unlucky, Shai Ben-David, or Manfred Warmuth.
 
-We decided to submit the paper with this bit of dodginess. But the NIPS rigor police kept us honest. We developed a solid understanding of what was happening. To recap, here’s the algorithm when you strip away all the kernel verbiage around it.
+We decided to submit the paper with this bit of dodginess. But the NIPS rigor police kept us honest. We developed a solid understanding of what was happening.  We draw a set of random functions and combine them into a predictor.
 
-	Slide:  minimize the distortion of a weighted sum of random functions.
-
-We draw a set of random functions iid, then linearly combine them into a predictor that minimize a training loss.
-
-Our second paper said this: In a similar way Fourier functions form a basis for the space of L2 functions, or similar to how wide three layer neural nets can represent any smooth function, random sets of smooth functions, with very high probability, form a basis set for a ball of functions in L2. You don’t need to talk about random features as eigenfunctions for any famous RBF kernels to be sensible. Random functions are a basis set of a Hilbert space that was legitimate by itself:
-
-	Slide: approximation error
-
-In our third paper, we finally analyzed the test error of this algorithm when it’s trained on set of samples.
-
-	Slide: final bound.
+[Our second paper said this:](xxx) In a similar way Fourier functions form a basis for the space of L2 functions, or similar to how wide three layer neural nets can represent any smooth function, random sets of smooth functions, with very high probability, form a basis set for a ball of functions in L2. You don’t need to talk about random features as eigenfunctions for any famous RBF kernels to be sensible. Random functions are a basis set of a Hilbert space that was legitimate by itself. In our [third paper](xxx), we finally analyzed the test error of this algorithm when it’s trained on set of samples.
 
 By this third paper, we’d entirely stopped thinking in terms of kernels, and just fitting random basis function to data. We put on solid foundation the idea of linearly combining random kitchen sinks into a predictor.  Which meant that it didn’t really bother us if we used more features than data points.
 
-Our original goal had been to compare deep nets against kernel SVMs. We couldn’t do it back then. But code and benchmarks are abundant now, and direct comparisons are easy. Here are some benchmark results from Ben and others who’ve refined the technique.
-
-  Slide [collins’ results], [ben’s cifar results], [others]
-
-Ben’s CIFAR result was close to the state of the art when it came out, but has since been exceeded by deep nets. The other results continue to be state of the art. Just three lines of MATLAB code.
+Our original goal had been to compare deep nets against kernel SVMs. We couldn’t do it back then. But code and benchmarks are abundant now, and direct comparisons are easy. Many people are still using random features in their research, and [May el al](xxx) have shown that they get you about the same performance as deep neural networks on speech benchmarks. Just three lines of MATLAB code.
 
 We still sometimes use random features in our day jobs. We like to get creative with special-purpose random features. It’s such an easy thing to try. When they work and we're feeling good about life, we might say “wow, random features are so powerful! They solved this problem!” Or if we're in a more somber mood, we say “that problem was trivial. Even random features cracked it.” It’s the same way we (and Alyosha Efros) think about nearest neighbors. When nearest neighbors cracks a dataset, you either marvel at the power of nearest neighbors, or you conclude your problem wasn’t hard at all. Regardless, it’s an easy trick to try.
 
@@ -129,8 +111,6 @@ Batch Norm is a technique that speeds up gradient descent on deep nets. You spri
 Our community has a new place in society. If any of what I’ve been saying resonates with you, let us suggest some just two ways we can assume our new place responsibly.
 
 Think about how many experiments you’ve run in the past year to crack a dataset for sport, or to see if a technique would give you a boost. Now think about the experiments you ran to help you find an explanation for a puzzling phenomenon you observed. We do a lot of the former. We could use a lot more of the latter. Simple experiments and simple theorems are the building blocks that help understand complicated larger phenomena.
-
-  Slide: "it's easier to train a bi-directional LSTM with attention than it is to compute the SVD of a large matrix".
 
 For now, most of our mature large scale computational workhorses are variants of gradient descent. Imagine the kinds of models and optimization algorithms we could explore if we had commodity large scale linear system solvers or matrix factorization engines. We don’t know how to solve this problem yet, but one worth solving. We are the group who can solve it.
 
