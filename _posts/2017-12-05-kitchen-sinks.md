@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Random Kitchen Sinks
-date:       2017-04-03 7:00:00
+date:       2017-12-04 7:00:00
 summary:    text of the acceptance speech for the NIPS test of time award
 author:     Ben Recht
 visible:    false
