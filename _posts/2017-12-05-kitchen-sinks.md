@@ -13,7 +13,7 @@ Video of Ali giving the talk can be found [here](http://xxx).
 
 Nothing makes you feel old like an award called a “test of time." It’s forcing us to accept our age. We are both old now, and we’ve decided to start this talk accordingly.
 
-## Part 1. Back When We Were Kids·
+## Part 1. Back When We Were Kids
 
 We’re getting this award for the "Random Features for Large-scale Kernel Machines." But this paper was the beginning of a trilogy of sorts. And like all stories worth telling, the good stuff happens in the middle, not at the beginning. If you’ll put up with our old man ways, we’d like to tell you the story of these papers, and take you waaay back to NIPS 2006, when we were young spry men and dinosaurs roamed the earth.
 
