@@ -13,7 +13,7 @@ Video of Ali giving the talk can be found [here](https://www.youtube.com/watch?v
 
 It feels great to get an award. Thank you. But I have to say, nothing makes you feel old like an award called a “test of time”. It’s forcing me to accept my age. Ben and I are both old now, and we’ve decided to name this talk accordingly.
 
-## Back When We Were Kids·
+## Back When We Were Kids
 
 We’re getting this award for [this paper](https://papers.nips.cc/paper/3182-random-features-for-large-scale-kernel-machines).  But this paper was the beginning of a trilogy of sorts. And like all stories worth telling, the good stuff happens in the middle, not at the beginning. If you’ll put up with my old man ways, I’d like to tell you the story of these papers, and take you way back to NIPS 2006, when Ben and I were young spry men and dinosaurs roamed the earth.
 
@@ -37,7 +37,8 @@ We showed how to approximate a variety of RBF functions and gave bounds for how 
 
 And the trick worked amazingly well in practice. But when it came time to compare it against deep nets, we couldn’t find a dataset or code base that we could train or compare against. Machine Learning was just beginning to become reproducible. So even though we’d started all this work to curb the deep net hype in its tracks, we couldn’t find anything to quash. Instead, we compared against boosting and various accelerated SVM techniques, because that’s what was reproducible at the time. To show off how simple this algorithm was, during NIPS, we handed out these leaflets, that explained how to train kernel SVMs with three lines of MATLAB code. A bit of guerilla algorithm marketing:
 
-	Slide: leaflet
+{: .center}
+![Post No Bills](/assets/alchemy/leaflet.jpg)
 
 But there was something shady in this story. According to this bound, which is tight, to approximate a kernel well, say 1% uniform error, you need tens of thousands of random features.  But in all of our experiments, we were getting great results with a only few hundred random features. Sometimes, random feature produced predictors that had better test error than the SVM we were trying to approximate! In other words, it wasn’t necessary to approximate kernels to get good test errors at all.
 
