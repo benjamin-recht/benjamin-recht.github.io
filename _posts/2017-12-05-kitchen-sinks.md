@@ -46,15 +46,15 @@ There seems to be something dodgy with the Random Features story I’ve been tel
 
 ## The NIPS Rigor Police
 
-In those days, NIPS had finished transitioning away from what [Sam Roweis](xxx) used to call an “ideas conference”. Around that time, we lived in fear of the tough questions from the NIPS rigor police who’d patrol the poster sessions: I’m talking about [Nati Srebro](xxx), [Ofer Dekel](xxx), or [Michael Jordan’s](xxx) students, or god forbid, if you’re unlucky, [Shai Ben-David](xxx), or [Manfred Warmuth](xxx).
+In those days, NIPS had finished transitioning away from what [Sam Roweis](https://cs.nyu.edu/~roweis/) used to call an “ideas conference”. Around that time, we lived in fear of the tough questions from the NIPS rigor police who’d patrol the poster sessions: I’m talking about [Nati Srebro](http://ttic.uchicago.edu/~nati/), [Ofer Dekel](xxhttps://www.microsoft.com/en-us/research/people/oferd/x), or [Michael Jordan’s](https://en.wikipedia.org/wiki/Michael_Jordan) students, or god forbid, if you’re unlucky, [Shai Ben-David](https://cs.uwaterloo.ca/~shai/), or, if you're *really* unlucky, [Manfred Warmuth](https://users.soe.ucsc.edu/~manfred/).
 
 We decided to submit the paper with this bit of dodginess. But the NIPS rigor police kept us honest. We developed a solid understanding of what was happening. We draw a set of random functions iid, then linearly combine them into a predictor that minimize a training loss.
 
-[Our second paper](xxx) said this: In a similar way Fourier functions form a basis for the space of L2 functions, or similar to how wide three layer neural nets can represent any smooth function, random sets of smooth functions, with very high probability, form a basis set for a ball of functions in L2. You don’t need to talk about random features as eigenfunctions for any famous RBF kernels to be sensible. Random functions are a basis set of a Hilbert space that was legitimate by itself. In our [third paper](xxx), we finally analyzed the test error of this algorithm when it’s trained on set of samples.
+[Our second paper](https://people.eecs.berkeley.edu/~brecht/papers/08.Rah.Rec.Allerton.pdf) said this: In a similar way Fourier functions form a basis for the space of L2 functions, or similar to how wide three layer neural nets can represent any smooth function, random sets of smooth functions, with very high probability, form a basis set for a ball of functions in L2. You don’t need to talk about random features as eigenfunctions for any famous RBF kernels to be sensible. Random functions are a basis set of a Hilbert space that was legitimate by itself. In our [third paper](https://cs.nyu.edu/~roweis/), we finally analyzed the test error of this algorithm when it’s trained on set of samples.
 
 By this third paper, we’d entirely stopped thinking in terms of kernels, and just fitting random basis function to data. We put on solid foundation the idea of linearly combining random kitchen sinks into a predictor.  Which meant that it didn’t really bother us if we used more features than data points.
 
-Our original goal had been to compare deep nets against kernel SVMs. We couldn’t do it back then. But code and benchmarks are abundant now, and direct comparisons are easy. For example, [Avner May](xxx) and his collaborators have refined the technique and achieved results comparable to deep nets on speech benchmarks.  Again, not bad for just four lines of MATLAB code.
+Our original goal had been to compare deep nets against kernel SVMs. We couldn’t do it back then. But code and benchmarks are abundant now, and direct comparisons are easy. For example, [Avner May](https://arxiv.org/abs/1701.03577) and his collaborators have refined the technique and achieved results comparable to deep nets on speech benchmarks.  Again, not bad for just four lines of MATLAB code.
 
 I sometimes use random features in my job. I like to get creative with special-purpose random features. It’s such an easy thing to try. When they work and I’m feeling good about life, I say “wow, random features are so powerful! They solved this problem!” Or if I’m in a more somber mood, I say “that problem was trivial. Even random features cracked it.” It’s the same way I think about nearest neighbors. When nearest neighbors cracks a dataset, you either marvel at the power of nearest neighbors, or you conclude your problem wasn’t hard at all. Regardless, it’s an easy trick to try.
 
@@ -64,7 +64,7 @@ It’s now 2017. I find myself overwhelmed with the field’s progress. We’ve 
 
 We produce stunningly impressive results: Self-driving cars seem to be around the corner, artificial intelligence tags faces in photos, transcribes voicemails, translates documents, and feeds us ads. Billion-dollar companies are built on machine learning. In many ways, we’re in a better spot than we were 10 years ago. In some ways, we’re in a worse spot.
 
-There’s a self-congratulatory feeling in the air.  [We say things like “machine learning is the new electricity”](xxx). I’d like to offer an alternative metaphor: machine learning has become alchemy.
+There’s a self-congratulatory feeling in the air.  [We say things like “machine learning is the new electricity”](https://medium.com/@Synced/artificial-intelligence-is-the-new-electricity-andrew-ng-cc132ea6264). I’d like to offer an alternative metaphor: machine learning has become alchemy.
 
 {: .center}
 ![alchemy works](/assets/alchemy/alchemy.jpg)
