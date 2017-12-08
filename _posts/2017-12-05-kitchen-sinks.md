@@ -22,6 +22,7 @@ Deep learning had just made a splash at NIPS 2006. The training algorithms were 
 {: .center}
 ![BUT HER EMAILS](/assets/alchemy/emails.png)
 
+# Everything about the kitchen sink
 
 To fit a kernel SVM, you normally fit a weighted sum of Radial Basis Functions to data:
 
