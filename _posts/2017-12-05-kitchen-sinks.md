@@ -102,9 +102,9 @@ If you haven’t tried optimizing this problem with gradient descent, please spe
 
 This pain is real. Here’s an email that landed in my inbox two weeks ago from my friend Boris:
 
-*"On Friday, someone on another team changed the default rounding mode of some Tensorflow internals (from truncation to "round to even").
+*"On Friday, someone on another team changed the default rounding mode of some Tensorflow internals (from truncation to "round to even").*
 
-Our training broke. Our error rate went from <25% error to ~99.97% error (on a standard 0-1 binary loss)."*
+*Our training broke. Our error rate went from <25% error to ~99.97% error (on a standard 0-1 binary loss)."*
 
 This happens because we run the wrong optimizers on loss surfaces we don’t understand. Our solution is to add more mystery to an already mysterious scaffolding. Like Batch Norm.
 
@@ -118,7 +118,7 @@ Our community has a new place in society. If any of what I’ve been saying reso
 
 Think about how many experiments you’ve run in the past year to crack a dataset for sport, or to see if a technique would give you a boost. Now think about the experiments you ran to help you find an explanation for a puzzling phenomenon you observed. We do a lot of the former. We could use a lot more of the latter. Simple experiments and simple theorems are the building blocks that help understand complicated larger phenomena.
 
-## "it's easier to train a bi-directional LSTM with attention than it is to compute the SVD of a large matrix". - Chris Re
+## "It feels easier to train a bi-directional LSTM with attention than to compute the SVD of a large matrix". - Chris Re
 
 For now, most of our mature large scale computational workhorses are variants of gradient descent. Imagine the kinds of models and optimization algorithms we could explore if we had commodity large scale linear system solvers or matrix factorization engines. We don’t know how to solve this problem yet, but one worth solving. We are the group who can solve it.
 
