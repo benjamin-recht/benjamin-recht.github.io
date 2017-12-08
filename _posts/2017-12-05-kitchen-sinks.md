@@ -13,7 +13,7 @@ Video of Ali giving the talk can be found [here](https://www.youtube.com/watch?v
 
 It feels great to get an award. Thank you. But I have to say, nothing makes you feel old like an award called a “test of time”. It’s forcing me to accept my age. Ben and I are both old now, and we’ve decided to name this talk accordingly.
 
-## Back When We Were Kids
+# Back When We Were Kids
 
 We’re getting this award for [this paper](https://papers.nips.cc/paper/3182-random-features-for-large-scale-kernel-machines).  But this paper was the beginning of a trilogy of sorts. And like all stories worth telling, the good stuff happens in the middle, not at the beginning. If you’ll put up with my old man ways, I’d like to tell you the story of these papers, and take you way back to NIPS 2006, when Ben and I were young spry men and dinosaurs roamed the earth.
 
@@ -58,7 +58,7 @@ Our original goal had been to compare deep nets against kernel SVMs. We couldn�
 
 I sometimes use random features in my job. I like to get creative with special-purpose random features. It’s such an easy thing to try. When they work and I’m feeling good about life, I say “wow, random features are so powerful! They solved this problem!” Or if I’m in a more somber mood, I say “that problem was trivial. Even random features cracked it.” It’s the same way I think about nearest neighbors. When nearest neighbors cracks a dataset, you either marvel at the power of nearest neighbors, or you conclude your problem wasn’t hard at all. Regardless, it’s an easy trick to try.
 
-## KIDS THESE DAYS
+# KIDS THESE DAYS
 
 It’s now 2017. I find myself overwhelmed with the field’s progress. We’ve become reproducible. We share code freely and use common benchmarks, thanks to GitHub, AWS, Tensorflow, PyTorch, and standardized competitions.
 
@@ -87,13 +87,16 @@ I bet a lot of you have tried training a deep net of your own from scratch and w
 
 I don’t think it’s your fault. I think it’s gradient descent’s fault. I’m going to run gradient descent on the simplest deep net you can imagine, a two layer deep net with linear activations and where the labels are a badly-conditioned linear function of the input.
 
-	Slide: loss function, and graph
+$$
+\min_{W_1,W_2} \hat{\mathbb{E}}_x \| W_1 W_2 x - A x\|^2
+$$
 
-Gradient descent makes great progress early on, then spends the rest of the time making almost no progress at all. You might think this it’s hit a local minimum. It hasn’t. The gradients aren’t decaying to 0. You might say it’s hitting a statistical noise floor of the dataset. That’s not it either. I can compute the expectation of the loss and minimize it directly with gradient descent. Same thing happens. Gradient descent just slows down the closer it gets to a good answer. If you’ve ever trained Inception on ImageNet, you’ll know that gradient descent gets through this regime in a few hours, and takes days to crawl through this regime.
+{: .center}
+![Not all algorithms are created equal](/assets/alchemy/algorithms.jpg)
 
-Here’s what a better descent direction would do. This is Levenberg-Marquardt:
+Here, the condition number of A is $10^{20}$. Gradient descent makes great progress early on, then spends the rest of the time making almost no progress at all. You might think this it’s hit a local minimum. It hasn’t. The gradients aren’t decaying to 0. You might say it’s hitting a statistical noise floor of the dataset. That’s not it either. I can compute the expectation of the loss and minimize it directly with gradient descent. Same thing happens. Gradient descent just slows down the closer it gets to a good answer. If you’ve ever trained Inception on ImageNet, you’ll know that gradient descent gets through this regime in a few hours, and takes days to crawl through this regime.
 
-	Slide: compare against Levenberg-Marquardt
+The black line is what a better descent direction would do. This is Levenberg-Marquardt.
 
 If you haven’t tried optimizing this problem with gradient descent, please spend 10 minutes coding this up.  This is the algorithm we use as our workhorse, and it fails on a completely benign non-contrived problem. You might say “this is a toy problem, gradient descent fits large models well.” First, everyone who raised their hands a minute ago would say otherwise. Secondly, this is how we build knowledge, we apply our tools to simple problems we can analyze, and work our way up in complexity. We seem to have just jumped our way up.
 
@@ -109,13 +112,13 @@ This happens because we run the wrong optimizers on loss surfaces we don’t und
 
 Batch Norm is a technique that speeds up gradient descent on deep nets. You sprinkle it between your layers and gradient descent goes faster. I think it’s ok to use techniques we don’t understand. I only vaguely understand how an airplane works, and I was fine taking one to this conference. But it’s always better if we build systems on top of things we do understand deeply? This is what we know about why batch norm works well. But don’t you want to understand why reducing internal covariate shift speeds up gradient descent? Don’t you want to see evidence that Batch Norm reduces internal covariate shift? Don’t you want to know what internal covariate shift is? Batch Norm has become a foundational operation for machine learning. It works amazingly well. But we know almost nothing about it.
 
-# Conclusion of a Curmudgeon
+## What’d Your Mother Say?
 
 Our community has a new place in society. If any of what I’ve been saying resonates with you, let me suggest some just two ways we can assume our new place responsibly.
 
 Think about how many experiments you’ve run in the past year to crack a dataset for sport, or to see if a technique would give you a boost. Now think about the experiments you ran to help you find an explanation for a puzzling phenomenon you observed. We do a lot of the former. We could use a lot more of the latter. Simple experiments and simple theorems are the building blocks that help understand complicated larger phenomena.
 
-	Slide: "it's easier to train a bi-directional lstm with attention than it is to compute the SVD of a large matrix". - Chris Re
+	Slide: "it's easier to train a bi-directional LSTM with attention than it is to compute the SVD of a large matrix". - Chris Re
 
 For now, most of our mature large scale computational workhorses are variants of gradient descent. Imagine the kinds of models and optimization algorithms we could explore if we had commodity large scale linear system solvers or matrix factorization engines. We don’t know how to solve this problem yet, but one worth solving. We are the group who can solve it.
 
