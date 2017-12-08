@@ -66,7 +66,8 @@ We produce stunningly impressive results: Self-driving cars seem to be around th
 
 There’s a self-congratulatory feeling in the air.  [We say things like “machine learning is the new electricity”](xxx). I’d like to offer an alternative metaphor: machine learning has become alchemy.
 
-	Slide: Alchemy photo
+{: .center}
+![alchemy works](/assets/alchemy/alchemy.jpg)
 
 Alchemy’s ok. Alchemy’s not bad. There’s a place for alchemy. Alchemy worked.
 
