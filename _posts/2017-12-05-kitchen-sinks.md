@@ -19,7 +19,9 @@ We’re getting this award for [this paper](https://papers.nips.cc/paper/3182-ra
 
 Deep learning had just made a splash at NIPS 2006. The training algorithms were complicated, and results were competitive with linear models like PCA and linear SVMs. In a hallway conversation, people were speculating how they’d fare against kernel SVMs. But at the time, there was no easy way to train kernel SVMs on large datasets. Ben and I had both been working on randomized algorithms (me for bipartite graph matching, Ben for compressed sensing), so after we got home, it took us just two emails to nail down the idea for how to train large kernel SVMs. These emails became the first paper:
 
-	Slide: The emails.
+{: .center}
+![BUT HER EMAILS](/assets/alchemy/emails.png)
+
 
 To fit a kernel SVM, you normally fit a weighted sum of Radial Basis Functions to data:
 
