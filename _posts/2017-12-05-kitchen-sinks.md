@@ -100,11 +100,11 @@ The black line is what a better descent direction would do. This is Levenberg-Ma
 
 If you haven’t tried optimizing this problem with gradient descent, please spend 10 minutes coding this up.  This is the algorithm we use as our workhorse, and it fails on a completely benign non-contrived problem. You might say “this is a toy problem, gradient descent fits large models well.” First, everyone who raised their hands a minute ago would say otherwise. Secondly, this is how we build knowledge, we apply our tools to simple problems we can analyze, and work our way up in complexity. We seem to have just jumped our way up.
 
-This pain is real. Here’s an email that landed in my inbox two weeks ago:
+This pain is real. Here’s an email that landed in my inbox two weeks ago from my friend Boris:
 
-	Slide: "On Friday, someone on another team changed the default rounding mode of some Tensorflow internals (from truncation to "round to even").
+*"On Friday, someone on another team changed the default rounding mode of some Tensorflow internals (from truncation to "round to even").
 
-	Our training broke. Our error rate went from <25% error to ~99.97% error (on a standard 0-1 binary loss)."
+Our training broke. Our error rate went from <25% error to ~99.97% error (on a standard 0-1 binary loss)."*
 
 This happens because we run the wrong optimizers on loss surfaces we don’t understand. Our solution is to add more mystery to an already mysterious scaffolding. Like Batch Norm.
 
@@ -112,13 +112,13 @@ This happens because we run the wrong optimizers on loss surfaces we don’t und
 
 Batch Norm is a technique that speeds up gradient descent on deep nets. You sprinkle it between your layers and gradient descent goes faster. I think it’s ok to use techniques we don’t understand. I only vaguely understand how an airplane works, and I was fine taking one to this conference. But it’s always better if we build systems on top of things we do understand deeply? This is what we know about why batch norm works well. But don’t you want to understand why reducing internal covariate shift speeds up gradient descent? Don’t you want to see evidence that Batch Norm reduces internal covariate shift? Don’t you want to know what internal covariate shift is? Batch Norm has become a foundational operation for machine learning. It works amazingly well. But we know almost nothing about it.
 
-## What’d Your Mother Say?
+# What’d Your Mother Say?
 
 Our community has a new place in society. If any of what I’ve been saying resonates with you, let me suggest some just two ways we can assume our new place responsibly.
 
 Think about how many experiments you’ve run in the past year to crack a dataset for sport, or to see if a technique would give you a boost. Now think about the experiments you ran to help you find an explanation for a puzzling phenomenon you observed. We do a lot of the former. We could use a lot more of the latter. Simple experiments and simple theorems are the building blocks that help understand complicated larger phenomena.
 
-	Slide: "it's easier to train a bi-directional LSTM with attention than it is to compute the SVD of a large matrix". - Chris Re
+## "it's easier to train a bi-directional LSTM with attention than it is to compute the SVD of a large matrix". - Chris Re
 
 For now, most of our mature large scale computational workhorses are variants of gradient descent. Imagine the kinds of models and optimization algorithms we could explore if we had commodity large scale linear system solvers or matrix factorization engines. We don’t know how to solve this problem yet, but one worth solving. We are the group who can solve it.
 
