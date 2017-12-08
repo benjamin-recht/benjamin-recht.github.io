@@ -9,13 +9,13 @@ visible:    false
 
 *Ed. Note: Ali Rahimi and I won the test of time award at NIPS 2017 for our paper "Random Features for Large-scale Kernel Machines".  This post is the text of Ali's totally epic acceptance speech.*
 
-Video of Ali giving the talk can be found [here](http://xxx).
+Video of Ali giving the talk can be found [here](https://www.youtube.com/watch?v=Qi1Yry33TQE).
 
 It feels great to get an award. Thank you. But I have to say, nothing makes you feel old like an award called a “test of time”. It’s forcing me to accept my age. Ben and I are both old now, and we’ve decided to name this talk accordingly.
 
 ## Back When We Were Kids·
 
-We’re getting this award for [this paper](xxx).  But this paper was the beginning of a trilogy of sorts. And like all stories worth telling, the good stuff happens in the middle, not at the beginning. If you’ll put up with my old man ways, I’d like to tell you the story of these papers, and take you waaay back to NIPS 2006, when Ben and I were young spry men and dinosaurs roamed the earth.
+We’re getting this award for [this paper](https://papers.nips.cc/paper/3182-random-features-for-large-scale-kernel-machines).  But this paper was the beginning of a trilogy of sorts. And like all stories worth telling, the good stuff happens in the middle, not at the beginning. If you’ll put up with my old man ways, I’d like to tell you the story of these papers, and take you way back to NIPS 2006, when Ben and I were young spry men and dinosaurs roamed the earth.
 
 Deep learning had just made a splash at NIPS 2006. The training algorithms were complicated, and results were competitive with linear models like PCA and linear SVMs. In a hallway conversation, people were speculating how they’d fare against kernel SVMs. But at the time, there was no easy way to train kernel SVMs on large datasets. Ben and I had both been working on randomized algorithms (me for bipartite graph matching, Ben for compressed sensing), so after we got home, it took us just two emails to nail down the idea for how to train large kernel SVMs. These emails became the first paper:
 
@@ -23,11 +23,15 @@ Deep learning had just made a splash at NIPS 2006. The training algorithms were 
 
 To fit a kernel SVM, you normally fit a weighted sum of Radial Basis Functions to data:
 
-	RBF
+$$ f(x;\alpha) = \sum_{i=1}^N \alpha_i k(x, x_i) $$
 
 We showed how to approximate each of these basis functions in turn as a sum of some random functions that did not depend on the data:
 
-A linear combination of a linear combination is another linear combination, but with this new linear combination has many fewer parameters:
+$$ k(x,x') \approx \sum_{j=1}^D z(x;\omega_j) z(x'; \omega_j) $$
+
+A linear combination of a linear combination is another linear combination, but with this new linear combination has many fewer ($D$) parameters:
+
+$$ f(x;\alpha) \approx \sum_{j=1}^D \beta_i z(x;\omega_j) $$
 
 We showed how to approximate a variety of RBF functions and gave bounds for how many random functions you need to approximate them each of them well.
 
