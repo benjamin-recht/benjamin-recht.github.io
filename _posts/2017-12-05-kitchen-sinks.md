@@ -36,7 +36,7 @@ A linear combination of a linear combination is another linear combination, but 
 
 $$ f(x;\alpha) \approx \sum_{j=1}^D \beta_i z(x;\omega_j) $$
 
-We showed how to approximate a variety of RBF functions and gave bounds for how many random functions you need to approximate them each of them well.
+We showed how to approximate a variety of radial basis functions and gave bounds for how many random functions you need to approximate them each of them well.
 
 And the trick worked amazingly well in practice. But when it came time to compare it against deep nets, we couldn’t find a dataset or code base that we could train or compare against. Machine Learning was just beginning to become reproducible. So even though we’d started all this work to curb the deep net hype in its tracks, we couldn’t find anything to quash. Instead, we compared against boosting and various accelerated SVM techniques, because that’s what was reproducible at the time. To show off how simple this algorithm was, during NIPS, we handed out these leaflets, that explained how to train kernel SVMs with three lines of MATLAB code. A bit of guerilla algorithm marketing:
 
@@ -63,7 +63,7 @@ I sometimes use random features in my job. I like to get creative with special-p
 
 # KIDS THESE DAYS
 
-It’s now 2017. I find myself overwhelmed with the field’s progress. We’ve become reproducible. We share code freely and use common benchmarks, thanks to GitHub, AWS, Tensorflow, PyTorch, and standardized competitions.
+It’s now 2017. I find myself overwhelmed with the field’s progress. We’ve become reproducible. We share code freely and use common task benchmarks.
 
 We produce stunningly impressive results: Self-driving cars seem to be around the corner, artificial intelligence tags faces in photos, transcribes voicemails, translates documents, and feeds us ads. Billion-dollar companies are built on machine learning. In many ways, we’re in a better spot than we were 10 years ago. In some ways, we’re in a worse spot.
 
@@ -78,9 +78,9 @@ Alchemy’s ok. Alchemy’s not bad. There’s a place for alchemy. Alchemy work
 
 Alchemists invented metallurgy, ways to make medication, dying techniques for textiles, and our modern glass-making processes.  
 
-Then again, alchemists also believed they could transmute base metals into gold and that leeches were a fine way to cure diseases. To reach the sea change in our understanding of the universe that the physics and chemistry of the 1700s ushered in, all the theories alchemists developed had to be abandoned.
+Then again, alchemists also believed they could transmute base metals into gold and that leeches were a fine way to cure diseases. To reach the sea change in our understanding of the universe that the physics and chemistry of the 1700s ushered in, most of the theories alchemists developed had to be abandoned.
 
-If you’re building photo sharing services, alchemy is fine. But we’re now building systems that govern health care and our participation in civil debate. I would like to live in a world whose systems are build on rigorous, reliable, verifiable knowledge, and not on alchemy. As annoying as the NIPS rigor police was, I wish it would come back.
+If you’re building photo sharing services, alchemy is fine. But we’re now building systems that govern health care and our participation in civil debate. I would like to live in a world whose systems are build on rigorous, reliable, verifiable knowledge, and not on alchemy. As aggravating as the NIPS rigor police was, I wish it would come back.
 
 I’ll give you an example of where this hurts us.
 
@@ -101,7 +101,7 @@ Here, the condition number of A is $10^{20}$. Gradient descent makes great progr
 
 The black line is what a better descent direction would do. This is Levenberg-Marquardt.
 
-If you haven’t tried optimizing this problem with gradient descent, please spend 10 minutes coding this up.  This is the algorithm we use as our workhorse, and it fails on a completely benign non-contrived problem. You might say “this is a toy problem, gradient descent fits large models well.” First, everyone who raised their hands a minute ago would say otherwise. Secondly, this is how we build knowledge, we apply our tools to simple problems we can analyze, and work our way up in complexity. We seem to have just jumped our way up.
+If you haven’t tried optimizing this problem with gradient descent, please spend 10 minutes coding this up or [try out this python notebook](https://colab.research.google.com/notebook#fileId=1GTaKfemaN3MsVJAvy8KcF1Kj37VdTRXO).  This is the algorithm we use as our workhorse, and it fails on a completely benign non-contrived problem. You might say “this is a toy problem, gradient descent fits large models well.” First, everyone who raised their hands a minute ago would say otherwise. Secondly, this is how we build knowledge, we apply our tools to simple problems we can analyze, and work our way up in complexity. We seem to have just jumped our way up.
 
 This pain is real. Here’s an email that landed in my inbox two weeks ago from my friend Boris:
 
@@ -120,8 +120,10 @@ Our community has a new place in society. If any of what I’ve been saying reso
 
 Think about how many experiments you’ve run in the past year to crack a dataset for sport, or to see if a technique would give you a boost. Now think about the experiments you ran to help you find an explanation for a puzzling phenomenon you observed. We do a lot of the former. We could use a lot more of the latter. Simple experiments and simple theorems are the building blocks that help understand complicated larger phenomena.
 
-## "It feels easier to train a bi-directional LSTM with attention than to compute the SVD of a large matrix". - Chris Re
+## "It seems easier to train a bi-directional LSTM with attention than to compute the SVD of a large matrix". - Chris Re
 
 For now, most of our mature large scale computational workhorses are variants of gradient descent. Imagine the kinds of models and optimization algorithms we could explore if we had commodity large scale linear system solvers or matrix factorization engines. We don’t know how to solve this problem yet, but one worth solving. We are the group who can solve it.
 
 Over the years, some of my dearest friends and strongest relationships have emerged from this community. My gratitude and love for this group are sincere, and that’s why I’m up here asking us to be rigorous, less alchemical. Ben and I are grateful for the award, and the opportunity to have gotten to know many of you.  And we hope that you’ll join us to grow machine learning beyond alchemy into electricity.
+
+# Postscript
