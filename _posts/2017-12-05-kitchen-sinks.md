@@ -105,11 +105,10 @@ If you haven’t tried optimizing this problem with gradient descent, please spe
 
 This pain is real. Here’s an email that landed in my inbox two weeks ago from my friend Boris:
 
-*"On Friday, someone on another team changed the default rounding mode of some Tensorflow internals (from truncation to "round to even").*
+{: .center}
+![0.999 = / = 1](/assets/alchemy/email_ba.png)
 
-*Our training broke. Our error rate went from <25% error to ~99.97% error (on a standard 0-1 binary loss)."*
-
-This happens because we run the wrong optimizers on loss surfaces we don’t understand. Our solution is to add more mystery to an already mysterious scaffolding. Like Batch Norm.
+This experience is not unique. There are [numerous](https://github.com/tensorflow/tensorflow/issues/2732) [bugs](https://github.com/tensorflow/tensorflow/issues/2226) [like](https://github.com/fchollet/keras/issues/1244) [this](https://www.twosigma.com/insights/a-workaround-for-non-determinism-in-tensorflow) out there on various forums. This happens because we run the wrong optimizers on loss surfaces we don’t understand. Our solution is to add more mystery to an already mysterious scaffolding. Like Batch Norm.
 
 ## Reducing internal covariate shift
 
