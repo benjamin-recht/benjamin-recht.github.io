@@ -3,7 +3,7 @@ layout:     post
 title:      Nesterov's Punctuated Equilibrium
 date:       2017-04-03 7:00:00
 summary:    connecting genetic algorithms with nonlinear programming
-author:     Ben Recht
+author:     Roy Frostig and Ben Recht
 visible:    true
 ---
 
