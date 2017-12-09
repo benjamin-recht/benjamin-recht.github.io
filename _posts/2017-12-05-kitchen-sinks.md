@@ -7,7 +7,7 @@ author:     Ben Recht
 visible:    false
 ---
 
-*Ed. Note: Ali Rahimi and I won the test of time award at NIPS 2017 for our paper "Random Features for Large-scale Kernel Machines".  This post is the text of Ali's totally epic acceptance speech.*
+*Ed. Note: Ali Rahimi and I won the test of time award at NIPS 2017 for our paper "Random Features for Large-scale Kernel Machines".  This post is the text of the acceptance speech Ali and I wrote.*
 
 Video of Ali giving the talk can be found [here](https://www.youtube.com/watch?v=Qi1Yry33TQE).
 
