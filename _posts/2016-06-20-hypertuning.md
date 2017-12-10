@@ -3,7 +3,7 @@ layout:     post
 title:      The News on Auto-tuning
 date:       2016-06-20 7:00:00
 summary:    Why do I have so many parameters?
-author:     Ben Recht
+author:     Kevin Jamieson and Ben Recht
 visible:    true
 ---
 
