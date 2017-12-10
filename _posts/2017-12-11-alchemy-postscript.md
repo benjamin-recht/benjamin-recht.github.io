@@ -7,7 +7,7 @@ author:     Ali Rahimi and Ben Recht
 visible:    false
 ---
 
-*This post is a postscript to our [“test of time” talk at NIPS 2017](xxx).*
+*This post is a postscript to our [“test of time” talk at NIPS 2017](http://www.argmin.net/2017/12/05/kitchen-sinks/).*
 
 We’d like to expand on a few points about our talk last week. Many friends had lamented the growing gap between our practical successes in the past few years and our understanding. There is no single root cause for this gap, and therefore there isn’t a single solution. Many of us have felt bulldozed by the pressure of competing on benchmarks instead of developing an understanding. We decided that the way forward was to give ourselves a voice. We wanted to equip ourselves and the community with a few simple key phrases to use during our meetings with our collaborators, our bosses, our funding agencies, and our mentees. These phrases were “rigor”, “alchemy”, “simple theorems”, and “simple experiments”.
 
