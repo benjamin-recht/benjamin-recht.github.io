@@ -11,6 +11,8 @@ visible:    false
 
 *Video of the talk can be found [here](https://www.youtube.com/watch?v=Qi1Yry33TQE).*
 
+*A postscript with some of our reflections can be found [here](http://www.argmin.net/2017/12/11/alchemy-postscript/)*
+
 It feels great to get an award. Thank you. But I have to say, nothing makes you feel old like an award called a “test of time”. It’s forcing me to accept my age. Ben and I are both old now, and we’ve decided to name this talk accordingly.
 
 # Back When We Were Kids
