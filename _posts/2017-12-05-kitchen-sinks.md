@@ -7,9 +7,9 @@ author:     Ali Rahimi and Ben Recht
 visible:    false
 ---
 
-*Ed. Note: Ali Rahimi and I won the test of time award at NIPS 2017 for our paper "Random Features for Large-scale Kernel Machines".  This post is the text of the acceptance speech Ali and I wrote.*
+*Ed. Note: Ali Rahimi and I won the test of time award at NIPS 2017 for our paper "Random Features for Large-scale Kernel Machines".  This post is the text of the acceptance speech we wrote.  A postscript with some reflections on this talk appears in the [following post](xxx).*
 
-Video of the talk can be found [here](https://www.youtube.com/watch?v=Qi1Yry33TQE).
+*Video of the talk can be found [here](https://www.youtube.com/watch?v=Qi1Yry33TQE).*
 
 It feels great to get an award. Thank you. But I have to say, nothing makes you feel old like an award called a “test of time”. It’s forcing me to accept my age. Ben and I are both old now, and we’ve decided to name this talk accordingly.
 
