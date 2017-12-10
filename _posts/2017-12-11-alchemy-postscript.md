@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Random Kitchen Sinks
+title:      All in all is all we are
 date:       2017-12-11 7:00:00
 summary:    a postscript to our NIPS 2017 presentation
 author:     Ali Rahimi and Ben Recht
