@@ -4,7 +4,7 @@ title:      Reflections on Random Kitchen Sinks
 date:       2017-12-05 7:00:00
 summary:    text of the acceptance speech for the NIPS test of time award
 author:     Ali Rahimi and Ben Recht
-visible:    false
+visible:    true
 ---
 
 *Ed. Note: Ali Rahimi and I won the test of time award at NIPS 2017 for our paper "Random Features for Large-scale Kernel Machines".  This post is the text of the acceptance speech we wrote.  An addendum with some reflections on this talk appears in the [following post](http://www.argmin.net/2017/12/11/alchemy-addendum/).*
