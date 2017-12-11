@@ -7,7 +7,7 @@ author:     Ali Rahimi and Ben Recht
 visible:    false
 ---
 
-*Ed. Note: Ali Rahimi and I won the test of time award at NIPS 2017 for our paper "Random Features for Large-scale Kernel Machines".  This post is the text of the acceptance speech we wrote.  A postscript with some reflections on this talk appears in the [following post](http://www.argmin.net/2017/12/11/alchemy-postscript/).*
+*Ed. Note: Ali Rahimi and I won the test of time award at NIPS 2017 for our paper "Random Features for Large-scale Kernel Machines".  This post is the text of the acceptance speech we wrote.  An addendum with some reflections on this talk appears in the [following post](http://www.argmin.net/2017/12/11/alchemy-addendum/).*
 
 *Video of the talk can be found [here](https://www.youtube.com/watch?v=Qi1Yry33TQE).*
 
