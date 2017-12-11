@@ -125,5 +125,3 @@ Think about how many experiments you’ve run in the past year to crack a datase
 For now, most of our mature large scale computational workhorses are variants of gradient descent. Imagine the kinds of models and optimization algorithms we could explore if we had commodity large scale linear system solvers or matrix factorization engines. We don’t know how to solve this problem yet, but one worth solving. We are the group who can solve it.
 
 Over the years, some of my dearest friends and strongest relationships have emerged from this community. My gratitude and love for this group are sincere, and that’s why I’m up here asking us to be rigorous, less alchemical. Ben and I are grateful for the award, and the opportunity to have gotten to know many of you.  And we hope that you’ll join us to grow machine learning beyond alchemy into electricity.
-
-# Postscript
