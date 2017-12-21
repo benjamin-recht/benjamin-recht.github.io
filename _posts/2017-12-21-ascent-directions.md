@@ -1,10 +1,10 @@
 ---
 layout:     post
 title:      Directions of Ascent
-date:       2017-12-20 7:00:00
+date:       2017-12-21 0:00:00
 summary:    BIG DATA can rise again.
 author:     Ben Recht
-visible:    false
+visible:    true
 ---
 
 Last November was a dramatic wake-up call to many of us in information technology, and I’ve spent a large part of the last year learning about how I and others in similar positions can help to fix the mess that tech has enabled.
