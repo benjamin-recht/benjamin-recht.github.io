@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Directions of Ascent
-date:       2017-12-21 0:00:00
+date:       2017-12-21 00:00:00
 summary:    BIG DATA can rise again.
 author:     Ben Recht
 visible:    true
