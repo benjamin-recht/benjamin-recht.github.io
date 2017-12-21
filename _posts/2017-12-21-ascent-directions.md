@@ -17,7 +17,7 @@ Below are a few thoughts on what we can all do as individuals based on what I’
 
 When a technology increases its capability to impact humans, it's a moral issue. Ethics is now an unavoidable part of information technology, and should be covered in depth in *any course* on the subject. It should not be relegated to a one-off ethics course for undergrads to blow off.
 
-I had taken ethics training as a post-doc when I was involved in human subjects research, but I refreshed my familiarity this year, and it was shocking how many of the issues are so relevant to computing and yet ignored by many oblivious computer scientists.
+I had taken IRB training as a post-doc when I was involved in human subjects research, but I refreshed my familiarity this year, and it was shocking how many of the issues are so relevant to computing and yet ignored by many oblivious computer scientists.
 
 I’d encourage everyone out there with an “edu” address to take their university’s training on ethical research with human subjects. If you don’t have an “edu” address, read Chapter 6 in Matt Salganik’s great new book [“Bit by Bit”](http://www.bitbybitbook.com/en/ethics/).  These standard principles are drawn from reflections on mistakes and ethical lapses by scientists and statisticians, particularly during and after the second world war.  The ideas are straightforward but easy to overlook when pressured by a deadline: all interactions must minimize risk to people and must have some possibility of human benefit. All researchers must respect the law rather than try to subvert it.  All research must promote justice.
 
