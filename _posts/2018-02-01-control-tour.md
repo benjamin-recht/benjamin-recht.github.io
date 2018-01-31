@@ -25,16 +25,16 @@ $$
 
 Here $f$ is a deterministic function that tells us what the next state will be given the current state, the current input, and an error signal $e_t$.  $e_t$ could be random noise in the system or a systematic error in the model.  For simplicity, let’s assume for now that the $e_t$ is random.
 
-_Optimal control_ asks to find a set of inputs that minimizes some objective. We assume that at every time, we receive some reward for our current $x_t$ and $u_t$ and we want to maximize this reward.In math terms, we aim to solve the optimization problem
+_Optimal control_ asks to find a set of inputs that minimizes some objective. We assume that at every time, we receive some reward for our current $x_t$ and $u_t$ and we want to maximize this reward. In math terms, we aim to solve the optimization problem
 
 $$
 \begin{array}{ll}
-\mbox{maximize} & \mathbb{E}_{e}[ \sum_{t=0}^T R_t[x_t,u_t] ]\\
+\mbox{maximize} & \mathbb{E}_{e}[ \sum_{t=0}^N R_t[x_t,u_t] ]\\
 \mbox{subject to} &	x_{t+1} = f(x_t, u_t, e_t)
 \end{array}
 $$
 
-That is, we aim to maximize the expected reward with respect to the control sequence $u_t$,  subject to the dynamics specified by the state transition rule $f$. If you are an optimization person, you are now ready to be a controls engineer: model your problem into an optimal control problem and then call your favorite solver. Problem solved! This sounds like I’m joking, but there is a large set of control problems that are solved in precisely such a manner. And one of the earliest algorithms devised to solve them was [back propagation](http://www.argmin.net/2016/05/18/mates-of-costate/).
+That is, we aim to maximize the expected reward over $N$ time steps with respect to the control sequence $u_t$, subject to the dynamics specified by the state transition rule $f$. If you are an optimization person, you are now ready to be a controls engineer: model your problem into an optimal control problem and then call your favorite solver. Problem solved! This sounds like I’m joking, but there is a large set of control problems that are solved in precisely such a manner. And one of the earliest algorithms devised to solve them was [back propagation](http://www.argmin.net/2016/05/18/mates-of-costate/).
 
 Another important example of $f$ is that of a _Markov Decision Process_ (MDP). Here x_t takes on discrete values. $u_t$ is a discrete control action. $x_t$ and $u_t$ together determine the probability distribution of $x_{t+1}$.  In MDP, everything can be written out as probability tables, and the problem can be solved via dynamic programming.
 
