@@ -29,12 +29,12 @@ _Optimal control_ asks to find a set of inputs that minimizes some objective. We
 
 $$
 \begin{array}{ll}
-\maximize & \E_{e}[ \tfrac{1}{T} \sum_{t=0}^T R_t[x_t,u_t] ]
-\st &	x_{t+1} = f(x_t, u_t, e_t)
+\mbox{maximize} & \E_{e}[ \tfrac{1}{T} \sum_{t=0}^T R_t[x_t,u_t] ]
+\mbox{subject to} &	x_{t+1} = f(x_t, u_t, e_t)
 \end{array}
 $$
 
-If you are an optimization person, you are now ready to be a controls engineer: model your problem into an optimal control problem and then call your favorite solver. Problem solved! This sounds like I’m joking, but there is a large set of control problems that are solved in precisely such a manner. And one of the earliest algorithms devised to solve them was [back propagation](http://www.argmin.net/2016/05/18/mates-of-costate/).
+That is, we aim to maximize the expected reward with respect to the control sequence $u_t$,  subject to the dynamics specified by the state transition rule $f$. If you are an optimization person, you are now ready to be a controls engineer: model your problem into an optimal control problem and then call your favorite solver. Problem solved! This sounds like I’m joking, but there is a large set of control problems that are solved in precisely such a manner. And one of the earliest algorithms devised to solve them was [back propagation](http://www.argmin.net/2016/05/18/mates-of-costate/).
 
 Another important example of $f$ is that of a _Markov Decision Process_ (MDP). Here x_t takes on discrete values. $u_t$ is a discrete control action. $x_t$ and $u_t$ together determine the probability distribution of $x_{t+1}$.  In MDP, everything can be written out as probability tables, and the problem can be solved via dynamic programming.
 
