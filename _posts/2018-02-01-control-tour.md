@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Total Control
-date:       2018-02-01 0:02:00
+date:       2018-01-30 0:00:00
 summary:    An outsider tour of reinforcement learning, Part 2. RL as optimal control.
 author:     Benjamin Recht
 visible:    false
