@@ -36,7 +36,7 @@ $$
 
 That is, we aim to maximize the expected reward over $N$ time steps with respect to the control sequence $u_t$, subject to the dynamics specified by the state transition rule $f$. If you are an optimization person, you are now ready to be a controls engineer: model your problem into an optimal control problem and then call your favorite solver. Problem solved! This sounds like I’m joking, but there is a large set of control problems that are solved in precisely such a manner. And one of the earliest algorithms devised to solve them was [back propagation](http://www.argmin.net/2016/05/18/mates-of-costate/).
 
-Another important example of $f$ is that of a _Markov Decision Process_ (MDP). Here x_t takes on discrete values. $u_t$ is a discrete control action. $x_t$ and $u_t$ together determine the probability distribution of $x_{t+1}$.  In MDP, everything can be written out as probability tables, and the problem can be solved via dynamic programming.
+Another important example of $f$ is that of a _Markov Decision Process_ (MDP). Here $x_t$ takes on discrete values. $u_t$ is a discrete control action. $x_t$ and $u_t$ together determine the probability distribution of $x_{t+1}$.  In MDP, everything can be written out as probability tables, and the problem can be solved via dynamic programming.
 
 Now let’s bring learning into this picture.  What happens when we don’t know $f$? In our quadrotor example, we might not know the force output by our propellers given a control voltage. Or we could have something considerably more complicated: we might have a massive data center with complex heat transfer interactions between the servers and the cooling systems.
 
