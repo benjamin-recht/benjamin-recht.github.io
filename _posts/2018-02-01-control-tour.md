@@ -4,7 +4,7 @@ title:      Total Control
 date:       2018-02-01 0:00:00
 summary:    An outsider tour of reinforcement learning, Part 2. RL as optimal control.
 author:     Benjamin Recht
-visible:    false
+visible:    true
 ---
 
 In addition to the reasons I’ve discussed so far, I’ve been fascinated with the resurgence in reinforcement learning because it operates at the intersection of two areas I love: machine learning and control. It is amazing how little we understand about this intersection.  And the approaches used by the two disciplines are also frequently at odds.  Controls is the theory of designing complex actions from well-specified models, while machine learning makes intricate, model-free predictions from data alone.
