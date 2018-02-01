@@ -101,7 +101,7 @@ Here, the condition number of A is $10^{20}$. Gradient descent makes great progr
 
 The black line is what a better descent direction would do. This is Levenberg-Marquardt.
 
-If you haven’t tried optimizing this problem with gradient descent, please spend 10 minutes coding this up or [try out this Jupyter notebook](https://github.com/benjamin-recht/shallow-linear-net/blob/master/TwoLayerLinearNets.ipynb).  This is the algorithm we use as our workhorse, and it fails on a completely benign non-contrived problem. You might say “this is a toy problem, gradient descent fits large models well.” First, everyone who raised their hands a minute ago would say otherwise. Secondly, this is how we build knowledge, we apply our tools to simple problems we can analyze, and work our way up in complexity. We seem to have just jumped our way up.
+If you haven’t tried optimizing this problem with gradient descent, please spend 10 minutes coding this up or [try out this Jupyter notebook](https://nbviewer.jupyter.org/url/argmin.net/code/TwoLayerLinearNets.ipynb).  This is the algorithm we use as our workhorse, and it fails on a completely benign non-contrived problem. You might say “this is a toy problem, gradient descent fits large models well.” First, everyone who raised their hands a minute ago would say otherwise. Secondly, this is how we build knowledge, we apply our tools to simple problems we can analyze, and work our way up in complexity. We seem to have just jumped our way up.
 
 This pain is real. Here’s an email that landed in my inbox two weeks ago from my friend Boris:
 
