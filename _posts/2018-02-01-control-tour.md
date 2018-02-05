@@ -7,7 +7,7 @@ author:     Benjamin Recht
 visible:    true
 ---
 
-*This is the second part of "An Outsider's Tour of Reinforcement Learning."  Part 3 is [here](http://www.argmin.net/2017/02/05/linearization/). Part 1 is [here](http://www.argmin.net/2017/01/29/taxonomy/).*
+*This is the second part of "An Outsider's Tour of Reinforcement Learning."  Part 3 is [here](http://www.argmin.net/2018/02/05/linearization/). Part 1 is [here](http://www.argmin.net/2018/01/29/taxonomy/).*
 
 In addition to the reasons I’ve discussed so far, I’ve been fascinated with the resurgence in reinforcement learning because it operates at the intersection of two areas I love: machine learning and control. It is amazing how little we understand about this intersection.  And the approaches used by the two disciplines are also frequently at odds.  Controls is the theory of designing complex actions from well-specified models, while machine learning makes intricate, model-free predictions from data alone.
 
@@ -50,4 +50,4 @@ The key questions for evaluating these different approaches are: how well must w
 
 These questions form the core of the classical core problems of reinforcement learning. And to my surprise in working through the results in this space, very little is known about how many samples are needed and which methods are more or less efficient. In these next few blogs I’ll try to establish some baselines that highlight the pros and cons of these various approaches to optimal control with unknown dynamics.
 
-[Continue to Part 3 of the series.](http://www.argmin.net/2017/02/05/linearization/)
+[Continue to Part 3 of the series.](http://www.argmin.net/2018/02/05/linearization/)
