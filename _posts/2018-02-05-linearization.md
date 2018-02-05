@@ -27,7 +27,7 @@ Suppose we pick $$w$$ such that $$|w^Tx|>1$$ for all of the training points $$x$
 
 That is, margin is the largest inverse Euclidean norm out of all $w$ such that $$|w^Tx|>1$$ for all $x$.
 
- Now, for our perturbed example, we are forcing very nearby points to have dot product with $w$ with opposite signs. H
+ Now, for our perturbed example, we are forcing very nearby points to have dot product with $w$ with opposite signs.
 
  Hence, the norm of $w$ will need to be huge, and the resulting solution necessarily will have very small margin.
 
