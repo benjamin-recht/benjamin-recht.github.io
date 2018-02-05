@@ -4,7 +4,7 @@ title:      The Linearization Principle
 date:       2018-02-05 0:00:00
 summary:    An outsider tour of reinforcement learning, Part 2. The Linearization Principle.
 author:     Benjamin Recht
-visible:    true
+visible:    false
 ---
 
 I have an ethos for tackling problems in machine learning that I call the "Linearization Principle." There are many variants of this principle, but the simplest is “If a machine learning algorithm does crazy things when restricted to linear models, it’s going to do crazy things on complex nonlinear models too.”
