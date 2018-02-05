@@ -23,13 +23,13 @@ Lack of sensitivity to perturbations seems quite reasonable to me. And, indeed, 
 
 Margin provides a straightforward way to see why the above wacky model would be unlikely to generalize.  For the sake of simplicity, consider the case of binary classification where all of the data points have unit norm.
 
-Suppose we pick $w$ such that $|w^Tx|>1$ for all of the training points $x$. Then the margin is at least $||w||^{-1}$.
+Suppose we pick $$w$$ such that $$|w^Tx|>1$$ for all of the training points $$x$$. Then the margin is at least $$||w||^{-1}$$.
 
-That is, margin is the largest inverse Euclidean norm out of all $w$ such that $|w^Tx|>1$ for all $x$.
+That is, margin is the largest inverse Euclidean norm out of all $w$ such that $$|w^Tx|>1$$ for all $x$.
 
  Now, for our perturbed example, we are forcing very nearby points to have dot product with $w$ with opposite signs. H
 
- Hence, the norm of $w$ will need to be huge, and the resulting solution necessarily will have very small margin. 
+ Hence, the norm of $w$ will need to be huge, and the resulting solution necessarily will have very small margin.
 
  In turn, small perturbations of $w$ or of the data will drastically change the classifications made by this model.
 
