@@ -21,17 +21,7 @@ How can we distinguish between minimizers in order to maximize out-of-sample per
 
 Lack of sensitivity to perturbations seems quite reasonable to me. And, indeed, in linear models this idea is as old as machine learning itself. The stability of a linear model to perturbations can be measured in terms of  _margin_, the distance of the data to the decision boundary.
 
-Margin provides a straightforward way to see why the above wacky model would be unlikely to generalize.  For the sake of simplicity, consider the case of binary classification where all of the data points have unit norm.
-
-Suppose we pick $$w$$ such that $$\|w^Tx\|>1$$ for all of the training points $$x$$. Then the margin is at least $$\|w\|^{-1}$$.
-
-That is, margin is the largest inverse Euclidean norm out of all $w$ such that $$\|w^Tx\|>1$$ for all $x$.
-
- Now, for our perturbed example, we are forcing very nearby points to have dot product with $w$ with opposite signs.
-
- Hence, the norm of $w$ will need to be huge, and the resulting solution necessarily will have very small margin.
-
- In turn, small perturbations of $w$ or of the data will drastically change the classifications made by this model.
+Margin provides a straightforward way to see why the above wacky model would be unlikely to generalize.  For the sake of simplicity, consider the case of binary classification where all of the data points have unit norm. Suppose we pick $w$ such that $\lvert w^Tx\rvert>1$ for all of the training points $x$. Then the margin is at least $\|w\|^{-1}$. That is, margin is the largest inverse Euclidean norm out of all $w$ such that $\lvert w^Tx\rvert>1$ for all $x$. Now, for our perturbed example, we are forcing very nearby points to have dot product with $w$ with opposite signs. Hence, the norm of $w$ will need to be huge, and the resulting solution necessarily will have very small margin. In turn, small perturbations of $w$ or of the data will drastically change the classifications made by this model.
 
 So if “shallow minimizer” means “large margin,” then I’m on board. Unfortunately, for deep models, there isn’t yet a clean, parameterization-invariant definition that captures the classical notion of margin. On the other hand, there are [several](https://arxiv.org/abs/1707.09564) [nice](https://arxiv.org/abs/1706.08498) [steps](https://arxiv.org/abs/1712.06541) in the direction of finding the right definition of margin for deep nets.
 
