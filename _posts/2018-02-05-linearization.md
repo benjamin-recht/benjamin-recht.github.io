@@ -35,7 +35,7 @@ Linear models won’t have saddle points, but if a model is granted more paramet
 
 SGD for linear models does not converge to an arbitrary optimum, however. Depending on the loss function, SGD will find a very particular minimizer. For the square loss, [the solution will have large margin](https://arxiv.org/abs/1611.03530), and for the softmax loss, [SGD will converge to the solution that maximizes the margin, albeit exponentially slowly](https://arxiv.org/abs/1710.10345).
 
-With regards to saddle points, my gut tells me that the notion that SGD avoids them is an artifact of selection bias.  As Ali and I showed in our [test of time talk], it’s very easy to find examples of neural nets where gradient descent does not efficiently find a local minimum. It possible that we only hear about the cases where we avoid saddles.
+With regards to saddle points, my gut tells me that the notion that SGD avoids them is an artifact of selection bias.  As Ali and I showed in our [test of time talk](http://www.argmin.net/2017/12/05/kitchen-sinks/), it’s very easy to find examples of neural nets where gradient descent does not efficiently find a local minimum. It possible that we only hear about the cases where we avoid saddles.
 
 #### Ali’s Fourth Phenomenon: Dropout works better than other randomization strategies.
 
