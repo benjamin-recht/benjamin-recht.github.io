@@ -2,10 +2,12 @@
 layout:     post
 title:      The Linearization Principle
 date:       2018-02-05 0:00:00
-summary:    An outsider tour of reinforcement learning, Part 2. The Linearization Principle.
+summary:    An outsider tour of reinforcement learning, Part 3. The Linearization Principle.
 author:     Benjamin Recht
 visible:    true
 ---
+
+*This is the third part of "An Outsider's Tour of Reinforcement Learning."  Part 4 is [here](http://www.argmin.net/2018/02/08/lqr/). Part 2 is [here](http://www.argmin.net/2018/02/01/control-tour/). Part 1 is [here](http://www.argmin.net/2018/01/29/taxonomy/).*
 
 I have an ethos for tackling problems in machine learning that I call the "Linearization Principle." There are many variants of this principle, but the simplest is “If a machine learning algorithm does crazy things when restricted to linear models, it’s going to do crazy things on complex nonlinear models too.”
 
@@ -57,4 +59,4 @@ It was hard to use the empirical benchmarks to get insights into why Adam was pe
 
 While the Linearization Principle doesn’t explain all of the properties of neural nets, it does clear up many of supposedly mysterious properties: most of these phenomena have basis in techniques applicable for linear models.
 
-I think the same clarification can be achieved for reinforcement learning by leveraging the Linearization Principle. In the next post, I will argue that an appropriate linear baseline for RL is the venerable “Linear Quadratic Regulator.”
+I think the same clarification can be achieved for reinforcement learning by leveraging the Linearization Principle. [In the next post](http://www.argmin.net/2018/02/08/lqr/), I will argue that an appropriate linear baseline for RL is the venerable “Linear Quadratic Regulator.”
