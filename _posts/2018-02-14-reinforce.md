@@ -54,12 +54,11 @@ $$
 Now something magical occurs. Suppose you sample $u$ from $p(u;\vartheta)$.  Then $R(u) \nabla \log p(u;\vartheta)$ is an unbiased estimate of the gradient of $J(\vartheta)$. Hence, we can use this for stochastic gradient descent.
 
 The REINFORCE algorithm is a general purpose algorithm using this trick:
-\begin{enumerate} \itemsep 0pt
- \item Choose some initial guess $\vartheta_0$ and stepsize sequence $\{\alpha_k\}$. Set $k=0$.
- \item Sample $u_k$ i.i.d., from $p(u;\vartheta_k)$.
- \item Set $\vartheta_{k+1} = \vartheta_k + \alpha_k R(u_k) \nabla \log p(u_k;\vartheta_k)$.
- \item Increment $k=k+1$ and go to 2.
-\end{enumerate}
+
+1. Choose some initial guess $\vartheta_0$ and stepsize sequence $\{\alpha_k\}$. Set $k=0$.
+2. Sample $u_k$ i.i.d., from $p(u;\vartheta_k)$.
+3. Set $\vartheta_{k+1} = \vartheta_k + \alpha_k R(u_k) \nabla \log p(u_k;\vartheta_k)$.
+4. Increment $k=k+1$ and go to step 2.
 
 This seems weird: we get a stochastic gradient, but the function we cared about optimizing---$R$---is only accessed through function evaluations. We never compute gradients of $R$ itself. So is this algorithm any good?
 
