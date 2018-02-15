@@ -22,11 +22,11 @@ Now, bear with me for a second into a digression that might seem tangential. Any
 
 $$
 \begin{array}{ll}
-	\mbox{maximize}_{p(u)} & \E_p[R[u]]
+	\mbox{maximize}_{p(u)} & \mathbb{E}_p[R[u]]
 \end{array}
 $$
 
-The equivalence is really straight forward: if $u_\star$ is the optimal solution, then you'll get the same cost if you put a Delta-function around $u_\star$.  Moreover, if $p$ is a probability distribution, it's clear that $\E_p[R[u]]$ can never be smaller than $R[u_\star]$. So I can either optimize over $u$ or I can optimize over \emph{distributions} over $u$.
+The equivalence is really straight forward: if $u_\star$ is the optimal solution, then you'll get the same cost if you put a Delta-function around $u_\star$.  Moreover, if $p$ is a probability distribution, it's clear that $\mathbb{E}_p[R[u]]$ can never be smaller than $R[u_\star]$. So I can either optimize over $u$ or I can optimize over \emph{distributions} over $u$.
 
 Now here is where the first sleight of hand often occurs in Reinforcement Learning... Rather than optimizing over the space of of all probability distributions, I'm going to optimize over a parametric family $p(u;\vartheta)$.  For example, I could restrict my attention to Gaussian distributions or some other model which is easy to parameterize and to sample from (the sampling part is essential as we will soon see). If this family contains all of the delta functions, then the optimal values still coincide. But, as in the case of Gaussians, if they don't contain the delta functions, you will only get an upper bound on the optimal cost no matter how good of a probability distribution you find. As a result, if you sample $u$ from the policy, their expected reward will necessarily be suboptimal.
 
@@ -35,7 +35,7 @@ Now here is where the first sleight of hand often occurs in Reinforcement Learni
 There is a general purpose algorithm for finding descent directions of the cost
 $$
 \begin{array}{ll}
-	\mbox{maximize}_{\vartheta} & J(\vartheta):=\E_{p(u;\vartheta)}[R[u]]
+	\mbox{maximize}_{\vartheta} & J(\vartheta):=\mathbb{E}_{p(u;\vartheta)}[R[u]]
 	\end{array}
 $$
 The idea is to use a clever trick:
@@ -43,7 +43,7 @@ The idea is to use a clever trick:
 	\nabla J(\vartheta) &= \int R(u) \nabla p(u;\vartheta) du\\
 	&= \int R(u) \left(\frac{\nabla p(u;\vartheta)}{p(u;\vartheta)}\right) p(u;\vartheta) dx\\
 	&= \int \left( R(u) \nabla \log p(u;\vartheta) \right) p(u;\vartheta)dx
-	= \E_{p(u;\vartheta)}\left[ R(u) \nabla \log p(u;\vartheta) \right]\,.
+	= \mathbb{E}_{p(u;\vartheta)}\left[ R(u) \nabla \log p(u;\vartheta) \right]\,.
 \end{align*}
 
 Now something magical occurs. Suppose you sample $u$ from $p(u;\vartheta)$.  Then $R(u) \nabla \log p(u;\vartheta)$ is an unbiased estimate of the gradient of $J(\vartheta)$. Hence, we can use this for stochastic gradient descent.
@@ -67,7 +67,7 @@ $$
 Let $p(u;\vartheta)$ be a multivariate Gaussian with mean $\vartheta$ and variance $\sigma^2 I$.  What does policy gradient do?  First, note that
 
 $$
-	\E_{p(u;\vartheta)} = -\|\vartheta-z\|^2 - \sigma^2 d
+	\mathbb{E}_{p(u;\vartheta)} = -\|\vartheta-z\|^2 - \sigma^2 d
 $$
 
 Obviously, the best thing to do would be to set $\vartheta=z$. Note that the expected cost is off by $\sigma^2 d$ at this point, but at least this would be finding a good guess for $u$.  Also, as a function of $\vartheta$, $J$ is \emph{strongly convex}, and the most important thing to know is the expected norm of the gradient as this will control the number of iterations. Now, if you start at $\vartheta=0$, then the norm of the gradient is
