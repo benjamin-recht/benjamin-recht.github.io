@@ -7,7 +7,7 @@ author:     Ben Recht
 visible:    false
 ---
 
-Before talking about policy gradient, let's step back and consider a pure optimization setup. This setup will seem like a bizarre caricature, but, in a moment, we'll see this is \emph{exactly what people do in Reinforcement Learning}.
+Before talking about policy gradient, let's step back and consider a pure optimization setup. This setup will seem like a bizarre caricature, but, in a moment, we'll see this is _exactly what people do in Reinforcement Learning_.
 
 Let's start with just trying to maximize a function. Given a function $R[u]$, I want to find the $u$ that makes this as large as possible. That is, I'd like to solve the optimization problem
 
@@ -26,7 +26,7 @@ $$
 \end{array}
 $$
 
-The equivalence is really straight forward: if $u_\star$ is the optimal solution, then you'll get the same cost if you put a Delta-function around $u_\star$.  Moreover, if $p$ is a probability distribution, it's clear that $\mathbb{E}_p[R[u]]$ can never be smaller than $R[u_\star]$. So I can either optimize over $u$ or I can optimize over \emph{distributions} over $u$.
+The equivalence is really straight forward: if $u_\star$ is the optimal solution, then you'll get the same cost if you put a Delta-function around $u_\star$.  Moreover, if $p$ is a probability distribution, it's clear that $\mathbb{E}_p [ R[u] ]$ can never be smaller than $R[u_\star]$. So I can either optimize over $u$ or I can optimize over _distributions_ over $u$.
 
 Now here is where the first sleight of hand often occurs in Reinforcement Learning... Rather than optimizing over the space of of all probability distributions, I'm going to optimize over a parametric family $p(u;\vartheta)$.  For example, I could restrict my attention to Gaussian distributions or some other model which is easy to parameterize and to sample from (the sampling part is essential as we will soon see). If this family contains all of the delta functions, then the optimal values still coincide. But, as in the case of Gaussians, if they don't contain the delta functions, you will only get an upper bound on the optimal cost no matter how good of a probability distribution you find. As a result, if you sample $u$ from the policy, their expected reward will necessarily be suboptimal.
 
@@ -70,7 +70,7 @@ $$
 	\mathbb{E}_{p(u;\vartheta)} = -\|\vartheta-z\|^2 - \sigma^2 d
 $$
 
-Obviously, the best thing to do would be to set $\vartheta=z$. Note that the expected cost is off by $\sigma^2 d$ at this point, but at least this would be finding a good guess for $u$.  Also, as a function of $\vartheta$, $J$ is \emph{strongly convex}, and the most important thing to know is the expected norm of the gradient as this will control the number of iterations. Now, if you start at $\vartheta=0$, then the norm of the gradient is
+Obviously, the best thing to do would be to set $\vartheta=z$. Note that the expected cost is off by $\sigma^2 d$ at this point, but at least this would be finding a good guess for $u$.  Also, as a function of $\vartheta$, $J$ is _strongly convex_, and the most important thing to know is the expected norm of the gradient as this will control the number of iterations. Now, if you start at $\vartheta=0$, then the norm of the gradient is
 
 $$
 	g=\frac{||z||^2 \omega_0}{\sigma^2}
