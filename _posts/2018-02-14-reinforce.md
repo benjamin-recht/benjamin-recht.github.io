@@ -26,7 +26,7 @@ $$
 \end{array}
 $$
 
-The equivalence is really straight forward: if $u_\star$ is the optimal solution, then you'll get the same cost if you put a Delta-function around $u_\star$.  Moreover, if $p$ is a probability distribution, it's clear that $\mathbb{E}_{p} [ R[u] ]$ can never be smaller than $R[u_\star]$. So I can either optimize over $u$ or I can optimize over _distributions_ over $u$.
+The equivalence is really straight forward: if $u_\star$ is the optimal solution, then you'll get the same cost if you put a Delta-function around $u_\star$.  Moreover, if $p$ is a probability distribution, it's clear that the _expected reward_ can never be larger than maximal reward achievable by a fixed $u$. So I can either optimize over $u$ or I can optimize over _distributions_ over $u$.
 
 Now here is where the first sleight of hand often occurs in Reinforcement Learning... Rather than optimizing over the space of of all probability distributions, I'm going to optimize over a parametric family $p(u;\vartheta)$.  For example, I could restrict my attention to Gaussian distributions or some other model which is easy to parameterize and to sample from (the sampling part is essential as we will soon see). If this family contains all of the delta functions, then the optimal values still coincide. But, as in the case of Gaussians, if they don't contain the delta functions, you will only get an upper bound on the optimal cost no matter how good of a probability distribution you find. As a result, if you sample $u$ from the policy, their expected reward will necessarily be suboptimal.
 
