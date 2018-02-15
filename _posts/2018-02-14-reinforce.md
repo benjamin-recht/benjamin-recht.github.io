@@ -33,18 +33,23 @@ Now here is where the first sleight of hand often occurs in Reinforcement Learni
 ## The REINFORCE algorithm
 
 There is a general purpose algorithm for finding descent directions of the cost
+
 $$
 \begin{array}{ll}
 	\mbox{maximize}_{\vartheta} & J(\vartheta):=\mathbb{E}_{p(u;\vartheta)}[R[u]]
 	\end{array}
 $$
+
 The idea is to use a clever trick:
+
+$$
 \begin{align*}
 	\nabla J(\vartheta) &= \int R(u) \nabla p(u;\vartheta) du\\
 	&= \int R(u) \left(\frac{\nabla p(u;\vartheta)}{p(u;\vartheta)}\right) p(u;\vartheta) dx\\
 	&= \int \left( R(u) \nabla \log p(u;\vartheta) \right) p(u;\vartheta)dx
 	= \mathbb{E}_{p(u;\vartheta)}\left[ R(u) \nabla \log p(u;\vartheta) \right]\,.
 \end{align*}
+$$
 
 Now something magical occurs. Suppose you sample $u$ from $p(u;\vartheta)$.  Then $R(u) \nabla \log p(u;\vartheta)$ is an unbiased estimate of the gradient of $J(\vartheta)$. Hence, we can use this for stochastic gradient descent.
 
