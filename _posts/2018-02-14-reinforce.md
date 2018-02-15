@@ -46,8 +46,8 @@ $$
 \begin{align*}
 	\nabla J(\vartheta) &= \int R(u) \nabla p(u;\vartheta) du\\
 	&= \int R(u) \left(\frac{\nabla p(u;\vartheta)}{p(u;\vartheta)}\right) p(u;\vartheta) dx\\
-	&= \int \left( R(u) \nabla \log p(u;\vartheta) \right) p(u;\vartheta)dx
-	= \mathbb{E}_{p(u;\vartheta)}\left[ R(u) \nabla \log p(u;\vartheta) \right]\,.
+	&= \int \left( R(u) \nabla \log p(u;\vartheta) \right) p(u;\vartheta)dx	\\
+  &= \mathbb{E}_{p(u;\vartheta)}\left[ R(u) \nabla \log p(u;\vartheta) \right]\,.
 \end{align*}
 $$
 
