@@ -13,16 +13,17 @@ Let's start with just trying to maximize a function. Given a function $R[u]$, I 
 
 $$
 \begin{array}{ll}
-	\maximize_u & R[u] \,.
+	\mbox{maximize}_u & R[u] \,.
 	\end{array}
 $$
+
 
 Now, bear with me for a second into a digression that might seem tangential. Any optimization problem like this is equivalent to an optimization over probability distributions on $u$.
 
 $$
 \begin{array}{ll}
-	\maximize_{p(u)} & \E_p[R[u]]
-	\end{array}
+	\mbox{maximize}_{p(u)} & \E_p[R[u]]
+\end{array}
 $$
 
 The equivalence is really straight forward: if $u_\star$ is the optimal solution, then you'll get the same cost if you put a Delta-function around $u_\star$.  Moreover, if $p$ is a probability distribution, it's clear that $\E_p[R[u]]$ can never be smaller than $R[u_\star]$. So I can either optimize over $u$ or I can optimize over \emph{distributions} over $u$.
@@ -34,7 +35,7 @@ Now here is where the first sleight of hand often occurs in Reinforcement Learni
 There is a general purpose algorithm for finding descent directions of the cost
 $$
 \begin{array}{ll}
-	\maximize_{\vartheta} & J(\vartheta):=\E_{p(u;\vartheta)}[R[u]]
+	\mbox{maximize}_{\vartheta} & J(\vartheta):=\E_{p(u;\vartheta)}[R[u]]
 	\end{array}
 $$
 The idea is to use a clever trick:
