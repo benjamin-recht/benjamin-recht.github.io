@@ -87,7 +87,7 @@ is _not_ a function of the parameter $\vartheta$. Hence,
 $$
 	\nabla_\vartheta \log \mathbb{P}(\tau;\vartheta) = \sum_{t=0}^{L-1} \nabla_\vartheta \log \pi_\vartheta(u_t|\tau_t)\,.
 $$
-These derivatives can be computed provided that $pi_\vartheta$ is differentiable and you have the latest version of [autograd](xxx) installed.
+These derivatives can be computed provided that $pi_\vartheta$ is differentiable and you have the latest version of [autograd](https://github.com/HIPS/autograd) installed.
 
 To sum up, we have a fairly miraculous method that lets us optimize an optimal control problem without knowing anything about the dynamics of the system.
 
@@ -123,7 +123,7 @@ Now here is where the first sleight of hand often occurs in Policy Gradient. Rat
 
 Note that there is no need for a randomized policy in the basic optimal control problem we have been studying. And there is certainly no need for the simple LQR problem. The probabilistic policy is a modeling choice, and one that is never better than a deterministic policy.
 
-## The REINFORCE algorithm
+## The super general REINFORCE algorithm
 
 Note that the policy gradient algorithm is a general purpose method for finding stochastic gradients of costs of the form
 
