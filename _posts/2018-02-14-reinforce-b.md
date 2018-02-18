@@ -7,7 +7,7 @@ author:     Ben Recht
 visible:    false
 ---
 
-Our first generic candidate for solving reinforcement learning is _policy gradient_. Policy gradient is an incredibly attractive algorithm as it apparently lets one fine tune a program to solve any problem without any domain knowledge. Of course, anything that makes such a claim must be too general for its own good. Indeed, if you dive into it, policy gradient is nothing more than random search dressed up in mathematical symbols and lingo.
+Our first generic candidate for solving reinforcement learning is _policy gradient_. Policy gradient is an incredibly attractive algorithm as it apparently lets one fine tune a program to solve any problem without any domain knowledge. Of course, anything that makes such a claim must be too general for its own good. Indeed, if you dive into it, **policy gradient is nothing more than random search dressed up in mathematical symbols and lingo**.
 
 I apologize in advance that this is one of the more notation heavy posts. Policy gradient makes excessive use of notation to fool you into thinking there is something deeper going on than there really is. See if you can find the places where sleight of hand occurs.
 
@@ -47,7 +47,7 @@ $$
 	J(\vartheta) := \mathbb{E}_{p(\tau \vert \vartheta)}[ R[\tau]]\,.
 $$
 
-Our goal in reinforcment learning can now be even more compactly written as
+Our goal in reinforcement learning can now be even more compactly written as
 
 $$
 \begin{array}{ll}
