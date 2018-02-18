@@ -77,9 +77,11 @@ $$
 Hence, if we sample a trajectory $\tau$ by running policy $\pi_\vartheta$, we can compute $G(\tau,\vartheta)$ and will have an unbiased estimate of the gradient of $J$. We can follow this direction and will be running stochastic gradient descent on $J$.
 
 What is more magic, is that the function $G(\tau,\vartheta)$ can be computed without knowing the equations that govern the dynamical system. To see this note that
+
 $$
 	\mathbb{P}(x_{t+1}|x_{t},u_{t})
 $$
+
 is _not_ a function of the parameter $\vartheta$. Hence,
 
 $$
