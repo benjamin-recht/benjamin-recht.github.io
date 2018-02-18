@@ -51,11 +51,11 @@ $$
 	J(\vartheta) := \mathbb{E}_{p(\tau \vert \vartheta)}[ R[\tau]]\,.
 $$
 
-Our goal in reinforcment learning can now be compactly written as
+Our goal in reinforcment learning can now be even more compactly written as
 
 $$
 \begin{array}{ll}
-\mbox{maximize}_{\vartheta} & J(\vartheta)
+\mbox{maximize}_{\vartheta} & J(\vartheta)\,.
 \end{array}
 $$
 
