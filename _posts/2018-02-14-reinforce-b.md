@@ -48,7 +48,7 @@ $$
 We can make this even cleaner by defining
 
 $$
-	J(\vartheta) := \mathbb{E}_{p(\tau|\vartheta)}[ R[\tau]]\,.
+	J(\vartheta) := \mathbb{E}_{p(\tau \vert \vartheta)}[ R[\tau]]\,.
 $$
 
 Our goal in reinforcment learning can now be compactly written as
@@ -95,7 +95,7 @@ To sum up, we have a fairly miraculous method that lets us optimize an optimal c
 
 1. Choose some initial guess $\vartheta_0$ and stepsize sequence $\{\alpha_k\}$. Set $k=0$.
 2. Sample $\tau_k$ by running the simulator with policy $\pi_{\vartheta_k}$.
-3. Set $\vartheta_{k+1} = \vartheta_k + \alpha_k R(u_k) \sum_{t=0}^{L-1} \nabla_\vartheta \log \pi_\vartheta(u_t|\tau_t)$.
+3. Set $\vartheta_{k+1} = \vartheta_k + \alpha_k R(u_k) \sum_{t=0}^{L-1} \nabla_\vartheta \log \pi_\vartheta(u_t\vert \tau_t)$.
 4. Increment $k=k+1$ and go to step 2.
 
 The main appeal of policy gradient is that it is this easy. If you can efficiently sample from $\pi_\vartheta$, you can run this algorithm on essentially any problem. You can fly quadcopters, you can cool data centers, you can teach robots to open doors. The question becomes, of course, can you do this well? I think that a simple appeal to the Linearization Principle will make it clear that Policy Gradient is almost never an algorithm that you'd want to use.
