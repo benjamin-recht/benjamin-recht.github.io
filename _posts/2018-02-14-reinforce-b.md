@@ -45,7 +45,13 @@ $$
 \end{array}
 $$
 
-We can make this even cleaner by defining $J(\vartheta) = \mathbb{E}_{p(\tau|\vartheta)}[ R[\tau]]$. In which case we have written our goal in reinforcment learning compactly as
+We can make this even cleaner by defining
+
+$$
+	J(\vartheta) := \mathbb{E}_{p(\tau|\vartheta)}[ R[\tau]]\,.
+$$
+
+Our goal in reinforcment learning can now be compactly written as
 
 $$
 \begin{array}{ll}
