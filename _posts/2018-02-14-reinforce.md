@@ -195,7 +195,7 @@ Note that matters only get worse as we bring in dynamics. The policy gradient up
 
 ## How can people be claiming such success in RL?
 
-Lots of papers have been applying policy gradient to all sorts of different settings, and claiming crazy results, but I hope that it is now clear that they are just dressing up pure random search in a clever outfit. When you end up with a bunch of papers showing that [genetic algorithms are competitive with your methods](https://twitter.com/OriolVinyalsML/status/960927537005322243), this does not mean that we’ve made an advance in genetic algorithms. It is far more likely that this means that your method is a lousy implementation of pure random search.
+Lots of papers have been applying policy gradient to all sorts of different settings, and claiming crazy results, but I hope that it is now clear that they are just dressing up  [random search](https://en.wikipedia.org/wiki/Random_search) in a clever outfit. When you end up with a bunch of papers showing that [genetic algorithms are competitive with your methods](https://twitter.com/OriolVinyalsML/status/960927537005322243), this does not mean that we’ve made an advance in genetic algorithms. It is far more likely that this means that your method is a lousy implementation of random search.
 
 Regardless, both genetic algorithms and policy gradient require an absurd number of samples. This is OK [if you are willing to spend millions of dollars on AWS](https://twitter.com/beenwrekt/status/961263599674150912) and never actually want to tune a physical system. But there must be a better way.
 
