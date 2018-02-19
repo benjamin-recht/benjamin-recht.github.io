@@ -96,7 +96,7 @@ To sum up, we have a fairly miraculous method that lets us optimize an optimal c
 
 1. Choose some initial guess $\vartheta_0$ and stepsize sequence $\{\alpha_k\}$. Set $k=0$.
 2. Sample $\tau_k$ by running the simulator with policy $\pi_{\vartheta_k}$.
-3. Set $\vartheta_{k+1} = \vartheta_k + \alpha_k R(\tau_k) \sum_{t=0}^{L-1} \nabla_\vartheta \log \pi_\vartheta(u_{tk}\vert \tau_t)$.
+3. Set $\vartheta_{k+1} = \vartheta_k + \alpha_k R[\tau_k] \sum_{t=0}^{L-1} \nabla_\vartheta \log \pi_\vartheta(u_{tk}\vert \tau_t)$.
 4. Increment $k=k+1$ and go to step 2.
 
 The main appeal of policy gradient is that it is this easy. If you can efficiently sample from $\pi_\vartheta$, you can run this algorithm on essentially any problem. You can fly quadcopters, you can cool data centers, you can teach robots to open doors. The question becomes, of course, can you do this well? I think that a simple appeal to the Linearization Principle will make it clear that Policy Gradient is likely never the algorithm that you'd want to use.
@@ -151,10 +151,10 @@ The log-likelihood trick works in full generality here:
 
 $$
 \begin{align*}
-	\nabla J(\vartheta) &= \int R(u) \nabla p(u;\vartheta) du\\
-	&= \int R(u) \left(\frac{\nabla p(u;\vartheta)}{p(u;\vartheta)}\right) p(u;\vartheta) du\\
-	&= \int \left( R(u) \nabla \log p(u;\vartheta) \right) p(u;\vartheta)du	\\
-  &= \mathbb{E}_{p(u;\vartheta)}\left[ R(u) \nabla \log p(u;\vartheta) \right]\,.
+	\nabla J(\vartheta) &= \int R[u] \nabla p(u;\vartheta) du\\
+	&= \int R[u] \left(\frac{\nabla p(u;\vartheta)}{p(u;\vartheta)}\right) p(u;\vartheta) du\\
+	&= \int \left( R[u] \nabla \log p(u;\vartheta) \right) p(u;\vartheta)du	\\
+  &= \mathbb{E}_{p(u;\vartheta)}\left[ R[u] \nabla \log p(u;\vartheta) \right]\,.
 \end{align*}
 $$
 
@@ -162,7 +162,7 @@ And hence the following is a general purpose algorithm for maximizing rewards wi
 
 1. Choose some initial guess $\vartheta_0$ and stepsize sequence $\{\alpha_k\}$. Set $k=0$.
 2. Sample $u_k$ i.i.d., from $p(u;\vartheta_k)$.
-3. Set $\vartheta_{k+1} = \vartheta_k + \alpha_k R(u_k) \nabla \log p(u_k;\vartheta_k)$.
+3. Set $\vartheta_{k+1} = \vartheta_k + \alpha_k R[u_k] \nabla \log p(u_k;\vartheta_k)$.
 4. Increment $k=k+1$ and go to step 2.
 
 The algorithm in this form is called REINFORCE. It seems weird: we get a stochastic gradient, but the function we cared about optimizing---$R$---is only accessed through function evaluations. We never compute gradients of $R$ itself. So is this algorithm any good?
@@ -188,7 +188,7 @@ $$
 where $\omega$ is a normally distributed random vector with mean zero and identity covariance.
 The expected norm of this stochastic gradient is $\frac{\sqrt{d} \|z\|}{\sigma}$. That's actually quite large! The norm of the gradient is proportional to $d$.
 
-Many people have analyzed the complexity of this method, and [it is indeed not great](http://alekhagarwal.net/bandits-colt.pdf) and strongly depends on the dimension of the search space. If the function values are noisy, even for convex functions, the convergence rate is $O((d^2/T)^{-1/3})$, and this assumes you get the algorithm parameters exactly right. For strongly convex functions, you can possibly eke out a decent solution in $O((d^2/T)^{-1/2})$ function evaluations, but this result is also rather fragile to choice of parameters.
+Many people have analyzed the complexity of this method, and [it is indeed not great](http://alekhagarwal.net/bandits-colt.pdf) and strongly depends on the dimension of the search space. It also depends on the largest magnitude reward $B$.  If the function values are noisy, even for convex functions, the convergence rate is $O((d^2B^2/T)^{-1/3})$, and this assumes you get the algorithm parameters exactly right. For strongly convex functions, you can possibly eke out a decent solution in $O((d^2B^2/T)^{-1/2})$ function evaluations, but this result is also rather fragile to choice of parameters. Finally, note that just adding an constant offset to the reward dramatically slows down the algorithm. If you start with a reward function whose values are in $[0,1]$ and you subtract one million from each reward, this will increase the running time of the algorithm by a factor of a million, even though the ordering of the rewards amongst parameter values remains the same.
 
 Note that matters only get worse as we bring in dynamics. The policy gradient update for LQR is very noisy, and its variance grows with the simulation length $L$. Moreover, the search for $\vartheta$ is necessarily nonconvex if one is searching for a simple static policy. While this could work in practice, we already have so many hurdles in our face that it suggests we should look for an alternative.
 
@@ -199,7 +199,7 @@ Lots of papers have been applying policy gradient to all sorts of different sett
 
 Regardless, both genetic algorithms and policy gradient require an absurd number of samples. This is OK [if you are willing to spend millions of dollars on AWS](https://twitter.com/beenwrekt/status/961263599674150912) and never actually want to tune a physical system. But there must be a better way.
 
-I don’t think I can overemphasize the point that policy gradient and RL are not magic. I’d go as far as to say that policy gradient and its derivatives are legitimately bad algorithms. In order to make them work well, you need lots of tricks. [Algorithms which are hard to tune, hard to reproduce](blog.openai.com/openai-baselines-dqn/), and don’t outperform off the shelf genetic algorithms are bad algorithms.
+I don’t think I can overemphasize the point that policy gradient and RL are not magic. I’d go as far as to say that policy gradient and its derivatives are legitimately bad algorithms. In order to make them work well, you need lots of tricks. [Algorithms which are hard to tune, hard to reproduce](https://blog.openai.com/openai-baselines-dqn/), and don’t outperform off the shelf genetic algorithms are bad algorithms.
 
 We’ll come back to this many times in this series: for any application where policy gradient is successful, a dramatically simpler and more robust algorithm exists that will match or outperform it. It’s never a good idea, and I cannot for the life of me figure out why it is so popular.
 
