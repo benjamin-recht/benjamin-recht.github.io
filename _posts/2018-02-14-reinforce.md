@@ -7,7 +7,7 @@ author:     Ben Recht
 visible:    false
 ---
 
-Our first generic candidate for solving reinforcement learning is _Policy Gradient_. I find it shocking that Policy Gradient wasn't ruled out as a bad idea in 1993. Policy gradient is an incredibly attractive algorithm as it apparently lets one fine tune a program to solve any problem without any domain knowledge. Of course, anything that makes such a claim must be too general for its own good. Indeed, if you dive into it, **policy gradient is nothing more than random search dressed up in mathematical symbols and lingo**.
+Our first generic candidate for solving reinforcement learning is _Policy Gradient_. I find it shocking that Policy Gradient wasn't ruled out as a bad idea in 1993. Policy gradient is seductive as it apparently lets one fine tune a program to solve any problem without any domain knowledge. Of course, anything that makes such a claim must be too general for its own good. Indeed, if you dive into it, **policy gradient is nothing more than random search dressed up in mathematical symbols and lingo**.
 
 I apologize in advance that this is one of the more notationally heavy posts. Policy Gradient makes excessive use of notation to fool us into thinking there is something deep going on. My guess is that part of the reason Policy Gradient remained a research topic was because people didn't implement it and the mathematics [looked so appealing on its own](http://papers.nips.cc/paper/1713-policy-gradient-methods-for-reinforcement-learning-with-function-approximation.pdf). This makes it easy to lose sight of what would happen if the method actually got coded up. See if you can find the places where sleight of hand occurs.
 
