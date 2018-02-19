@@ -176,7 +176,7 @@ $$
 Let $p(u;\vartheta)$ be a multivariate Gaussian with mean $\vartheta$ and variance $\sigma^2 I$.  What does policy gradient do?  First, note that
 
 $$
-	\mathbb{E}_{p(u;\vartheta)} = -\|\vartheta-z\|^2 - \sigma^2 d
+	\mathbb{E}_{p(u;\vartheta)} [R[u]]= -\|\vartheta-z\|^2 - \sigma^2 d
 $$
 
 Obviously, the best thing to do would be to set $\vartheta=z$. Note that the expected reward is off by $\sigma^2 d$ at this point, but at least this would be finding a good guess for $u$.  Also, as a function of $\vartheta$, $J$ is _strongly convex_, and the most important thing to know is the expected norm of the gradient as this will control the number of iterations. Now, if you start at $\vartheta=0$, then the norm of the gradient is
