@@ -32,21 +32,21 @@ $$
 Moreover, we can overload notation and define the reward of a trajectory to be
 
 $$
-	R[\tau] = \sum_{t=0}^N R_t[x_t,u_t]
+	R(\tau) = \sum_{t=0}^N R_t(x_t,u_t)
 $$
 
 Then our optimization problem for reinforcement learning tidily becomes:
 
 $$
 \begin{array}{ll}
-\mbox{maximize}_{\vartheta} & \mathbb{E}_{p(\tau \vert \vartheta)}[ R[\tau]]
+\mbox{maximize}_{\vartheta} & \mathbb{E}_{p(\tau \vert \vartheta)}[ R(\tau)]
 \end{array}
 $$
 
 We can make this even cleaner by defining
 
 $$
-	J(\vartheta) := \mathbb{E}_{p(\tau \vert \vartheta)}[ R[\tau] ]\,.
+	J(\vartheta) := \mathbb{E}_{p(\tau \vert \vartheta)}[ R(\tau) ]\,.
 $$
 
 Our goal in reinforcement learning can now be even more compactly written as
@@ -63,17 +63,17 @@ Having set up the problem in tidy notation, Policy Gradient can now be derived b
 
 $$
 \begin{align*}
-	\nabla J(\vartheta) &= \int R[\tau] \nabla p(\tau;\vartheta) d\tau\\
-	&= \int R[\tau] \left(\frac{\nabla p(\tau;\vartheta)}{p(\tau;\vartheta)}\right) p(\tau;\vartheta) d\tau\\
-	&= \int \left( R[\tau] \nabla \log p(\tau;\vartheta) \right) p(\tau;\vartheta)d\tau	\\
-  &= \mathbb{E}_{p(\tau;\vartheta)}\left[ R[\tau] \nabla \log p(\tau;\vartheta) \right]\,.
+	\nabla J(\vartheta) &= \int R(\tau) \nabla p(\tau;\vartheta) d\tau\\
+	&= \int R(\tau) \left(\frac{\nabla p(\tau;\vartheta)}{p(\tau;\vartheta)}\right) p(\tau;\vartheta) d\tau\\
+	&= \int \left( R(\tau) \nabla \log p(\tau;\vartheta) \right) p(\tau;\vartheta)d\tau	\\
+  &= \mathbb{E}_{p(\tau;\vartheta)}\left[ R(\tau) \nabla \log p(\tau;\vartheta) \right]\,.
 \end{align*}
 $$
 
 This calculation reveals that the gradient of $J$ with respect to $\vartheta$ is the expected value of the function
 
 $$
-	G(\tau,\vartheta) = R[\tau] \nabla \log p(\tau;\vartheta)
+	G(\tau,\vartheta) = R(\tau) \nabla \log p(\tau;\vartheta)
 $$
 
 Hence, if we sample a trajectory $\tau$ by running policy $\pi_\vartheta$, we can compute $G(\tau,\vartheta)$ and will have an unbiased estimate of the gradient of $J$. We can follow this direction and will be running stochastic gradient descent on $J$.
