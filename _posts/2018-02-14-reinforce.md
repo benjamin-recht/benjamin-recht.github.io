@@ -141,13 +141,13 @@ It's important at this point to reemphasize _there is no need for a randomized p
 
 ## The super general REINFORCE algorithm
 
-The Policy Gradient algorithm is a general purpose method for finding stochastic gradients of rewards of the form
+So it turns out that this Policy Gradient algorithm is in fact a general purpose method for finding stochastic gradients of rewards of the form
 
 $$
 	J(\vartheta):=\mathbb{E}_{p(u;\vartheta)}[R[u]]
 $$
 
-The log-likelihood trick works in full generality:
+The log-likelihood trick works in full generality here:
 
 $$
 \begin{align*}
@@ -158,14 +158,14 @@ $$
 \end{align*}
 $$
 
-Hence the REINFORCE algorithm is a general purpose algorithm:
+And hence the following is a general purpose algorithm for maximizing rewards with respect to parametric distributions:
 
 1. Choose some initial guess $\vartheta_0$ and stepsize sequence $\{\alpha_k\}$. Set $k=0$.
 2. Sample $u_k$ i.i.d., from $p(u;\vartheta_k)$.
 3. Set $\vartheta_{k+1} = \vartheta_k + \alpha_k R(u_k) \nabla \log p(u_k;\vartheta_k)$.
 4. Increment $k=k+1$ and go to step 2.
 
-This seems weird: we get a stochastic gradient, but the function we cared about optimizing---$R$---is only accessed through function evaluations. We never compute gradients of $R$ itself. So is this algorithm any good?
+The algorithm in this form is called REINFORCE. It seems weird: we get a stochastic gradient, but the function we cared about optimizing---$R$---is only accessed through function evaluations. We never compute gradients of $R$ itself. So is this algorithm any good?
 
 It depends on what you are looking for. If you're looking for something to compete with gradients, no. It's a terrible algorithm. If you're looking for an algorithm to compete with a finite difference approximation to $R$ then... it's still a terrible algorithm. But the math is cute.
 
