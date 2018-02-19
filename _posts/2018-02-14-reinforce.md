@@ -187,7 +187,7 @@ $$
 
 And the norm is $d \|z\|^2$. That's actually quite large! The norm of the gradient is proportional to $d$.
 
-Many people have analyzed the complexity of this method, and [it is indeed not great](xxx) and strongly depends on the dimension of the search space. If the function values are noisy, even for convex functions, the convergence rate is $O((d^2/T)^{-1/3})$, and this assumes you get the algorithm parameters exactly right. For strongly convex functions, you can possibly eke out a decent solution in $O((d^2/T)^{-1/2})$ function evaluations, but this result is also rather fragile to choice of parameters.
+Many people have analyzed the complexity of this method, and [it is indeed not great](http://alekhagarwal.net/bandits-colt.pdf) and strongly depends on the dimension of the search space. If the function values are noisy, even for convex functions, the convergence rate is $O((d^2/T)^{-1/3})$, and this assumes you get the algorithm parameters exactly right. For strongly convex functions, you can possibly eke out a decent solution in $O((d^2/T)^{-1/2})$ function evaluations, but this result is also rather fragile to choice of parameters.
 
 Note that matters only get worse as we bring in dynamics. The policy gradient update for LQR is very noisy, and its variance grows with the simulation length $L$. Moreover, the search for $\vartheta$ is necessarily nonconvex if one is searching for a simple static policy. While this could work in practice, we already have so many hurdles in our face, that it suggests we should look for an alternative.
 
@@ -196,7 +196,7 @@ Note that matters only get worse as we bring in dynamics. The policy gradient up
 
 Lots of papers have been applying policy gradient to all sorts of different settings, and claiming crazy results, but I hope that it is now clear that they are just dressing up pure random search in a clever outfit. When you end up with a bunch of papers showing that [genetic algorithms are competitive with your methods](https://twitter.com/OriolVinyalsML/status/960927537005322243), this does not mean that we’ve made an advance in genetic algorithms. It is far more likely that this means that your method is a lousy implementation of pure random search.
 
-Regardless, both genetic algorithms and policy gradient require an absurd number of samples. This is OK [if you are willing to spend millions of dollars on AWS](xxx) and never actually want to tune a physical system. But there must be a better way.
+Regardless, both genetic algorithms and policy gradient require an absurd number of samples. This is OK [if you are willing to spend millions of dollars on AWS](https://twitter.com/beenwrekt/status/961263599674150912) and never actually want to tune a physical system. But there must be a better way.
 
 I don’t think I can overemphasize the point that policy gradient and RL are not magic. I’d go as far as to say that policy gradient and its derivatives are legitimately bad algorithms. In order to make them work well, you need lots of tricks. [Algorithms which are hard to tune, hard to reproduce](blog.openai.com/openai-baselines-dqn/), and don’t outperform off the shelf genetic algorithms are bad algorithms.
 
