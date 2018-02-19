@@ -96,18 +96,18 @@ To sum up, we have a fairly miraculous method that lets us optimize an optimal c
 
 1. Choose some initial guess $\vartheta_0$ and stepsize sequence $\{\alpha_k\}$. Set $k=0$.
 2. Sample $\tau_k$ by running the simulator with policy $\pi_{\vartheta_k}$.
-3. Set $\vartheta_{k+1} = \vartheta_k + \alpha_k R[\tau_k] \sum_{t=0}^{L-1} \nabla_\vartheta \log \pi_\vartheta(u_{tk}\vert \tau_t)$.
+3. Set $\vartheta_{k+1} = \vartheta_k + \alpha_k R(\tau_k) \sum_{t=0}^{L-1} \nabla_\vartheta \log \pi_\vartheta(u_{tk}\vert \tau_t)$.
 4. Increment $k=k+1$ and go to step 2.
 
 The main appeal of policy gradient is that it is this easy. If you can efficiently sample from $\pi_\vartheta$, you can run this algorithm on essentially any problem. You can fly quadcopters, you can cool data centers, you can teach robots to open doors. The question becomes, of course, can you do this well? I think that a simple appeal to the Linearization Principle will make it clear that Policy Gradient is likely never the algorithm that you'd want to use.
 
 ## Why are we using probabilistic policies again?
 
-Before talking about linear models, let's step back and consider a pure optimization setup. We added a bunch of notation to reinforcement learning so that at the end, it seemed like we were only aiming to maximize an unconstrained function.  Let's remove all of the dynamics and consider the _one step_ optimal control problem. Given a function $R[u]$, I want to find the $u$ that makes this as large as possible. That is, I'd like to solve the optimization problem
+Before talking about linear models, let's step back and consider a pure optimization setup. We added a bunch of notation to reinforcement learning so that at the end, it seemed like we were only aiming to maximize an unconstrained function.  Let's remove all of the dynamics and consider the _one step_ optimal control problem. Given a function $R(u)$, I want to find the $u$ that makes this as large as possible. That is, I'd like to solve the optimization problem
 
 $$
 \begin{array}{ll}
-	\mbox{maximize}_u & R[u] \,.
+	\mbox{maximize}_u & R(u) \,.
 	\end{array}
 $$
 
@@ -115,7 +115,7 @@ Now, bear with me for a second into a digression that might seem tangential. Any
 
 $$
 \begin{array}{ll}
-	\mbox{maximize}_{p(u)} & \mathbb{E}_p[R[u]]
+	\mbox{maximize}_{p(u)} & \mathbb{E}_p[R(u)]
 \end{array}
 $$
 
@@ -144,17 +144,17 @@ It's important at this point to reemphasize _there is no need for a randomized p
 So it turns out that this Policy Gradient algorithm is in fact a general purpose method for finding stochastic gradients of rewards of the form
 
 $$
-	J(\vartheta):=\mathbb{E}_{p(u;\vartheta)}[R[u]]
+	J(\vartheta):=\mathbb{E}_{p(u;\vartheta)}[R(u)]
 $$
 
 The log-likelihood trick works in full generality here:
 
 $$
 \begin{align*}
-	\nabla J(\vartheta) &= \int R[u] \nabla p(u;\vartheta) du\\
-	&= \int R[u] \left(\frac{\nabla p(u;\vartheta)}{p(u;\vartheta)}\right) p(u;\vartheta) du\\
-	&= \int \left( R[u] \nabla \log p(u;\vartheta) \right) p(u;\vartheta)du	\\
-  &= \mathbb{E}_{p(u;\vartheta)}\left[ R[u] \nabla \log p(u;\vartheta) \right]\,.
+	\nabla J(\vartheta) &= \int R(u) \nabla p(u;\vartheta) du\\
+	&= \int R(u) \left(\frac{\nabla p(u;\vartheta)}{p(u;\vartheta)}\right) p(u;\vartheta) du\\
+	&= \int \left( R(u) \nabla \log p(u;\vartheta) \right) p(u;\vartheta)du	\\
+  &= \mathbb{E}_{p(u;\vartheta)}\left[ R(u) \nabla \log p(u;\vartheta) \right]\,.
 \end{align*}
 $$
 
@@ -162,7 +162,7 @@ And hence the following is a general purpose algorithm for maximizing rewards wi
 
 1. Choose some initial guess $\vartheta_0$ and stepsize sequence $\{\alpha_k\}$. Set $k=0$.
 2. Sample $u_k$ i.i.d., from $p(u;\vartheta_k)$.
-3. Set $\vartheta_{k+1} = \vartheta_k + \alpha_k R[u_k] \nabla \log p(u_k;\vartheta_k)$.
+3. Set $\vartheta_{k+1} = \vartheta_k + \alpha_k R(u_k) \nabla \log p(u_k;\vartheta_k)$.
 4. Increment $k=k+1$ and go to step 2.
 
 The algorithm in this form is called REINFORCE. It seems weird: we get a stochastic gradient, but the function we cared about optimizing---$R$---is only accessed through function evaluations. We never compute gradients of $R$ itself. So is this algorithm any good?
@@ -171,12 +171,12 @@ It depends on what you are looking for. If you're looking for something to compe
 
 The thing is, the Linearization Principle suggests this is algorithm should be discarded almost immediately. Let's consider the most trivial example of LQR:
 $$
-	R[u] = -||u-z||^2
+	R(u) = -||u-z||^2
 $$
 Let $p(u;\vartheta)$ be a multivariate Gaussian with mean $\vartheta$ and variance $\sigma^2 I$.  What does policy gradient do?  First, note that
 
 $$
-	\mathbb{E}_{p(u;\vartheta)} [R[u]]= -\|\vartheta-z\|^2 - \sigma^2 d
+	\mathbb{E}_{p(u;\vartheta)} [R(u)]= -\|\vartheta-z\|^2 - \sigma^2 d
 $$
 
 Obviously, the best thing to do would be to set $\vartheta=z$. Note that the expected reward is off by $\sigma^2 d$ at this point, but at least this would be finding a good guess for $u$.  Also, as a function of $\vartheta$, $J$ is _strongly convex_, and the most important thing to know is the expected norm of the gradient as this will control the number of iterations. Now, if you start at $\vartheta=0$, then the gradient is
