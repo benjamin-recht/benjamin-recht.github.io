@@ -186,14 +186,14 @@ $$
 $$
 
 where $\omega$ is a normally distributed random vector with mean zero and identity covariance.
-The expected norm of this stochastic gradient is $\frac{\sqrt{d} \|z\|}{\sigma}$. That's actually quite large! The norm of the gradient is proportional to $d$.
+The expected norm of this stochastic gradient is $\frac{\sqrt{d} \|z\|}{\sigma}$. That's actually quite large! The norm of the gradient is proportional to $\sqrt{d}$.
 
 Many people have analyzed the complexity of this method, and [it is indeed not great](http://alekhagarwal.net/bandits-colt.pdf) and strongly depends on the dimension of the search space. It also depends on the largest magnitude reward $B$.  If the function values are noisy, even for convex functions, the convergence rate is $O((d^2B^2/T)^{-1/3})$, and this assumes you get the algorithm parameters exactly right. For strongly convex functions, you can possibly eke out a decent solution in $O((d^2B^2/T)^{-1/2})$ function evaluations, but this result is also rather fragile to choice of parameters. Finally, note that just adding an constant offset to the reward dramatically slows down the algorithm. If you start with a reward function whose values are in $[0,1]$ and you subtract one million from each reward, this will increase the running time of the algorithm by a factor of a million, even though the ordering of the rewards amongst parameter values remains the same.
 
 Note that matters only get worse as we bring in dynamics. The policy gradient update for LQR is very noisy, and its variance grows with the simulation length $L$. Moreover, the search for $\vartheta$ is necessarily nonconvex if one is searching for a simple static policy. While this could work in practice, we already have so many hurdles in our face that it suggests we should look for an alternative.
 
 
-## What is going on?
+## How can people be claiming such success in RL?
 
 Lots of papers have been applying policy gradient to all sorts of different settings, and claiming crazy results, but I hope that it is now clear that they are just dressing up pure random search in a clever outfit. When you end up with a bunch of papers showing that [genetic algorithms are competitive with your methods](https://twitter.com/OriolVinyalsML/status/960927537005322243), this does not mean that we’ve made an advance in genetic algorithms. It is far more likely that this means that your method is a lousy implementation of pure random search.
 
