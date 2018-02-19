@@ -119,9 +119,9 @@ $$
 \end{array}
 $$
 
-The equivalence goes like this: if $u_\star$ is the optimal solution, then we'll get the same cost if you put a Delta-function around $u_\star$.  Moreover, if $p$ is a probability distribution, it's clear that the _expected reward_ can never be larger than maximal reward achievable by a fixed $u$. So we can either optimize over $u$ or we can optimize over _distributions_ over $u$.
+The equivalence goes like this: if $u_\star$ is the optimal solution, then we'll get the same reward if you put a Delta-function around $u_\star$.  Moreover, if $p$ is a probability distribution, it's clear that the _expected reward_ can never be larger than maximal reward achievable by a fixed $u$. So we can either optimize over $u$ or we can optimize over _distributions_ over $u$.
 
-Now here is where the first sleight of hand often occurs in Policy Gradient. Rather than optimizing over the space of of all probability distributions, we optimize over a parametric family $p(u;\vartheta)$.  If this family contains all of the Delta functions, then the optimal value will coincide with the non-random optimization problem. But if the family does not contain the Delta functions, we will only get an upper bound on the optimal cost no matter how good of a probability distribution we find. In this case, if you sample $u$ from the policy, their expected reward will necessarily be suboptimal.
+Now here is where the first sleight of hand often occurs in Policy Gradient. Rather than optimizing over the space of of all probability distributions, we optimize over a parametric family $p(u;\vartheta)$.  If this family contains all of the Delta functions, then the optimal value will coincide with the non-random optimization problem. But if the family does not contain the Delta functions, we will only get an lower bound on the optimal reward no matter how good of a probability distribution we find. In this case, if you sample $u$ from the policy, their expected reward will necessarily be suboptimal.
 
 A major problem with this paradigm of optimization over distributions is that we have to balance many requirements for our family of distributions.  We need probability distributions that are
 
@@ -141,12 +141,10 @@ It's important at this point to reemphasize _there is no need for a randomized p
 
 ## The super general REINFORCE algorithm
 
-The Policy Gradient algorithm is a general purpose method for finding stochastic gradients of costs of the form
+The Policy Gradient algorithm is a general purpose method for finding stochastic gradients of rewards of the form
 
 $$
-\begin{array}{ll}
-	\mbox{maximize}_{\vartheta} & J(\vartheta):=\mathbb{E}_{p(u;\vartheta)}[R[u]]
-	\end{array}
+	J(\vartheta):=\mathbb{E}_{p(u;\vartheta)}[R[u]]
 $$
 
 The log-likelihood trick works in full generality:
@@ -181,7 +179,7 @@ $$
 	\mathbb{E}_{p(u;\vartheta)} = -\|\vartheta-z\|^2 - \sigma^2 d
 $$
 
-Obviously, the best thing to do would be to set $\vartheta=z$. Note that the expected cost is off by $\sigma^2 d$ at this point, but at least this would be finding a good guess for $u$.  Also, as a function of $\vartheta$, $J$ is _strongly convex_, and the most important thing to know is the expected norm of the gradient as this will control the number of iterations. Now, if you start at $\vartheta=0$, then the norm of the gradient is
+Obviously, the best thing to do would be to set $\vartheta=z$. Note that the expected reward is off by $\sigma^2 d$ at this point, but at least this would be finding a good guess for $u$.  Also, as a function of $\vartheta$, $J$ is _strongly convex_, and the most important thing to know is the expected norm of the gradient as this will control the number of iterations. Now, if you start at $\vartheta=0$, then the norm of the gradient is
 
 $$
 	g=\frac{||z||^2 \omega_0}{\sigma^2}
