@@ -2,7 +2,7 @@
 layout:     post
 title:      The Policy of Truth
 date:       2018-02-14 0:00:00
-summary:    An outsider tour of reinforcement learning, Part 7. Policy gradient doesn't have gradients.
+summary:    An outsider tour of reinforcement learning, Part 6. Policy gradient doesn't have gradients.
 author:     Ben Recht
 visible:    false
 ---
@@ -190,7 +190,7 @@ The expected norm of this stochastic gradient is $\frac{\sqrt{d} \|z\|}{\sigma}$
 
 Many people have analyzed the complexity of this method, and [it is indeed not great](http://alekhagarwal.net/bandits-colt.pdf) and strongly depends on the dimension of the search space. If the function values are noisy, even for convex functions, the convergence rate is $O((d^2/T)^{-1/3})$, and this assumes you get the algorithm parameters exactly right. For strongly convex functions, you can possibly eke out a decent solution in $O((d^2/T)^{-1/2})$ function evaluations, but this result is also rather fragile to choice of parameters.
 
-Note that matters only get worse as we bring in dynamics. The policy gradient update for LQR is very noisy, and its variance grows with the simulation length $L$. Moreover, the search for $\vartheta$ is necessarily nonconvex if one is searching for a simple static policy. While this could work in practice, we already have so many hurdles in our face, that it suggests we should look for an alternative.
+Note that matters only get worse as we bring in dynamics. The policy gradient update for LQR is very noisy, and its variance grows with the simulation length $L$. Moreover, the search for $\vartheta$ is necessarily nonconvex if one is searching for a simple static policy. While this could work in practice, we already have so many hurdles in our face that it suggests we should look for an alternative.
 
 
 ## What is going on?
