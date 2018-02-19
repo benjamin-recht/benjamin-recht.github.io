@@ -186,7 +186,7 @@ $$
 $$
 
 where $\omega$ is a normally distributed random vector with mean zero and identity covariance.
-The norm is $\frac{\sqrt{d} \|z\|}{\sigma}$. That's actually quite large! The norm of the gradient is proportional to $d$.
+The expected norm of this stochastic gradient is $\frac{\sqrt{d} \|z\|}{\sigma}$. That's actually quite large! The norm of the gradient is proportional to $d$.
 
 Many people have analyzed the complexity of this method, and [it is indeed not great](http://alekhagarwal.net/bandits-colt.pdf) and strongly depends on the dimension of the search space. If the function values are noisy, even for convex functions, the convergence rate is $O((d^2/T)^{-1/3})$, and this assumes you get the algorithm parameters exactly right. For strongly convex functions, you can possibly eke out a decent solution in $O((d^2/T)^{-1/2})$ function evaluations, but this result is also rather fragile to choice of parameters.
 
