@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      The Policy of Truth
-date:       2018-02-20 0:00:01
+date:       2018-02-20 0:00:00
 summary:    An outsider tour of reinforcement learning, Part 6. Policy gradient doesn't have gradients.
 author:     Ben Recht
 visible:    true
