@@ -4,6 +4,7 @@ title:      Large Margin Micro Blogging
 date:       2016-04-26 7:00:00
 summary:    How much VC dimension can you cram in a tweet?
 author:     Ben Recht
+blurb: true
 visible:    true
 ---
 

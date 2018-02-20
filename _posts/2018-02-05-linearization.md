@@ -4,6 +4,7 @@ title:      The Linearization Principle
 date:       2018-02-05 0:00:00
 summary:    An outsider tour of reinforcement learning, Part 3. The Linearization Principle.
 author:     Benjamin Recht
+blurb: true
 visible:    true
 ---
 

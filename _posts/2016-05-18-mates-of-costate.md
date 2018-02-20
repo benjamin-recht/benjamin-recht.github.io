@@ -4,6 +4,7 @@ title:      Mates of Costate
 date:       2016-05-18 7:00:00
 summary:    The dynamical systems view of backpropagation
 author:     Ben Recht
+blurb: true
 visible:    true
 ---
 

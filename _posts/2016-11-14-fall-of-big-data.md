@@ -4,6 +4,7 @@ title:      The Fall of BIG DATA
 date:       2016-11-14 7:00:00
 summary:    How we have failed data analytics and how we must be better
 author:     Ben Recht
+blurb: true
 visible:    true
 ---
 

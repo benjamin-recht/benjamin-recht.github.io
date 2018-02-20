@@ -4,6 +4,7 @@ title:      Mechanics of Lagrangians
 date:       2016-05-31 7:00:00
 summary:    Two paths to understanding Lagrangians in nonlinear optimization
 author:     Ben Recht
+blurb: true
 visible:    true
 ---
 

@@ -4,6 +4,7 @@ title:      Bottoming Out
 date:       2016-04-18 7:00:00
 summary:    Is optimization of deep nets difficult?
 author:     Ben Recht
+blurb: true
 visible:    true
 ---
 

@@ -4,6 +4,7 @@ title:      An Addendum to Alchemy
 date:       2017-12-11 7:00:00
 summary:    an addendum to our NIPS 2017 presentation
 author:     Ali Rahimi and Ben Recht
+blurb: true
 visible:    true
 ---
 
