@@ -4,7 +4,7 @@ title:      The Policy of Truth
 date:       2018-02-14 0:00:00
 summary:    An outsider tour of reinforcement learning, Part 6. Policy gradient doesn't have gradients.
 author:     Ben Recht
-visible:    false
+visible:    true
 ---
 
 Our first generic candidate for solving reinforcement learning is _Policy Gradient_. I find it shocking that Policy Gradient wasn't ruled out as a bad idea in 1993. Policy gradient is seductive as it apparently lets one fine tune a program to solve any problem without any domain knowledge. Of course, anything that makes such a claim must be too general for its own good. Indeed, if you dive into it, **policy gradient is nothing more than random search dressed up in mathematical symbols and lingo**.

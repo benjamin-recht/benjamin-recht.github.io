@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      An Outsider\'s Tour of Reinforcement Learning
+title:      An Outsider Tour of Reinforcement Learning
 date:       2018-02-20 0:00:00
 summary:    An outsider tour of reinforcement learning
 author:     Ben Recht
