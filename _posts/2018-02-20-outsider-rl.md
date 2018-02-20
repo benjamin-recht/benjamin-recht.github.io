@@ -8,7 +8,7 @@ author:     Ben Recht
 visible:    true
 ---
 
-## Table of Contents
+## Table of Contents.
 
 1. [Make It Happen.](http://www.argmin.net/2018/01/29/taxonomy/) Reinforcement Learning as prescriptive analytics.
 2. [Total Control.](http://www.argmin.net/2018/02/01/control-tour/) Reinforcement Learning as Optimal Control.
