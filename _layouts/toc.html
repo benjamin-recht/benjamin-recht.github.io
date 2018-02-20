@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<div class="post-header mb2">
+  <h1>{{ page.title }}</h1>
+  <div class="post-meta">
+  {% if page.author %}
+  {{ page.author }} &nbsp;&bull;&nbsp;
+  {% endif %}
+  {% if page.update_date %}
+  Updated: {{ page.update_date | date: site.date_format }}
+  {% endif %}
+  </div>
+</div>
+
+<article class="post-content">
+  {{ content }}
+</article>
