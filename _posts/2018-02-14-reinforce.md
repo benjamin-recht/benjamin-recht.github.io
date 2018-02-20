@@ -189,7 +189,7 @@ where $\omega$ is a normally distributed random vector with mean zero and covari
 The expected norm of this stochastic gradient is... gross. You need to compute 6th order moments, and that's never fun. But if you grind through the details, you'll see the expected norm is on the order of
 
 $$
-O\left(\sigma d^{1.5} + \sigma^{-1} d^0.5 \|z\|\right)\,.
+O\left(\sigma d^{1.5} + \sigma^{-1} d^{0.5} \|z\|\right)\,.
 $$
 
 That's quite large! The scaling with dimension is rather troubling.
