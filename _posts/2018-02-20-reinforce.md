@@ -27,7 +27,7 @@ In policy gradient, we fix our attention on _parametric, randomized policies_.  
 Let's write $\pi_\vartheta$ to make the dependence on the parameters $\vartheta$ explicit. Since $\pi_\vartheta$ is a probability distribution, using $\pi_\vartheta$ as a policy induces a probability distribution over trajectories:
 
 $$
-	\mathbb{P}(\tau;\vartheta) = \prod_{t=0}^{L-1} \mathbb{P}(x_{t+1} \vert x_{t},u_{t}) \pi_\vartheta(u_t\vert \tau_t)\,.
+	p(\tau;\vartheta) = \prod_{t=0}^{L-1} p(x_{t+1} \vert x_{t},u_{t}) \pi_\vartheta(u_t\vert \tau_t)\,.
 $$
 
 Moreover, we can overload notation and define the reward of a trajectory to be
@@ -64,17 +64,17 @@ Having set up the problem in tidy notation, Policy Gradient can now be derived b
 
 $$
 \begin{align*}
-	\nabla J(\vartheta) &= \int R(\tau) \nabla p(\tau;\vartheta) d\tau\\
-	&= \int R(\tau) \left(\frac{\nabla p(\tau;\vartheta)}{p(\tau;\vartheta)}\right) p(\tau;\vartheta) d\tau\\
-	&= \int \left( R(\tau) \nabla \log p(\tau;\vartheta) \right) p(\tau;\vartheta)d\tau	\\
-  &= \mathbb{E}_{p(\tau;\vartheta)}\left[ R(\tau) \nabla \log p(\tau;\vartheta) \right]\,.
+	\nabla_{\vartheta} J(\vartheta) &= \int R(\tau) \nabla_{\vartheta} p(\tau;\vartheta) d\tau\\
+	&= \int R(\tau) \left(\frac{\nabla_{\vartheta} p(\tau;\vartheta)}{p(\tau;\vartheta)}\right) p(\tau;\vartheta) d\tau\\
+	&= \int \left( R(\tau) \nabla_{\vartheta} \log p(\tau;\vartheta) \right) p(\tau;\vartheta)d\tau	\\
+  &= \mathbb{E}_{p(\tau;\vartheta)}\left[ R(\tau) \nabla_{\vartheta} \log p(\tau;\vartheta) \right]\,.
 \end{align*}
 $$
 
 This calculation reveals that the gradient of $J$ with respect to $\vartheta$ is the expected value of the function
 
 $$
-	G(\tau,\vartheta) = R(\tau) \nabla \log p(\tau;\vartheta)
+	G(\tau,\vartheta) = R(\tau) \nabla_{\vartheta} \log p(\tau;\vartheta)
 $$
 
 Hence, if we sample a trajectory $\tau$ by running policy $\pi_\vartheta$, we can compute $G(\tau,\vartheta)$ and will have an unbiased estimate of the gradient of $J$. We can follow this direction and will be running stochastic gradient descent on $J$.
@@ -82,13 +82,13 @@ Hence, if we sample a trajectory $\tau$ by running policy $\pi_\vartheta$, we ca
 What is more magic, is that the function $G(\tau,\vartheta)$ can be computed without knowing the equations that govern the dynamical system. To see this note that
 
 $$
-	\mathbb{P}(x_{t+1}|x_{t},u_{t})
+	p(x_{t+1}|x_{t},u_{t})
 $$
 
 is _not_ a function of the parameter $\vartheta$. Hence,
 
 $$
-	\nabla_\vartheta \log \mathbb{P}(\tau;\vartheta) = \sum_{t=0}^{L-1} \nabla_\vartheta \log \pi_\vartheta(u_t|\tau_t)\,.
+	\nabla_\vartheta \log p(\tau;\vartheta) = \sum_{t=0}^{L-1} \nabla_\vartheta \log \pi_\vartheta(u_t|\tau_t)\,.
 $$
 
 These derivatives can be computed provided that $\pi_\vartheta$ is differentiable and you have the latest version of [autograd](https://github.com/HIPS/autograd) installed.
@@ -152,10 +152,10 @@ The log-likelihood trick works in full generality here:
 
 $$
 \begin{align*}
-	\nabla J(\vartheta) &= \int R(u) \nabla p(u;\vartheta) du\\
-	&= \int R(u) \left(\frac{\nabla p(u;\vartheta)}{p(u;\vartheta)}\right) p(u;\vartheta) du\\
-	&= \int \left( R(u) \nabla \log p(u;\vartheta) \right) p(u;\vartheta)du	\\
-  &= \mathbb{E}_{p(u;\vartheta)}\left[ R(u) \nabla \log p(u;\vartheta) \right]\,.
+	\nabla_{\vartheta} J(\vartheta) &= \int R(u) \nabla_{\vartheta} p(u;\vartheta) du\\
+	&= \int R(u) \left(\frac{\nabla_{\vartheta} p(u;\vartheta)}{p(u;\vartheta)}\right) p(u;\vartheta) du\\
+	&= \int \left( R(u) \nabla_{\vartheta} \log p(u;\vartheta) \right) p(u;\vartheta)du	\\
+  &= \mathbb{E}_{p(u;\vartheta)}\left[ R(u) \nabla_{\vartheta} \log p(u;\vartheta) \right]\,.
 \end{align*}
 $$
 
@@ -163,7 +163,7 @@ And hence the following is a general purpose algorithm for maximizing rewards wi
 
 1. Choose some initial guess $\vartheta_0$ and stepsize sequence $\{\alpha_k\}$. Set $k=0$.
 2. Sample $u_k$ i.i.d., from $p(u;\vartheta_k)$.
-3. Set $\vartheta_{k+1} = \vartheta_k + \alpha_k R(u_k) \nabla \log p(u_k;\vartheta_k)$.
+3. Set $\vartheta_{k+1} = \vartheta_k + \alpha_k R(u_k) \nabla_{\vartheta} \log p(u_k;\vartheta_k)$.
 4. Increment $k=k+1$ and go to step 2.
 
 The algorithm in this form is called REINFORCE. It seems weird: we get a stochastic gradient, but the function we cared about optimizing---$R$---is only accessed through function evaluations. We never compute gradients of $R$ itself. So is this algorithm any good?
