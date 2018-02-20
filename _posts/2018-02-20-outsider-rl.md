@@ -15,3 +15,5 @@ visible:    true
 4. [The Linear Quadratic Regulator.](http://www.argmin.net/2018/02/08/lqr/) A quick intro to LQR as why it is a great baseline for benchmarking Reinforcement Learning.
 5. [A Game of Chance to You to Him Is One of Real Skill.](http://www.argmin.net/2018/02/14/rl-game/) Laying out the rules of the RL Game and comparing to Iterative Learning Control.
 6. [The Policy of Truth.](http://www.argmin.net/2018/02/20/reinforce/) Policy Gradient is a Gradient Free Optimization Method.
+
+...
