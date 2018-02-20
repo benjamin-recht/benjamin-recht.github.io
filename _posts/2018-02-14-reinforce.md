@@ -9,7 +9,7 @@ visible:    false
 
 Our first generic candidate for solving reinforcement learning is _Policy Gradient_. I find it shocking that Policy Gradient wasn't ruled out as a bad idea in 1993. Policy gradient is seductive as it apparently lets one fine tune a program to solve any problem without any domain knowledge. Of course, anything that makes such a claim must be too general for its own good. Indeed, if you dive into it, **policy gradient is nothing more than random search dressed up in mathematical symbols and lingo**.
 
-I apologize in advance that this is one of the more notationally heavy posts. Policy Gradient makes excessive use of notation to fool us into thinking there is something deep going on. My guess is that part of the reason Policy Gradient remained a research topic was because people didn't implement it and the mathematics [looked so appealing on its own](http://papers.nips.cc/paper/1713-policy-gradient-methods-for-reinforcement-learning-with-function-approximation.pdf). This makes it easy to lose sight of what would happen if the method actually got coded up. See if you can find the places where sleight of hand occurs.
+I apologize in advance that this is one of the more notationally heavy posts. Policy Gradient makes excessive use of notation to fool us into thinking there is something deep going on. My guess is that part of the reason Policy Gradient remained a research topic was because people didn't implement it and the mathematics [looked so appealing on its own](http://papers.nips.cc/paper/1713-policy-gradient-methods-for-reinforcement-learning-with-function-approximation.pdf). This makes it easy to lose sight of what would happen if the method actually got coded up. See if you can find the places where leaps of faith occur.
 
 ## Adding abstraction until the problem is solved
 
@@ -121,7 +121,7 @@ $$
 
 The equivalence goes like this: if $u_\star$ is the optimal solution, then we'll get the same reward if you put a Delta-function around $u_\star$.  Moreover, if $p$ is a probability distribution, it's clear that the _expected reward_ can never be larger than maximal reward achievable by a fixed $u$. So we can either optimize over $u$ or we can optimize over _distributions_ over $u$.
 
-Now here is where the first sleight of hand often occurs in Policy Gradient. Rather than optimizing over the space of of all probability distributions, we optimize over a parametric family $p(u;\vartheta)$.  If this family contains all of the Delta functions, then the optimal value will coincide with the non-random optimization problem. But if the family does not contain the Delta functions, we will only get an lower bound on the optimal reward no matter how good of a probability distribution we find. In this case, if you sample $u$ from the policy, their expected reward will necessarily be suboptimal.
+Now here is the first logical jump in Policy Gradient. Rather than optimizing over the space of of all probability distributions, we optimize over a parametric family $p(u;\vartheta)$.  If this family contains all of the Delta functions, then the optimal value will coincide with the non-random optimization problem. But if the family does not contain the Delta functions, we will only get an lower bound on the optimal reward no matter how good of a probability distribution we find. In this case, if you sample $u$ from the policy, their expected reward will necessarily be suboptimal.
 
 A major problem with this paradigm of optimization over distributions is that we have to balance many requirements for our family of distributions.  We need probability distributions that are
 
@@ -182,11 +182,17 @@ $$
 Obviously, the best thing to do would be to set $\vartheta=z$. Note that the expected reward is off by $\sigma^2 d$ at this point, but at least this would be finding a good guess for $u$.  Also, as a function of $\vartheta$, $J$ is _strongly convex_, and the most important thing to know is the expected norm of the gradient as this will control the number of iterations. Now, if you start at $\vartheta=0$, then the gradient is
 
 $$
-	g=\frac{||z||^2 \omega}{\sigma}\,,
+	g=\frac{||w-z||^2 \omega}{\sigma^2}\,,
 $$
 
-where $\omega$ is a normally distributed random vector with mean zero and identity covariance.
-The expected norm of this stochastic gradient is $\frac{\sqrt{d} \|z\|}{\sigma}$. That's actually quite large! The norm of the gradient is proportional to $\sqrt{d}$.
+where $\omega$ is a normally distributed random vector with mean zero and covariance $\sigma^2 I$.
+The expected norm of this stochastic gradient is... gross. You need to compute 6th order moments, and that's never fun. But if you grind through the details, you'll see the expected norm is on the order of
+
+$$
+O\left(\sigma d^{1.5} + \sigma^{-1} d^0.5 \|z\|\right)\,.
+$$
+
+That's quite large! The scaling with dimension is rather troubling.
 
 Many people have analyzed the complexity of this method, and [it is indeed not great](http://alekhagarwal.net/bandits-colt.pdf) and strongly depends on the dimension of the search space. It also depends on the largest magnitude reward $B$.  If the function values are noisy, even for convex functions, the convergence rate is $O((d^2B^2/T)^{-1/3})$, and this assumes you get the algorithm parameters exactly right. For strongly convex functions, you can possibly eke out a decent solution in $O((d^2B^2/T)^{-1/2})$ function evaluations, but this result is also rather fragile to choice of parameters. Finally, note that just adding an constant offset to the reward dramatically slows down the algorithm. If you start with a reward function whose values are in $[0,1]$ and you subtract one million from each reward, this will increase the running time of the algorithm by a factor of a million, even though the ordering of the rewards amongst parameter values remains the same.
 
