@@ -172,7 +172,12 @@ def random_search_linear_policy(A,B,Q,R,x0,eq_err,N,T,
           reward += -np.dot(x.T,Q.dot(x))-np.dot(u.T,R.dot(u))
         mini_batch += (reward*sign)*V
         reward_store.append(reward)
-    K += (step_size/np.std(reward_store)/batch_size)*mini_batch
+    if k>2000:
+        step_size_use = step_size*0.1;
+    else:
+        step_size_use = step_size
+
+    K += (step_size_use/np.std(reward_store)/batch_size)*mini_batch
 
   return K
 

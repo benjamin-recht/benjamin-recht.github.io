@@ -9,6 +9,8 @@ visible:    true
 blurb: false
 ---
 
+Part 6/x. I'll keep logging parts here as they come. I am hoping that x ends up being less than 100...
+
 ## Table of Contents.
 
 1. [Make It Happen.](http://www.argmin.net/2018/01/29/taxonomy/) Reinforcement Learning as prescriptive analytics.
