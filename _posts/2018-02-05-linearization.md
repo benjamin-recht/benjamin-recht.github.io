@@ -42,7 +42,7 @@ With regards to saddle points, my gut tells me that the notion that SGD avoids t
 
 #### Ali’s Fourth Phenomenon: Dropout works better than other randomization strategies.
 
-[Wager and collaborators](https://arxiv.org/abs/1307.1493) showed that on linear models, Dropout is nothing more than a form of weighted ridge regression. Dropout undoubtedly something different on deep models, but it’s not surprising that randomly perturbing backpropagation imposes some sort of regularization. Whether or not “works better than other randomization strategies” remains unclear even in deep nets.
+[Wager and collaborators](https://arxiv.org/abs/1307.1493) showed that on linear models, Dropout is nothing more than a form of weighted ridge regression. Dropout is undoubtedly something different on deep models, but it’s not surprising that randomly perturbing backpropagation imposes some sort of regularization. Whether or not “works better than other randomization strategies” remains unclear even in deep nets.
 
 #### Ali’s Fifth Phenomenon: Deep nets can memorize random labels, and yet, they generalize.
 
