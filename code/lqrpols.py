@@ -26,7 +26,7 @@ def cost_inf_K(A,B,Q,R,K):
       cost: Infinite time horizon LQR cost of static gain K
   '''
   cl_map = A+B.dot(K)
-  if np.amax(np.abs(LA.eigvals(cl_map)))<1:
+  if np.amax(np.abs(LA.eigvals(cl_map)))<(1.0-1.0e6):
     cost = np.trace(LA.solve_discrete_lyapunov(cl_map.T,Q+np.dot(K.T,R.dot(K))))
   else:
     cost = float("inf")
@@ -129,7 +129,8 @@ def lsqr_estimator(A,B,Q,R,x0,eq_err,N,T):
   B_nom = tmp[d:(d+p),:].T
   return (A_nom,B_nom)
 
-def random_search_linear_policy(A,B,Q,R,x0,eq_err,N,T):
+def random_search_linear_policy(A,B,Q,R,x0,eq_err,N,T,
+    explore_mag = 1e-2, step_size = 5e-1, batch_size = 4):
   '''
     Arguments:
       state transition matrices (A,B)
@@ -138,19 +139,19 @@ def random_search_linear_policy(A,B,Q,R,x0,eq_err,N,T):
       magnitude of noise in dynamics eq_err
       Number of rollouts N
       Time Horizon T
-      Outputs:
+
+      hyperparameters:
+        explore_mag = magnitude of the noise to explore
+        step_size
+        batch_size = number of directions per minibatches
+        safeguard: maximum absolute value of entries of controller gain
+
+    Outputs:
       Static Control Gain K optimized on LQR cost by random search
   '''
 
   d,p = B.shape
 
-  ### hyperparameters
-  # magnitude of the noise to explore
-  explore_mag = 1e-2;
-  # step size for algorithm
-  step_size = 1e-1;
-  # size of minibatches
-  batch_size = 4;
   # initial condition for K
   K0 = 1e-3*np.random.randn(p,d)
   ###
@@ -171,7 +172,7 @@ def random_search_linear_policy(A,B,Q,R,x0,eq_err,N,T):
           reward += -np.dot(x.T,Q.dot(x))-np.dot(u.T,R.dot(u))
         mini_batch += (reward*sign)*V
         reward_store.append(reward)
-    K += (step_size/np.std(reward_store))*mini_batch
+    K += (step_size/np.std(reward_store)/batch_size)*mini_batch
 
   return K
 
@@ -211,7 +212,8 @@ def uniform_random_linear_policy(A,B,Q,R,x0,eq_err,N,T):
 
   return best_K
 
-def policy_gradient_linear_policy(A,B,Q,R,x0,eq_err,N,T):
+def policy_gradient_linear_policy(A,B,Q,R,x0,eq_err,N,T,
+  explore_mag = 5e-2,step_size = 2, batch_size = 40, safeguard = 2):
   '''
     Arguments:
       state transition matrices (A,B)
@@ -220,21 +222,19 @@ def policy_gradient_linear_policy(A,B,Q,R,x0,eq_err,N,T):
       magnitude of noise in dynamics eq_err
       Number of rollouts N
       Time Horizon T
+
+      hyperparameters
+         explore_mag magnitude of the noise to explore
+         step_size
+         batch_size: number of stochastic gradients per minibatch
+         safeguard: maximum absolute value of entries of controller gain
+
     Outputs:
       Static Control Gain K optimized on LQR cost by Policy Gradient
   '''
 
   d,p = B.shape
 
-  ### hyperparameters
-  # magnitude of the noise to explore
-  explore_mag = 1e-2
-  # step size for algorithm
-  step_size = 1e-2
-  # size of minibatches
-  batch_size = 40
-  # maximum absolute value of entries of controller gain
-  safeguard = 2
   # initial condition for K
   K0 = 1e-3*np.random.randn(p,d)
   ###
@@ -253,8 +253,8 @@ def policy_gradient_linear_policy(A,B,Q,R,x0,eq_err,N,T):
       reward = 0
       for t in range(T):
         v = explore_mag*np.random.randn(p,1)
-        X_store[:,t]=x.flatten()
-        V_store[:,t]=v.flatten()
+        X_store[:,t] = x.flatten()
+        V_store[:,t] = v.flatten()
         u = np.dot(K,x)+v
         x = A.dot(x)+B.dot(u)+eq_err*np.random.randn(d,1)
         reward += -np.dot(x.T,Q.dot(x))-np.dot(u.T,R.dot(u))
@@ -263,5 +263,4 @@ def policy_gradient_linear_policy(A,B,Q,R,x0,eq_err,N,T):
     K += step_size*mini_batch
     K = np.minimum(np.maximum(K,-safeguard),safeguard)
     baseline = new_baseline
-
   return K
