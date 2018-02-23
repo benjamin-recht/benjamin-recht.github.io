@@ -2,108 +2,108 @@ import numpy as np
 import scipy.linalg as LA
 
 def lqr_gain(A,B,Q,R):
-    '''
-    Arguments:
-        State transition matrices (A,B)
-        LQR Costs (Q,R)
-    Outputs:
-        K: optimal infinite-horizon LQR gain matrix given
-    '''
+  '''
+  Arguments:
+    State transition matrices (A,B)
+    LQR Costs (Q,R)
+  Outputs:
+    K: optimal infinite-horizon LQR gain matrix given
+  '''
 
-    # solve DARE:
-    M=LA.solve_discrete_are(A,B,Q,R)
+  # solve DARE:
+  M=LA.solve_discrete_are(A,B,Q,R)
 
-    # K=(B'MB + R)^(-1)*(B'MA)
-    return np.dot(LA.inv(np.dot(np.dot(B.T,M),B)+R),(np.dot(np.dot(B.T,M),A)))
+  # K=(B'MB + R)^(-1)*(B'MA)
+  return np.dot(LA.inv(np.dot(np.dot(B.T,M),B)+R),(np.dot(np.dot(B.T,M),A)))
 
 def cost_inf_K(A,B,Q,R,K):
-    '''
+  '''
     Arguments:
-        State transition matrices (A,B)
-        LQR Costs (Q,R)
-        Control Gain K
+      State transition matrices (A,B)
+      LQR Costs (Q,R)
+      Control Gain K
     Outputs:
-        cost: Infinite time horizon LQR cost of static gain K
-    '''
-    cl_map = A+B.dot(K)
-    if np.amax(np.abs(LA.eigvals(cl_map)))<1:
-        cost = np.trace(LA.solve_discrete_lyapunov(cl_map.T,Q+np.dot(K.T,R.dot(K))))
-    else:
-        cost = float("inf")
+      cost: Infinite time horizon LQR cost of static gain K
+  '''
+  cl_map = A+B.dot(K)
+  if np.amax(np.abs(LA.eigvals(cl_map)))<1:
+    cost = np.trace(LA.solve_discrete_lyapunov(cl_map.T,Q+np.dot(K.T,R.dot(K))))
+  else:
+    cost = float("inf")
 
-    return cost
+  return cost
 
 def cost_finite_model(A_true,B_true,Q,R,x0,T,A_dat,B_dat):
-    '''
+  '''
     Arguments:
-        True Model state transition matrices (A_true,B_true)
-        LQR Costs (Q,R)
-        Initial State x0
-        Time Horizon T
-        Nominal Model state transition matrices (A_dat,B_dat)
+      True Model state transition matrices (A_true,B_true)
+      LQR Costs (Q,R)
+      Initial State x0
+      Time Horizon T
+      Nominal Model state transition matrices (A_dat,B_dat)
     Outputs:
-        cost: finite time horizon LQR cost when control is computed using
-        (A_dat,B_dat) but executed on system (A_true,B_true)
-    '''
-    d,p = B_true.shape
+      cost: finite time horizon LQR cost when control is computed using
+      (A_dat,B_dat) but executed on system (A_true,B_true)
+  '''
+  d,p = B_true.shape
 
-    # Ricatti recursion
-    M = np.zeros((d,d,T))
-    M[:,:,-1]=Q
-    for k in range(T-2,-1,-1):
-        AMA = np.dot(A_dat.T,M[:,:,k+1].dot(A_dat))
-        AMB = np.dot(A_dat.T,M[:,:,k+1].dot(B_dat))
-        BMB = np.dot(B_dat.T,M[:,:,k+1].dot(B_dat))
-        M[:,:,k] = Q + AMA - np.dot(AMB,LA.inv(R+BMB).dot(AMB.T))
+  # Ricatti recursion
+  M = np.zeros((d,d,T))
+  M[:,:,-1]=Q
+  for k in range(T-2,-1,-1):
+    AMA = np.dot(A_dat.T,M[:,:,k+1].dot(A_dat))
+    AMB = np.dot(A_dat.T,M[:,:,k+1].dot(B_dat))
+    BMB = np.dot(B_dat.T,M[:,:,k+1].dot(B_dat))
+    M[:,:,k] = Q + AMA - np.dot(AMB,LA.inv(R+BMB).dot(AMB.T))
 
-    # compute contols and costs using these Ricatti iterates
-    cost = 0
-    x = x0
-    for k in range(T):
-      AMB = np.dot(A_dat.T,M[:,:,k].dot(B_dat))
-      BMB = np.dot(B_dat.T,M[:,:,k].dot(B_dat))
-      u = -np.dot(LA.inv(R+BMB),np.dot(AMB.T,x))
-      x = A_true.dot(x)+B_true.dot(u)
-      cost = cost+np.dot(x.T,Q.dot(x))+np.dot(u.T,R.dot(u))
+  # compute contols and costs using these Ricatti iterates
+  cost = 0
+  x = x0
+  for k in range(T):
+    AMB = np.dot(A_dat.T,M[:,:,k].dot(B_dat))
+    BMB = np.dot(B_dat.T,M[:,:,k].dot(B_dat))
+    u = -np.dot(LA.inv(R+BMB),np.dot(AMB.T,x))
+    x = A_true.dot(x)+B_true.dot(u)
+    cost = cost+np.dot(x.T,Q.dot(x))+np.dot(u.T,R.dot(u))
 
-    return cost.flatten()
+  return cost.flatten()
 
 def cost_finite_K(A_true,B_true,Q,R,x0,T,K):
-    '''
+  '''
     Arguments:
-        True Model state transition matrices (A_true,B_true)
-        LQR Costs (Q,R)
-        Initial State x0
-        Time Horizon T
-        Static Control Gain K
+      True Model state transition matrices (A_true,B_true)
+      LQR Costs (Q,R)
+      Initial State x0
+      Time Horizon T
+      Static Control Gain K
     Outputs:
-        cost: finite time horizon LQR cost when control is static gain K on
-        system (A_true,B_true)
-    '''
+      cost: finite time horizon LQR cost when control is static gain K on
+      system (A_true,B_true)
+  '''
 
-    d,p = B_true.shape
+  d,p = B_true.shape
 
-    cost = 0
-    x = x0
-    for k in range(T):
-      u = np.dot(K,x)
-      x = A_true.dot(x)+B_true.dot(u)
-      cost = cost+np.dot(x.T,Q.dot(x))+np.dot(u.T,R.dot(u))
+  cost = 0
+  x = x0
+  for k in range(T):
+    u = np.dot(K,x)
+    x = A_true.dot(x)+B_true.dot(u)
+    cost = cost+np.dot(x.T,Q.dot(x))+np.dot(u.T,R.dot(u))
 
-    return cost.flatten()
+  return cost.flatten()
 
 def lsqr_estimator(A,B,Q,R,x0,eq_err,N,T):
-    '''
+  '''
     Arguments:
-        state transition matrices (A,B)
-        LQR Costs (Q,R)
-        Initial State x0
-        magnitude of noise in dynamics eq_err
-        Number of rollouts N
-        Time Horizon T
+      state transition matrices (A,B)
+      LQR Costs (Q,R)
+      Initial State x0
+      magnitude of noise in dynamics eq_err
+      Number of rollouts N
+      Time Horizon T
     Outputs:
-        Estimated State Transition Matrices (A_nom,B_nom) from least squares
-    '''
+      Estimated State Transition Matrices (A_nom,B_nom) from least squares
+  '''
 
   d,p = B.shape
 
@@ -130,17 +130,17 @@ def lsqr_estimator(A,B,Q,R,x0,eq_err,N,T):
   return (A_nom,B_nom)
 
 def random_search_linear_policy(A,B,Q,R,x0,eq_err,N,T):
-    '''
+  '''
     Arguments:
-        state transition matrices (A,B)
-        LQR Costs (Q,R)
-        Initial State x0
-        magnitude of noise in dynamics eq_err
-        Number of rollouts N
-        Time Horizon T
-    Outputs:
-        Static Control Gain K optimized on LQR cost by random search
-    '''
+      state transition matrices (A,B)
+      LQR Costs (Q,R)
+      Initial State x0
+      magnitude of noise in dynamics eq_err
+      Number of rollouts N
+      Time Horizon T
+      Outputs:
+      Static Control Gain K optimized on LQR cost by random search
+  '''
 
   d,p = B.shape
 
@@ -176,18 +176,18 @@ def random_search_linear_policy(A,B,Q,R,x0,eq_err,N,T):
   return K
 
 def uniform_random_linear_policy(A,B,Q,R,x0,eq_err,N,T):
-    '''
+  '''
     Arguments:
-        state transition matrices (A,B)
-        LQR Costs (Q,R)
-        Initial State x0
-        magnitude of noise in dynamics eq_err
-        Number of rollouts N
-        Time Horizon T
+      state transition matrices (A,B)
+      LQR Costs (Q,R)
+      Initial State x0
+      magnitude of noise in dynamics eq_err
+      Number of rollouts N
+      Time Horizon T
     Outputs:
-        Static Control Gain K optimized on LQR cost by uniformly sampling policies
-        in bounded region
-    '''
+      Static Control Gain K optimized on LQR cost by uniformly sampling policies
+      in bounded region
+  '''
 
   d,p = B.shape
 
@@ -212,17 +212,17 @@ def uniform_random_linear_policy(A,B,Q,R,x0,eq_err,N,T):
   return best_K
 
 def policy_gradient_linear_policy(A,B,Q,R,x0,eq_err,N,T):
-    '''
+  '''
     Arguments:
-        state transition matrices (A,B)
-        LQR Costs (Q,R)
-        Initial State x0
-        magnitude of noise in dynamics eq_err
-        Number of rollouts N
-        Time Horizon T
+      state transition matrices (A,B)
+      LQR Costs (Q,R)
+      Initial State x0
+      magnitude of noise in dynamics eq_err
+      Number of rollouts N
+      Time Horizon T
     Outputs:
-        Static Control Gain K optimized on LQR cost by Policy Gradient
-    '''
+      Static Control Gain K optimized on LQR cost by Policy Gradient
+  '''
 
   d,p = B.shape
 
