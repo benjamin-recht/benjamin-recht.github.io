@@ -130,7 +130,7 @@ def lsqr_estimator(A,B,Q,R,x0,eq_err,N,T):
   return (A_nom,B_nom)
 
 def random_search_linear_policy(A,B,Q,R,x0,eq_err,N,T,
-    explore_mag = 1e-2, step_size = 5e-1, batch_size = 4):
+    explore_mag = 4e-2, step_size = 5e-1, batch_size = 4):
   '''
     Arguments:
       state transition matrices (A,B)
@@ -172,16 +172,11 @@ def random_search_linear_policy(A,B,Q,R,x0,eq_err,N,T,
           reward += -np.dot(x.T,Q.dot(x))-np.dot(u.T,R.dot(u))
         mini_batch += (reward*sign)*V
         reward_store.append(reward)
-    if k>2000:
-        step_size_use = step_size*0.1;
-    else:
-        step_size_use = step_size
-
-    K += (step_size_use/np.std(reward_store)/batch_size)*mini_batch
+    K += (step_size/np.std(reward_store)/batch_size)*mini_batch
 
   return K
 
-def uniform_random_linear_policy(A,B,Q,R,x0,eq_err,N,T):
+def uniform_random_linear_policy(A,B,Q,R,x0,eq_err,N,T,linf_norm=3):
   '''
     Arguments:
       state transition matrices (A,B)
@@ -190,15 +185,16 @@ def uniform_random_linear_policy(A,B,Q,R,x0,eq_err,N,T):
       magnitude of noise in dynamics eq_err
       Number of rollouts N
       Time Horizon T
+
+      hyperparameters
+          linf_norm = maximum absolute value of entries of controller gain
+          
     Outputs:
       Static Control Gain K optimized on LQR cost by uniformly sampling policies
       in bounded region
   '''
 
   d,p = B.shape
-
-  # maximum absolute value of entries of controller gain
-  linf_norm = 2
 
   #### "ALGORITHM"
   best_K = np.empty((p,d))
