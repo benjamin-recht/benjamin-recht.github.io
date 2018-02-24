@@ -26,7 +26,7 @@ def cost_inf_K(A,B,Q,R,K):
       cost: Infinite time horizon LQR cost of static gain K
   '''
   cl_map = A+B.dot(K)
-  if np.amax(np.abs(LA.eigvals(cl_map)))<(1.0-1.0e6):
+  if np.amax(np.abs(LA.eigvals(cl_map)))<(1.0-1.0e-6):
     cost = np.trace(LA.solve_discrete_lyapunov(cl_map.T,Q+np.dot(K.T,R.dot(K))))
   else:
     cost = float("inf")
@@ -66,7 +66,7 @@ def cost_finite_model(A_true,B_true,Q,R,x0,T,A_dat,B_dat):
     x = A_true.dot(x)+B_true.dot(u)
     cost = cost+np.dot(x.T,Q.dot(x))+np.dot(u.T,R.dot(u))
 
-  return cost.flatten()
+  return cost.flatten()[0]
 
 def cost_finite_K(A_true,B_true,Q,R,x0,T,K):
   '''
@@ -188,7 +188,7 @@ def uniform_random_linear_policy(A,B,Q,R,x0,eq_err,N,T,linf_norm=3):
 
       hyperparameters
           linf_norm = maximum absolute value of entries of controller gain
-          
+
     Outputs:
       Static Control Gain K optimized on LQR cost by uniformly sampling policies
       in bounded region
