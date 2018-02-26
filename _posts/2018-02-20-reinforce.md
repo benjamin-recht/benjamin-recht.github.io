@@ -8,6 +8,8 @@ visible:    true
 blurb: true
 ---
 
+*This is the sixth part of ["An Outsider's Tour of Reinforcement Learning."](http://www.argmin.net/2018/02/20/outsider-rl/)  Part 7 is [here](http://www.argmin.net/2018/02/26/nominal/). Part 5 is [here](http://www.argmin.net/2018/02/08/rl-game/). Part 1 is [here](http://www.argmin.net/2018/01/29/taxonomy/).*
+
 Our first generic candidate for solving reinforcement learning is _Policy Gradient_. I find it shocking that Policy Gradient wasn't ruled out as a bad idea in 1993. Policy gradient is seductive as it apparently lets one fine tune a program to solve any problem without any domain knowledge. Of course, anything that makes such a claim must be too general for its own good. Indeed, if you dive into it, **policy gradient is nothing more than random search dressed up in mathematical symbols and lingo**.
 
 I apologize in advance that this is one of the more notationally heavy posts. Policy Gradient makes excessive use of notation to fool us into thinking there is something deep going on. My guess is that part of the reason Policy Gradient remained a research topic was because people didn't implement it and the mathematics [looked so appealing on its own](http://papers.nips.cc/paper/1713-policy-gradient-methods-for-reinforcement-learning-with-function-approximation.pdf). This makes it easy to lose sight of what would happen if the method actually got coded up. See if you can find the places where leaps of faith occur.
@@ -210,4 +212,4 @@ I don’t think I can overemphasize the point that policy gradient and RL are no
 
 We’ll come back to this many times in this series: for any application where policy gradient is successful, a dramatically simpler and more robust algorithm exists that will match or outperform it. It’s never a good idea, and I cannot for the life of me figure out why it is so popular.
 
-Indeed! In the next post I'll turn back to LQR and look at some other strategies that might be more successful than policy gradient.
+Indeed! [In the next post](http://www.argmin.net/2018/02/26/nominal/) I'll turn back to LQR and look at some other strategies that might be more successful than policy gradient.

@@ -9,7 +9,7 @@ visible:    true
 blurb: false
 ---
 
-Part 6/x. I'll keep logging parts here as they come. I am hoping that x ends up being less than 100...
+Part 7/x. I'll keep logging parts here as they come. I am hoping that x ends up being less than 100...
 
 ## Table of Contents.
 
@@ -19,3 +19,4 @@ Part 6/x. I'll keep logging parts here as they come. I am hoping that x ends up 
 4. [The Linear Quadratic Regulator.](http://www.argmin.net/2018/02/08/lqr/) A quick intro to LQR as why it is a great baseline for benchmarking Reinforcement Learning.
 5. [A Game of Chance to You to Him Is One of Real Skill.](http://www.argmin.net/2018/02/14/rl-game/) Laying out the rules of the RL Game and comparing to Iterative Learning Control.
 6. [The Policy of Truth.](http://www.argmin.net/2018/02/20/reinforce/) Policy Gradient is a Gradient Free Optimization Method.
+7. [A Model, You Know What I Mean?](http://www.argmin.net/2018/02/26/nominal/) Nominal control and the power of models.
