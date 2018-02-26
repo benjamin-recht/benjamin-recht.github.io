@@ -8,7 +8,7 @@ blurb: true
 visible:    true
 ---
 
-*This is the third part of ["An Outsider's Tour of Reinforcement Learning."](http://www.argmin.net/2018/02/26/outsider-rl/)  Part 4 is [here](http://www.argmin.net/2018/02/08/lqr/). Part 2 is [here](http://www.argmin.net/2018/02/01/control-tour/). Part 1 is [here](http://www.argmin.net/2018/01/29/taxonomy/).*
+*This is the third part of ["An Outsider's Tour of Reinforcement Learning."](http://www.argmin.net/assets/outsider-rl.html)  Part 4 is [here](http://www.argmin.net/2018/02/08/lqr/). Part 2 is [here](http://www.argmin.net/2018/02/01/control-tour/). Part 1 is [here](http://www.argmin.net/2018/01/29/taxonomy/).*
 
 I have an ethos for tackling problems in machine learning that I call the "Linearization Principle." There are many variants of this principle, but the simplest is “If a machine learning algorithm does crazy things when restricted to linear models, it’s going to do crazy things on complex nonlinear models too.”
 
