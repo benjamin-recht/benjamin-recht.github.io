@@ -8,7 +8,7 @@ blurb: true
 visible:    true
 ---
 
-*This is the second part of ["An Outsider's Tour of Reinforcement Learning."](http://www.argmin.net/assets/outsider-rl.html)  Part 3 is [here](http://www.argmin.net/2018/02/05/linearization/). Part 1 is [here](http://www.argmin.net/2018/01/29/taxonomy/).*
+*This is the second part of ["An Outsider's Tour of Reinforcement Learning."](http://www.argmin.net/outsider-rl.html)  Part 3 is [here](http://www.argmin.net/2018/02/05/linearization/). Part 1 is [here](http://www.argmin.net/2018/01/29/taxonomy/).*
 
 In addition to the reasons I’ve discussed so far, I’ve been fascinated with the resurgence in reinforcement learning because it operates at the intersection of two areas I love: machine learning and control. It is amazing how little we understand about this intersection.  And the approaches used by the two disciplines are also frequently at odds.  Controls is the theory of designing complex actions from well-specified models, while machine learning makes intricate, model-free predictions from data alone.
 
