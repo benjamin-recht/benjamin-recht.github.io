@@ -185,7 +185,7 @@ $$
 Obviously, the best thing to do would be to set $\vartheta=z$. Note that the expected reward is off by $\sigma^2 d$ at this point, but at least this would be finding a good guess for $u$.  Also, as a function of $\vartheta$, $J$ is _strongly convex_, and the most important thing to know is the expected norm of the gradient as this will control the number of iterations. Now, if you start at $\vartheta=0$, then the gradient is
 
 $$
-	g=\frac{||w-z||^2 \omega}{\sigma^2}\,,
+	g=\frac{||\omega-z||^2 \omega}{\sigma^2}\,,
 $$
 
 where $\omega$ is a normally distributed random vector with mean zero and covariance $\sigma^2 I$.
