@@ -320,14 +320,10 @@ def policy_gradient_adam_linear_policy(A,B,Q,R,x0,eq_err,N,T,
         mb_store[:,:,j] = np.dot(V_store,X_store.T)
 
       # Mean of rewards over a minibatch are subtracted from reward.
-      # This is a heuristic for baseline subtraction. If lag_baseline is True,
-      # then we use the previous minibatch for the baseline.
-      # Otherwise, we use the current minibatch
-
+      # This is a heuristic for baseline subtraction. 
 
       for j in range(batch_size):
         mini_batch += ((reward[j]-baseline)/batch_size)*mb_store[:,:,j]
-
       baseline = np.mean(reward)
 
       # Adam Algorithm
