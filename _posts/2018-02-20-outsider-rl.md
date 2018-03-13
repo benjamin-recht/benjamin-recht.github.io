@@ -1,15 +1,15 @@
 ---
 layout:     toc
 title:      An Outsider's Tour of Reinforcement Learning
-update_date: 2018-02-26 0:00:01
-date: 2018-02-26 0:00:01
+update_date: 2018-03-13 0:00:01
+date: 2018-03-13 0:00:01
 summary:    An outsider tour of reinforcement learning
 author:     Ben Recht
 visible:    true
 blurb: false
 ---
 
-Part 7/x. I'll keep logging parts here as they come. I am hoping that x ends up being less than 100...
+Part 8/x. I'll keep logging parts here as they come. I am hoping that x ends up being less than 100...
 
 ## Table of Contents.
 
@@ -20,3 +20,4 @@ Part 7/x. I'll keep logging parts here as they come. I am hoping that x ends up 
 5. [A Game of Chance to You to Him Is One of Real Skill.](http://www.argmin.net/2018/02/14/rl-game/) Laying out the rules of the RL Game and comparing to Iterative Learning Control.
 6. [The Policy of Truth.](http://www.argmin.net/2018/02/20/reinforce/) Policy Gradient is a Gradient Free Optimization Method.
 7. [A Model, You Know What I Mean?](http://www.argmin.net/2018/02/26/nominal/) Nominal control and the power of models.
+8. [Updates on Policy Gradients](http://www.argmin.net/2018/03/13/pg-saga/) Can we fix policy gradient with algorithmic enhancements?
