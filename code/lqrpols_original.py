@@ -130,7 +130,7 @@ def lsqr_estimator(A,B,Q,R,x0,eq_err,N,T):
   return (A_nom,B_nom)
 
 def random_search_linear_policy(A,B,Q,R,x0,eq_err,N,T,
-    explore_mag = 0.04, step_size = 0.05, batch_size = 4):
+    explore_mag = 4e-2, step_size = 5e-1, batch_size = 4):
   '''
     Arguments:
       state transition matrices (A,B)
@@ -153,7 +153,7 @@ def random_search_linear_policy(A,B,Q,R,x0,eq_err,N,T,
   d,p = B.shape
 
   # initial condition for K
-  K0 = 0*np.random.randn(p,d)
+  K0 = 1e-3*np.random.randn(p,d)
   ###
 
   #### ALGORITHM
@@ -162,12 +162,12 @@ def random_search_linear_policy(A,B,Q,R,x0,eq_err,N,T,
     reward_store = []
     mini_batch = np.zeros((p,d))
     for j in range(batch_size):
-      V = np.random.randn(p,d)
+      V = explore_mag*np.random.randn(p,d)
       for sign in [-1,1]:
         x = x0
         reward = 0
         for t in range(T):
-          u = np.dot(K+sign*explore_mag*V,x)
+          u = np.dot(K+sign*V,x)
           x = A.dot(x)+B.dot(u)+eq_err*np.random.randn(d,1)
           reward += -np.dot(x.T,Q.dot(x))-np.dot(u.T,R.dot(u))
         mini_batch += (reward*sign)*V
@@ -265,77 +265,3 @@ def policy_gradient_linear_policy(A,B,Q,R,x0,eq_err,N,T,
     K = np.minimum(np.maximum(K,-safeguard),safeguard)
     baseline = new_baseline
   return K
-
-def policy_gradient_adam_linear_policy(A,B,Q,R,x0,eq_err,N,T,
-    explore_mag = 0.1, step_size = 0.05, batch_size = 8,
-    beta1=0.9, beta2=0.999, epsilon=1.0e-8):
-    '''
-      Arguments:
-        state transition matrices (A,B)
-        LQR Costs (Q,R)
-        Initial State x0
-        magnitude of noise in dynamics eq_err
-        Number of rollouts N
-        Time Horizon T
-
-        hyperparameters
-           explore_mag magnitude of the noise to explore
-           step_size
-           batch_size: number of stochastic gradients per minibatch
-           beta1, beta2, epsilon are the additional paramters of Adam
-
-      Outputs:
-        Static Control Gain K optimized on LQR cost by Policy Gradient
-    '''
-
-    d,p = B.shape
-
-    # initial condition for K
-    K0 = 0.0*np.random.randn(p,d)
-    ###
-
-    #### ALGORITHM
-    K = K0
-    baseline = 0.0
-    Adam_M = np.zeros((p,d))
-    Adam_V = np.zeros((p,d))
-
-    for k in range(N):
-      mini_batch = np.zeros((p,d))
-      mb_store = np.zeros((p,d,batch_size))
-      reward = np.zeros((batch_size))
-
-      # Collect policy gradients for the current minibatch
-      for j in range(batch_size):
-        x = x0
-        X_store = np.zeros((d,T))
-        V_store = np.zeros((p,T))
-        for t in range(T):
-          v = explore_mag*np.random.randn(p,1)
-          X_store[:,t] = x.flatten()
-          V_store[:,t] = v.flatten()
-          u = np.dot(K,x)+v
-          x = A.dot(x)+B.dot(u)+eq_err*np.random.randn(d,1)
-          reward[j] += -np.dot(x.T,Q.dot(x))-np.dot(u.T,R.dot(u))
-        mb_store[:,:,j] = np.dot(V_store,X_store.T)
-
-      # Mean of rewards over a minibatch are subtracted from reward.
-      # This is a heuristic for baseline subtraction. If lag_baseline is True,
-      # then we use the previous minibatch for the baseline.
-      # Otherwise, we use the current minibatch
-
-
-      for j in range(batch_size):
-        mini_batch += ((reward[j]-baseline)/batch_size)*mb_store[:,:,j]
-
-      baseline = np.mean(reward)
-
-      # Adam Algorithm
-
-      Adam_M = beta1*Adam_M + (1-beta1)*mini_batch
-      Adam_V = beta2*Adam_V + (1-beta2)*(mini_batch*mini_batch)
-
-      effective_step_size = step_size*np.sqrt(1-beta2**(k+1))/(1-beta1**(k+1))
-      K += effective_step_size*Adam_M/(np.sqrt(Adam_V)+epsilon)
-
-    return K
