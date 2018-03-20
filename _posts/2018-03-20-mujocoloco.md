@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      xxx
-date:       2018-03-13 0:00:00
+date:       2018-03-20 0:00:00
 summary:    An outsider tour of reinforcement learning, Part 9. Simple methods solve apparently complex RL benchmarks
 author:     Ben Recht
 visible:    false
