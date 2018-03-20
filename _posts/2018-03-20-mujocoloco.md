@@ -71,6 +71,9 @@ Note that since our random search method is fast, we can evaluate its performanc
 {: .center}
 ![such variance](/assets/rl/mujoco/humanoid_100seeds_med.png){:width="560px"}
 
+This sort of behavior arose in LQR as well. We can tune our algorithm for a few random seeds, and then see completely different behavior on new random seeds. [Henderson _and et_](https://arxiv.org/abs/1709.06560) observed this phenomenon already with Deep RL methods, but I think that such high variability will be a symptom of all model-free methods.  There are simply too many edge cases to account for through simulation alone. As I said in [the last post](http://www.argmin.net/03/13/pg-saga):
+"_By throwing away models and knowledge, it is never clear if we can learn enough from a few instances and random seeds to generalize._"
+
 ## I can't quit model-free RL.
 
 In the next post, I’ll have one more nit to pick with model-free RL before moving on for good. This is actually a nit I’d like to pick with all of reinforcement learning and iterative learning control: what exactly do we mean by “sample complexity?” What are we learning as a community from this line of research of trying to minimize sample complexity on a small number of benchmarks?  And where do we, as a research community, go from here?
