@@ -1,10 +1,10 @@
 ---
 layout:     post
-title:      xxx
+title:      Clues for Which I Search and Choose
 date:       2018-03-20 0:00:00
 summary:    An outsider tour of reinforcement learning, Part 9. Simple methods solve apparently complex RL benchmarks
 author:     Ben Recht
-visible:    false
+visible:    true
 blurb: 		  true
 ---
 
@@ -34,7 +34,7 @@ Now, with the online state updating, random search not only exceeds state-of-the
 
 Random search with a few minor tweaks outperforms all other methods on these MuJoCo tasks and is significantly faster.  We have a full paper with these results and more [here](https://arxiv.org/abs/1803.07055). And our code is [in this repo](https://github.com/modestyachts/ARS), though it is certainly easy enough to code up for yourself.
 
-## Section xxx
+## What can reinforcement learning learn from random search?
 
 There are a few of important takeaways here.
 
@@ -71,8 +71,6 @@ Note that since our random search method is fast, we can evaluate its performanc
 {: .center}
 ![such variance](/assets/rl/mujoco/humanoid_100seeds_med.png){:width="560px"}
 
-## Section xxx.
+## I can't quit model-free RL.
 
-I am left with some big questions after seeing this great work by Aurelia and Horia. Why are these MuJoCo demos interesting to folks in RL? What are we learning as a community from this line of research?  And where do we go from here?
-
-In the next post, I’ll have one more nit to pick with model-free RL before moving on for good. This is actually a nit I’d like to pick with all of reinforcement learning and iterative learning control: what exactly do we mean by “sample complexity?”
+In the next post, I’ll have one more nit to pick with model-free RL before moving on for good. This is actually a nit I’d like to pick with all of reinforcement learning and iterative learning control: what exactly do we mean by “sample complexity?” What are we learning as a community from this line of research of trying to minimize sample complexity on a small number of benchmarks?  And where do we, as a research community, go from here?
