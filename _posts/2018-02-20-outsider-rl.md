@@ -20,5 +20,5 @@ Part 9/x. I'll keep logging parts here as they come. I am hoping that x ends up 
 5. [A Game of Chance to You to Him Is One of Real Skill.](http://www.argmin.net/2018/02/14/rl-game/) Laying out the rules of the RL Game and comparing to Iterative Learning Control.
 6. [The Policy of Truth.](http://www.argmin.net/2018/02/20/reinforce/) Policy Gradient is a Gradient Free Optimization Method.
 7. [A Model, You Know What I Mean?](http://www.argmin.net/2018/02/26/nominal/) Nominal control and the power of models.
-8. [Updates on Policy Gradients](http://www.argmin.net/2018/03/13/pg-saga/) Can we fix policy gradient with algorithmic enhancements?
-9. [Clues for Which I Search and Choose](http://www.argmin.net/2018/03/20/mujocoloco/) Simple methods solve apparently complex RL benchmarks.
+8. [Updates on Policy Gradients.](http://www.argmin.net/2018/03/13/pg-saga/) Can we fix policy gradient with algorithmic enhancements?
+9. [Clues for Which I Search and Choose.](http://www.argmin.net/2018/03/20/mujocoloco/) Simple methods solve apparently complex RL benchmarks.
