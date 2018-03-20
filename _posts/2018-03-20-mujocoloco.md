@@ -36,14 +36,14 @@ Random search with a few minor tweaks outperforms all other methods on these MuJ
 
 ## Section xxx
 
-There are a few of important takeaways here:
+There are a few of important takeaways here.
 
 #### Benchmarks are hard.
 
  I think the only reasonable conclusion from all of this is that these MuJoCo demos are easy. There is nothing wrong with that. But it’s probably not worth deciding NIPS, ICML, _or_ ICLR papers over performance on these benchmarks anymore. This does leave open a very important question: _what makes a good benchmark for RL?_. Obviously, we need more than the Mountain Car. I'd argue that [LQR with unknown dynamics](http://www.argmin.net/02/26/nominal) is a reasonable task to master as it is easy to specify new instances and easy to understand the limits of achievable performance. But the community should devote more time to understanding how to establish baselines and benchmarks that are not easily gamed.
 
 
-#### Never put too much faith in your simulators
+#### Never put too much faith in your simulators.
 
  Part of the reason why these benchmarks are easy is that MuJoCo is not a perfect simulator. MuJoCo is blazingly fast, and is great for proofs of concept. But in order to be fast, it has to do some smoothing around the contacts (remember, discontinuity at contacts is what makes legged locomotion hard). Hence, just because you can get one of these simulators to walk, doesn’t mean that you can get an actual robot to walk. Indeed, here are four gaits that achieve the magic 6000 threshold. None of these look particularly realistic:
 
@@ -60,11 +60,11 @@ even the top performing model (reward 11,600) looks like a very goofy gait that 
 {: .center}
 ![run away](/assets/rl/mujoco/reward_11600.gif){:width="250px"}
 
-#### Strive for algorithmic simplicity
+#### Strive for algorithmic simplicity.
 
 Adding hyperparameters and algorithmic widgets to simple algorithms can always improve their performance on a small enough set of benchmarks. I don’t know if dropping top-performing directions or state normalization will work on a new random search problem, but it worked for these MuJoCo benchmarks. Higher rewards might even be achieved by adding more adding tunable parameters. If you add enough bells and whistles, you can probably convince yourself that any algorithm works for a small enough set of benchmarks.
 
-#### Explore before you exploit
+#### Explore before you exploit.
 
 Note that since our random search method is fast, we can evaluate its performance on many random seeds. These model-free methods all exhibit alarmingly high variance on these benchmarks. For instance, on the humanoid task, the the model is slow to train almost a quarter of the time even when supplied with what we thought were good parameters. And for those random seeds it finds rather peculiar gaits. It’s often very misleading to restrict one’s attention to 3 random seeds for random search, because you may be tuning your performance to peculiarities of the random number generator.
 
