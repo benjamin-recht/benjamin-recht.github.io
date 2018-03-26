@@ -42,7 +42,7 @@ Now, this is a *very* imperfect measure. T-tests are assuming Gaussian distribut
 Let’s leave the imperfection aside for a moment, and plot a performance profile based on these likelihoods.I computed a standard performance profile for the ALE benchmark suite, plotting the frequency of the time that the p-values are greater than some threshold $\tau$. The results are here:
 
 {: .center}
-![you are all crazy, shallow learning is as good as deep learning for atari](/assets/rl/perfprof/perf_ prof.png){:width="560px"}
+![you are all crazy, shallow learning is as good as deep learning for atari](/assets/rl/perfprof/perf_prof.png){:width="560px"}
 
 For any $x$ value, the $y$-value is the number of instances where a method either has the highest mean or where we cannot reject the null hypothesis that the method has the highest mean with confidence $\tau$.  You might look at this plot and think “that’s completely unreadable as the curves are on top of each other.” When performance profiles intersect each other multiple times, it means the algorithms are effectively equivalent to each other: there is no value of $\tau$ where DQN or Blob-PROST are more frequently scoring higher than the other. To see an example of curves where things are way off, consider Blob-Prost with 200M simulations vs DQN with 10M simulations:
 
