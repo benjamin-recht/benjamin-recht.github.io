@@ -51,6 +51,8 @@ For any $x$ value, the $y$-value is the number of instances where a method eithe
 
 Now there is a clear separation in the performance profiles, and it’s clear that BlobProst 200M is much better than DQN 10M. This shouldn’t be surprising as I’m letting BlobProst see 20x as many samples.  But it does suggest that DQN and Blob-PROST when given the same sample allocation are essentially indistinguishable methods. My take away from this plot is that Machado et al concede too much in their discussion: **simple methods and hand crafted features match the performance of DQN on the ALE.**
 
+## To establish dominance, provide more evidence.
+
 [Miles Bundage](https://twitter.com/Miles_Brundage/status/977512294824341504) suggests that there are far better baselines now (from the DeepMind folks). I’d like to make the modest suggestion that someone at DeepMind adopt the Machado et al evaluation protocol for these new, more sophisticated methods, and then report means and standard deviations on all of the games. Even better, why not report the actual values over the runs so we could use non-parametric test statistics? Or even better, why not release the code? I’d be happy to make a performance profile again so we can see how much we’re improving on these silly Atari games.
 
 If you are interested in changing the performance metric or running performance profiles on your own data, here’s a [Jupyter notebook](https://nbviewer.jupyter.org/url/argmin.net/code/atari_performance_profiles.ipynb). that lets you recreate the above plots.
