@@ -18,7 +18,7 @@ For each problem instance, we compute the best method, and then for every other 
 We then count on how many problem instances a particular method is within a factor of tau of the optimal. That is, we compute  
 
 $$
-\rho_m(\tau) = \frac{1}{n_p} \left| \{p~:~d[m,p] < tau \}\right|\,.
+\rho_m(\tau) = \frac{1}{n_p} \left| \{p~:~d[m,p] < \tau \}\right|\,.
 $$
 
 That is, we compute the fraction of problems where method m has distance from optimality less than tau.
@@ -35,7 +35,7 @@ Nonetheless, the authors concede that “Despite this high sample complexity, DQ
 
 I downloaded the source of the Machado paper and parsed the results tables into a CSV file. This table lists the mean reward and standard deviation for each game evaluated. Not only are the rewards here random variables, but directly comparing the means is difficult because the rewards are all on completely different scales.
 
-To attempt to address both the stochasticity and the varied scaling of of the rewards, I decided to use p-values from the Welsh t-test. That is $d[m,p]$ is the probability that method $m$ has a higher score than the best method on problem $p$ under the assumptions of the Welch t-test.  For the best performing method, I assign $d[m,p]=1$.
+To attempt to address both the stochasticity and the varied scaling of of the rewards, I decided to use p-values from the Welsh t-test. That is $d[m,p]$ is the negative log probability that method $m$ has a higher score than the best method on problem $p$ under the assumptions of the Welch t-test.  For the best performing method, I assign $d[m,p]=0$.
 
 Now, this is a *very* imperfect measure. T-tests are assuming Gaussian distributions, and that’s clearly not going to be legitimate. But it’s not a terrible comparison when we are only provided means and variances. And, frankly, the community might want to consider releasing more finely detailed reports of their experiments if they would like better evaluation of the relative merits of methods. For example, if researchers simply released the raw scores for all runs, we could try more sophisticated nonparametric rank tests.
 
