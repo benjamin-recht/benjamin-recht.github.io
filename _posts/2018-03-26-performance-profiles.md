@@ -12,7 +12,7 @@ A common sticking point in contemporary reinforcement learning is how to evaluat
 
 ## Performance Profiles
 
-My favorite way to aggregate benchmarks was proposed by [Dolan and More](https://arxiv.org/abs/cs/0102001) and called _performance profiles_. The idea here is very simple. We want a way of depicting how frequently is a particular method within some distance of the best method for a particular problem instance. To do so, we make statistics. Let’s suppose we have a suite of n_p problem instances and we want to find the best performing method across all of these instances.
+My favorite way to aggregate benchmarks was proposed by [Dolan and More](https://arxiv.org/abs/cs/0102001) and called _performance profiles_. The idea here is very simple. We want a way of depicting how frequently is a particular method within some distance of the best method for a particular problem instance. To do so, we make statistics. Let’s suppose we have a suite of $n_p$ problem instances and we want to find the best performing method across all of these instances.
 
 For each problem instance, we compute the best method, and then for every other method, we determine how far they are from optimal. This requires some notion of “far from optimality.” Let’s denote $d[m,p]$ the distance from optimality of method m on problem p.
 We then count on how many problem instances a particular method is within a factor of tau of the optimal. That is, we compute  
@@ -29,7 +29,7 @@ The canonical application for performance profiles is for comparing solve times 
 
 ## Is Deep RL better than handcrafted representations on Atari?
 
-Let’s apply performance profiles to understand the power of deep reinforcement learning on Atari games. One of my favorite deep reinforcement learning papers is [“Revisiting the Arcade Learning Environment: Evaluation Protocols and Open Problems for General Agents”](https://arxiv.org/abs/1709.06009) by Machado et al which proposes several guidelines for conducting careful evaluations of methods on the ALE benchmark suite.  When put on the same footing under their evaluation framework, DQN doesn’t look to be that much better than SARSA (a simple method for Q-learning with function approximation) and hand crafted features.
+Let’s apply performance profiles to understand the power of deep reinforcement learning on Atari games. One of my favorite deep reinforcement learning papers is [“Revisiting the Arcade Learning Environment: Evaluation Protocols and Open Problems for General Agents”](https://arxiv.org/abs/1709.06009) by Machado et al. which proposes several guidelines for conducting careful evaluations of methods on the ALE benchmark suite.  When put on the same footing under their evaluation framework, DQN doesn’t look to be that much better than SARSA (a simple method for Q-learning with function approximation) and hand crafted features.
 
 Nonetheless, the authors concede that “Despite this high sample complexity, DQN and DQN-like approaches remain the best performing methods overall when compared to simple, hand-coded representations.” But it’s hard to tell how much better DQN is. The evaluations are stochastic, and since DQN is costly, they only evaluate it’s performance on 5 random seeds and report the mean and standard deviation.
 
@@ -49,10 +49,10 @@ For any $x$ value, the $y$-value is the number of instances where a method eithe
 {: .center}
 ![these two algorithms are not the same](/assets/rl/perfprof/perf_prof2.png){:width="480px"}
 
-Now there is a clear separation in the performance profiles, and it’s clear that BlobProst 200M is much better than DQN 10M. This shouldn’t be surprising as I’m letting BlobProst see 20x as many samples.  But it does suggest that DQN and Blob-PROST when given the same sample allocation are essentially indistinguishable methods. My take away from this plot is that Machado et al concede too much in their discussion: **simple methods and hand crafted features match the performance of DQN on the ALE.**
+Now there is a clear separation in the performance profiles, and it’s clear that BlobProst 200M is much better than DQN 10M. This shouldn’t be surprising as I’m letting BlobProst see 20x as many samples.  But it does suggest that DQN and Blob-PROST when given the same sample allocation are essentially indistinguishable methods. My take away from this plot is that Machado et al. concede too much in their discussion: **simple methods and hand crafted features match the performance of DQN on the ALE.**
 
 ## To establish dominance, provide more evidence.
 
-[Miles Bundage](https://twitter.com/Miles_Brundage/status/977512294824341504) suggests that there are far better baselines now (from the DeepMind folks). I’d like to make the modest suggestion that someone at DeepMind adopt the Machado et al evaluation protocol for these new, more sophisticated methods, and then report means and standard deviations on all of the games. Even better, why not report the actual values over the runs so we could use non-parametric test statistics? Or even better, why not release the code? I’d be happy to make a performance profile again so we can see how much we’re improving on these silly Atari games.
+[Miles Brundage](https://twitter.com/Miles_Brundage/status/977512294824341504) suggests that there are far better baselines now (from the DeepMind folks). I’d like to make the modest suggestion that someone at DeepMind adopt the Machado et al. evaluation protocol for these new, more sophisticated methods, and then report means and standard deviations on all of the games. Even better, why not report the actual values over the runs so we could use non-parametric test statistics? Or even better, why not release the code? I’d be happy to make a performance profile again so we can see how much we’re improving on these silly Atari games.
 
 If you are interested in changing the performance metric or running performance profiles on your own data, here’s a [Jupyter notebook](https://nbviewer.jupyter.org/url/argmin.net/code/atari_performance_profiles.ipynb). that lets you recreate the above plots.
