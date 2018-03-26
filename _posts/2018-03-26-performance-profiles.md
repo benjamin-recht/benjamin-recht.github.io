@@ -4,7 +4,7 @@ title:      Benchmarking Machine Learning with Performance Profiles
 date:       2018-03-26 0:00:00
 summary:    Performance Profiles provide a convenient way of comparing machine learning methods on baselines with many test examples.
 author:     Ben Recht
-visible:    false
+visible:    true
 blurb: 		  true
 ---
 
