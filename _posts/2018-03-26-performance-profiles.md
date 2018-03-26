@@ -33,7 +33,7 @@ Let’s apply performance profiles to understand the power of deep reinforcement
 
 Nonetheless, the authors concede that “Despite this high sample complexity, DQN and DQN-like approaches remain the best performing methods overall when compared to simple, hand-coded representations.” But it’s hard to tell how much better DQN is. The evaluations are stochastic, and since DQN is costly, they only evaluate it’s performance on 5 random seeds and report the mean and standard deviation.
 
-I downloaded the source of the Machado paper and parsed the results tables into a CSV file. This table lists the mean reward and standard deviation for each game evaluated. Not only are the rewards here random variables, but directly comparing the means is difficult because the rewards are all on completely different scales.
+I downloaded the source of the Machado paper and parsed the results tables into a CSV file[^1]. This table lists the mean reward and standard deviation for each game evaluated. Not only are the rewards here random variables, but directly comparing the means is difficult because the rewards are all on completely different scales.
 
 To attempt to address both the stochasticity and the varied scaling of of the rewards, I decided to use p-values from the Welsh t-test. That is $d[m,p]$ is the negative log probability that method $m$ has a higher score than the best method on problem $p$ under the assumptions of the Welch t-test.  For the best performing method, I assign $d[m,p]=0$.
 
@@ -56,3 +56,5 @@ Now there is a clear separation in the performance profiles, and it’s clear th
 [Miles Brundage](https://twitter.com/Miles_Brundage/status/977512294824341504) suggests that there are far better baselines now (from the DeepMind folks). I’d like to make the modest suggestion that someone at DeepMind adopt the Machado et al. evaluation protocol for these new, more sophisticated methods, and then report means and standard deviations on all of the games. Even better, why not report the actual values over the runs so we could use non-parametric test statistics? Or even better, why not release the code? I’d be happy to make a performance profile again so we can see how much we’re improving.
 
 If you are interested in changing the performance metric or running performance profiles on your own data, here’s a [Jupyter notebook](https://nbviewer.jupyter.org/url/argmin.net/code/atari_performance_profiles.ipynb). that lets you recreate the above plots.
+
+[^1]: There was no data for Blob-PROST on Journey Escape with 200M samples, so I used the values listed for 100M samples.
