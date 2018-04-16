@@ -4,7 +4,7 @@ title:      The Ethics of Reward Shaping
 date:       2018-04-16 0:00:00
 summary:    We’re all reinforcement learners now
 author:     Ben Recht
-visible:    false
+visible:    true
 blurb: 		  true
 ---
 
