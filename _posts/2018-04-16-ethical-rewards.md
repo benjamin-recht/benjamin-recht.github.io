@@ -23,7 +23,7 @@ This is indeed a question that underlies my series on reinforcement learning. We
 
 It’s also rather unclear what the right reward function is for walking. There are so many things that we value in a walking robot. But these values are modeling assumptions and are often not correct in retrospect.  In order to get any optimization-based framework to output realistic locomotion, cost functions have to be defined iteratively until the behavior matches as many of our expectations as possible.
 
-## Recommender systems are RL systems
+## ML systems are now RL systems
 
 Though it’s not obvious, Shane’s surprising optimizers are closely connected to the bad behavior of recommender systems highlighted by DiResta and Wiggins.  **As soon as a machine learning system is unleashed in feedback with humans, that system is a reinforcement learning system, not a machine learning system.**
 
