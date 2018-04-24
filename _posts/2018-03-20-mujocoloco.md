@@ -8,6 +8,8 @@ visible:    true
 blurb: 		  true
 ---
 
+*This is the ninth part of ["An Outsider's Tour of Reinforcement Learning."](http://www.argmin.net/outsider-rl.html)  Part 10 is [here](http://www.argmin.net/2018/04/19/pid/). Part 8 is [here](http://www.argmin.net/2018/03/13/pg-saga/). Part 1 is [here](http://www.argmin.net/2018/01/29/taxonomy/).*
+
 Before we leave these model-free chronicles behind, let me turn to the converse of the Linearization Principle. We have seen that random search works well on simple linear problems and appears better than some RL methods like policy gradient. Does random search break down as we move to harder problems? **Spoiler Alert: No.** But keep reading!
 
 Let’s apply random search to problems that are of interest to the RL community. The deep RL community has been spending a lot of time and energy on a suite of benchmarks, maintained by [OpenAI](https://gym.openai.com/envs/#mujoco) and based on the [MuJoCo](http://www.mujoco.org/) simulator. Here, the optimal control problem is to get the simulation of a legged robot to walk as far and quickly as possible in one direction. Some of the tasks are very simple, but some are quite difficult like the complicated humanoid models with 22 degrees of freedom. The dynamics of legged robots are well-specified by Hamiltonian Equations, but planning locomotion from these models is challenging because it is not clear how to best design the objective function and because the model is piecewise linear. The model changes whenever part of the robot comes into contact with a solid object, and hence a normal force is introduced that was not previously acting upon the robot. Hence, getting robots to work without having to deal with complicated nonconvex nonlinear models seems like a solid and interesting challenge for the RL paradigm.
@@ -76,4 +78,6 @@ This sort of behavior arose in LQR as well. We can tune our algorithm for a few 
 
 ## I can't quit model-free RL.
 
-In the next post, I’ll have one more nit to pick with model-free RL before moving on for good. This is actually a nit I’d like to pick with all of reinforcement learning and iterative learning control: what exactly do we mean by “sample complexity?” What are we learning as a community from this line of research of trying to minimize sample complexity on a small number of benchmarks?  And where do we, as a research community, go from here?
+In a future post, I’ll have one more nit to pick with model-free RL. This is actually a nit I’d like to pick with all of reinforcement learning and iterative learning control: what exactly do we mean by “sample complexity?” What are we learning as a community from this line of research of trying to minimize sample complexity on a small number of benchmarks?  And where do we, as a research community, go from here?
+
+Before we get there though, let me take a step back to [assess some variants of model-free RL that both work well in theory and practice](http://www.argmin.net/04/19/pid) and see if these can be extended to the more challenging problems currently of interest to the machine learning community.

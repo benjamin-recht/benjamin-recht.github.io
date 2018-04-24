@@ -1,8 +1,8 @@
 ---
 layout:     toc
 title:      An Outsider's Tour of Reinforcement Learning
-update_date: 2018-04-19 0:00:01
-date: 2018-04-19 0:00:01
+update_date: 2018-04-24 0:00:01
+date: 2018-04-24 0:00:01
 summary:    An outsider tour of reinforcement learning
 author:     Ben Recht
 visible:    true
@@ -23,3 +23,6 @@ Part 10/x. I'll keep logging parts here as they come. I am hoping that x ends up
 8. [Updates on Policy Gradients.](http://www.argmin.net/2018/03/13/pg-saga/) Can we fix policy gradient with algorithmic enhancements?
 9. [Clues for Which I Search and Choose.](http://www.argmin.net/2018/03/20/mujocoloco/) Simple methods solve apparently complex RL benchmarks.
 10. [The Best Things in Life Are Model Free.](http://www.argmin.net/2018/04/19/pid/) PID control and its connection to optimization methods popular in machine learning.
+11. [Don't Make Me A Target.](http://www.argmin.net/2018/04/23/ilc/) PID for iterative learning control.
+
+**Bonus Post:** [Benchmarking Machine Learning with Performance Profiles](http://www.argmin.net/2018/03/26/performance-profiles).
