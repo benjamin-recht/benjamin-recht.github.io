@@ -1,15 +1,15 @@
 ---
 layout:     toc
 title:      An Outsider's Tour of Reinforcement Learning
-update_date: 2018-04-24 0:00:01
-date: 2018-04-24 0:00:01
+update_date: 2018-05-02 0:00:01
+date: 2018-05-02 0:00:01
 summary:    An outsider tour of reinforcement learning
 author:     Ben Recht
 visible:    true
 blurb: false
 ---
 
-Part 11/x. I'll keep logging parts here as they come. I am hoping that x ends up being less than 100...
+Part 12/x. I'll keep logging parts here as they come. I am hoping that x ends up being less than 100...
 
 ## Table of Contents.
 
@@ -24,5 +24,6 @@ Part 11/x. I'll keep logging parts here as they come. I am hoping that x ends up
 9. [Clues for Which I Search and Choose.](http://www.argmin.net/2018/03/20/mujocoloco/) Simple methods solve apparently complex RL benchmarks.
 10. [The Best Things in Life Are Model Free.](http://www.argmin.net/2018/04/19/pid/) PID control and its connection to optimization methods popular in machine learning.
 11. [Catching Signals That Sound in the Dark.](http://www.argmin.net/2018/04/23/ilc/) PID for iterative learning control.
+12. [Lost Horizons.](http://www.argmin.net/2018/04/23/ilc/) Relating popular techniques from RL to methods from Model Predictive Control.
 
 **Bonus Post:** [Benchmarking Machine Learning with Performance Profiles](http://www.argmin.net/2018/03/26/performance-profiles). The Five Percent Nation of Atari Champions.
