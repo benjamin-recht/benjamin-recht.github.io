@@ -23,7 +23,7 @@ Part 12/x. I'll keep logging parts here as they come. I am hoping that x ends up
 8. [Updates on Policy Gradients.](http://www.argmin.net/2018/03/13/pg-saga/) Can we fix policy gradient with algorithmic enhancements?
 9. [Clues for Which I Search and Choose.](http://www.argmin.net/2018/03/20/mujocoloco/) Simple methods solve apparently complex RL benchmarks.
 10. [The Best Things in Life Are Model Free.](http://www.argmin.net/2018/04/19/pid/) PID control and its connection to optimization methods popular in machine learning.
-11. [Catching Signals That Sound in the Dark.](http://www.argmin.net/2018/04/23/ilc/) PID for iterative learning control.
-12. [Lost Horizons.](http://www.argmin.net/2018/04/23/ilc/) Relating popular techniques from RL to methods from Model Predictive Control.
+11. [Catching Signals That Sound in the Dark.](http://www.argmin.net/2018/04/24/ilc/) PID for iterative learning control.
+12. [Lost Horizons.](http://www.argmin.net/2018/05/02/adp/) Relating popular techniques from RL to methods from Model Predictive Control.
 
 **Bonus Post:** [Benchmarking Machine Learning with Performance Profiles](http://www.argmin.net/2018/03/26/performance-profiles). The Five Percent Nation of Atari Champions.
