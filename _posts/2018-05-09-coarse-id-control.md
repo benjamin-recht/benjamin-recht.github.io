@@ -66,7 +66,7 @@ And of course, let’s not leave out model-free RL approaches:
 {: .center}
 ![legend](/assets/rl/coarse-id/legend.png){:width="240px"}
 
-Here we again see they are indeed far off their model-based counterparts. The x-axis has increased by a factor of 10, and yet even Q-learning approaches are not finding decent solutions. It’s worth remembering that not only are model-free methods sample hungry, but they fail to be safe. And safety is much more critical than sample complexity.
+Here we again see they are indeed far off their model-based counterparts. The x-axis has increased by a factor of 10, and yet even the approximate dynamic approach LSPI is not finding decent solutions. It’s worth remembering that not only are model-free methods sample hungry, but they fail to be safe. And safety is much more critical than sample complexity.
 
 ## Pushing against the boundaries.
 
