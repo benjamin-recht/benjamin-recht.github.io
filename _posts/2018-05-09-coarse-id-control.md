@@ -52,8 +52,8 @@ Let’s return to the data center problem to see how this does on real data and 
 In the plots below we compare nominal control to two versions of the robust LQR problem. The blue line denotes performance when we tell the robust optimization solver what the actual distance is from the nominal model to the true model. The green curve depicts what happens when we estimate this difference between the models using a bootstrap simulation. Note that the green curve is worse, but not that much worse:
 
 {: .center}
-![controller performance](/assets/rl/coarse-id/datacenter_cost_inf_600_iter.png){:width="240px"}
-![stabilizing](/assets/rl/coarse-id/datacenter_stabilizing_600_iter.png){:width="240px"}
+![controller performance](/assets/rl/coarse-id/datacenter_cost_inf_600_iter.png){:width="250px"}
+![stabilizing](/assets/rl/coarse-id/datacenter_stabilizing_600_iter.png){:width="250px"}
 
 Note also that the nominal controller does tend to frequently find controllers that fail to stabilize the true system. The robust optimization really helps here to provide controllers that are guaranteed to find a stabilizing solution. On the other hand, in industrial practice nominal control does seem to work quite well.  I think a great open problem is to find reasonable assumptions under which the nominal controller is stabilizing. This will involve some hairy analysis of perturbation of Ricatti equations, but it would really help to fill out the picture of when such methods are safely applicable.
 
@@ -64,7 +64,7 @@ And of course, let’s not leave out model-free RL approaches:
 ![stabilizing zoom out](/assets/rl/coarse-id/datacenter_stabilizing_5000_iter.png){:width="250px"}
 
 {: .center}
-![legend](/assets/rl/coarse-id/legend.png){:width="240px"}
+![legend](/assets/rl/coarse-id/legend.png){:width="150px"}
 
 Here we again see they are indeed far off their model-based counterparts. The x-axis has increased by a factor of 10, and yet even the approximate dynamic approach LSPI is not finding decent solutions. It’s worth remembering that not only are model-free methods sample hungry, but they fail to be safe. And safety is much more critical than sample complexity.
 
