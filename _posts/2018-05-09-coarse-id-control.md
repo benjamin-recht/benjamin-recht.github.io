@@ -60,9 +60,9 @@ Note also that the nominal controller does tend to frequently find controllers t
 And of course, let’s not leave out model-free RL approaches:
 
 {: .center}
-![controller performance zoom out](/assets/rl/coarse-id/datacenter_cost_inf_5000_iter.png){:width="200px"}
-![stabilizing zoom out](/assets/rl/coarse-id/datacenter_stabilizing_5000_iter.png){:width="200px"}
-![legend](/assets/rl/coarse-id/legend.png){:width="100px"}
+![controller performance zoom out](/assets/rl/coarse-id/datacenter_cost_inf_5000_iter.png){:width="212px"}
+![stabilizing zoom out](/assets/rl/coarse-id/datacenter_stabilizing_5000_iter.png){:width="212px"}
+![legend](/assets/rl/coarse-id/legend.png){:width="106px"}
 
 Here we again see they are indeed far off their model-based counterparts. The x-axis has increased by a factor of 10, and yet even the approximate dynamic approach LSPI is not finding decent solutions. It’s worth remembering that not only are model-free methods sample hungry, but they fail to be safe. And safety is much more critical than sample complexity.
 
