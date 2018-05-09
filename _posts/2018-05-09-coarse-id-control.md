@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      Lost Horizons
-date:       2018-05-02 0:00:00
+title:      Coarse-ID Control
+date:       2018-05-09 0:00:00
 summary:    An outsider tour of reinforcement learning, Part 13. Coarse-ID Control.
 author:     Ben Recht
 visible:    false
