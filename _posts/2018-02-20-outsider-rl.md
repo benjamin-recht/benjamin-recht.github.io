@@ -9,7 +9,7 @@ visible:    true
 blurb: false
 ---
 
-Part 12/x. I'll keep logging parts here as they come. I am hoping that x ends up being less than 100...
+Parts 13/14.
 
 ## Table of Contents.
 
@@ -25,5 +25,6 @@ Part 12/x. I'll keep logging parts here as they come. I am hoping that x ends up
 10. [The Best Things in Life Are Model Free.](http://www.argmin.net/2018/04/19/pid/) PID control and its connection to optimization methods popular in machine learning.
 11. [Catching Signals That Sound in the Dark.](http://www.argmin.net/2018/04/24/ilc/) PID for iterative learning control.
 12. [Lost Horizons.](http://www.argmin.net/2018/05/02/adp/) Relating popular techniques from RL to methods from Model Predictive Control.
+13. [Coarse-ID Control.](http://www.argmin.net/2018/05/11/coarse-id-control/) Combining high-dimensional statistics and robust optimization for the data-driven control of uncertain systems.
 
 **Bonus Post:** [Benchmarking Machine Learning with Performance Profiles](http://www.argmin.net/2018/03/26/performance-profiles). The Five Percent Nation of Atari Champions.
