@@ -1,10 +1,10 @@
 ---
 layout:     post
 title:      Coarse-ID Control
-date:       2018-05-09 0:00:00
+date:       2018-05-11 0:00:00
 summary:    An outsider tour of reinforcement learning, Part 13. Coarse-ID Control.
 author:     Ben Recht
-visible:    false
+visible:    true
 blurb: 		  true
 ---
 
@@ -27,11 +27,11 @@ For $Q$ and $R$, I set $Q = I$ and $R= 1000 I$, modeling that the operator wante
 
 This example seems to pose a problem for nominal control: note that all of the diagonal entries of the true model are greater than $1$. If we drive the system with noise, the states will grow exponentially, and consequently, you’ll get a fire in your data center. So active cooling must certainly be applied. However, a naive least-squares solution might fit one of the diagonal entries to be less than $1$. Then, since we are placing such high cost on the controls, we might not try to cool that mode too much, and this would lead to a catastrophe.
 
-So how can we include the knowledge that our model is just an estimate and not accurate with a small sample count? My group has been considering an approach to this problem called “Coarse-ID control,” that tries to incorporate such uncertainty.
+So how can we include the knowledge that our model is just an estimate and not accurate with a small sample count? My group has been considering an approach to this problem called “Coarse-ID Control,” that tries to incorporate such uncertainty.
 
-## Coarse-ID Control: a new paradigm for learning to control.
+## Coarse-ID Ingredients
 
-The general framework of Coarse-ID control consists of the following three steps:  
+The general framework of Coarse-ID Control consists of the following three steps:  
 
 1. Use supervised learning to learn a coarse model of the dynamical system to be controlled.  I’ll refer to the system estimate as the _nominal system_.
 2. Using either prior knowledge or statistical tools like the bootstrap, build probabilistic guarantees about the distance between the nominal system and the true, unknown dynamics.
@@ -66,6 +66,6 @@ And of course, let’s not leave out model-free RL approaches:
 
 Here we again see they are indeed far off their model-based counterparts. The x-axis has increased by a factor of 10, and yet even the approximate dynamic approach LSPI is not finding decent solutions. It’s worth remembering that not only are model-free methods sample hungry, but they fail to be safe. And safety is much more critical than sample complexity.
 
-## Pushing against the boundaries.
+## Pushing against the boundaries
 
-Since Coarse-ID control works so well on LQR, I think it’s going to be very interesting to try to push its limits.  I’d like to understand how this works on _nonlinear_ problems. Can we propagate parametric uncertainties into control guarantees? Can we model nonlinear problems with linear models and estimate the nonlinear uncertainties? There are a lot of great open problems following up this initial work, and I want to expand on the big set of unsolved problems in the next post.
+Since Coarse-ID Control works so well on LQR, I think it’s going to be very interesting to try to push its limits.  I’d like to understand how this works on _nonlinear_ problems. Can we propagate parametric uncertainties into control guarantees? Can we model nonlinear problems with linear models and estimate the nonlinear uncertainties? There are a lot of great open problems following up this initial work, and I want to expand on the big set of unsolved problems in the next post.
