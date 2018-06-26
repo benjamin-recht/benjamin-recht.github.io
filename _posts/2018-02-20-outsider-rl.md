@@ -1,15 +1,13 @@
 ---
 layout:     toc
 title:      An Outsider's Tour of Reinforcement Learning
-update_date: 2018-05-11 0:00:01
-date: 2018-05-11 0:00:01
+update_date: 2018-06-25 0:00:01
+date: 2018-06-25 0:00:01
 summary:    An outsider tour of reinforcement learning
 author:     Ben Recht
 visible:    true
 blurb: false
 ---
-
-Parts 13/14.
 
 ## Table of Contents.
 
@@ -26,5 +24,6 @@ Parts 13/14.
 11. [Catching Signals That Sound in the Dark.](http://www.argmin.net/2018/04/24/ilc/) PID for iterative learning control.
 12. [Lost Horizons.](http://www.argmin.net/2018/05/02/adp/) Relating popular techniques from RL to methods from Model Predictive Control.
 13. [Coarse-ID Control.](http://www.argmin.net/2018/05/11/coarse-id-control/) Combining high-dimensional statistics and robust optimization for the data-driven control of uncertain systems.
+14. [Towards Actionable Intelligence.](http://www.argmin.net/2018/06/25/rl-tour-fin/)
 
 **Bonus Post:** [Benchmarking Machine Learning with Performance Profiles](http://www.argmin.net/2018/03/26/performance-profiles). The Five Percent Nation of Atari Champions.
