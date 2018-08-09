@@ -4,7 +4,7 @@ title:      "You Can't Serve Two Masters: The Harms of Dual Affiliation"
 date:       2018-08-09 0:00:00
 summary:    "You can't serve two masters: the harms of dual affiliation"
 author:     Ben Recht, David A. Forsyth, and Alexei Efros
-visible:    false
+visible:    true
 blurb: 		  true
 ---
 
