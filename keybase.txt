@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/beenwrekt
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://argmin.net
+  * I am beenwrekt (https://keybase.io/beenwrekt) on keybase.
+  * I have a public key ASBTwC4FdQeA2ENdRRN1PYuT7Kvnqcj_cbKJK3ZY80H45Qo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "012053c02e05750780d8435d4513753d8b93ecabe7a9c8ff71b2892b7658f341f8e50a",
+      "host": "keybase.io",
+      "kid": "012053c02e05750780d8435d4513753d8b93ecabe7a9c8ff71b2892b7658f341f8e50a",
+      "uid": "efaffc073f589d730694246ebdc02f19",
+      "username": "beenwrekt"
+    },
+    "merkle_root": {
+      "ctime": 1549733008,
+      "hash": "ea77274d1a0b98984d47e43b09ac6737086ba4f06ebc0340e11e1435f6e1b5d2fb6aa2486aa478d27f95b3fd4e824409c60b88555f929596cdfef53b36b62943",
+      "hash_meta": "4dd9b230054330adb46920c51cd43fc3d16a620083a742cfa08e5b4e1b87069e",
+      "seqno": 4732590
+    },
+    "service": {
+      "entropy": "nZsGywFPtf17H8rmcXyI5CSX",
+      "hostname": "argmin.net",
+      "protocol": "http:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "3.0.0"
+  },
+  "ctime": 1549733077,
+  "expire_in": 504576000,
+  "prev": "85341bf382b3d1dd86029f96e8837e44d33148ba463429e2f588de525a105a73",
+  "seqno": 7,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgU8AuBXUHgNhDXUUTdT2Lk+yr56nI/3GyiSt2WPNB+OUKp3BheWxvYWTESpcCB8QghTQb84Kz0d2GAp+W6IN+RNMxSLpGNCni9YjeUloQWnPEIOFSJwKktX42aY1JBltyesibVZCRtkPYttUYx+440mPYAgHCo3NpZ8RA6ve3ygpqqpKdQYNHcZRSgtfh2O/aQEvK8L++jK51NCJ6TQORpMPwp3d69qE3SKWBo4B1TyBfsuN42DLtrfSDB6hzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIFP4jKnERqIq/p8HGjzmkrFfOXgwPhqgUvoVCgCkeCbXo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/beenwrekt
+
+==================================================================
