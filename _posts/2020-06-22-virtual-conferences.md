@@ -2,7 +2,7 @@
 layout:     post
 title:      "Virtual Conferences"
 date:       2020-06-22 0:00:00
-summary:    ""
+summary:    "A few retrospective thoughts on running a virtual conference. What worked, what didn't work, and what I might encourage moving forward."
 author:     Ben Recht
 visible:    false
 blurb: 		  false
@@ -22,7 +22,14 @@ We tried to keep the live part under four hours per day and to provide ample bre
 Further discussion was then done on [OpenReview](https://openreview.net/group?id=L4DC.org/2020/Conference), where we hosted all accepted papers of the conference.
 The proceedings of the conference were subsequently archived by [Proceedings of Machine Learning Research](http://proceedings.mlr.press/).
 
-Though it took a lot of work to tie all these pieces together, everything went super smoothly in the end. I was basically able to run the entire AV setup from my garage [picture]. The only thing that cost money here was the Zoom account (20 dollars/month, though subsidized by Berkeley) and my home internet connection. I know that Zoom and YouTube have well documented issues, and I think it’s imperative that they continue to strive to fix these problems, but I also think it’s easy to forget how empowering this technology is. This format opens up conferences to those who can’t travel for financial or logistical reasons, and lowers the energy to engage with cutting edge research. Being able to sit in my garage and run a virtual conference with speakers spanning 10 time zones and nearly 2000 viewers is a wonder of modern times.
+Though it took a lot of work to tie all these pieces together, everything went super smoothly in the end. I was basically able to run the entire AV setup from my garage.
+
+
+{: .center}
+![where the magic happens](/assets/command_station.jpg){:width="250px"}
+
+
+The only thing that cost money here was the Zoom account (20 dollars/month, though subsidized by Berkeley) and my home internet connection. I know that Zoom and YouTube have well documented issues, and I think it’s imperative that they continue to strive to fix these problems, but I also think it’s easy to forget how empowering this technology is. This format opens up conferences to those who can’t travel for financial or logistical reasons, and lowers the energy to engage with cutting edge research. Being able to sit in my garage and run a virtual conference with speakers spanning 10 time zones and nearly 2000 viewers is a wonder of modern times.
 
 ## Second Life still has a long way to go.
 
