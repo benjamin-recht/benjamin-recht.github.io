@@ -24,10 +24,8 @@ The proceedings of the conference were subsequently archived by [Proceedings of 
 
 Though it took a lot of work to tie all these pieces together, everything went super smoothly in the end. I was basically able to run the entire AV setup from my garage.
 
-
 {: .center}
 ![where the magic happens](/assets/command_station.jpg){:width="250px"}
-
 
 The only thing that cost money here was the Zoom account (20 dollars/month, though subsidized by Berkeley) and my home internet connection. I know that Zoom and YouTube have well documented issues, and I think it’s imperative that they continue to strive to fix these problems, but I also think it’s easy to forget how empowering this technology is. This format opens up conferences to those who can’t travel for financial or logistical reasons, and lowers the energy to engage with cutting edge research. Being able to sit in my garage and run a virtual conference with speakers spanning 10 time zones and nearly 2000 viewers is a wonder of modern times.
 
@@ -47,7 +45,7 @@ I’m supposed to give a plenary talk at the [Virtual IFAC Congress](https://www
 
 One of the main things the registration fee at many conferences provides is a stamp of academic approval. It is a de facto publication fee. Led by computer science, conferences in engineering are replacing journals as the archives where CV-building work is cataloged. Though this wasn’t the initial purpose of conferences in computer science, conferences do have many attractive features over journals for rapidly evolving fields: Conferences have speedy turn-around times and clearly delineated submission and decision dates. This archival aspect of conferences, however, has nothing to do with community building or scholarly dissemination. Why do we need to couple a talk to a publication? Can’t we separate these two as is done in every other academic field?
 
-Our collective pandemic moment gives us an opportunity not only to rethink community-building but also our publication model. With 10000-person mega-conferences like [AI Summer](icml.cc) and [AI Winter](neurips.cc), why can’t we keep all of the deadlines the same but remove all of the talks? We’d still have the same reviewing architecture, which has been wholly virtual for over a decade. And we could still publish all of the proceedings online for free (again, which has been done for multiple decades).
+Our collective pandemic moment gives us an opportunity not only to rethink community-building but also our publication model. With 10000-person mega-conferences like [AI Summer](http://icml.cc) and [AI Winter](http://neurips.cc), why can’t we keep all of the deadlines the same but remove all of the talks? We’d still have the same reviewing architecture, which has been wholly virtual for over a decade. And we could still publish all of the proceedings online for free (again, which has been done for multiple decades).
 
 The decoupling proposal here would have effectively zero overhead on our communities: the deadlines, CMTs, program committees, and proceedings could all function exactly the same way (though, to be fair, these systems all have warts worth improving upon). New archival, fast-turnaround journals could easily start using the same tools. Indeed, I’ve always been enamored with the idea of an arxiv-overlay journal that simply is a table of contents that points towards particular versions of arxiv papers as “accepted.” And a really radical idea would be to solicit _talks_---not papers---for virtual conferences where potential speakers would submit slides or videos to demonstrate proficiency in the medium in which they’d present.
 
