@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Virtual Conferences"
+title:      "The Uncanny Valley of Virtual Conferences"
 date:       2020-06-22 0:00:00
 summary:    "A few retrospective thoughts on running a virtual conference. What worked, what didn't work, and what I might encourage moving forward."
 author:     Ben Recht
