@@ -15,12 +15,12 @@ Then, of course, the pandemic hit forcing us to cancel our in-person event. As m
 When we started planning to go virtual, there were too many options to sort through: Zoom webinars and breakout rooms? Sli.do Q&As? Google Hangouts? Slack channels? We had so many tools for virtual community building, each with their own pluses and minuses. Our main constraints were that we wanted to highlight the best contributed papers as talks in some way, to give visibility to the wonderful set of accepted papers without burdening the authors with more work, to be inclusive to the broader community of folks interested in learning and automation, and, importantly, to not charge registration fees.
 
 We eventually settled on the following scheme:
-We had a Zoom room for invited and contributed speakers and moderators.
-This Zoom was [live streamed to Youtube](https://www.youtube.com/watch?v=b_sJb1k9dVY).
-Questions were gathered by grad student moderators who scanned the YouTube live chat and then relayed inquiries back to the speakers.
-We tried to keep the live part under four hours per day and to provide ample breaks. We recognize how hard it is to sit in front of a live stream for much more than that.
-Further discussion was then done on [OpenReview](https://openreview.net/group?id=L4DC.org/2020/Conference), where we hosted all accepted papers of the conference.
-The proceedings of the conference were subsequently archived by [Proceedings of Machine Learning Research](http://proceedings.mlr.press/).
+1. We had a Zoom room for invited and contributed speakers and moderators.
+2. This Zoom was [live streamed to Youtube](https://www.youtube.com/watch?v=b_sJb1k9dVY).
+3. Questions were gathered by grad student moderators who scanned the YouTube live chat and then relayed inquiries back to the speakers.
+4. We tried to keep the live part under four hours per day and to provide ample breaks. We recognize how hard it is to sit in front of a live stream for much more than that.
+5. Further discussion was then done on [OpenReview](https://openreview.net/group?id=L4DC.org/2020/Conference), where we hosted all accepted papers of the conference.
+6. The proceedings of the conference were subsequently archived by [Proceedings of Machine Learning Research](http://proceedings.mlr.press/).
 
 Though it took a lot of work to tie all these pieces together, everything went super smoothly in the end. I was basically able to run the entire AV setup from my garage.
 
