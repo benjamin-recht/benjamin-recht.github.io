@@ -4,8 +4,8 @@ title:      "The Uncanny Valley of Virtual Conferences"
 date:       2020-06-22 0:00:00
 summary:    "A few retrospective thoughts on running a virtual conference. What worked, what didn't work, and what I might encourage moving forward."
 author:     Ben Recht
-visible:    false
-blurb: 		  false
+visible:    true
+blurb: 		  true
 ---
 
 We wrapped up two amazing days of [L4DC 2020](http://www.l4dc.org/) last Friday. It’s pretty wild to watch this community grow so quickly: starting as a [workshop](https://kgatsis.github.io/learning_for_control_workshop_CDC2018/) at [CDC 2018](https://kgatsis.github.io/learning_for_control_workshop_CDC2018/), the conference organizers put together an [inaugural event at MIT](https://l4dc.mit.edu/) in only a few months and were overwhelmed by nearly 400 attendees. Based on a groundswell of support from the participants, we decided to add contributed talks and papers this year. We had passionate volunteers for our [70-person program committee](https://sites.google.com/berkeley.edu/l4dc/organizers-pc), and they did heroic work of reviewing 135 submissions for this year’s program.
