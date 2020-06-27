@@ -32,13 +32,15 @@ One particular aspect that I think is worth considering is how supervised learni
 
 ## Why are we all sleeping on model predictive control?
 
-I still remain baffled by how [model predictive control](http://www.argmin.net/2018/05/02/adp/) is consistently under appreciated. We’ll commonly see the same tasks in the same meeting, one task done on a robot using some sort of deep reinforcement learning and the other done using model predictive control, and the disparity in performance is stark. It’s like the difference between watching an Olympic level sprinter and me jogging in my neighborhood with a set of orthotics. Here’s an example from the IPAM workshop: Marin Riedmuller presented work at DeepMind to catch a ball in a cup:
+I still remain baffled by how [model predictive control](http://www.argmin.net/2018/05/02/adp/) is consistently under appreciated. We’ll commonly see the same tasks in the same meeting, one task done on a robot using some sort of deep reinforcement learning and the other done using model predictive control, and the disparity in performance is stark. It’s like the difference between watching an Olympic level sprinter and me jogging in my neighborhood with a set of orthotics. Here’s an example from the IPAM workshop: Martin Riedmiller presented work at DeepMind to catch a ball in a cup:
 
-[embed video https://www.youtube.com/watch?time_continue=18&v=yrLNfV4AT2s&feature=emb_title]
+{: .center}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LSkgLazbpko?start=2994" frameborder="0" allowfullscreen></iframe>
 
 This system uses two cameras, has a rather large “cup,” (it’s a wastepaper basket) and yet still takes 3 days to train on the robot. Francesco Borrelli presented a different approach, using only a single camera and basic, simple Newtonian physics, they were able to solve the standard “ball-in-a-cup” game:
 
-[embed video from Francesco]
+{: .center}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ZFxmVDBYyDY?start=938" frameborder="0" allowfullscreen></iframe>
 
 If you only saw these two videos, I can’t fathom why would you invest all of your assets into deep RL. I understand there are still a lot of diehards out there, and I know this will offend them. But I want to make a constructive point here: so many theorists are spending a lot of time studying RL algorithms, but few in the ML community are analyzing MPC and why it’s so successful. We should rebalance our allocation of mental resources!
 
