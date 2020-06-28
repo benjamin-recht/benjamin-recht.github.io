@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Revisiting the tour of RL"
+title:      "We were promised flying cars, but all we got was endless video conferencing."
 date:       2020-06-29 0:00:00
 summary:    "Reflections on the recent progress in combining machine learning and control theory to build safe, agile, and autonomous systems."
 author:     Ben Recht
