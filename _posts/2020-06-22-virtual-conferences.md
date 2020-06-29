@@ -39,7 +39,8 @@ Indeed, many aspects of live conferences are simply not replicable with our curr
 
 We were able to do L4DC, with the proceedings and all, for free. Obviously, the program committee put in tons of work in reviewing and organizing the logistics. But reviewing labor isn’t compensated by any conference. All peer reviewed conferences rely on the volunteer service labor of a dedicated program committee. The main line items we expected for L4DC were for renting physical space, paying an AV crew, and food. But in the virtual world, these expenses drop to near zero.
 
-I’m supposed to give a plenary talk at the [Virtual IFAC Congress](https://www.ifac2020.org/) in July. I have to say, I am troubled: IFAC is charging [380 euros per person](https://www.ifac2020.org/registration/) for registration. What does one get for this sum? Access to video streams and the ability to publish papers. This seems exorbitantly expensive. Why would anyone watch a talk I give at IFAC when I promise to just release it on YouTube at the same time? What value is IFAC providing back to the academic community?
+I’m supposed to give a plenary talk at the [Virtual IFAC Congress](https://www.ifac2020.org/) in July. I have to say, I am troubled: IFAC is charging [380 euros per person](https://www.ifac2020.org/registration/) for registration. [*_UPDATE:_* _IFAC has reduced their registration fee to 80 euros for those who wish to watch videos but not upload a paper. 40 euros for students. Kudos to them for reducing the fees._]
+What does one get for this sum? Access to video streams and the ability to publish papers. This seems exorbitantly expensive. Why would anyone watch a talk I give at IFAC when I promise to just release it on YouTube at the same time? What value is IFAC providing back to the academic community?
 
 ## Decoupling papers from talks
 
