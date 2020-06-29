@@ -4,8 +4,8 @@ title:      "What We've Learned to Control"
 date:       2020-06-29 0:00:00
 summary:    "We were promised flying cars, but all we got was endless video conferencing. Reflections on the recent progress in combining machine learning and control theory to build safe, agile, and autonomous systems."
 author:     Ben Recht
-visible:    false
-blurb: 		  false
+visible:    true
+blurb: 		  true
 ---
 
 I’m giving a keynote address at the [virtual IFAC congress this July](https://www.ifac2020.org/), and I submitted an abstract that forces me to reflect on the current state of research at the intersection of machine learning and control. 2020 is particularly appropriate for reflection: For personal reasons, I've been working in this space for about half a decade now and [wrote a blog series on the topic two years ago](https://www.argmin.net/2018/06/25/outsider-rl/) and it seemed like ideal timing. For the broader community, 2020 happens to be the year we were promised fleets of self-driving cars. Of course, for a myriad of reasons, we’re nowhere close to achieving this goal. Full self-driving has been a key motivator of work in learning-enabled autonomous systems, and it’s important to note this example as a marker of how difficult problems this space really are.
