@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      "We were promised flying cars, but all we got was endless video conferencing."
+title:      "What We've Learned to Control"
 date:       2020-06-29 0:00:00
-summary:    "Reflections on the recent progress in combining machine learning and control theory to build safe, agile, and autonomous systems."
+summary:    "We were promised flying cars, but all we got was endless video conferencing. Reflections on the recent progress in combining machine learning and control theory to build safe, agile, and autonomous systems."
 author:     Ben Recht
 visible:    false
 blurb: 		  false
