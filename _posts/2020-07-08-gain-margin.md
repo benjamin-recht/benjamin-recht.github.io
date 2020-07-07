@@ -50,11 +50,11 @@ $$
 	K = R^{-1}B^\top P\,.
 $$
 
-Importantly, we take the solution of the CARE where $P$ that is positive definite. It's easy to show that if a positive definite solution of the CARE exists, then it is optimal for continuous time LQR. There are a variety of ways to prove this condition is sufficient, one could appeal to dynamic programming arguments in continuous time. A simple argument I like uses the quadratic structure of LQR to derive the necessity of the CARE solution. (I found this argument in [Joao Hespansha's book](xxx)).
+Importantly, we take the solution of the CARE where $P$ that is positive definite. It's easy to show that if a positive definite solution of the CARE exists, then it is optimal for continuous time LQR. There are a variety of ways to prove this condition is sufficient, one could appeal to dynamic programming arguments in continuous time. A simple argument I like uses the quadratic structure of LQR to derive the necessity of the CARE solution. (I found this argument in [Joao Hespansha's book](https://www.ece.ucsb.edu/~hespanha/linearsystems/)).
 
 Regardless, showing a positive definite CARE solution exists takes considerably more work. It suffices to assume that the pair $(A,B)$ is controllable and the pair $(Q,A)$ is detectable. But proving these conditions are sufficient requires a lot of manipulation of linear algebra, and I don't think I could cleanly reduce this proof to a blog post. I mention this just to reiterate that while LQR is definitely the simplest problem to study, even analyzing this in continuous time on an infinite time horizon is nontrivial. LQR is not really "easy" to analyze. It's merely the easiest problem in a space of rather hard problems.
 
-# Gain margins
+## Gain margins
 
 Let's now turn to robustness. Suppose there is a mismatch between our modeled dynamics and reality. For example, what if the actual system is
 
@@ -83,10 +83,10 @@ Note that it is sufficient to show that  $(A-B_\star K)^\top P + P(A-B_\star K)$
 $$
 \begin{aligned}
 	&(A-B_\star K)^\top P + P(A-B_\star K)  \\
-  =& A^\top P + PA - K^\top B_\star^\top  P - P B_\star K\\
-	=&PBR^{-1}B^\top P - Q - K^\top B_\star^\top  P - P B_\star K\\
-	=&PBR^{-1}B^\top P - Q - PBR^{-1}B_\star^\top  P - P B_\star R^{-1} B^\top P\\
-	=&P(B-B_\star)R^{-1}(B-B_\star)^\top P - PB_\star R^{-1} B_\star^\top  P - Q
+  &= A^\top P + PA - K^\top B_\star^\top  P - P B_\star K\\
+	&=PBR^{-1}B^\top P - Q - K^\top B_\star^\top  P - P B_\star K\\
+	&=PBR^{-1}B^\top P - Q - PBR^{-1}B_\star^\top  P - P B_\star R^{-1} B^\top P\\
+	&=P(B-B_\star)R^{-1}(B-B_\star)^\top P - PB_\star R^{-1} B_\star^\top  P - Q
 \end{aligned}
 $$
 
