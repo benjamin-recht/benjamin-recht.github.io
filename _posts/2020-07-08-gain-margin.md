@@ -67,7 +67,7 @@ for some matrix $B_\star$. Such situations happen all the time in control. For e
 An attractive feature of LQR is that we can quantify precisely how much slack we have directly from the CARE solution. We can use the solution of the CARE to build a *Lyapunov function* to guarantee stability of the system. Recall that a Lyapunov function is a function $V$ that maps states to real numbers, is nonnegative everywhere, is equal to $0$ only when $x=0$, and whose value is strictly decreasing along any trajectory of a dynamical system. In equations:
 
 $$
-	V(x)\geq 0\,,~~~V(x)=0~\text{iff}~x=0\,,~~~\dot{V} <0\,.
+	V(x)\geq 0\,,~~~~V(x)=0~~\text{iff}~~x=0\,,~~~~\dot{V} <0\,.
 $$
 
 If you have a Lyapunov function, then all trajectories must converge to $x=0$: if you are at any nonzero state, the value of $V$ will decrease. If you are at $0$, then you will be at a global minimum of $V$ and hence can't move to any other state.
@@ -82,10 +82,11 @@ Note that it is sufficient to show that  $(A-B_\star K)^\top P + P(A-B_\star K)$
 
 $$
 \begin{aligned}
-	(A-B_\star K)^\top P + P(A-B_\star K)  &= A^\top P + PA - K^\top B_\star^\top  P - P B_\star K\\
-	&=PBR^{-1}B^\top P - Q - K^\top B_\star^\top  P - P B_\star K\\
-	&=PBR^{-1}B^\top P - Q - PBR^{-1}B_\star^\top  P - P B_\star R^{-1} B^\top P\\
-	&=P(B-B_\star)R^{-1}(B-B_\star)^\top P - PB_\star R^{-1} B_\star^\top  P - Q
+	&(A-B_\star K)^\top P + P(A-B_\star K)  \\
+  =& A^\top P + PA - K^\top B_\star^\top  P - P B_\star K\\
+	=&PBR^{-1}B^\top P - Q - K^\top B_\star^\top  P - P B_\star K\\
+	=&PBR^{-1}B^\top P - Q - PBR^{-1}B_\star^\top  P - P B_\star R^{-1} B^\top P\\
+	=&P(B-B_\star)R^{-1}(B-B_\star)^\top P - PB_\star R^{-1} B_\star^\top  P - Q
 \end{aligned}
 $$
 
