@@ -2,7 +2,7 @@
 layout:     post
 title:      "Gain Margins"
 date:       2020-07-08 0:00:00
-summary:    "Gain Margins."
+summary:    "A first look at robustness in optimal control, and how sometimes you can get robustness without explicitly modeling it."
 author:     Ben Recht
 visible:    false
 blurb: 		  false
