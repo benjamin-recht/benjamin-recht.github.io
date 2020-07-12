@@ -57,22 +57,18 @@ $$
 	\dot{x}_t = Ax_t + B_\star u_t + w_t \,,
 $$
 
-though we computed the optimal controller with the matrix $B$. Define an error signal, $e_t = x_t - \hat{x}_t$, that measures the current deviation between the actual state and the estimate. Also let $z_t$ denote the random vector
+though we computed the optimal controller with the matrix $B$. Define an error signal, $e_t = x_t - \hat{x}_t$, that measures the current deviation between the actual state and the estimate. Then, using the fact that $u_t = -K \hat{x}_t$, we get the closed loop dynamics
 
 $$
-	z_t = 	\begin{bmatrix} Lv_t\\ w_t-Lv_t \end{bmatrix}
-$$
-
-Then, using the fact that $u_t = -K \hat{x}_t$, we get the closed loop dynamics
-
-$$
+\small
 \frac{d}{dt} \begin{bmatrix}
 		\hat{x}_t\\
 		e_t
 	\end{bmatrix} = \begin{bmatrix} A-BK & LC\\ (B-B_\star) K & A-LC \end{bmatrix}\begin{bmatrix}
 		\hat{x}_t\\
 		e_t
-	\end{bmatrix} +z_t\,.
+	\end{bmatrix} +
+	\begin{bmatrix} Lv_t\\ w_t-Lv_t \end{bmatrix}\,.
 $$
 
 When $B=B_\star$, the bottom left block is equal to zero. The system is then stable provided $A-BK$ and $A-LC$. However, when this block is nonzero, small perturbations can make the matrix unstable. For intuition, consider the matrix
