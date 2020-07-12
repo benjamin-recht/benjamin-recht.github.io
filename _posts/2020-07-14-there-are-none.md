@@ -60,6 +60,7 @@ $$
 though we computed the optimal controller with the matrix $B$. Define an error signal, $e_t = x_t - \hat{x}_t$, that measures the current deviation between the actual state and the estimate. Then, using the fact that $u_t = -K \hat{x}_t$, we get the closed loop dynamics
 
 $$
+\small
 \frac{d}{dt} \begin{bmatrix}
 		\hat{x}_t\\
 		e_t
