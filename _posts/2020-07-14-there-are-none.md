@@ -66,7 +66,8 @@ $$
 	\end{bmatrix} = \begin{bmatrix} A-BK & LC\\ (B-B_\star) K & A-LC \end{bmatrix}\begin{bmatrix}
 		\hat{x}_t\\
 		e_t
-	\end{bmatrix} + xxx\,.
+	\end{bmatrix} +
+	\begin{bmatrix} Lv_t\\ w_t-Lv_t \end{bmatrix}\,.
 $$
 
 When $B=B_\star$, the bottom left block is equal to zero. The system is then stable provided $A-BK$ and $A-LC$. However, when this block is nonzero, small perturbations can make the matrix unstable. For intuition, consider the matrix
