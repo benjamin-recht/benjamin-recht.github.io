@@ -69,10 +69,10 @@ $$
 	\end{bmatrix} + xxx\,.
 $$
 
-When $B=B_\star$, the bottom left block is equal to zero. The system is then stable provided $A-BK$ and $A-LC$. However, when this block is nonzero, small perturbations can make the matrix unstable. Just consider a matrix
+When $B=B_\star$, the bottom left block is equal to zero. The system is then stable provided $A-BK$ and $A-LC$. However, when this block is nonzero, small perturbations can make the matrix unstable. For intuition, consider the matrix
 
 $$
- \begin{bmatrix} -1 & 200\\ 0 & -2 \end{bmatrix}
+ \begin{bmatrix} -1 & 200\\ 0 & -2 \end{bmatrix}\,.
 $$
 
 The eigenvalues of this matrix are $-1$ and $-2$, so the matrix is clearly stable. But the matrix
@@ -99,7 +99,7 @@ $$
 
 The open loop system here is unstable, having two eigenvalues at $1$. We can stabilize the system only by modifying the second state. The state disturbance is aligned along the $[1;1]$ direction, and the state cost only penalizes states aligned with this disturbance. So the goal is simply to remove as much signal as possible in the $[1;1]$ direction without using too much control authority. We only are able to measure the first component of the state, and this measurement is corrupted by Gaussian noise.
 
-What does the optimal policy look like? Perhaps unsurprisingly, it focuses all of its energy on ensuring that there is little state signal along the disturbance direction. The optimal $K$ and $L$ matrices are indeed colinear with the disturbance direction:
+What does the optimal policy look like? Perhaps unsurprisingly, it focuses all of its energy on ensuring that there is little state signal along the disturbance direction. The optimal $K$ and $L$ matrices are
 
 $$
 	K = \begin{bmatrix} 5 & 5 \end{bmatrix}\,,~~~L=\begin{bmatrix} d\\ d \end{bmatrix}\,,~~~d:=2+\sqrt{4+\sigma^{-2}}\,.
@@ -119,13 +119,13 @@ $$
 It's straight forward to check that when $t=1$ (i.e., no model mismatch), the matrices $A-BK$ and $A-LC$ have their eigenvalues in the right half plane. For the full closed loop matrix, computing the eigenvalues themselves is a pain, but we can prove instability by looking at the characteristic polynomial. For a matrix to have all of its eigenvalues in the right half plane, its characteristic polynomial necessarily must have all positive coefficients. If we look at the linear term in the polynomial, it shows that we must have
 
 $$
-	t < 1 + \frac{1}{10+5\sqrt{4+\sigma^{-2}}}
+	t < 1 + \frac{1}{5d}
 $$
 
-if we'd like any hope of having a stable system. Hence, we can guarantee that this closed loop system is unstable if $t\geq 1+\sigma$. This is a very conservative condition, and we could get a tighter bound if we'd like, but it's good enough for discussion: if we build a sensor that gives us a better and better measurement, our system becomes more and more fragile to perturbation and model mismatch. For machine learning scientists, this seems to go against all of our training: how can a system become _less_ robust as we improve our sensing and estimation?
+if we'd like any hope of having a stable system. Hence, we can guarantee that this closed loop system is unstable if $t\geq 1+\sigma$. This is a very conservative condition, and we could get a tighter bound if we'd like, but it's good enough to reveal some paradoxical properties of LQG. For this instance, if we build a sensor that gives us a better and better measurement, our system becomes more and more fragile to perturbation and model mismatch. For machine learning scientists, this seems to go against all of our training: how can a system become _less_ robust if we improve our sensing and estimation?
 
-When the sensor noise gets small, the optimal Kalman Filter is more aggressive. It quickly damps any errors in the direction $[1;1]$, because these are the most important directions that need to be canceled by the controller: the cost penalizes any component of the state in this direction and the noise is injected only in this direction. However, as $d$ increases, we find that the vector $[0;1]$ gets less and less damping in the error signal. When $t \neq 1$, this undamped component of the error is fed errors from the state estimate $\hat{x}$, and these errors compound each other. We spend so much time focusing on one direction, we become highly susceptible to errors in another direction, and these errors occur frequently when there is a gain mismatch.
+When the sensor noise gets small, the optimal Kalman Filter is more aggressive. It quickly damps any errors in the disturbance direction $[1;1]$. However, as $d$ increases, we find that the vector $[0;1]$ gets less and less damping in the error signal. When $t \neq 1$, this undamped component of the error is fed errors from the state estimate $\hat{x}$, and these errors compound each other. Since we spend so much time focusing on our control along the direction of the injected state noise, we become highly susceptible to errors in a different direction and these are the exact errors that occur when there is a gain mismatch between the model and reality.
 
-This cautionary tale from LQG has many morals. It highlights that noiseless state measurement is dangerous modeling assumption. Most of the papers I read in reinforcement learning are about MDPs where we get perfect state measurement. Building an entire field around optimal actions with perfect state observation leads to far too much optimism. Any realistic scenario is going to have partial state observation, and these problems are much thornier.
+This cautionary tale from LQG has many takeaways. It highlights that noiseless state measurement is dangerous modeling assumption. Most of the papers I read in reinforcement learning consider MDPs where we get perfect state measurement. Building an entire field around optimal actions with perfect state observation builds too much optimism. Any realistic scenario is going to have partial state observation, and such problems are much thornier.
 
-But second, and I think a bit less well appreciated, is that optimal control can't be naturally robust to every perturbation. If we just consider Doyle's example, the Kalman Filter damps less signal unaligned with the disturbance as our sensor improves. The model trusts our confidence that we only care about a particular sort of disturbances, and that our sensors are good. The optimal controller over compensates, as overcompensation is more optimal in the model we write down. Though continuous time LQR has some natural robustness, we still need to explicitly check if our model is robust to varied disturbances. In the next post, I'm going to return to discrete time to highlight just how difficult it can be to build something truly robust.
+A second lesson that I think is a bit less well appreciated is that optimal control can't be naturally robust to every perturbation. If we just consider Doyle's example, the Kalman Filter damps less signal unaligned with the disturbance as our sensor improves. The model trusts our confidence that we only care about a particular type of disturbances. The optimal controller over compensates, as overcompensation is more optimal in the model we write down. In the next post, I'm going to return to discrete time to highlight just how difficult it can be to build something truly robust in the optimal control paradigm.
