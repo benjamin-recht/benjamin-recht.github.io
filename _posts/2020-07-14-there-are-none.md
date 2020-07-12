@@ -49,7 +49,7 @@ Here, $K$ is gain matrix that would be used to solve the LQR problem with data $
 We saw in the previous post that LQR had this amazing robustness property: even if you optimize with the wrong model, you'll still probably be OK. Is the same true about LQG? What are the guaranteed margins for LQG regulators? The answer was succinctly summed up in the [abstract of a 1978 paper by John Doyle](xxx): "There are none."
 
 {: .center}
-![There Are None](/assets/there_are_none.png){:width="250px"}
+![There Are None](/assets/there_are_none.png){:width="400px"}
 
 What goes wrong? It turns out that Doyle came up with a simple counterexample, that I'm going to simplify even further for the purpose of discussion. Before presenting the example, let's first dive into _why_ LQG is likely less robust than LQR. Let's assume that the true dynamics obeys the ODE:
 
@@ -57,7 +57,7 @@ $$
 	\dot{x}_t = Ax_t + B_\star u_t + w_t \,,
 $$
 
-though we defined the controller with the matrix $B$. Define an error signal, $e_t = x_t - \hat{x}_t$, that measures the current deviation between the actual state and the estimate. Then we have
+though we computed the optimal controller with the matrix $B$. Define an error signal, $e_t = x_t - \hat{x}_t$, that measures the current deviation between the actual state and the estimate. Then we have
 
 $$
 \begin{aligned}
