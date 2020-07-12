@@ -8,9 +8,9 @@ visible:    false
 blurb: 		  false
 ---
 
-In the last post, we showed that continuous-time LQR has "natural robustness" insofar as the optimal solution is robust to a variety of model-mismatch conditions. LQR makes the assumption that the state of the system is observed noiselessly. In many situations, we don't have access to such state information. What changes?
+In the [last post](http://www.argmin.net/2020/07/08/gain-margin/), we showed that continuous-time LQR has "natural robustness" insofar as the optimal solution is robust to a variety of model-mismatch conditions. LQR makes the assumption that the state of the system is observed noiselessly. In many situations, we don't have access to such state information. What changes?
 
-The generalization of LQR to the case with imperfect state observation is called "Linear Quadratic Gaussian" control (LQG), and is a simple, special case of a Partially Observed Markov Decision Process (POMDP).  We again assume linear dynamics:
+The generalization of LQR to the case with imperfect state observation is called "Linear Quadratic Gaussian" control (LQG), and is a simplest, special case of a Partially Observed Markov Decision Process (POMDP).  We again assume linear dynamics:
 
 $$
 	\dot{x}_t = Ax_t + B u_t + w_t\,.
@@ -36,7 +36,7 @@ $$
 	\frac{d\hat{x}}{dt}  = A\hat{x}_t + B u_t + L(y_t-C\hat{x}_t)\,.
 $$
 
-The matrix $L$ that can be found by solving an algebraic Riccati equation that depends on the variance of $v_t$ and $w_t$ and on the matrices $A$ and $C$. In particular, it's the CARE with data $(A^\top,C^\top,\Sigma_w,\Sigma_v)$. This solution is called a _Kalman Filter_, and is a continuous limit of the discrete time Kalman filter many of us learn in an course on graphivcal models.
+The matrix $L$ that can be found by solving an algebraic Riccati equation that depends on the variance of $v_t$ and $w_t$ and on the matrices $A$ and $C$. In particular, it's the CARE with data $(A^\top,C^\top,\Sigma_w,\Sigma_v)$. This solution is called a _Kalman Filter_ and is a continuous limit of the discrete time Kalman Filter one might see in a course on graphical models.
 
 The optimal LQG solution takes the estimate of the Kalman Filter, $\hat{x}_t$, and sets the control signal to be
 
@@ -44,9 +44,9 @@ $$
 	u_t = -K\hat{x}_t\,.
 $$
 
-Here, $K$ is gain matrix that would be used to solve the LQR problem with data $(A,B,Q,R)$. That is, LQG performs optimal filtering to compute the best state estimate, and then computes a feedback policy as if this estimate was a noiseless measurement of the state. That this turns out to be optimal is really quite amazing as it decouples the process of designing an optimal filter from designing an optimal controller. This decoupling where we treat the output of our state estimator as the true state is an example of _certainty equivalence_. Certainty equivalence is the umbrella term in control for using point estimates of stochastic quantities, ignoring the uncertainty in these estimates. Though certainty equivalent control may be suboptimal in general, it remains popular for its simplicity. Separating estimation and control simplifies engineering pipelines and allows modularized thinking about these individual components.
+Here, $K$ is gain matrix that would be used to solve the LQR problem with data $(A,B,Q,R)$. That is, LQG performs optimal filtering to compute the best state estimate, and then computes a feedback policy as if this estimate was a noiseless measurement of the state. That this turns out to be optimal is really quite amazing as it decouples the process of designing an optimal filter from designing an optimal controller. This decoupling where we treat the output of our state estimator as the true state is an example of _certainty equivalence_, the umbrella term for using point estimates of stochastic quantities as if they were the correct value. Though certainty equivalent control may be suboptimal in general, it remains ubiquitous as it enables simplicity and modularity in control design. LQG highlights a particular scenario where certainty equivalent control leads to misplaced optimism about robustness.
 
-We saw in the previous post that LQR had this amazing robustness property: even if you optimize with the wrong model, you'll still probably be OK. Is the same true about LQG? What are the guaranteed margins for LQG regulators? The answer was succinctly summed up in the [abstract of a 1978 paper by John Doyle](xxx): "There are none."
+We saw in the previous post that LQR had this amazing robustness property: even if you optimize with the wrong model, you'll still probably be OK. Is the same true about LQG? What are the guaranteed stability margins for LQG regulators? The answer was succinctly summed up in the [abstract of a 1978 paper by John Doyle](https://ieeexplore.ieee.org/document/1101812): "There are none."
 
 {: .center}
 ![There Are None](/assets/there_are_none.png){:width="400px"}
@@ -57,17 +57,7 @@ $$
 	\dot{x}_t = Ax_t + B_\star u_t + w_t \,,
 $$
 
-though we computed the optimal controller with the matrix $B$. Define an error signal, $e_t = x_t - \hat{x}_t$, that measures the current deviation between the actual state and the estimate. Then we have
-
-$$
-\begin{aligned}
-	\dot{e}_t &= Ax_t + B_\star u_t + w_t -  A\hat{x}_t - B u_t - L(y_t-C\hat{x}_t)\\
-	&= A x_t + B_\star u_t + w_t -  A\hat{x}_t - B u_t - L(C x_t +v_t -C\hat{x}_t)\\
-	&= (A-LC)e_t + (B_\star-B) u_t + w_t - Lv_t
-\end{aligned}
-$$
-
-Using the fact that $u_t = -K \hat{x}_t$, we get the closed loop dynamics
+though we computed the optimal controller with the matrix $B$. Define an error signal, $e_t = x_t - \hat{x}_t$, that measures the current deviation between the actual state and the estimate. Then, using the fact that $u_t = -K \hat{x}_t$, we get the closed loop dynamics
 
 $$
 \frac{d}{dt} \begin{bmatrix}
@@ -76,7 +66,7 @@ $$
 	\end{bmatrix} = \begin{bmatrix} A-BK & LC\\ (B-B_\star) K & A-LC \end{bmatrix}\begin{bmatrix}
 		\hat{x}_t\\
 		e_t
-	\end{bmatrix} \,.
+	\end{bmatrix} + xxx\,.
 $$
 
 When $B=B_\star$, the bottom left block is equal to zero. The system is then stable provided $A-BK$ and $A-LC$. However, when this block is nonzero, small perturbations can make the matrix unstable. Just consider a matrix
