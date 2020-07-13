@@ -8,9 +8,9 @@ visible:    false
 blurb: 		  false
 ---
 
-In the [last post](http://www.argmin.net/2020/07/08/gain-margin/), we showed that continuous-time LQR has "natural robustness" insofar as the optimal solution is robust to a variety of model-mismatch conditions. LQR makes the assumption that the state of the system is observed noiselessly. In many situations, we don't have access to such state information. What changes?
+In the [last post](http://www.argmin.net/2020/07/08/gain-margin/), we showed that continuous-time LQR has "natural robustness" insofar as the optimal solution is robust to a variety of model-mismatch conditions. LQR makes the assumption that the state of the system is fully, perfectly observed. In many situations, we don't have access to such perfect state information. What changes?
 
-The generalization of LQR to the case with imperfect state observation is called "Linear Quadratic Gaussian" control (LQG), and is a simplest, special case of a Partially Observed Markov Decision Process (POMDP).  We again assume linear dynamics:
+The generalization of LQR to the case with imperfect state observation is called "Linear Quadratic Gaussian" control (LQG). This is the simplest, special case of a Partially Observed Markov Decision Process (POMDP). We again assume linear dynamics:
 
 $$
 	\dot{x}_t = Ax_t + B u_t + w_t\,.
@@ -30,7 +30,7 @@ $$
 
 This problem is very similar to our LQR problem except for the fact that we get an indirect measurement of the state and need to apply some sort of _filtering_ of the $y_t$ signal to estimate $x_t$.
 
-The optimal solution for LQG ends up being strikingly simple: since the observation of $x_t$ is through a Gaussian process, the maximum likelihood estimation algorithm has a clean, closed form solution, even in continuous time. Our best estimate for $x_t$, denoted $\hat{x}_t$, given all of the data observed up to time $t$ obeys a differential equation
+The optimal solution for LQG is strikingly elegant. Since the observation of $x_t$ is through a Gaussian process, the maximum likelihood estimation algorithm has a clean, closed form solution, even in continuous time. Our best estimate for $x_t$, denoted $\hat{x}_t$, given all of the data observed up to time $t$ obeys a differential equation
 
 $$
 	\frac{d\hat{x}}{dt}  = A\hat{x}_t + B u_t + L(y_t-C\hat{x}_t)\,.
@@ -44,14 +44,14 @@ $$
 	u_t = -K\hat{x}_t\,.
 $$
 
-Here, $K$ is gain matrix that would be used to solve the LQR problem with data $(A,B,Q,R)$. That is, LQG performs optimal filtering to compute the best state estimate, and then computes a feedback policy as if this estimate was a noiseless measurement of the state. That this turns out to be optimal is really quite amazing as it decouples the process of designing an optimal filter from designing an optimal controller. This decoupling where we treat the output of our state estimator as the true state is an example of _certainty equivalence_, the umbrella term for using point estimates of stochastic quantities as if they were the correct value. Though certainty equivalent control may be suboptimal in general, it remains ubiquitous as it enables simplicity and modularity in control design. LQG highlights a particular scenario where certainty equivalent control leads to misplaced optimism about robustness.
+Here, $K$ is gain matrix that would be used to solve the LQR problem with data $(A,B,Q,R)$. That is, LQG performs optimal filtering to compute the best state estimate, and then computes a feedback policy as if this estimate was a noiseless measurement of the state. That this turns out to be optimal is one of the more amazing results in control theory. It decouples the process of designing an optimal filter from designing an optimal controller, enabling simplicity and modularity in control design. This decoupling where we treat the output of our state estimator as the true state is an example of _certainty equivalence_, the umbrella term for using point estimates of stochastic quantities as if they were the correct value. Though certainty equivalent control may be suboptimal in general, it remains ubiquitous for all of the benefits it brings as a design paradigm. Unfortunately, not only is this decoupled design of filters and controllers often suboptimal, it has many hidden fragilities. LQG highlights a particular scenario where certainty equivalent control leads to misplaced optimism about robustness.
 
 We saw in the previous post that LQR had this amazing robustness property: even if you optimize with the wrong model, you'll still probably be OK. Is the same true about LQG? What are the guaranteed stability margins for LQG regulators? The answer was succinctly summed up in the [abstract of a 1978 paper by John Doyle](https://ieeexplore.ieee.org/document/1101812): "There are none."
 
 {: .center}
 ![There Are None](/assets/there_are_none.png){:width="400px"}
 
-What goes wrong? It turns out that Doyle came up with a simple counterexample, that I'm going to simplify even further for the purpose of discussion. Before presenting the example, let's first dive into _why_ LQG is likely less robust than LQR. Let's assume that the true dynamics obeys the ODE:
+What goes wrong? Doyle came up with a simple counterexample, that I'm going to simplify even further for the purpose of contextualizing in our modern discussion. Before presenting the example, let's first dive into _why_ LQG is likely less robust than LQR. Let's assume that the true dynamics obeys the ODE:
 
 $$
 	\dot{x}_t = Ax_t + B_\star u_t + w_t \,,
@@ -71,7 +71,7 @@ $$
 	\begin{bmatrix} Lv_t\\ w_t-Lv_t \end{bmatrix}\,.
 $$
 
-When $B=B_\star$, the bottom left block is equal to zero. The system is then stable provided $A-BK$ and $A-LC$. However, when this block is nonzero, small perturbations can make the matrix unstable. For intuition, consider the matrix
+When $B=B_\star$, the bottom left block is equal to zero. The system is then stable provided $A-BK$ and $A-LC$ are both stable matrices (i.e., have eigenvalues in the left half plane). However, small perturbations in the off-diagonal block can make the matrix unstable. For intuition, consider the matrix
 
 $$
  \begin{bmatrix} -1 & 200\\ 0 & -2 \end{bmatrix}\,.
@@ -118,16 +118,20 @@ $$
     \end{bmatrix}\,.
 $$
 
-It's straight forward to check that when $t=1$ (i.e., no model mismatch), the matrices $A-BK$ and $A-LC$ have their eigenvalues in the right half plane. For the full closed loop matrix, computing the eigenvalues themselves is a pain, but we can prove instability by looking at the characteristic polynomial. For a matrix to have all of its eigenvalues in the right half plane, its characteristic polynomial necessarily must have all positive coefficients. If we look at the linear term in the polynomial, it shows that we must have
+It's straight forward to check that when $t=1$ (i.e., no model mismatch), the eigenvalues of  $A-BK$ and $A-LC$ all have negative real parts. For the full closed loop matrix, analytically computing the eigenvalues themselves is a pain, but we can prove instability by looking at the characteristic polynomial. For a matrix to have all of its eigenvalues in the left half plane, its characteristic polynomial necessarily must have all positive coefficients. If we look at the linear term in the polynomial, we see that we must have
 
 $$
 	t < 1 + \frac{1}{5d}
 $$
 
-if we'd like any hope of having a stable system. Hence, we can guarantee that this closed loop system is unstable if $t\geq 1+\sigma$. This is a very conservative condition, and we could get a tighter bound if we'd like, but it's good enough to reveal some paradoxical properties of LQG. One that stands out to me is that if we build a sensor that gives us a better and better measurement, our system becomes more and more fragile to perturbation and model mismatch. For machine learning scientists, this seems to go against all of our training: how can a system become _less_ robust if we improve our sensing and estimation?
+if we'd like any hope of having a stable system. Hence, we can guarantee that this closed loop system is unstable if $t\geq 1+\sigma$. This is a very conservative condition, and we could get a tighter bound if we'd like, but it's good enough to reveal some paradoxical properties of LQG. The most striking is that if we build a sensor that gives us a better and better measurement, our system becomes more and more fragile to perturbation and model mismatch. For machine learning scientists, this seems to go against all of our training. How can a system become _less_ robust if we improve our sensing and estimation?
 
-When the sensor noise gets small, the optimal Kalman Filter is more aggressive. It quickly damps any errors in the disturbance direction $[1;1]$. However, as $d$ increases, we find that the vector $[0;1]$ gets less and less damping in the error signal. When $t \neq 1$, this undamped component of the error is fed errors from the state estimate $\hat{x}$, and these errors compound each other. Since we spend so much time focusing on our control along the direction of the injected state noise, we become highly susceptible to errors in a different direction and these are the exact errors that occur when there is a gain mismatch between the model and reality.
+Let's look at the example in more detail to get some intuition for what's happening. When the sensor noise gets small, the optimal Kalman Filter is more aggressive. If the model is true, then the disturbance has equal value in both states, so, when $\sigma$ is small, the filter can effectively just set the value of the second state to be equal to whatever is in the first state. The filter is effectively deciding that the first state should equal the observation $y_t$, and the second state should be equal to the first state. In other words, it will rapidly damps any errors in the disturbance direction $[1;1]$ and, as $d$ increases, it damps the $[0;1]$ direction less. When $t \neq 1$, we are effectively introducing a disturbance that makes the two states unequal. That is, $B-B_\star$ is aligned in the $[0;1]$ and can be treated as a disturbance signal. This undamped component of the error is fed errors from the state estimate $\hat{x}$, and these errors compound each other. Since we spend so much time focusing on our control along the direction of the injected state noise, we become highly susceptible to errors in a different direction and these are the exact errors that occur when there is a gain mismatch between the model and reality.
 
-This cautionary tale from LQG has many takeaways. It highlights that noiseless state measurement is dangerous modeling assumption. Most of the papers I read in reinforcement learning consider MDPs where we get perfect state measurement. Building an entire field around optimal actions with perfect state observation builds too much optimism. Any realistic scenario is going to have partial state observation, and such problems are much thornier.
+This cautionary tale from LQG has many takeaways. It highlights that noiseless state measurement can be a dangerous modeling assumption, because it is then optimal to trust our model too much. Though we got a freebie with LQR, for LQG, model mismatch must be explicitly accounted for when designing the controller.
 
-A second lesson that I think is a bit less well appreciated is that optimal control can't be naturally robust to every perturbation. In Doyle's example, the Kalman Filter damps less signal unaligned with the disturbance as our sensor improves. The model trusts our confidence that we only care about a particular type of disturbances. The optimal controller over compensates, as overcompensation is more optimal in the model we write down. In the next post, I'm going to return to discrete time to highlight how difficult it can be to build something truly robust in the optimal control paradigm.
+This is a cautionary tale for modern AI systems. Most of the papers I read in reinforcement learning consider MDPs where we get perfect state measurement. Building an entire field around optimal actions with perfect state observation builds too much optimism. Any realistic scenario is going to have partial state observation, and such problems are much thornier.
+
+A second lesson is that it is not enough to just improve the prediction components in feedback systems that are powered by machine learning. I have spoken with many applied machine learning engineers who have told me that they have seen performance degrade in production systems when they improve their prediction model. They might spend months building some state of the art LSTM mumbo jumbo that is orders of magnitude more accurate in prediction, but in production yields worse performance than the system with a boring ARMA predictor. It is quite possible that the Doyle effect is happening there: the improved prediction system is revealing a modeling flaw at some other part of the pipeline.
+
+How do we fix these issues? In the 80s, control engineers turned to robust control where they attempted to model as many of the possible disturbances as possible and try to engineer systems that accounted for these myriad uncertainties. To highlight just how many uncertainties we might encounter, the next post will return to discrete time and even simpler models in an attempt to illustrate how difficult it is to build something truly robust in the optimal control paradigm.
