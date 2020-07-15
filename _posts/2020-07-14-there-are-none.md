@@ -4,8 +4,8 @@ title:      "There are none"
 date:       2020-07-14 0:00:00
 summary:    "Linear Quadratic Gaussian control with partial state observation has arbitrarily small gain margins. This post dives into Doyle's classic example and how it relates to machine learning."
 author:     Ben Recht
-visible:    false
-blurb: 		  false
+visible:    true
+blurb: 		  true
 ---
 
 In the [last post](http://www.argmin.net/2020/07/08/gain-margin/), we showed that continuous-time LQR has "natural robustness" insofar as the optimal solution is robust to a variety of model-mismatch conditions. LQR makes the assumption that the state of the system is fully, perfectly observed. In many situations, we don't have access to such perfect state information. What changes?
