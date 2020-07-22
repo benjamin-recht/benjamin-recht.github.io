@@ -1,13 +1,13 @@
 ---
 layout:     post
 title:      "Even State Feedback Isn't Naturally Robust"
-date:       2020-07-14 0:00:00
+date:       2020-07-23 0:00:00
 summary:    "xxx."
 author:     Ben Recht
 visible:    false
 blurb: 		  false
 ---
-Doyle's example showing that LQG yields arbitrarily fragile control policies was derived in the time before widespread computing. On the one hand, this meant that numerical examples were far less convincing than algebraic closed form instances. On the other hand, this also meant that controllers were idealized in continuous time, and hence many optimal control solutions couldn't be implemented because of the limits of physical reality: we can't act instantaneously with arbitrary power. These issues of infeasibility were [certainly noted in the literature](xxx) during the hey day of optimal control, but continuous time models still often made it difficult to pinpoint these issues.
+Doyle's example showing that LQG yields arbitrarily fragile control policies was derived in the time before widespread computing. On the one hand, this meant that numerical examples were far less convincing than algebraic closed form instances. On the other hand, this also meant that controllers were idealized in continuous time, and hence many optimal control solutions couldn't be implemented because of the limits of physical reality: we can't act instantaneously with arbitrary power. These issues of infeasibility were [certainly noted in the literature](https://ieeexplore.ieee.org/document/1099822/) during the hey day of optimal control, but continuous time models still often made it difficult to pinpoint these issues.
 
 Discrete time models don't have these issues. In discrete time, we explicitly encode the sequential, computational nature of decision and control. Discrete time formulae are unfortunately less elegant than their continuous time counterparts, but they are often more revealing. Indeed, constructing examples where discrete time optimal control leads to fragile solutions seems to be considerably easier and more transparent in discrete-time systems.
 
