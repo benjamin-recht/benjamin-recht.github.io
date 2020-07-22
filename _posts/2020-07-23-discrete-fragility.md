@@ -2,7 +2,7 @@
 layout:     post
 title:      "Even State Feedback Isn't Naturally Robust"
 date:       2020-07-23 0:00:00
-summary:    "xxx."
+summary:    "Simple examples of discrete-time optimal control problems where even state feedback pushes you into fragile policies."
 author:     Ben Recht
 visible:    false
 blurb: 		  false
