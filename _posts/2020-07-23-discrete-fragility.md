@@ -52,9 +52,11 @@ $$
 This closed-loop system is _marginally stable_, meaning that while signals don't blow up, some states will persist forever and not converge to $0$. Indeed, the state-transition matrix here has eigenvalues $0$ and $1$. The $1$ corresponds the state where the two components are equal, and such a state can persist forever.
 
 We can also immediately see that if the true $B_\star=\alpha B $, the closed loop dynamics are
+
 $$
 	x_{t+1} = \begin{bmatrix} 0 & 1\\ 0 &\alpha \end{bmatrix} x_t + w_t\,,
 $$
+
 which is unstable for any $\alpha>1$. That is, this system is arbitrarily fragile. Note that this fragility has nothing to do with the noise sequence. The structure of the cost is what drives the system to fragility.
 
 If $R>0$, you will get a slightly different system. Again, using elementary dynamic programming shows that the optimal control is $u_t=\beta_t(R) x_t^{(2)}$ for some $\beta_t(R) \in (1/2,1)$. The closed loop system will be a bit more stable, but this comes at the price of reduced performance. And, at best, the gain margin of this system approaches $2$ as $R$ goes to infinity.
