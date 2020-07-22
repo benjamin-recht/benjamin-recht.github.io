@@ -14,12 +14,14 @@ Discrete time models don't have these issues. In discrete time, we explicitly en
 Here, I'll highlight a few examples where relatively innocuous problem formulations lead to very fragile control policies. The examples are weirdly simple and comical point. But I think anyone who has played with discrete-time optimal control may have stumbled into similar control policies and had to step back and think about why.
 
 Let's revisit the discrete-time LQR problem
+
 $$
 	\begin{array}{ll} \text{minimize} & \sum_{t=1}^N \mathbb{E}_{w_t}\left[x_t^\top Q x_t + u_t^\top R u_t\right]\\
 	\text{subject to} & x_{t+1} = A x_t + B u_t + w_t
 	\end{array}
 $$
-We again assume $x_t$ is observed perfectly without noise. While this is not realistic, even state feedback ends up being fragile in discrete time. $w_t$ is assumed to be stochastic, but I don't think much changes if we move to a more adversarial setting. Here, we need the decision variable $u_t$ to be \emph{causal}. It must be a function of only the values $x_s$ and $u_s$ with $s\leq t$. For stochastic disturbances, the optimal $u$ can always be found by dynamic programming.
+
+We again assume $x_t$ is observed perfectly without noise. While this is not realistic, even state feedback ends up being fragile in discrete time. $w_t$ is assumed to be stochastic, but I don't think much changes if we move to a more adversarial setting. Here, we need the decision variable $u_t$ to be _causal_. It must be a function of only the values $x_s$ and $u_s$ with $s\leq t$. For stochastic disturbances, the optimal $u$ can always be found by dynamic programming.
 
 Consider the following innocuous dynamics:
 
@@ -47,7 +49,7 @@ $$
 	x_{t+1} = \begin{bmatrix} 0 & 1\\ 0 &1 \end{bmatrix} x_t + w_t\,.
 $$
 
-This closed-loop system is \emph{marginally stable}, meaning that while signals don't blow up, some states will persist forever and not converge to $0$. Indeed, the state-transition matrix here has eigenvalues $0$ and $1$. The $1$ corresponds the state where the two components are equal, and such a state can persist forever.
+This closed-loop system is _marginally stable_, meaning that while signals don't blow up, some states will persist forever and not converge to $0$. Indeed, the state-transition matrix here has eigenvalues $0$ and $1$. The $1$ corresponds the state where the two components are equal, and such a state can persist forever.
 
 We can also immediately see that if the true $B_\star=\alpha B $, the closed loop dynamics are
 $$
