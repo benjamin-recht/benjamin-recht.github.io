@@ -53,7 +53,7 @@ $$
 
 This closed-loop system is _marginally stable_, meaning that while signals don't blow up, some states will persist forever and not converge to $0$. Indeed, the state-transition matrix here has eigenvalues $0$ and $1$. The $1$ corresponds the state where the two components are equal, and such a state can persist forever.
 
-Let's now again understand how robust the system is to misspecification. If we learned an incorrect model of the dynamics, how would that influence the closed loop behavior? The simplest scenario is that we identified $B$ from some preliminary experiments. We can immediately see that if the true $B_\star=\alpha B $, then the closed loop dynamics are
+If we learned an incorrect model of the dynamics, how would that influence the closed loop behavior? The simplest scenario is that we identified $B$ from some preliminary experiments. We can immediately see that if the true $B_\star=\alpha B $, then the closed loop dynamics are
 
 $$
 	x_{t+1} = \begin{bmatrix} 0 & 1\\ 0 &\alpha \end{bmatrix} x_t + w_t\,.
