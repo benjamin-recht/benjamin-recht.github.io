@@ -40,9 +40,11 @@ $$
 I assume $R=0$ here for simplicity, as the formulae are particularly nice for this case. But, as I will discuss in a moment, the situation is not improved simply by having $R$ be positive. For the disturbance, assume that $w_t$ is zero mean, has bounded second moment, $\Sigma_t = \mathbb{E}[w_t w_t^\top]$, and is uncorrelated with $x_t$ and $u_t$.
 
 The cost is asking to minimize
-\[
+
+$$
 	\sum_{t=1}^N (x_t^{(1)}-x_t^{(2)})^2
-\]
+$$
+
 When $w_t=0$, $x_t^{(1)}+x_t^{(2)} = x_{t-1}^{(2)}+u_{t-1}$, so it seems like our best bet is to just set $u_{t}=x_t^{(2)}$. This turns out to be the optimal action, and you can prove this directly using standard dynamic programming computations. What this means is that the closed loop dynamics of the system are
 
 $$
@@ -73,7 +75,7 @@ I could continue to construct nasty examples, but I hope these examples are suff
 
 In some sense, the core contribution of robust control is in raising awareness of fundamental tradeoffs in the design of feedback systems. Optimal control promises that you can roughly identify a system, model uncertainty as noise, solve an optimization problem,  and then ship your policy. Hopefully, the examples in the last two posts have shown why this particular approach is fraught with danger.
 
-If failure of your feedback system has any consequences, then a more holistic robust approach is _necessary_. We have to work with experts at different levels of the engineering pipeline, worry about unmodeled behaviors, and understand hard limits and practical tradeoffs. That is, engineering has to be more concerned with _design_ than with _optimization._
+If failure of a feedback system has any consequences, then a more holistic robust approach is _necessary_. We have to work with experts at different levels of the engineering pipeline, worry about unmodeled behaviors, and understand hard limits and practical tradeoffs. That is, engineering has to be more concerned with _design_ than with _optimization._
 
 There are all sorts of questions that a robust, systems level engineering effort might ask. Where should you put that extra sensor? Which parts of the system are likely to create issues? Is it possible to avoid performance disruptions when updating a single component in a legacy system? These questions are important in all aspects of system engineering, and developing accessible tools for addressing them in machine learning systems remains a daunting but essential challenge.
 
