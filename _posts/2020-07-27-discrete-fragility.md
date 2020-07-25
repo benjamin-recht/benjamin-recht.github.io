@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      "Even State Feedback Isn't Naturally Robust"
+title:      "Digital Witnesses"
 date:       2020-07-27 0:00:00
-summary:    "Simple examples of discrete-time optimal control problems where state feedback pushes systems into fragile conditions."
+summary:    "Even state feedback isn't naturally robust. Simple examples of discrete-time optimal control problems where state feedback pushes systems into fragile conditions."
 author:     Ben Recht
 visible:    false
 blurb: 		  false
