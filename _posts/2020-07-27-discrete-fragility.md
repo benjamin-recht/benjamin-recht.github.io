@@ -1,12 +1,13 @@
 ---
 layout:     post
 title:      "Even State Feedback Isn't Naturally Robust"
-date:       2020-07-23 0:00:00
+date:       2020-07-27 0:00:00
 summary:    "Simple examples of discrete-time optimal control problems where even state feedback pushes you into fragile policies."
 author:     Ben Recht
 visible:    false
 blurb: 		  false
 ---
+
 Doyle derived his LQG counterexample in the time before the ubiquity of numerical computing. This meant that numerical examples did not carry the rhetorical weight of algebraic closed form instances. The need for clean, persuasive formulae also meant that controllers were idealized in continuous time. Continuous-time optimal control often produced policies that couldn't be implemented because of the limits of physical reality: no system can act instantaneously with arbitrary power. These issues of infeasibility were [certainly noted in the literature](https://ieeexplore.ieee.org/document/1099822/) during the hey day of optimal control, but continuous time models still often made it difficult to pinpoint these issues.
 
 Discrete-time models don't share many of these issues. In discrete time, we explicitly encode the sequential, computational nature of decision and control. Discrete-time formulae are unfortunately less elegant than their continuous-time counterparts, but, as I hope to show here, they are often more revealing. Indeed, constructing examples where discrete-time optimal control leads to fragile solutions seems to be surprisingly easy.
