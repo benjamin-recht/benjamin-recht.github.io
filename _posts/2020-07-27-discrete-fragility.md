@@ -4,8 +4,8 @@ title:      "Digital Witnesses"
 date:       2020-07-27 0:00:00
 summary:    "Even state feedback isn't naturally robust. Simple examples of discrete-time optimal control problems where state feedback pushes systems into fragile conditions."
 author:     Ben Recht
-visible:    false
-blurb: 		  false
+visible:    true
+blurb: 		  true
 ---
 
 Doyle derived his LQG counterexample in the time before the ubiquity of numerical computing. This meant that numerical examples did not carry the rhetorical weight of algebraic closed form instances. The need for clean, persuasive formulae also meant that controllers were idealized in continuous time. Continuous-time optimal control often produced policies that couldn't be implemented because of the limits of physical reality: no system can act instantaneously with arbitrary power. These issues of infeasibility were [certainly noted in the literature](https://ieeexplore.ieee.org/document/1099822/) during the hey day of optimal control, but continuous time models still often made it difficult to pinpoint these issues.
