@@ -70,7 +70,7 @@ $$
 x_{t+1}= b u_t+w_t\,.
 $$
 
-The open loop system is again as stable as it gets. Now let's aim to minimize $\Vert x-u \Vert$. It doesn't matter what norm you choose here or whether you treat the noise as stochastic or worst case with respect to $w$, the optimal control is going to be $u_t = x_t/b$. Once again, the closed loop system has a pole at $1$ and is arbitrary fragile to misspecification of $b$.
+The open loop system is again as stable as it gets. Now let's aim to minimize $\Vert x-b u \Vert$. It doesn't matter what norm you choose here or whether you treat the noise as stochastic or worst case with respect to $w$, the optimal control is going to be $u_t = x_t/b$. Once again, the closed loop system has a pole at $1$ and is arbitrary fragile to misspecification of $b$.
 
 I could continue to construct nasty examples, but I hope these examples are sufficiently illustrative. They are certainly contrived and pathological, and it's not at all clear that they reflect any optimal control problem you might have been hoping to solve. However, both examples involve systems that are robust and stable in open loop. It's only when we close the feedback loop that we end up in a dangerous situation. That simple optimal control problems give some profoundly fragile solutions should be a clear warning: _You can't just optimize and hope to be robust._ You have to consider uncertainty as a first class citizen when designing feedback systems.
 
