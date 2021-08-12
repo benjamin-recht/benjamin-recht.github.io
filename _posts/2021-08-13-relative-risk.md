@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Relative risk is more informative than effectiveness."
-date:       2020-07-27 0:00:00
+date:       2021-08-13 0:00:00
 summary:    "Thoughts on medical information communication, cost benefit analyses, and living with some risks."
 author:     Ben Recht
 visible:    false
@@ -30,4 +30,4 @@ Perhaps this is the hardest part about where we are in the pandemic. Everyone wa
 
 And given that children do not yet have a vaccine available, parents worry that their children remain at risk. But we accept much more deadly risks in our lives. It is uncomfortable to accept that a 3 year old has a similar risk of severe COVID-19 as a vaccinated 40 year old. Doing a cost benefit analysis about your child is emotionally impossible. I understand how any risk, no matter how small, can feel intolerable. Unfortunately, that same 3 year old is [more vulnerable to death or serious injury by driving, swimming, or even eating](https://www.nytimes.com/2021/04/22/opinion/covid-vaccine-kids.html). The risks entailed with COVID-19 do not seem to be much different than those of just growing up. Since we want nothing more than for our kids to be safe, we delude ourselves by never conceptualizing the risks of their ordinary activities. We live our lives as though these risks are zero. Though it seems impossible to imagine this now, in time, we’ll accept the remaining risk from COVID-19 as well.
 
-*Many thanks to Sarah Dean, Jordan Ellenberg, Eric Jonas, Lauren Kroiz, Deb Raji, Lawrence Recht, and Isaac Sparks for reading drafts of this post and offering insightful comments and suggestions.*
+*Many thanks to Sarah Dean, Jordan Ellenberg, Eric Jonas, Lauren Kroiz, Deb Raji, Lawrence Recht, Chris Re, and Isaac Sparks for reading drafts of this post and offering insightful comments and suggestions.*
