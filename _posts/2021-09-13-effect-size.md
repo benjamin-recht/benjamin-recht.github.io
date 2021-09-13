@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "tmp."
+title:      "Effect size is significantly more important than statistical significance."
 date:       2021-09-13 0:00:00
 summary:    "The scientific lesson of the pandemic is that most effect sizes are small or zero and thus most interventions are useless and people really don't want to confront their own cosmic impotence. -Eric Jonas"
 author:     Ben Recht
