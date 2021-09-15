@@ -1,9 +1,9 @@
 /*!
  * ChickenDinner 1.0
- * Copyright 2014, Stephen Scaff - http://sosweetcreative.com 
+ * Copyright 2014, Stephen Scaff - http://sosweetcreative.com
  * Released under the WTFPL license - http://sam.zoy.org/wtfpl/
  *
- * USEAGE 
+ * USEAGE
  * For img tags
  * =====================
  * $('.js-chickendinner').chickenDinner({
@@ -27,10 +27,10 @@
 	defaults: {
 	    altTag: ['Banner Image manssss'],
 	    fadeInTime:1800,
-	    TheImages: ['logo-1.jpg', 'logo-3.jpg', 'logo-6.jpg', 'logo-8.jpg', 'logo-10.jpg' ]
+	    TheImages: ['logo-1.jpg', 'logo-3.jpg', 'logo-6.jpg', 'logo-8.jpg', 'logo-10.jpg' ,'logo_100.jpg','logo_101.jpg','logo_102.jpg','logo_103.jpg','logo_104.jpg','logo_105.jpg','logo_106.jpg','logo_107.jpg','logo_108.jpg','logo_109.jpg' ]
 	}
     };
-  
+
     $.fn.extend({
 	    chickenDinner:function(options) {
 		$.extend({}, $.chickenDinner.defaults, options);
