@@ -19,7 +19,8 @@ My perspective on the pitfalls of probabilistic modeling has been heavily influe
 Model building and validation requires deep domain knowledge for a task at hand. One of my favorite models is Ohm’s law, which states that the current that flows across a conductive material is proportional to the voltage drop across the resistor. Due to thermal noise, the actual model is
 
 $$
-  \text{current} = \text{material constant} \times \text{voltage} + \text{noise}
+\small{
+  \text{current} = \text{material constant} \times \text{voltage} + \text{noise}}
 $$
 
 And the noise is Gaussian white noise. This model has been extensively tested and is a foundation of all circuit design. Remarkably, this simple formula describes complex electronic behavior. Physics is full of amazing examples of statistical models that accurately predict the outcome of experiments to a dozen significant figures.
