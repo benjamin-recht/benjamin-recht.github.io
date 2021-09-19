@@ -76,7 +76,7 @@ $$
   \log \frac{.55}{1−.55}−\log\frac{.5}{1−.5} \approx 0.2\,.}
 $$
 
-Now, when you instead run logistic regression, the coefficient of the treatment variable is larger than 0.2. Indeed, [when I try this in python](https://nbviewer.jupyter.org/url/argmin.net/code/logistic-logodds-example.ipynb), running 1000 synthetic experiments, I find that the median point estimate is 0.32, which is, as promised, larger than the true log odds. Even more worrisome is the 95% confidence interval contains 0.2 only 38% of the time. Clearly, the confidence intervals are not accurate when the model is wrong.
+Now, when you instead run logistic regression, the coefficient of the treatment variable is larger than 0.2. Indeed, [when I try this in python](https://nbviewer.jupyter.org/url/argmin.net/code/logistic_logodds_example.ipynb), running 1000 synthetic experiments, I find that the median point estimate is 0.32, which is, as promised, larger than the true log odds. Even more worrisome is the 95% confidence interval contains 0.2 only 38% of the time. Clearly, the confidence intervals are not accurate when the model is wrong.
 
 When the true effect size is large, this discrepancy between the logistic regression estimate and the true log odds might not be that big a deal: your error bars are wrong, but the effect size is estimated in the correct direction. But many times the results of such logistic regression analyzes are quoted as measures of effectiveness (I have seen this many times in recent observational studies of vaccine effectiveness). The precision of these estimates is unfortunately lacking and misleading.
 
