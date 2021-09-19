@@ -59,7 +59,8 @@ But all of this assumes that the model is correct! If the logistic model is not 
 It’s almost always reasonable to be suspicious of this logistic model. It is first asserting that the odds ratio is a constant for a fixed covariate $Z$. That is, all subjects experience the same proportional effect of treatment. Even less realistically, the model asserts that the outcome is positive for an individual $i$ with treatment value $X_i$ and covariate value $Z_i$ if
 
 $$
-  U_i  \leq \alpha + \beta X_i + \gamma^\top Z_i
+\small{
+  U_i  \leq \alpha + \beta X_i + \gamma^\top Z_i\,,}
 $$
 
 where $U_i$ is a random variable sampled from the logistic distribution. The model assumes the $U_i$ are independent of the treatment and the covariates, the $U_i$ are independent across all of the individuals, and the $U_i$ have a common logistic distribution. The only thing that differs between treatment and control is the value of the threshold on the left hand side. These are a lot of assumptions, and they are seldom verified or tested in papers where logistic regression is applied.
@@ -68,7 +69,14 @@ The question remains: does this matter? Do these modeling assumptions actually a
 
 Rather than going through Freedman’s theoretical argument, it’s a bit more evocative to give an example. The following is gleaned from a helpful discussion with Joel Middleton. Suppose you sample 10000 children from a larger population where each child in the population has an equal chance of liking and disliking vegetables. We propose a treatment of bribing kids with a cookie to eat their veggies, and randomly assign this treatment to half of the subjects. Left untreated, veggie haters have a 20% probability of finishing their veggies, but veggie lovers have an 80% probability of eating their greens. When bribed with a cookie, veggie haters and veggie lovers have 25% and 85% of eating their vegetables, respectively.
 
-An average child in the study has a probability of 50% of eating their veggies if in control and 55% if in treatment. The log odds ratio is thus log(.55/(1−.55))−log(.50/(1−.50)) = 0.2. Now, when you instead run logistic regression, the coefficient of the treatment variable is larger than 0.2. Indeed, [when I try this in python](https://nbviewer.jupyter.org/url/argmin.net/code/logistic-logodds-example.ipynb), running 1000 synthetic experiments, I find that the median point estimate is 0.32, which is, as promised, larger than the true log odds. Even more worrisome is the 95% confidence interval contains 0.2 only 38% of the time. Clearly, the confidence intervals are not accurate when the model is wrong.
+An average child in the study has a probability of 50% of eating their veggies if in control and 55% if in treatment. The log odds ratio is thus
+
+$$
+\small{
+  \log \frac{.55}{1−.55}−\log\frac{.5}{1−.5} \approx 0.2\,.}
+$$
+
+Now, when you instead run logistic regression, the coefficient of the treatment variable is larger than 0.2. Indeed, [when I try this in python](https://nbviewer.jupyter.org/url/argmin.net/code/logistic-logodds-example.ipynb), running 1000 synthetic experiments, I find that the median point estimate is 0.32, which is, as promised, larger than the true log odds. Even more worrisome is the 95% confidence interval contains 0.2 only 38% of the time. Clearly, the confidence intervals are not accurate when the model is wrong.
 
 When the true effect size is large, this discrepancy between the logistic regression estimate and the true log odds might not be that big a deal: your error bars are wrong, but the effect size is estimated in the correct direction. But many times the results of such logistic regression analyzes are quoted as measures of effectiveness (I have seen this many times in recent observational studies of vaccine effectiveness). The precision of these estimates is unfortunately lacking and misleading.
 
