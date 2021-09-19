@@ -39,13 +39,13 @@ When the odds ratio is large, we deem a treatment to be highly effective.
 Logistic regression posits that individuals have a vector of features $Z$ that influence the odds of the effectiveness of treatment. Specifically, if $Y$ is the indicator of the desired outcome and $X$ is indicator of treatment, the logistic regression model asserts the log of the odds the outcome is a linear function of the treatment and the selected features:
 
 $$
-\log  \frac{p(Y=1 | X,Z ) }{ 1-p(Y=1 | X,Z) } = \beta X + \gamma^\top Z + \alpha \,.
+\log  \tfrac{p(Y=1 | X,Z ) }{ 1-p(Y=1 | X,Z) } = \beta X + \gamma^\top Z + \alpha \,.
 $$
 
 This model is convenient if we are interested in odds ratios. In the logistic model, no matter what the covariate $Z$, the odds ratio is
 
 $$
-\frac{p(Y=1 | X=1,Z ) } {1-p(Y=1| X=1,Z) }  \cdot \frac{1-p(Y=1 | X=0, Z)}{p(Y=1 | X=0, Z)} = e^\beta\,.
+\tfrac{p(Y=1 | X=1,Z ) } {1-p(Y=1| X=1,Z) }  \cdot \tfrac{1-p(Y=1 | X=0, Z)}{p(Y=1 | X=0, Z)} = e^\beta\,.
 $$
 
 Hence, if we can estimate beta, we can estimate the odds ratio. And if we can estimate the variance of beta, we can compute confidence intervals over our odds ratio estimates.
