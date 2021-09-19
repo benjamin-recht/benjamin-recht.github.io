@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "All Models Are Wrong. Are Any Useful?"
+title:      "All Statistical Models Are Wrong. Are Any Useful?"
 date:       2021-09-21 0:00:00
 summary:    "Why statistical modeling can lead us astray in randomized experiments."
 author:     Ben Recht
@@ -78,7 +78,7 @@ $$
 
 Now, when you instead run logistic regression, the coefficient of the treatment variable is larger than 0.2. Indeed, [when I try this in python](https://nbviewer.jupyter.org/url/argmin.net/code/logistic_logodds_example.ipynb), running 1000 synthetic experiments, I find that the median point estimate is 0.32, which is, as promised, larger than the true log odds. Even more worrisome is the 95% confidence interval contains 0.2 only 38% of the time. Clearly, the confidence intervals are not accurate when the model is wrong.
 
-When the true effect size is large, this discrepancy between the logistic regression estimate and the true log odds might not be that big a deal: your error bars are wrong, but the effect size is estimated in the correct direction. But many times the results of such logistic regression analyzes are quoted as measures of effectiveness (I have seen this many times in recent observational studies of vaccine effectiveness). The precision of these estimates is unfortunately lacking and misleading.
+When the true effect size is large, this discrepancy between the logistic regression estimate and the true log odds might not be that big a deal: your error bars are wrong, but the effect size is estimated in the correct direction. But the results of such logistic regression analyzes are regularly quoted as estimates of odds ratios (For example, look at any  observational study of vaccine effectiveness). The precision of these estimates is unfortunately lacking and misleading.
 
 So what is the remedy here? The thing is, we already know the answer: if we randomized the assignment, we can estimate log odds by counting the frequency of success under treatment and control, and then just plugging these into the odds ratio. If you do this, you find an estimate whose median is precisely equal to the true log odds. No covariate adjustment is required.
 
