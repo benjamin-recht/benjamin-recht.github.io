@@ -32,7 +32,8 @@ A particular example called out by Freedman is the [ubiquitous logistic regressi
 To understand the motivation for using logistic in the first place, I need to tell you what an odds ratio is. Experiments are often interested in estimating an odds ratio associated with some treatment. The odds of an event with probability $p$ is $p/(1-p)$: if your odds of winning a lottery are one million to one, that means, the probability that you win is one million times smaller than the probability that you lose. Let’s suppose that the probability of a treatment having a desired outcome is $p$. And the probability of this outcome without an applied treatment is $q$. Then the odds ratio is simply the ratio of the odds of the outcome with and without treatment
 
 $$
-\frac{p}{1-p} \cdot \frac{1-q}{q}\,.
+\small{
+\frac{p}{1-p} \cdot \frac{1-q}{q}\,.}
 $$
 
 When the odds ratio is large, we deem a treatment to be highly effective.
@@ -40,13 +41,15 @@ When the odds ratio is large, we deem a treatment to be highly effective.
 Logistic regression posits that individuals have a vector of features $Z$ that influence the odds of the effectiveness of treatment. Specifically, if $Y$ is the indicator of the desired outcome and $X$ is indicator of treatment, the logistic regression model asserts the log of the odds the outcome is a linear function of the treatment and the selected features:
 
 $$
-\log  \frac{p(Y=1 | X,Z ) }{ 1-p(Y=1 | X,Z) } = \beta X + \gamma^\top Z + \alpha \,.
+\small{
+\log  \frac{p(Y=1 | X,Z ) }{ 1-p(Y=1 | X,Z) } = \beta X + \gamma^\top Z + \alpha \,.}
 $$
 
 This model is convenient if we are interested in odds ratios. In the logistic model, no matter what the covariate $Z$, the odds ratio is
 
 $$
-\frac{p(Y=1 | X=1,Z ) } {1-p(Y=1| X=1,Z) }  \cdot \frac{1-p(Y=1 | X=0, Z)}{p(Y=1 | X=0, Z)} = e^\beta\,.
+\small{
+\frac{p(Y=1 | X=1,Z ) } {1-p(Y=1| X=1,Z) }  \cdot \frac{1-p(Y=1 | X=0, Z)}{p(Y=1 | X=0, Z)} = e^\beta\,.}
 $$
 
 Hence, if we can estimate beta, we can estimate the odds ratio. And if we can estimate the variance of beta, we can compute confidence intervals over our odds ratio estimates.
