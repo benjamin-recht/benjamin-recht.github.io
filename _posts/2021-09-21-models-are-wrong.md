@@ -35,7 +35,7 @@ In the context of randomized experiments, let’s suppose that when given a trea
 
 $$
 \small{
-\frac{M}{N-M} \cdot \frac{M-Q}{Q}\,.}
+\frac{M}{N-M} \cdot \frac{N-Q}{Q}\,.}
 $$
 
 When the odds ratio is large, we deem a treatment to be highly effective.
