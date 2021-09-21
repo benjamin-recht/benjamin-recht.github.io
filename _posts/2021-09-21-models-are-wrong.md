@@ -8,7 +8,7 @@ visible:    false
 blurb: 		  true
 ---
 
-Though I singled out a mask study [in the last post](https://www.argmin.net/2021/09/13/effect-size/), I’ve had a growing discomfort with statistical modeling and significance more generally. Statistical models are a way to account for a wide range of variables to predict effects that may vary across a population. Such statistical models bring with them a host of assumptions and powers. But when are they appropriate for deducing significance of the outcomes of experiments? Here, I’ll argue that they are almost never appropriate in most settings, and, moreover, they can result in confidence intervals that rarely contain the correct parameters.
+Though I singled out a mask study [in the last post](https://www.argmin.net/2021/09/13/effect-size/), I’ve had a growing discomfort with statistical modeling and significance more generally. Statistical models explicitly model the probability of outcomes of experiments in terms of specific variables of individuals in a population. Such statistical models bring with them a host of assumptions and powers. But when are they appropriate for deducing significance of the outcomes of experiments? Here, I’ll argue that they are almost never appropriate in most settings, and, moreover, they can result in confidence intervals that rarely contain the correct parameters.
 
 Note that in order to sample from some population, we need not assume that it is random. An experimenter can choose to sample one individual from a larger pool at random even when the pool is a deterministic collection. Similarly, the experimenter can randomly assign each member of the pool to a group for experimentation even when the pool is deterministic. We need not build a statistical model of our population in order to study it experimentally.
 
@@ -29,16 +29,18 @@ But in biology, medicine, social science, and economics, our models are much les
 
 A particular example called out by Freedman is the [ubiquitous logistic regression model](https://www.jstor.org/stable/27645896). Freedman observed that in a variety of randomized control trials, experimenters would “correct” the estimates of their randomized controlled trials by “controlling for fixed effects” with logistic regression. Controlling for fixed effects is pernicious jargon that means “set up a regression problem with all of the variables that one thinks make their effect size look too small, and then solve the regression as an attempt to remove the influence of these variables.” It is most common in observational studies, but many insist it is appropriate in the context of randomized controlled trials as well. This convention of correction persists in the present, and I highlighted similar corrections in my last post. Freedman argues that such corrections are misguided, especially in the context of randomized trials.
 
-To understand the motivation for using logistic in the first place, I need to tell you what an odds ratio is. Experiments are often interested in estimating an odds ratio associated with some treatment. The odds of an event with probability $p$ is $p/(1-p)$: if your odds of winning a lottery are one million to one, that means, the probability that you win is one million times smaller than the probability that you lose. Let’s suppose that the probability of a treatment having a desired outcome is $p$. And the probability of this outcome without an applied treatment is $q$. Then the odds ratio is simply the ratio of the odds of the outcome with and without treatment
+To understand the motivation for using logistic in the first place, I need to tell you what an odds ratio is. Experiments are often interested in estimating an odds ratio of particular outcomes. The odds of an outcome is the number of individuals with a positive outcome divided by the number of individuals with a negative outcome. If the odds of winning a lottery are one million to one, that means that for every person that wins, one million people lose.
+
+In the context of randomized experiments, let’s suppose that when given a treatment, M out of N individuals will have a favorable outcome, and without treatment only Q out of N will have a positive outcome Then the odds ratio is simply the ratio of the odds of the outcome with and without treatment
 
 $$
 \small{
-\frac{p}{1-p} \cdot \frac{1-q}{q}\,.}
+\frac{M}{N-M} \cdot \frac{M-Q}{Q}\,.}
 $$
 
 When the odds ratio is large, we deem a treatment to be highly effective.
 
-Logistic regression posits that individuals have a vector of features $Z$ that influence the odds of the effectiveness of treatment. Specifically, if $Y$ is the indicator of the desired outcome and $X$ is indicator of treatment, the logistic regression model asserts the log of the odds the outcome is a linear function of the treatment and the selected features:
+Logistic regression posits that individuals have a vector of features $Z$ that influence the odds of the effectiveness of treatment. Specifically, if $Y$ is the indicator of the desired outcome and $X$ is indicator of treatment, the logistic regression model asserts the log of the odds the outcome is a linear function of the treatment and the selected features. Since the model assumes the population is random, we can write the fraction of individuals with a positive outcome as probability. With this identification, the assumption of logistic regression is
 
 $$
 \small{
@@ -80,6 +82,6 @@ Now, when you instead run logistic regression, the coefficient of the treatment 
 
 When the true effect size is large, this discrepancy between the logistic regression estimate and the true log odds might not be that big a deal: your error bars are wrong, but the effect size is estimated in the correct direction. But the results of such logistic regression analyzes are regularly quoted as estimates of odds ratios (For example, look at any  observational study of vaccine effectiveness). The precision of these estimates is unfortunately lacking and misleading.
 
-So what is the remedy here? The thing is, we already know the answer: if we randomized the assignment, we can estimate log odds by counting the frequency of success under treatment and control, and then just plugging these into the odds ratio. If you do this, you find an estimate whose median is precisely equal to the true log odds. No covariate adjustment is required.
+So what is the remedy here? The thing is, we already know the answer: if we randomized the assignment, we can estimate log odds by counting the number of positive outcomes under treatment and control, and then just plugging these values into the odds ratio. If you do this, you find an estimate whose median is precisely equal to the true log odds. No covariate adjustment is required.
 
 This is merely one example showing why it is critical to decouple the randomness used to probe a system from the randomness inherent in its system itself. Statistical models are not necessary for statistical inference, but randomness itself is amazingly... let’s say... _useful_ for understanding natural phenomena. I will spend the next few blogs reminding myself and you faithful blog readers that proper experiments, machine learning predictions, and statistical summarizations can all be designed without statistical models of populations. Perhaps the mathematical formalizations of randomized algorithms can suggest paths to reform conventional experimental formalism.
