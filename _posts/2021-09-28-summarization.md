@@ -4,7 +4,7 @@ title:      "Statistics as Algorithmic Summarization"
 date:       2021-09-28 0:00:00
 summary:    "Statistics is at its best when used algorithmically to summarize."
 author:     Ben Recht
-visible:    false
+visible:    true
 blurb: 		  true
 ---
 
