@@ -2,7 +2,7 @@
 layout:     post
 title:      "Statistics as Algorithmic Summarization"
 date:       2021-09-28 0:00:00
-summary:    "Statistics is at its best when used algorithmically to summarize."
+summary:    "When you think of sampling as an algorithm, you don’t need to build a statistical model of the population."
 author:     Ben Recht
 visible:    true
 blurb: 		  true
