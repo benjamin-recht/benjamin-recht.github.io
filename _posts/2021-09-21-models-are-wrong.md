@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "All Statistical Models Are Wrong. Are Any Useful?"
+title:      "All statistical models are wrong. Are any useful?"
 date:       2021-09-21 0:00:00
 summary:    "Why statistical modeling can lead us astray in randomized experiments."
 author:     Ben Recht

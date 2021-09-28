@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Statistics as Algorithmic Summarization"
+title:      "Statistics as algorithmic summarization"
 date:       2021-09-28 0:00:00
 summary:    "When you think of sampling as an algorithm, you don’t need to build a statistical model of the population."
 author:     Ben Recht
