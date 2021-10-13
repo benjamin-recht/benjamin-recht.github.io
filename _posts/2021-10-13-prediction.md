@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Machine learning is not nonparametric statistics"
+title:      "Machine learning is not nonparametric statistics."
 date:       2021-10-13 0:00:00
 summary:    "Machine learning is not nonparametric statistics. In fact, most of statistics seems to pursue very different questions than those studied in machine learning."
 author:     Ben Recht
