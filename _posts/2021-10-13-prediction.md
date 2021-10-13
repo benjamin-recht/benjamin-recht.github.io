@@ -1,14 +1,14 @@
 ---
 layout:     post
 title:      "Machine learning is not nonparametric statistics"
-date:       2021-09-28 0:00:00
+date:       2021-10-13 0:00:00
 summary:    "Machine learning is not nonparametric statistics. In fact, most of statistics seems to pursue very different questions than those studied in machine learning."
 author:     Ben Recht
 visible:    false
 blurb: 		  true
 ---
 
-Many times in my career, I’ve been told by respected statisticians that machine learning is nothing more than nonparametric statistics. The longer I work in this field, the more I think this view is both misleading and unhelpful. Not only does everyone give me a different definition of what “nonparametric” means, but the jump from statistics to machine learning is considerably larger than most expect. Statistics is an important tool for understanding machine learning and randomness is valuable for machine learning algorithm design, but there is considerably more to machine learning than what we learn in elementary statistics.
+Many times in my career, I’ve been told by respected statisticians that machine learning is nothing more than nonparametric statistics. The longer I work in this field, the more I think this view is both misleading and unhelpful. Not only can I never get a consistent definition of what “nonparametric” means, but the jump from statistics to machine learning is considerably larger than most expect. Statistics is an important tool for understanding machine learning and randomness is valuable for machine learning algorithm design, but there is considerably more to machine learning than what we learn in elementary statistics.
 
 Machine learning at its core is the art and science of _prediction_. By prediction, I mean the general problem of leveraging regularity of natural processes to guess the outcome of yet unseen events. As before, we can formalize the prediction problem by assuming a population of $N$ individuals with a variety of attributes. Suppose each individual has an associated variable $X$ and $Y$. The goal of prediction is to guess the value of $Y$ from $X$ that minimizes some quality metric.
 
