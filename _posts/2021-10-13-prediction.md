@@ -28,9 +28,11 @@ This optimization procedure is called _”empirical risk minimization”_  and i
 
 The flexibility in defining what “knowledge” or “regularity” means complicates the solution of such empirical risk minimization problems. What does the right set of functions look like? There are three immediate concerns:
 
-What is the right _representation_? The set needs to contain enough functions to well approximate the true population prediction function. There are a variety of ways to express complex functions, and each expression has its own benefits and drawbacks.
-The set of functions needs to be simple to search over, so we don’t have to evaluate every function in our set as this would be too time consuming. Efficient search for high quality solutions is called _optimization_.
-How will the predictor _generalize_ to the broader population? The functions cannot be too complex or else they will fail to capture the regularity and smoothness of the prediction problem (estimating functions of too high complexity is colloquially called “overfitting”).
+1. What is the right _representation_? The set needs to contain enough functions to well approximate the true population prediction function. There are a variety of ways to express complex functions, and each expression has its own benefits and drawbacks.
+
+2. The set of functions needs to be simple to search over, so we don’t have to evaluate every function in our set as this would be too time consuming. Efficient search for high quality solutions is called _optimization_.
+
+3. How will the predictor _generalize_ to the broader population? The functions cannot be too complex or else they will fail to capture the regularity and smoothness of the prediction problem (estimating functions of too high complexity is colloquially called “overfitting”).
 
 Balancing representation, optimization, and generalization gets complicated quickly, and this is why we have a gigantic academic and industrial field devoted to the problem.
 
