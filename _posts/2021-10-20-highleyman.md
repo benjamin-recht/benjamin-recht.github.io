@@ -15,7 +15,7 @@ In 1959 at Bell Labs, Bill Highleyman and Louis Kamenstky designed a [scanner to
 Highleyman and Kamentsky used their scanner to create a dataset of 1800 alphanumeric characters. They gathered the 26 letters of the alphabet and 10 digits from 50 different writers. Each character in their corpus was scanned in binary at a resolution of 12 x 12 and stored on punch cards that were compatible with the IBM 704, the GPGPU of the era.
 
 {: .center}
-![A look at Highleyman’s digits](assets/highleyman-data.png){:width="75%"}
+![A look at Highleyman’s digits](/assets/highleyman-data.png){:width="75%"}
 
 With the data in hand, Highleyman and Kamenstky began studying various proposed techniques for recognition. In particular, they analyzed a method of Woody Bledsoe and published an analysis claiming to be [unable to reproduce Bledsoe’s results](https://ieeexplore.ieee.org/document/5219829). Bledsoe found their numbers to be considerably lower than he had expected, and asked Highleyman to send him the data. Highleyman obliged, mailing the package of punch cards across the country to Sandia Labs.
 
@@ -24,7 +24,7 @@ Upon receiving the data, Bledsoe conducted a new experiment. In what may be the 
 By this point, Highleyman had also shared his data with Chao Kong “C.K.” Chow at the Burroughs Corporation (a precursor to Unisys). A pioneer of [using decision theory for pattern recognition](https://ieeexplore.ieee.org/document/5222035), Chow built a pattern recognition system for characters. Using the same train-test split as Bledsoe, [Chow obtained an error rate of 41.7%](https://ieeexplore.ieee.org/document/5219431) using a convolutional neural network.
 
 {: .center}
-![Chow’s architecture](assets/chownet.png){:width="75%"}
+![Chow’s architecture](/assets/chownet.png){:width="75%"}
 
 Highleyman made at least six additional copies of the data he had sent to Bledsoe and Chow, and many researchers remained interested. He thus decided to [publicly offer to send a copy to anyone](https://ieeexplore.ieee.org/document/4037813) willing to pay for the duplication and shipping fees. An interested party would simply have to mail him a request. Of course, the dataset was sent by US Postal Service. Electronic transfer didn’t exist at the time, resulting in sluggish data transfer rates on the order of a few bits per minute.
 
