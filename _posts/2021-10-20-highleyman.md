@@ -15,7 +15,7 @@ In 1959 at Bell Labs, Bill Highleyman and Louis Kamenstky designed a [scanner to
 Highleyman and Kamentsky used their scanner to create a dataset of 1800 alphanumeric characters. They gathered the 26 letters of the alphabet and 10 digits from 50 different writers. Each character in their corpus was scanned in binary at a resolution of 12 x 12 and stored on punch cards that were compatible with the IBM 704, the GPGPU of the era.
 
 {: .center}
-![A look at Highleyman’s digits](/assets/highleyman-data.png){:width="75%"}
+![A look at Highleyman’s digits](/assets/highleyman-data.png){:width="95%"}
 
 With the data in hand, Highleyman and Kamenstky began studying various proposed techniques for recognition. In particular, they analyzed a method of Woody Bledsoe and published an analysis claiming to be [unable to reproduce Bledsoe’s results](https://ieeexplore.ieee.org/document/5219829). Bledsoe found their numbers to be considerably lower than he had expected, and asked Highleyman to send him the data. Highleyman obliged, mailing the package of punch cards across the country to Sandia Labs.
 
