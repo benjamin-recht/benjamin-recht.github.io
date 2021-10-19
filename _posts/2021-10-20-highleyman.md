@@ -14,7 +14,8 @@ In 1959 at Bell Labs, Bill Highleyman and Louis Kamenstky designed a [scanner to
 
 Highleyman and Kamentsky used their scanner to create a dataset of 1800 alphanumeric characters. They gathered the 26 letters of the alphabet and 10 digits from 50 different writers. Each character in their corpus was scanned in binary at a resolution of 12 x 12 and stored on punch cards that were compatible with the IBM 704, the GPGPU of the era.
 
-![A look at Highleyman’s digits](assets/highleyman-data.png)
+{: .center}
+![A look at Highleyman’s digits](assets/highleyman-data.png){:width="75%"}
 
 With the data in hand, Highleyman and Kamenstky began studying various proposed techniques for recognition. In particular, they analyzed a method of Woody Bledsoe and published an analysis claiming to be [unable to reproduce Bledsoe’s results](https://ieeexplore.ieee.org/document/5219829). Bledsoe found their numbers to be considerably lower than he had expected, and asked Highleyman to send him the data. Highleyman obliged, mailing the package of punch cards across the country to Sandia Labs.
 
@@ -22,14 +23,15 @@ Upon receiving the data, Bledsoe conducted a new experiment. In what may be the 
 
 By this point, Highleyman had also shared his data with Chao Kong “C.K.” Chow at the Burroughs Corporation (a precursor to Unisys). A pioneer of [using decision theory for pattern recognition](https://ieeexplore.ieee.org/document/5222035), Chow built a pattern recognition system for characters. Using the same train-test split as Bledsoe, [Chow obtained an error rate of 41.7%](https://ieeexplore.ieee.org/document/5219431) using a convolutional neural network.
 
-![Chow’s architecture](assets/chownet.png)
+{: .center}
+![Chow’s architecture](assets/chownet.png){:width="75%"}
 
 Highleyman made at least six additional copies of the data he had sent to Bledsoe and Chow, and many researchers remained interested. He thus decided to [publicly offer to send a copy to anyone](https://ieeexplore.ieee.org/document/4037813) willing to pay for the duplication and shipping fees. An interested party would simply have to mail him a request. Of course, the dataset was sent by US Postal Service. Electronic transfer didn’t exist at the time, resulting in sluggish data transfer rates on the order of a few bits per minute.
 
 Highleyman not only created the first machine learning benchmark. He authored the the first formal study of [train-test splits](https://ieeexplore.ieee.org/document/6768949) and proposed [empirical risk minimization for pattern classification](https://ieeexplore.ieee.org/document/4066882) as part of his 1961 dissertation.
 By 1963, however, Highleyman had left his research position at Bell Labs and abandoned pattern recognition research.
 
-We don’t know how many people requested Highleyman’s data. The total number of copies may have been less than twenty. Based on citation surveys, we determined there were at least six more copies made after Highleyman’s public offer for duplication, sent to UW Madison, CMU, Honeywell, SUNY Stony Brook, Imperial College in London, and Stanford Research Institute (SRI).
+We don’t know how many people requested Highleyman’s data. The total number of copies may have been less than twenty. Based on citation surveys, we determined there were at least another six copies made after Highleyman’s public offer for duplication, sent to UW Madison, CMU, Honeywell, SUNY Stony Brook, Imperial College in London, and Stanford Research Institute (SRI).
 
 The SRI team of John Munson, Richard Duda, and Peter Hart performed some of the most [extensive experiments with Highleyman’s data](https://ieeexplore.ieee.org/document/1687355). A 1-nearest-neighbors baseline achieved an error rate of 47.5%. With a more sophisticated approach, they were able to do significantly better. They used a multi-class, piecewise linear model, trained using Kesler’s multi-class version of the perceptron algorithm (what we’d now call “one-versus all classification”). Their feature vectors were 84 simple pooled edge detectors in different regions of the image at different orientations. With these features, they were able to get a test error of 31.7%, 10 percentage points better than Chow. When restricted only to digits, this method recorded 12% error. The authors concluded that they needed more data, and that the error rates were “still far too high to be practical.” They concluded that “larger and higher-quality datasets are needed for work aimed at achieving useful results.” They suggested that such datasets “may contain hundreds, or even thousands, of samples in each class.”
 
