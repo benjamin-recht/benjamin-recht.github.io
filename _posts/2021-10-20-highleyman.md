@@ -2,7 +2,7 @@
 layout:     post
 title:      "The Saga of Highleyman's Data."
 date:       2021-10-20 0:00:00
-summary:    "Is this the oldest machine learning benchmark? And why does this general dataset benchmarking process arise so naturally?"
+summary:    "Possibly the oldest machine learning benchmark. Remarkably, this general dataset benchmarking process arises as if there's no other path."
 author:     Moritz Hardt and Ben Recht
 visible:    true
 blurb: 		  true
