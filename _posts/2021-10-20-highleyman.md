@@ -2,9 +2,9 @@
 layout:     post
 title:      "The Saga of Highleyman's Data."
 date:       2021-10-20 0:00:00
-summary:    "Machine learning is not nonparametric statistics. In fact, most of statistics seems to pursue very different questions than those studied in machine learning."
+summary:    "Is this the oldest machine learning benchmark? And why does this general dataset benchmarking process arise so naturally?"
 author:     Moritz Hardt and Ben Recht
-visible:    false
+visible:    true
 blurb: 		  true
 ---
 
