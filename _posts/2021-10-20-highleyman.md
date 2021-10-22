@@ -44,3 +44,16 @@ Unlike Highleyman’s data, MNIST featured only digits, no letters. Only recentl
 The story of Highleyman’s data foreshadows many of the later waves of machine learning research. A desire for better evaluation inspired the creation of novel data. Dissemination of the experimental results on this data led to sharing in order for researchers to be content that the evaluation was fair. Once the dataset was distributed, others requested the data to prove their methods were superior. And then the dataset itself became enshrined as a benchmark for competitive testing.  Such comparative testing led to innovations in methods, theory, and data collection and curation itself. We have seen this pattern time and time again in machine learning, from [the UCI repository](https://archive.ics.uci.edu/ml/index.php), to [MNIST](http://yann.lecun.com/exdb/mnist/), to [ImageNet](https://www.image-net.org/), to [CASP](https://predictioncenter.org/). The nearly forgotten history of Highleyman’s data marks the beginning of this pattern recognition research paradigm.
 
 *We are, as always, deeply indebted to Chris Wiggins for sending us Munson et al.'s paper after watching a talk by BR on the history of ML benchmarking. We also thank Ludwig Schmidt for pointing us to EMNIST.*
+
+## Addendum on our protagonist Bill Highleyman.
+
+After posting this blog, we found [some lovely recollections by Bill Highleyman about his thesis](https://availabilitydigest.com/public_articles/1208/thesis.pdf). It is remarkable how Bill invented so many powerful machine learning primitives---finding linear functions that minimize empirical risk, gradient descent to minimize the risk, train-test splits, convolutional neural networks---all as part of his PhD dissertation project. That said,
+Bill considered the project to be a failure. He (and Bell Labs) realized the computing of 1959 was not up to the task of character recognition.
+
+After he finished his thesis, Bill abandoned pattern recognition and moved on to work on other cool and practical computer engineering projects that interested him, never once looking back. By the mid sixties Bill had immersed himself in data communication and transmission, and patented novel approaches to electrolytic printing and financial transaction hardware. He eventually ended up specializing in high-reliability computing. Though he developed many of the machine learning techniques we use today, he was content to leave the field and work to advance general computing to catch up with his early ideas.
+
+It’s odd but not surprising that while every machine learning class mentions Rosenblatt, Minsky, and Papert. Unfortunately, almost everyone we’ve spoken with so far has ever heard of Bill Highleyman.  
+
+We worry Bill is no longer reachable as he seems to have no online presence after 2019 and would be 88 years old today. If anyone out there on has met Bill, we’d love to hear more about him. Please drop us a note.
+
+And if anyone has any idea of where we can get a copy of his 1800 characters from 1959, please let us know about that too...
