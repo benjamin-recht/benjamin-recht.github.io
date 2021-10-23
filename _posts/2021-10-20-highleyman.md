@@ -52,7 +52,7 @@ Bill considered the project to be a failure. He (and Bell Labs) realized the com
 
 After he finished his thesis, Bill abandoned pattern recognition and moved on to work on other cool and practical computer engineering projects that interested him, never once looking back. By the mid sixties Bill had immersed himself in data communication and transmission, and patented novel approaches to electrolytic printing and financial transaction hardware. He eventually ended up specializing in high-reliability computing. Though he developed many of the machine learning techniques we use today, he was content to leave the field and work to advance general computing to catch up with his early ideas.
 
-It’s odd but not surprising that while every machine learning class mentions Rosenblatt, Minsky, and Papert. Unfortunately, almost everyone we’ve spoken with so far has ever heard of Bill Highleyman.  
+It’s odd but not surprising that while every machine learning class mentions Rosenblatt, Minsky, and Papert, almost everyone we’ve spoken with so far has never heard of Bill Highleyman.  
 
 We worry Bill is no longer reachable as he seems to have no online presence after 2019 and would be 88 years old today. If anyone out there on has met Bill, we’d love to hear more about him. Please drop us a note.
 
