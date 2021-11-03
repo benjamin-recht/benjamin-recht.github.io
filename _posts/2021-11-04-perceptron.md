@@ -10,7 +10,7 @@ blurb: 		  true
 
 Just as many of the algorithms and community practices of machine learning were invented in the late 50s and early 60s, the foundations of machine learning theory were also established during this time. Many of the analyses of this period were strikingly simple, had surprisingly precise constants, and provided prescient guidelines for contemporary machine learning practice. Here, I’ll summarize the study of the Perceptron, highlighting both its algorithmic and statistical analyses, and using it as a prototype to illustrate further how prediction deviates from the umbrella of classical statistics.
 
-Let’s begin with a classification problem where each individual from some population has a feature vector $x$ and an associated binary label $y$ that we take as valued $\pm 1$ for notational convenience. The goal of the Perceptron is to find a linear separator such that $w^T x>0$ for when $y=1$ and $w^T x<0$ when $y=-1$. We can write this compactly as saying that we want to find a $w$ for which $y w^T x >0$ for as many individuals in the population as possible.
+Let’s begin with a classification problem where each individual from some population has a feature vector $x$ and an associated binary label $y$ that we take as valued $\pm 1$ for notational convenience. The goal of the Perceptron is to find a linear separator such that $\langle w, x \rangle>0$ for when $y=1$ and $\langle w, x \rangle<0$ when $y=-1$. We can write this compactly as saying that we want to find a $w$ for which $y \langle w, x \rangle >0$ for as many individuals in the population as possible.
 
 The Perceptron algorithm is wonderfully simple. The Perceptron inputs an example, checks if it makes the correct classification. If yes, it does nothing and proceeds to the next example. If no, the decision boundary is nudged in the direction of classifying the example correctly next time.
 
@@ -76,7 +76,7 @@ To analyze what happens on new data, I will employ an elegant argument I learned
 **Theorem** _Let $w(S)$ be the output of the Perceptron on a dataset $S$ after running until the hyperplane makes no more mistakes on $S$. Let $S_n$ denote a training set of $n$ samples uniformly at random from some population. And let $(x,y)$ be an additional independent uniform sample from the same population. Then, the probability of making a mistake on $(x,y)$ is bounded as_
 
 $$
-    \Pr[y w(S_n)^T x < 0] \leq \frac{1}{n+1} {\mathbb{E}}_{S_{n+1}}\left[ \frac{R(S_{n+1})^2}{\gamma(S_{n+1})^2} \right]\,.
+    \Pr[y \langle w(S_n), x \rangle < 0] \leq \frac{1}{n+1} {\mathbb{E}}_{S_{n+1}}\left[ \frac{R(S_{n+1})^2}{\gamma(S_{n+1})^2} \right]\,.
 $$
 
 To prove the theorem, define the "leave-one-out set" to be the set where we drop $(x_k,y_k)$:
@@ -91,8 +91,8 @@ With this notation, since all of the data are sampled identically and independen
 
 $$
 {\small
-\Pr[x w(S_n)^T y < 0]
-= \frac1{n+1}\sum_{k=1}^{n+1} \mathbb{E}[\mathbb{1}\{y_k w(S^{-k})^T x_k < 0\}]\,.
+\Pr[y \langle w(S_n), x \rangle   < 0]
+= \frac1{n+1}\sum_{k=1}^{n+1} \mathbb{E}[\mathbb{1}\{y_k \langle w(S^{-k}), x_k \rangle < 0\}]\,.
 }
 $$
 
@@ -100,14 +100,15 @@ Novikoff’s mistake bound asserts the Perceptron makes at most
 
 $$
 {\small
-m=\tfrac{R(S_{n+1})^2}{\gamma(S_{n+1})^2}}
+m=\frac{R(S_{n+1})^2}{\gamma(S_{n+1})^2}
+}
 $$
 
 mistakes when run on the entire sequence $S_{n+1}$. Let $I=\{i_1,\dots,i_m\}$ denote the indices on which the algorithm makes a mistake in any of its cycles over the data. If $k$ is not in $I$, the output of the algorithm remains the same after we remove the $k$-th sample from the sequence. It follows that such $k \in S_{n+1}\setminus I$ satisfy  $y_k w(S^{-k})x_k \geq 0$ and therefore do not contribute to the right hand side of the summation. The other terms can at most contribute $1$ to the summation.
 Hence,
 
 $$
-\Pr[Y w(S_n)^T X < 1] \le \frac{\mathbb{E}[m]}{n+1}\,,
+\Pr[y \langle w(S_n), x \rangle < 1] \le \frac{\mathbb{E}[m]}{n+1}\,,
 $$
 
 which is what we wanted to prove.
