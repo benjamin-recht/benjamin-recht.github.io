@@ -87,17 +87,20 @@ S^{-k}=\{(x_1,y_1),\dots,(x_{k-1},y_{k-1}),(x_{k+1},y_{k+1}),...,(x_{n+1},y_{n+1
 }
 $$
 
-We have
+With this notation, since all of the data are sampled identically and independently, we can rewrite the probability of a mistake on the final data point as the expectation of the leave-one-out error
 
 $$
+{\small
 \Pr[x w(S_n)^T y < 0]
 = \frac1{n+1}\sum_{k=1}^{n+1} \mathbb{E}[\mathbb{1}\{y_k w(S^{-k})^T x_k < 0\}]\,.
+}
 $$
 
 Novikoff’s mistake bound asserts the Perceptron makes at most
 
 $$
-m=\tfrac{R(S_{n+1})^2}{\gamma(S_{n+1})^2}
+{\small
+m=\tfrac{R(S_{n+1})^2}{\gamma(S_{n+1})^2}}
 $$
 
 mistakes when run on the entire sequence $S_{n+1}$. Let $I=\{i_1,\dots,i_m\}$ denote the indices on which the algorithm makes a mistake in any of its cycles over the data. If $k$ is not in $I$, the output of the algorithm remains the same after we remove the $k$-th sample from the sequence. It follows that such $k \in S_{n+1}\setminus I$ satisfy  $y_k w(S^{-k})x_k \geq 0$ and therefore do not contribute to the right hand side of the summation. The other terms can at most contribute $1$ to the summation.
