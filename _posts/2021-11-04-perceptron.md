@@ -37,11 +37,11 @@ $$
     w_{t+1} = w_t - \alpha_t \nabla_w \mathit{loss}( f(x_t; w_t) , y_t)\,.
 $$
 
-The Perceptron is stochastic gradient descent with $\alpha_t=1$, $f(x;w) = \langle w,x \rangle$, and loss function $\mathit{loss}(\hat{y},y) = \max(-\hat{y} y, 0)$.
+When the examples are sampled randomly, the Perceptron is stochastic gradient descent with $\alpha_t=1$, $f(x;w) = \langle w,x \rangle$, and loss function $\mathit{loss}(\hat{y},y) = \max(-\hat{y} y, 0)$.
 
 Stochastic gradient methods were invented a few years before the Perceptron. And the relations between these methods were noted by the mid-60s (Vapnik discusses the history in Chapter 1.11 of [_The Nature of Statistical Learning Theory_](https://link.springer.com/book/10.1007/978-1-4757-3264-1)).
 
-While we might be tempted to use a standard stochastic gradient analysis to understand the optimization properties of the Perceptron, it turns out that a more rarified proof technique will not only bound errors in optimization but also in generalization. Optimization is concerned with errors on a training data set. Generalization is concerned with errors on data we haven’t seen. The analysis from the 1960s links these two by first understanding the dynamics of the algorithm.
+While we might be tempted to use a standard stochastic gradient analysis to understand the optimization properties of the Perceptron, it turns out that a more rarified proof technique applies that uses no randomization whatsoever. Moreover, the argument will not only bound errors in optimization but also in generalization. Optimization is concerned with errors on a training data set. Generalization is concerned with errors on data we haven’t seen. The analysis from the 1960s links these two by first understanding the dynamics of the algorithm.
 
 [A celebrated result by Al Novikoff](https://cs.uwaterloo.ca/~y328yu/classics/novikoff.pdf) showed that under reasonable conditions the algorithm makes a bounded number of updates no matter how large the sample size. Novikoff’s result is typically referred to as a _mistake bound_ as it bounds the number of total misclassifications made when running the Perceptron on some data set. The key assumption in Novikoff’s argument is that the positive and negative examples are cleanly separated by a linear function. People often dismiss the Perceptron because of this _separability_ assumption. But for any finite data set, can always add features and end up with a linearly separable problem. And if we add enough features, we’ll usually be separable no matter how many points we have.
 
