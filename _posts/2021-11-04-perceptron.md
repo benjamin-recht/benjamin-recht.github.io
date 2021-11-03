@@ -108,11 +108,11 @@ mistakes when run on the entire sequence $S_{n+1}$. Let $I=\{i_1,\dots,i_m\}$ de
 Hence,
 
 $$
-\Pr[y \langle w(S_n), x \rangle < 1] \le \frac{\mathbb{E}[m]}{n+1}\,,
+\Pr[y \langle w(S_n), x \rangle < 0] \le \frac{\mathbb{E}[m]}{n+1}\,,
 $$
 
 which is what we wanted to prove.
 
 What’s most remarkable to me about this argument is that there are no numerical constants or logarithms. The generalization error is perfectly quantified by a simple formula of $R$, $\gamma$, and $n$. There are a variety of other arguments that get the $\tilde{O}(R/(n\gamma))$ scaling with far more complex arguments and large constants and logarithmic terms. For example, one can show that the set of hyperplanes in Euclidean space with norm bounded by $\gamma^{-1}$ has [VC dimension $R/\gamma$](https://www.wiley.com/en-us/Statistical+Learning+Theory-p-9780471030034). Similarly, a [Rademacher complexity argument will achieve a similar scaling](https://www.jmlr.org/papers/volume3/bartlett02a/bartlett02a.pdf). These arguments apply to far more algorithms than the Perceptron, but it’s frustrating how this simple algorithm gets such a tight bound with such a short argument whereas analyzing more powerful algorithms often takes pages of derivations.
 
-It’s remarkable that this $R/(n\gamma)$ bound was worked out in the 1960s and was optimal for linear classification theory. We’ve made more progress in machine learning theory since then, but it’s not always at the front of our minds just how long ago we had established our modern learning theory framework.
+It’s remarkable that these bounds on optimization, regret, and generalization were worked out in the 1960s and all turned out to be optimal for linear classification theory. We’ve made more progress in machine learning theory since then, but it’s not always at the front of our minds just how long ago we had established our modern learning theory framework.
