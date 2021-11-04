@@ -4,7 +4,7 @@ title:      "The Perceptron as a prototype for machine learning theory."
 date:       2021-11-04 0:00:00
 summary:    "So many of our modern ideas about machine learning theory came from studying the perceptron. In fact, it's not clear that we've really had any new ideas since."
 author:     Ben Recht
-visible:    false
+visible:    true
 blurb: 		  true
 ---
 
