@@ -82,7 +82,7 @@ $$
 To prove the theorem, define the "leave-one-out set" to be the set where we drop $(x_k,y_k)$:
 
 $$
-{\footnotesize
+{\tiny
 S^{-k}=\{(x_1,y_1),\dots,(x_{k-1},y_{k-1}),(x_{k+1},y_{k+1}),...,(x_{n+1},y_{n+1})\}\,.
 }
 $$
