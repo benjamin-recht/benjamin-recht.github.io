@@ -19,7 +19,7 @@ Rosenblatt's Perceptron provides a simple algorithm for finding such a $w$. The 
 * Start from the initial solution $w_0=0$
 * At each step $t=0,1,2,...$:
   - Select an individual from the population and look up their attributes: (x_t,y_t).
-  - Case 1: If $y_t\langle w_t, x_t\rangle < 0$, put
+  - Case 1: If $y_t\langle w_t, x_t\rangle \leq 0$, put
 $$
 w_{t+1} = w_t + y_t x_t  
 $$
@@ -76,7 +76,7 @@ To analyze what happens on new data, I will employ an elegant argument I learned
 **Theorem** _Let $w(S)$ be the output of the Perceptron on a dataset $S$ after running until the hyperplane makes no more mistakes on $S$. Let $S_n$ denote a training set of $n$ samples uniformly at random from some population. And let $(x,y)$ be an additional independent uniform sample from the same population. Then, the probability of making a mistake on $(x,y)$ is bounded as_
 
 $$
-    \Pr[y \langle w(S_n), x \rangle < 0] \leq \frac{1}{n+1} {\mathbb{E}}_{S_{n+1}}\left[ \frac{R(S_{n+1})^2}{\gamma(S_{n+1})^2} \right]\,.
+    \Pr[y \langle w(S_n), x \rangle \leq 0] \leq \frac{1}{n+1} {\mathbb{E}}_{S_{n+1}}\left[ \frac{R(S_{n+1})^2}{\gamma(S_{n+1})^2} \right]\,.
 $$
 
 To prove the theorem, define the "leave-one-out set" to be the set where we drop $(x_k,y_k)$:
@@ -91,8 +91,8 @@ With this notation, since all of the data are sampled identically and independen
 
 $$
 {\small
-\Pr[y \langle w(S_n), x \rangle   < 0]
-= \frac1{n+1}\sum_{k=1}^{n+1} \mathbb{E}[\mathbb{1}\{y_k \langle w(S^{-k}), x_k \rangle < 0\}]\,.
+\Pr[y \langle w(S_n), x \rangle   \leq 0]
+= \frac1{n+1}\sum_{k=1}^{n+1} \mathbb{E}[\mathbb{1}\{y_k \langle w(S^{-k}), x_k \rangle \leq 0\}]\,.
 }
 $$
 
@@ -108,7 +108,7 @@ mistakes when run on the entire sequence $S_{n+1}$. Let $I=\{i_1,\dots,i_m\}$ de
 Hence,
 
 $$
-\Pr[y \langle w(S_n), x \rangle < 0] \le \frac{\mathbb{E}[m]}{n+1}\,,
+\Pr[y \langle w(S_n), x \rangle \leq 0] \le \frac{\mathbb{E}[m]}{n+1}\,,
 $$
 
 which is what we wanted to prove.
