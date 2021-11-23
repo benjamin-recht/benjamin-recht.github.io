@@ -28,7 +28,7 @@ $$
 
 A small $RR$ corresponds to a large reduction in risk. For the mask study, $RR=$0.9. That’s not a lot of risk reduction: wearing masks in the community in this study, improved an individual’s risk of infection by a factor of only 1.1x. As a convenient comparator, the $RR$ in the MRNA vaccine trials was 0.05. In this case, vaccines reduce the risk of infection by a factor of 20x.
 
-For whatever reason, the academic vaccine community decided to use a different metric to describe relative risk reduction. They use ``efficacy'' or ``effectiveness,'' a confusing and commonly misinterpreted metric. Efficacy in a trial is simply one minus the relative risk reduction:
+For whatever reason, the academic vaccine community decided to use a different metric to describe relative risk reduction. They use "efficacy" or "effectiveness," a confusing and commonly misinterpreted metric. Efficacy in a trial is simply one minus the relative risk reduction:
 
 $$
 EFF = 1-RR\,,
@@ -39,7 +39,7 @@ and this number is reported as a percentage. So if the $RR=$0.9, then $EFF=$10%.
 The important thing to realize about efficacy is that the range from 0% to 20% is just barely better than nothing. Here, even a 20% efficacy corresponds to a reduction of risk by a factor of 1.25x. 1.25x is not literally nothing, but it’s also not enough to halt a highly contagious respiratory infection. For what it’s worth, a vaccine with 20% efficacy would not be approved.  The problem with efficacy is the difference between 10% and 20% efficacy is very small. Whereas the difference between 85% and 95% is huge, corresponding to a 7-fold and 20-fold risk reduction respectively. The value of efficacy is highly nonlinear, but these numbers are bandied around as if they are linear effects, and this adds confusion to the public dialogue.
 
 {: .center}
-![The relationship between effectiveness and risk reduction is highly nonlinear](/assets/eff_v_rr.png){:width="95%"}
+![The relationship between effectiveness and risk reduction is highly nonlinear](/assets/eff_v_rr.png){:width="75%"}
 
 To further dive into the absurdity of efficacy, let’s look into the claim about how “cloth masks” worked less well than “surgical masks.” This is too strong an observation to be gleaned from the data. The preprint provides two stratified calculations to estimate the efficacy of types of masks. In the first case, the authors looked at villages randomized to only be given surgical masks and their matched control villages. In this case there were 190 pairs of villages consisting of $n_C=$103,247 individuals in the control group and $n_T=$113,082 individuals in the treatment group. They observed $i_C=$774 symptomatic and seropositive individuals in the control group and $i_T=$756 symptomatic and seropositive individuals in the treatment group. _This is a difference of 18 individuals._ The corresponding efficacy is 11%, still woefully low.
 
