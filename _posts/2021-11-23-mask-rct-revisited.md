@@ -23,7 +23,9 @@ As I mentioned, of course, this was not the message that the majority of the med
 One of the dark tricks of medical science is moving away from absolute case counts to aggregate statistics. Typically, results are reported in terms of some measure of risk, either in terms of relative risk reduction, efficacy, or odds ratios. All of these measures are relative, and they tend to exaggerate effects. The relative risk reduction is the ratio of the rate of infection in the treatment group to the rate of infection in the control group
 
 $$
+{\small
     RR = \frac{i_T/n_T}{i_C/n_C}\,.
+}
 $$
 
 A small $RR$ corresponds to a large reduction in risk. For the mask study, $RR=$0.9. That’s not a lot of risk reduction: wearing masks in the community in this study, improved an individual’s risk of infection by a factor of only 1.1x. As a convenient comparator, the $RR$ in the MRNA vaccine trials was 0.05. In this case, vaccines reduce the risk of infection by a factor of 20x.
@@ -31,7 +33,9 @@ A small $RR$ corresponds to a large reduction in risk. For the mask study, $RR=$
 For whatever reason, the academic vaccine community decided to use a different metric to describe relative risk reduction. They use "efficacy" or "effectiveness," a confusing and commonly misinterpreted metric. Efficacy in a trial is simply one minus the relative risk reduction:
 
 $$
+{\small
 EFF = 1-RR\,,
+}
 $$
 
 and this number is reported as a percentage. So if the $RR=$0.9, then $EFF=$10%.
@@ -43,6 +47,6 @@ The important thing to realize about efficacy is that the range from 0% to 20% i
 
 To further dive into the absurdity of efficacy, let’s look into the claim about how "cloth masks" worked less well than "surgical masks." This is too strong an observation to be gleaned from the data. The preprint provides two stratified calculations to estimate the efficacy of types of masks. In the first case, the authors looked at villages randomized to only be given surgical masks and their matched control villages. In this case there were 190 pairs of villages consisting of $n_C=$103,247 individuals in the control group and $n_T=$113,082 individuals in the treatment group. They observed $i_C=$774 symptomatic and seropositive individuals in the control group and $i_T=$756 symptomatic and seropositive individuals in the treatment group. _This is a difference of 18 individuals._ The corresponding efficacy is 11%, still woefully low.
 
-We can do a similar analysis for the villages only given cloth masks. There were 96 pairs of villages consisting of $n_C=$53,691 individuals in the control group and $n_T=$57,415 individuals in the treatment group. They observed $i_C=$332 symptomatic and seropositive individuals in the control group and $i_T=$330 symptomatic and seropositive individuals in the treatment group. This is a difference of only 2 individuals. Certainly, no one would put much faith in an intervention where we see a difference of 2 cases in a study with over one hundred thousand people. However, to further demonstrate the absurdity of the notion of efficacy, the observed efficacy for cloth masks in this study is 7%. I think in many people’s minds, the difference between 7% and 11% is small. But 7% should be considered "no effect" as should 11%. Even better, one can run another comparison that shows that cloth masks are better than purple surgical masks where the estimated efficacy is 0% ($n_C=$27,918, $n_T=$29,541, $i_C=$177, $i_T=$187)! Certainly, comparing a bunch of such small effects are not telling us too much.
+We can do a similar analysis for the villages only given cloth masks. There were 96 pairs of villages consisting of $n_C=$53,691 individuals in the control group and $n_T=$57,415 individuals in the treatment group. They observed $i_C=$332 symptomatic and seropositive individuals in the control group and $i_T=$330 symptomatic and seropositive individuals in the treatment group. This is a difference of only 2 individuals. Certainly, no one would put much faith in an intervention where we see a difference of 2 cases in a study with over one hundred thousand people. However, to further demonstrate the absurdity of the notion of efficacy, the observed efficacy for cloth masks in this study is 7%. I think in many people’s minds, the difference between 7% and 11% is small. But 7% should be considered "no effect" as should 11%. Even better, one can run another comparison that shows that cloth masks are better than purple surgical masks where the estimated efficacy is 0% ($n_C=$27,918, $n_T=$29,541, $i_C=$177, $i_T=$187)! Certainly, comparing a bunch of such small effects is not telling us too much.
 
 Anyone who spends too much time around statisticians will note that I never once tried to compute a p-value for any of these results. As I’ve belabored, obsession with statistical significance distracts us from discussing effect sizes. We should be able to just look at the effect size and conclude the study did not find a significant impact of masks on coronavirus spread. We don’t need a p-value to tell us 10% efficacy is not helpful in this context. But it’s also important to note that you can’t just run a standard binomial test on this data because it is cluster-randomized and the subjects are anything but independent. In the next blog, just for the sake of academic navel gazing, I'll discuss the lack of statistical significance of this study and show why cluster randomized trials are inherently more challenging to interpret than standard RCTs.
