@@ -28,7 +28,7 @@ $$
 }
 $$
 
-A small $RR$ corresponds to a large reduction in risk. For the mask study, $RR=$0.9. That’s not a lot of risk reduction: in this study, community masking improved an individual’s risk of infection by a factor of only 1.1x. As a convenient comparator, the $RR$ in the MRNA vaccine trials was 0.05. In this case, vaccines reduce the risk of infection by a factor of 20x.
+A small $RR$ corresponds to a large reduction in risk. For the mask study, $RR=$0.9. That’s not a lot of risk reduction: in this study, community masking improved an individual’s risk of infection by a factor of only 1.1x. As a convenient comparator, the $RR$ in the MRNA vaccine trials was 0.05. In this case, vaccines reduce the risk of symptomatic infection by a factor of 20x.
 
 The academic vaccine community unfortunately uses "efficacy" or "effectiveness" to describe relative risk reduction. [Efficacy is a confusing, commonly misinterpreted metric](xxx). Efficacy in a trial is one minus the relative risk reduction:
 
