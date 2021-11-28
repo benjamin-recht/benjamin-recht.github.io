@@ -57,7 +57,7 @@ $$
 In the mask study, $SE=$0.043. Using a Gaussian approximation, our confidence interval would then be
 
 $$
-{\tiny
+{\scriptsize
     [\exp(\ell RR - 1.96 SE), \exp(\ell RR + 1.96 SE)] = [0.83, 0.98]\,.
 }
 $$
@@ -65,7 +65,7 @@ $$
 The way we interpret the confidence interval (and I'll likely screw this up) is that if the Gaussian approximation were true, and all of the individual assignments to treatment and control were independent, and we repeated the experiment many times, the true risk ratio would fall inside the confidence interval 95% of the time. This calculation suggests that the confidence interval (barely) excludes a risk ratio of 1. However, this calculation does not take into account the cluster effects.  Assuming again that $\rho=$0.007, when we adjust our confidence intervals for cluster effects, we get the larger interval
 
 $$
-{\tiny
+{\scriptsize
     \left[\exp(\ell RR - 1.96 SE \sqrt{DE}), \exp(\ell RR + 1.96 SE \sqrt{DE} )\right] = [0.75, 1.09]\,.
 }
 $$
