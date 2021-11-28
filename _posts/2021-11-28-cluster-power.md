@@ -58,7 +58,7 @@ In the mask study, $SE=$0.043. Using a Gaussian approximation, our confidence in
 
 $$
 {\tiny
-    [\exp(\ell RR - 1.96 SE), \exp(\ell RR + 1.96 SE)] = [1.02, 1.20]\,.
+    [\exp(\ell RR - 1.96 SE), \exp(\ell RR + 1.96 SE)] = [0.83, 0.98]\,.
 }
 $$
 
@@ -66,11 +66,11 @@ The way we interpret the confidence interval (and I'll likely screw this up) is 
 
 $$
 {\tiny
-    \left[\exp(\ell RR - 1.96 SE \sqrt{DE}), \exp(\ell RR + 1.96 SE \sqrt{DE} )\right] = [0.92, 1.33]\,.
+    \left[\exp(\ell RR - 1.96 SE \sqrt{DE}), \exp(\ell RR + 1.96 SE \sqrt{DE} )\right] = [0.75, 1.09]\,.
 }
 $$
 
-Again, a standard analysis would not be able to reject a null effect for the complex masking intervention. In terms of my most-loathed statistic of efficacy, the confidence intervals on the effectiveness of community masking ranges from -8% to 25% after adjustment.
+Again, a standard analysis would not be able to reject a null effect for the complex masking intervention. In terms of my most-loathed statistic of efficacy, the confidence intervals on the effectiveness of community masking ranges from -9% to 25% after adjustment.
 
 Note that even the strong claims made in the paper about subgroups are not significant once intra-cluster correlation is accounted for. A commonly quoted result is that surgical masks dramatically reduced infections for the elderly. In this case, $n_C =$14,826, $n_T$=16,088, $i_C=$157 and $i_T=$124. The estimated effectiveness is 27%. However, with a design effect of 5, the p-value for the z-test here is 0.13 and the confidence intervals for the efficacy are -23% to 57%. So again, one can't rest on statistical significance to argue this effect is real. As a last statistical grumble, all of these corrections don't even account for the multiple hypothesis testing in the manuscript where nearly 200 hypotheses were evaluated. **After a [Bonferroni correction](https://en.wikipedia.org/wiki/Bonferroni_correction) and accounting for design effect, none of the p-values would be less than 0.5.**
 
