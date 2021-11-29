@@ -2,7 +2,7 @@
 layout:     post
 title:      "The cult of statistical significance and the Bangladesh Mask RCT."
 date:       2021-11-29 0:00:00
-summary:    "Trying to do a proper statistical analysis of the Bangladesh Mask RCT taking into account cluster design effects."
+summary:    "Trying to do a proper bio-statistical analysis of the Bangladesh Mask RCT taking into account cluster design effects."
 author:     Ben Recht
 visible:    true
 blurb: 		  true
