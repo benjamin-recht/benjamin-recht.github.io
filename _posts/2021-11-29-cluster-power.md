@@ -72,7 +72,7 @@ $$
 }
 $$
 
-Again, a standard analysis would not be able to reject a null effect for the complex masking intervention. In terms of my most-loathed statistic of efficacy, the confidence interval ranges from -9% to 25% after adjustment.
+Again, a standard cluster RCT analysis would not be able to reject a null effect for the complex masking intervention. In terms of my most-loathed statistic of efficacy, the confidence interval ranges from -9% to 25% after adjustment.
 
 Note that even the strong claims made in the paper about subgroups are not significant once intra-cluster correlation is accounted for. A commonly quoted result is that surgical masks dramatically reduced infections for individuals over 60 years old. In this case, $n_C =$14,826, $n_T$=16,088, $i_C=$157 and $i_T=$124. The estimated effectiveness is 27%. However, with a design effect of 5, the p-value for the z-test here is 0.13 and the confidence intervals for the efficacy are -23% to 57%. So again, one can't rest on statistical significance to argue this effect is real.
 
