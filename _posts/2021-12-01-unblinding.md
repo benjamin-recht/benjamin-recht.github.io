@@ -4,7 +4,7 @@ title:      "What were the effects of the Bangladesh mask intervention?"
 date:       2021-12-01 0:00:00
 summary:    "There's no doubt the Bangladesh mask trial intervention impacted behavior, whether it reduced COVID-19 incidence is more subtle."
 author:     Maria Chikina, Wes Pegden, and Ben Recht
-visible:    false
+visible:    true
 blurb: 		  true
 ---
 
