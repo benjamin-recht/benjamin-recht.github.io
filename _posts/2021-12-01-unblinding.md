@@ -34,3 +34,5 @@ That the unblinded staff behaved differently in the different types of villages 
 
 Our analysis suggests that the impact of the mask intervention was highly effective at modifying behaviors (distancing, mask-wearing, symptom reporting), but that any effect on actual symptomatic seropositivity was much more subtle. In particular, whatever effects the intervention had on the rate of symptomatic seropositivity in the villages was certainly not large relative to other factors contributing to variance in this parameter across villages.
 We suggest that the very large causal effects on consent rates and thus population denominators urge caution in interpreting the small differences we see in symptomatic seropositivity between treatment and controls, which are not statistically significant according to standard nonparametric paired tests.
+
+*Code to reproduce the figures in this post and those in our technical note can be found [here](https://github.com/mchikina/maskRCTnot).*
