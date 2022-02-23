@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "?"
-date:       2021-12-01 0:00:00
+date:       2021-23-02 0:00:00
 summary:    "."
 author:     Ben Recht
 visible:    false
@@ -20,7 +20,8 @@ If the measured effect size is greater than twice the standard error, you declar
 
 The following figure, adapted from a tweet by [Thomas House](https://twitter.com/TAH_Sci/status/1490701257769734145), nicely illustrates the situation:
 
-[xxx]
+{: .center}
+![Only one of these droids is signficant](/assets/signficant.png){:width="100%"}
 
 Here, there are four hypothetical distributions of benefit. All but (a) are “statistically significant.” The interventions we are always striving for are ones with clear benefit, like (d) in the bottom right. Interventions like this do exist: In the Pfizer trial, the effect size was 12 times larger than the standard error. Vaccines work! But most interventions are not vaccines (or parachutes for that matter).
 
