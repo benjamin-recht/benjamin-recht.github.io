@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Let us never speak of these values again"
+title:      "Let us never speak of these values again."
 date:       2022-02-23 0:00:00
 summary:    "Just tell me your bad estimate of the standard error and why you think it's well motivated. I have no interest in knowing what the p-value is."
 author:     Ben Recht
