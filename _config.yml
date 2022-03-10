@@ -1,6 +1,8 @@
 # Site settings
+plugins:
+  - jekyll-feed
 title:       arg min blog
-email:       brecht@berkeley.edu 
+email:       brecht@berkeley.edu
 author:      Benjamin Recht
 description: "Musings on systems, information, learning, and optimization."
 baseurl:     ""
@@ -24,8 +26,8 @@ disqus_shortname: argminblog
 
 # Facebook Comments plugin
 # (leave blank to disable Facebook Comments, otherwise set it to true)
-facebook_comments: 
-facebook_appid: 
+facebook_comments:
+facebook_appid:
 facebook_comments_number: 10
 
 # Social icons
