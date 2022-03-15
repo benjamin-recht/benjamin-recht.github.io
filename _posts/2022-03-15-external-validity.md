@@ -1,10 +1,11 @@
 ---
 layout:     post
-title:      "TBD."
+title:      "Machine Learning has a validity problem."
 date:       2022-03-15 0:00:00
-summary:    "."
+summary:    "Machine learners should stop using the term distribution shift and start
+            engaging with external validity."
 author:     Ben Recht
-visible:    false
+visible:    true
 blurb: 		  true
 ---
 
