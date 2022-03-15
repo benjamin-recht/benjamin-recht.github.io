@@ -13,7 +13,7 @@ One of the central tenets of machine learning warns the more times you run exper
 Rebecca Roelofs, Ludwig Schmidt, and Vaishaal Shankar led an passionate quest to test the overfitting hypothesis, devoting countless hours to reproducing machine learning benchmarks. In particular, they painstakingly recreated a test set of the famous [ImageNet benchmark](https://www.image-net.org/), which itself is responsible for bringing about the latest AI feeding frenzy. Out of the many surprises in my research career, what [they found surprised me the most.](https://arxiv.org/abs/1902.10811)
 
 {: .center}
-![The scatterplot of nightmares](/assets/RSS_Scatter.png){:width="100%"}
+![The scatterplot of nightmares](/assets/RSS_Scatter.png){:width="90%"}
 
 In this graph, the x-axis is the accuracy on the original ImageNet benchmark, which has been used millions of times by individual researchers at Google alone. On the y-axis is the accuracy evaluated on “ImageNet v2” set, which was made by closely trying to replicate the data creation method for the benchmark. Each blue dot represents a single machine learning model trained on the original ImageNet data. The red line is a linear fit to these models, and the dashed line is what we would see if the accuracy was the same on both test sets. What do we see? The models which perform the best on the original test set perform the best on the new test set. That is, there is no evidence of overfitting.
 
