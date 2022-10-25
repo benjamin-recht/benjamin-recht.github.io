@@ -5,7 +5,7 @@ date:       2022-10-26 0:00:00
 summary:    "The joys and frustration of making album covers with artificial intelligence."
 author:     Ben Recht
 visible:    false
-blurb: 		  false
+blurb: 		  true
 ---
 
 I’ve been researching machine learning for a little over 20 years. For the past five years or so, with the latest wave of AI overpromising, I think I’m now best known as an AI skeptic. But I’ve been engaging with these new AI image generation tools, and they are delightful. I think they have a lot of promise, and I want to explain why and think a little bit about how to make them even better.
