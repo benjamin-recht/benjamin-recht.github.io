@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Does AI Suck at Art?"
-date:       2022-10-26 0:00:00
+date:       2022-10-25 0:00:00
 summary:    "The joys and frustration of making album covers with artificial intelligence."
 author:     Ben Recht
 visible:    false
