@@ -8,7 +8,7 @@ visible:    true
 blurb: 		  true
 ---
 
-I’ve been researching machine learning for a little over 20 years. For the past five years or so, with the latest wave of AI overpromising, I think I’m now best known as an AI skeptic. But I’ve been engaging with these new AI image generation tools, and they are delightful. I think they have a lot of promise, and I want to explain why and think a little bit about how to make them even better.
+I’ve been researching machine learning for a little over 20 years. For the past five years or so, with the latest wave of AI overpromising, I think I’ve been mostly known as an AI skeptic. But I’ve been engaging with these new AI image generation tools, and they are delightful. They have a lot of promise, and I want to explain why and suggest a few ways to make them even better.
 
 Though I don’t talk about it much, for the past 20 years I’ve also been playing in an ambient shoegazer band called [“the fun years.”](https://thefunyears.bandcamp.com/) My bandmate, [Isaac Sparks](http://www.isaacsparks.com/), has been in charge of our visual design since the get-go. Over the years, he’s progressively refined his style, and he has been dipping his toes into the weird world of prompt-to-art. And the process has been making me think about AI for art.
 
