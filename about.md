@@ -8,6 +8,8 @@ arg min blog: a blog of minimum value
 
 Musings on systems, information, learning, and optimization by [Ben Recht](http://www.eecs.berkeley.edu/~brecht). With intermittent ramblings about music.
 
+I may come back here, but am currently [blogging on Substack](https://argmin.substack.com).
+
 Follow Ben on Twitter: [@beenwrekt](https://twitter.com/beenwrekt)
 
 <span>
