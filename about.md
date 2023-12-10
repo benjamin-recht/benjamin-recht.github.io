@@ -8,9 +8,9 @@ arg min blog: a blog of minimum value
 
 Musings on systems, information, learning, and optimization by [Ben Recht](http://www.eecs.berkeley.edu/~brecht). With intermittent ramblings about music.
 
-I may come back here, but am currently [blogging on Substack](https://argmin.substack.com).
+I may come back here, but am currently [blogging on Substack](https://argmin.net).
 
-Follow Ben on Twitter: [@beenwrekt](https://twitter.com/beenwrekt)
+Follow me on Twitter: [@beenwrekt](https://twitter.com/beenwrekt)
 
 <span>
 Subscribe to the  <a class="btn btn-rss" href="/feed.xml" target="_blank">RSS Feed.</a>

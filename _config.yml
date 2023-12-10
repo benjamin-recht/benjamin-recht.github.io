@@ -6,7 +6,7 @@ email:       brecht@berkeley.edu
 author:      Benjamin Recht
 description: "Musings on systems, information, learning, and optimization."
 baseurl:     ""
-url:         "http://benjamin-recht.github.io"
+url:         "http://archives.argmin.net"
 date_format: "%b %-d, %Y"
 
 # Google services
