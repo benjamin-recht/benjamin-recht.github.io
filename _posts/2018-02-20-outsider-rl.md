@@ -11,7 +11,7 @@ blurb: false
 
 ## Table of Contents.
 
-1. [Make It Happen.](./2018/01/29/taxonomy/) Reinforcement Learning as prescriptive analytics.
+1. [Make It Happen.](//2018/01/29/taxonomy/) Reinforcement Learning as prescriptive analytics.
 2. [Total Control.](http://archives.argmin.net/2018/02/01/control-tour/) Reinforcement Learning as Optimal Control.
 3. [The Linearization Principle.](http://archives.argmin.net/2018/02/05/linearization/) If a machine learning algorithm does crazy things when restricted to linear models, it’s going to do crazy things on complex nonlinear models too.
 4. [The Linear Quadratic Regulator.](http://archives.argmin.net/2018/02/08/lqr/) A quick intro to LQR as why it is a great baseline for benchmarking Reinforcement Learning.
