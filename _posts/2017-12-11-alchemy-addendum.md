@@ -8,7 +8,7 @@ blurb: true
 visible:    true
 ---
 
-*This post is an addendum to our [“test of time” talk at NIPS 2017](http://www.argmin.net/2017/12/05/kitchen-sinks/).*
+*This post is an addendum to our [“test of time” talk at NIPS 2017](/2017/12/05/kitchen-sinks/).*
 
 We’d like to expand on a few points about the talk we gave at NIPS last week. The talk highlighted the growing gap between our field’s understanding of its techniques and its practical successes. No one seeks less understanding, and everyone wants more practical success. There is also no single root cause for this gap and no single way to bridge it. So we decided to spend our time on stage to open a conversation. Our goal was to offer a few phrases to use during meetings with collaborators, bosses, funding agencies, and mentees. These phrases were “rigor” (a quality that applies to an investigation), “alchemy” (not as a pejorative, but as a methodology that produce practical results), “simple theorems”, and “simple experiments”.
 
