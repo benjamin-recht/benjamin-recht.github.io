@@ -8,7 +8,7 @@ visible:    true
 blurb: 		  true
 ---
 
-*This is the ninth part of ["An Outsider's Tour of Reinforcement Learning."](http://www.argmin.net/outsider-rl.html)  Part 10 is [here](http://www.argmin.net/2018/04/19/pid/). Part 8 is [here](http://www.argmin.net/2018/03/13/pg-saga/). Part 1 is [here](http://www.argmin.net/2018/01/29/taxonomy/).*
+*This is the ninth part of ["An Outsider's Tour of Reinforcement Learning."](/outsider-rl.html)  Part 10 is [here](/2018/04/19/pid/). Part 8 is [here](/2018/03/13/pg-saga/). Part 1 is [here](/2018/01/29/taxonomy/).*
 
 Before we leave these model-free chronicles behind, let me turn to the converse of the Linearization Principle. We have seen that random search works well on simple linear problems and appears better than some RL methods like policy gradient. Does random search break down as we move to harder problems? **Spoiler Alert: No.** But keep reading!
 
@@ -42,7 +42,7 @@ There are a few of important takeaways here.
 
 #### Benchmarks are hard.
 
- I think the only reasonable conclusion from all of this is that these MuJoCo demos are easy. There is nothing wrong with that. But it’s probably not worth deciding NIPS, ICML, _or_ ICLR papers over performance on these benchmarks anymore. This does leave open a very important question: _what makes a good benchmark for RL?_. Obviously, we need more than the Mountain Car. I'd argue that [LQR with unknown dynamics](http://www.argmin.net/02/26/nominal) is a reasonable task to master as it is easy to specify new instances and easy to understand the limits of achievable performance. But the community should devote more time to understanding how to establish baselines and benchmarks that are not easily gamed.
+ I think the only reasonable conclusion from all of this is that these MuJoCo demos are easy. There is nothing wrong with that. But it’s probably not worth deciding NIPS, ICML, _or_ ICLR papers over performance on these benchmarks anymore. This does leave open a very important question: _what makes a good benchmark for RL?_. Obviously, we need more than the Mountain Car. I'd argue that [LQR with unknown dynamics](/02/26/nominal) is a reasonable task to master as it is easy to specify new instances and easy to understand the limits of achievable performance. But the community should devote more time to understanding how to establish baselines and benchmarks that are not easily gamed.
 
 
 #### Never put too much faith in your simulators.
@@ -73,11 +73,11 @@ Note that since our random search method is fast, we can evaluate its performanc
 {: .center}
 ![such variance](/assets/rl/mujoco/humanoid_100seeds_med.png){:width="560px"}
 
-This sort of behavior arose in LQR as well. We can tune our algorithm for a few random seeds, and then see completely different behavior on new random seeds. [Henderson _and et_](https://arxiv.org/abs/1709.06560) observed this phenomenon already with Deep RL methods, but I think that such high variability will be a symptom of all model-free methods.  There are simply too many edge cases to account for through simulation alone. As I said in [the last post](http://www.argmin.net/03/13/pg-saga):
+This sort of behavior arose in LQR as well. We can tune our algorithm for a few random seeds, and then see completely different behavior on new random seeds. [Henderson _and et_](https://arxiv.org/abs/1709.06560) observed this phenomenon already with Deep RL methods, but I think that such high variability will be a symptom of all model-free methods.  There are simply too many edge cases to account for through simulation alone. As I said in [the last post](/03/13/pg-saga):
 "_By throwing away models and knowledge, it is never clear if we can learn enough from a few instances and random seeds to generalize._"
 
 ## I can't quit model-free RL.
 
 In a future post, I’ll have one more nit to pick with model-free RL. This is actually a nit I’d like to pick with all of reinforcement learning and iterative learning control: what exactly do we mean by “sample complexity?” What are we learning as a community from this line of research of trying to minimize sample complexity on a small number of benchmarks?  And where do we, as a research community, go from here?
 
-Before we get there though, let me take a step back to [assess some variants of model-free RL that both work well in theory and practice](http://www.argmin.net/04/19/pid) and see if these can be extended to the more challenging problems currently of interest to the machine learning community.
+Before we get there though, let me take a step back to [assess some variants of model-free RL that both work well in theory and practice](/04/19/pid) and see if these can be extended to the more challenging problems currently of interest to the machine learning community.

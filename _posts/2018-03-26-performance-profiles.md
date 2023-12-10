@@ -55,6 +55,6 @@ Now there is a clear separation in the performance profiles, and it’s clear th
 
 [Miles Brundage](https://twitter.com/Miles_Brundage/status/977512294824341504) suggests that there are far better baselines now (from the DeepMind folks). I’d like to make the modest suggestion that someone at DeepMind adopt the Machado et al. evaluation protocol for these new, more sophisticated methods, and then report means and standard deviations on all of the games. Even better, why not report the actual values over the runs so we could use non-parametric test statistics? Or even better, why not release the code? I’d be happy to make a performance profile again so we can see how much we’re improving.
 
-If you are interested in changing the performance metric or running performance profiles on your own data, here’s a [Jupyter notebook](https://nbviewer.jupyter.org/url/argmin.net/code/atari_performance_profiles.ipynb). that lets you recreate the above plots.
+If you are interested in changing the performance metric or running performance profiles on your own data, here’s a [Jupyter notebook](https://nbviewer.jupyter.org/url/archives.argmin.net/code/atari_performance_profiles.ipynb). that lets you recreate the above plots.
 
 [^1]: There was no data for Blob-PROST on Journey Escape with 200M samples, so I used the values listed for 100M samples.

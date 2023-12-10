@@ -8,13 +8,13 @@ blurb: true
 visible:    true
 ---
 
-*This is the third part of ["An Outsider's Tour of Reinforcement Learning."](http://www.argmin.net/outsider-rl.html)  Part 4 is [here](http://www.argmin.net/2018/02/08/lqr/). Part 2 is [here](http://www.argmin.net/2018/02/01/control-tour/). Part 1 is [here](http://www.argmin.net/2018/01/29/taxonomy/).*
+*This is the third part of ["An Outsider's Tour of Reinforcement Learning."](/outsider-rl.html)  Part 4 is [here](/2018/02/08/lqr/). Part 2 is [here](/2018/02/01/control-tour/). Part 1 is [here](/2018/01/29/taxonomy/).*
 
 I have an ethos for tackling problems in machine learning that I call the "Linearization Principle." There are many variants of this principle, but the simplest is “If a machine learning algorithm does crazy things when restricted to linear models, it’s going to do crazy things on complex nonlinear models too.”
 
 This Linearization Principle provides a convenient way to attack and decompose the complex problems in machine learning into tractable, simple research problems. I don’t think that application to linear models is a sufficient condition for understanding machine learning, but I’d argue that it is a necessary bar to clear for a method to be broadly useful. In the same way that solving 2SAT doesn’t prove P=NP, if you claim to have a 3SAT solver and it takes exponential time on 2SAT, then something fishy is going on.
 
-Before trying to apply the Linearization Principle to reinforcement learning, let me try to give a few examples of how simple models can give insights into standard, supervised deep learning. [Ali teed up the ball for me](http://www.argmin.net/2018/01/25/optics/) with a list of phenomena observed in deep learning. I’d like to go through several of the phenomena he listed and explain how linear models help us to understand them.
+Before trying to apply the Linearization Principle to reinforcement learning, let me try to give a few examples of how simple models can give insights into standard, supervised deep learning. [Ali teed up the ball for me](/2018/01/25/optics/) with a list of phenomena observed in deep learning. I’d like to go through several of the phenomena he listed and explain how linear models help us to understand them.
 
 #### Ali’s First Phenomenon: Shallow local minimizers generalize better than sharp ones.
 
@@ -38,7 +38,7 @@ Linear models won’t have saddle points, but if a model is granted more paramet
 
 SGD for linear models does not converge to an arbitrary optimum, however. Depending on the loss function, SGD will find a very particular minimizer. For the square loss, [the solution will have large margin](https://arxiv.org/abs/1611.03530), and for the softmax loss, [SGD will converge to the solution that maximizes the margin, albeit exponentially slowly](https://arxiv.org/abs/1710.10345).
 
-With regards to saddle points, my gut tells me that the notion that SGD avoids them is an artifact of selection bias.  As Ali and I showed in our [test of time talk](http://www.argmin.net/2017/12/05/kitchen-sinks/), it’s very easy to find examples of neural nets where gradient descent does not efficiently find a local minimum. It possible that we only hear about the cases where we avoid saddles.
+With regards to saddle points, my gut tells me that the notion that SGD avoids them is an artifact of selection bias.  As Ali and I showed in our [test of time talk](/2017/12/05/kitchen-sinks/), it’s very easy to find examples of neural nets where gradient descent does not efficiently find a local minimum. It possible that we only hear about the cases where we avoid saddles.
 
 #### Ali’s Fourth Phenomenon: Dropout works better than other randomization strategies.
 
@@ -60,4 +60,4 @@ It was hard to use the empirical benchmarks to get insights into why Adam was pe
 
 While the Linearization Principle doesn’t explain all of the properties of neural nets, it does clear up many of supposedly mysterious properties: most of these phenomena have basis in techniques applicable for linear models.
 
-I think the same clarification can be achieved for reinforcement learning by leveraging the Linearization Principle. [In the next post](http://www.argmin.net/2018/02/08/lqr/), I will argue that an appropriate linear baseline for RL is the venerable “Linear Quadratic Regulator.”
+I think the same clarification can be achieved for reinforcement learning by leveraging the Linearization Principle. [In the next post](/2018/02/08/lqr/), I will argue that an appropriate linear baseline for RL is the venerable “Linear Quadratic Regulator.”

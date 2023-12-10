@@ -1,4 +1,4 @@
----
+/---
 layout:     post
 title:      "Margin Walker"
 date:       2020-07-08 0:00:00
@@ -112,4 +112,4 @@ $$
 	\epsilon \leq \lambda_\text{min}(R)\lambda_\text{min}\left(P^{-1} Q P^{-1}\right)
 $$
 
-we will be guaranteed stable execution. This expression depends on the matrices $P$, $Q$, and $R$, so it has a different flavor of the infinite gain margin conditions which held irrespective of the dynamics or the cost. Moreover, if $P$ has large eigenvalues, then we are only able to guarantee safe execution for small perturbations to $B$. This foreshadows issues I'll dive into in later posts. I want to flag here that these calculations reveal some fragilities of LQR: While the controller is always robust to perturbations along the direction of the matrix $B$, you can construct examples where the system is highly sensitive to tiny perturbations orthogonal to $B$. [I'll return in the next post](https://www.argmin.net/2020/07/14/there-are-none/) to start to unpack how optimal control has some natural robustness, but it has natural fragility as well.
+we will be guaranteed stable execution. This expression depends on the matrices $P$, $Q$, and $R$, so it has a different flavor of the infinite gain margin conditions which held irrespective of the dynamics or the cost. Moreover, if $P$ has large eigenvalues, then we are only able to guarantee safe execution for small perturbations to $B$. This foreshadows issues I'll dive into in later posts. I want to flag here that these calculations reveal some fragilities of LQR: While the controller is always robust to perturbations along the direction of the matrix $B$, you can construct examples where the system is highly sensitive to tiny perturbations orthogonal to $B$. [I'll return in the next post](/2020/07/14/there-are-none/) to start to unpack how optimal control has some natural robustness, but it has natural fragility as well.

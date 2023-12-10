@@ -8,7 +8,7 @@ visible:    true
 blurb: 		  true
 ---
 
-In the [last post](http://www.argmin.net/2020/07/08/gain-margin/), we showed that continuous-time LQR has "natural robustness" insofar as the optimal solution is robust to a variety of model-mismatch conditions. LQR makes the assumption that the state of the system is fully, perfectly observed. In many situations, we don't have access to such perfect state information. What changes?
+In the [last post](/2020/07/08/gain-margin/), we showed that continuous-time LQR has "natural robustness" insofar as the optimal solution is robust to a variety of model-mismatch conditions. LQR makes the assumption that the state of the system is fully, perfectly observed. In many situations, we don't have access to such perfect state information. What changes?
 
 The generalization of LQR to the case with imperfect state observation is called "Linear Quadratic Gaussian" control (LQG). This is the simplest, special case of a Partially Observed Markov Decision Process (POMDP). We again assume linear dynamics:
 

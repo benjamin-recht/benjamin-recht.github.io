@@ -8,9 +8,9 @@ visible:    true
 blurb: 		  true
 ---
 
-*This is the thirteenth part of ["An Outsider's Tour of Reinforcement Learning."](http://www.argmin.net/outsider-rl.html)  Part 14 is [here](http://www.argmin.net/2018/06/25/rl-tour-fin). Part 12 is [here](http://www.argmin.net/2018/05/02/coarse-id-control/). Part 1 is [here](http://www.argmin.net/2018/01/29/taxonomy/).*
+*This is the thirteenth part of ["An Outsider's Tour of Reinforcement Learning."](/outsider-rl.html)  Part 14 is [here](/2018/06/25/rl-tour-fin). Part 12 is [here](/2018/05/02/coarse-id-control/). Part 1 is [here](/2018/01/29/taxonomy/).*
 
-Can poor models be used in control loops and still achieve near-optimal performance? In recent posts, we’ve seen the answer is certainly "maybe." [Nominal control](http://www.argmin.net/2018/02/26/nominal) could learn a poor model of the double-integrator with 10 samples and still achieve high performance. Is this optimal for the LQR problem? Is it really just as simple as fitting parameters and treating your estimates as true?
+Can poor models be used in control loops and still achieve near-optimal performance? In recent posts, we’ve seen the answer is certainly "maybe." [Nominal control](/2018/02/26/nominal) could learn a poor model of the double-integrator with 10 samples and still achieve high performance. Is this optimal for the LQR problem? Is it really just as simple as fitting parameters and treating your estimates as true?
 
 The answer is not entirely clear. To see why, let’s revisit my very fake datacenter model: a three state system where the state $x$ represents the internal temperature of the racks and the control $u$ provides local cooling of each rack. We modeled this dynamical system with a linear model
 
